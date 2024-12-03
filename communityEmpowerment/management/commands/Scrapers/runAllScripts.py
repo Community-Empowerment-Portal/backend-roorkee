@@ -24,7 +24,10 @@ class Command(BaseCommand):
             "node meghalaya_scraper.js",
             "node puducherry_scraper.js",
             "node tamilNadu_scraper.js",
-            "node up_youthWelfare.js"
+            "node up_youthWelfare.js",
+            "node madhyaPradesh_scraper.js",
+            "node kerela_scraper.js",
+            "node manipur_scraper.js"
             f"python {os.path.join(base_dir, '../converted_combined.py')}",
             f"python {os.path.join(base_dir, '../../../../manage.py load_data')}"
         ]

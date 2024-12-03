@@ -144,8 +144,8 @@ class Tag(TimeStampedModel):
 class Scheme(TimeStampedModel):
     title = models.TextField(null = True, blank = True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='schemes', null=True, blank=True)
-    introduced_on = models.DateTimeField(null = True, blank = True)
-    valid_upto = models.DateTimeField(null = True, blank = True)
+    introduced_on = models.TextField(null = True, blank = True)
+    valid_upto = models.TextField(null = True, blank = True)
     funding_pattern = models.CharField(max_length=255, null = True, blank = True)
     description = models.TextField(null = True, blank = True)
     scheme_link = models.URLField(null = True, blank = True)
@@ -164,7 +164,7 @@ class Scheme(TimeStampedModel):
         return self.title
     
 class Benefit(TimeStampedModel):
-    benefit_type = models.CharField(max_length=255, null=True, blank=True)
+    benefit_type = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
     class Meta:

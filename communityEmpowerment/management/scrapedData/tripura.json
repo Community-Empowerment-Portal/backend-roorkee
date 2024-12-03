@@ -1,0 +1,52 @@
+[
+    {
+        "description": "With the aim of providing health care protection to the working Journalists of the State, the Government of Tripura has launched the Tripura Journalist Health Insurance Scheme. The basic objective of the scheme is to financially protect the Journalists from monetary burden and liabilities that are a result of unfortunate health-related situations and emergencies. Under this Scheme, the beneficiaries are eligible to receive coverage benefits upto Rs. 3 lakhs for a list of diseases that need hospitalization and others.",
+        "tags": [
+            "Health Insurance"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Working Journalist"
+            }
+        ],
+        "procedures": [
+            {
+                "step_description": "To be eligible under the scheme as beneficiary, working journalist must apply to the Director, Information & Cultural Affairs with all supporting documents."
+            },
+            {
+                "step_description": "Director, Information & Cultural Affairs will verify all the eligibilities through Sub-Divisional Magistrate and other concerned agencies."
+            },
+            {
+                "step_description": "After completion of verification the Director, Information & Cultural Affairs will place the application with all necessary documents to the \\\"Tripura Journalist Health Insurance Scheme Recommendation Committee\\\" {JHISRC)."
+            },
+            {
+                "step_description": "By the recommendation of the Committee and followed by the approval of the State Government the applicant/applicant's will be enrolled as beneficiary under the scheme."
+            }
+        ],
+        "sponsors": [],
+        "valid_upto": "",
+        "funding_pattern": "The premium amount as required for implementation of the scheme will be borne by the State government-beneficiary in the ratio 80:20 annually.",
+        "scheme_link": "",
+        "title": "Tripura Journalist Health Insurance Scheme-2022",
+        "introduced_on": "02.05.2022",
+        "criteria": [
+            {
+                "description": "Must be a Working Journalist."
+            },
+            {
+                "description": "Must be a permanent resident of the State."
+            },
+            {
+                "description": "Must be an accredited journalist by the state government or PIB."
+            },
+            {
+                "description": "Age must be in between 21-65 years."
+            },
+            {
+                "description": "Must not be covered under Ayushman Bharat Scheme or any other Health Insurance Scheme of Central or State Government."
+            }
+        ],
+        "documents": [],
+        "department_name": "Directorate of Information & Cultural Affairs"
+    }
+    ]
