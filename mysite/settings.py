@@ -198,7 +198,7 @@ STATIC_ROOT = os.path.join(ROOT_DIR, '/static_files')
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(ROOT_DIR, '/media_files')
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'media_files')
 
 # Celery configuration
 # REDIS_HOST = os.getenv('REDIS_HOST')

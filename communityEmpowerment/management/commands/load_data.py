@@ -19,6 +19,11 @@ class Command(BaseCommand):
         if value and isinstance(value, str):
             return value[:max_length]
         return value
+    
+    def truncateDescription(self, value):
+        if value and isinstance(value, str):
+            return value
+        return value
 
     def load_data(self, data):
         for state_data in data['states']:
@@ -43,7 +48,7 @@ class Command(BaseCommand):
 
                     for scheme_data in organisation_data['schemes']:
                         title = self.truncate(scheme_data['title'])
-                        description = self.truncate(scheme_data.get('description'))
+                        description = self.truncateDescription(scheme_data.get('description'))
                         scheme_link = self.truncate(scheme_data.get('scheme_link'))
                         funding_pattern = self.truncate(scheme_data.get('funding_pattern', 'State'))
                         scheme, created = Scheme.objects.get_or_create(
@@ -98,23 +103,6 @@ class Command(BaseCommand):
                                 scheme=scheme,
                                 sponsor=sponsor
                             )
-
-                        # for criteria_data in scheme_data['criteria']:
-                        #     description = self.truncate(criteria_data['description'])
-                        #     criteria, created = Criteria.objects.filter(
-                        #         scheme=scheme,
-                        #         description=description
-                        #     ).first(), False
-
-                        #     if criteria:
-                        #         criteria.value = self.truncate(criteria_data.get('value'))
-                        #         criteria.save()
-                        #     else:
-                        #         criteria = Criteria.objects.create(
-                        #             scheme=scheme,
-                        #             description=description,
-                        #             value=self.truncate(criteria_data.get('value'))
-                        #         )
                             
                         for criteria_data in scheme_data['criteria']:
                             description = self.truncate(criteria_data['description'])
@@ -137,19 +125,21 @@ class Command(BaseCommand):
                                 step_description=step_description
                             )
                         if 'benefits' in scheme_data:
+                            
                             for benefit_data in scheme_data['benefits']:
-                                benefit_type = self.truncate(benefit_data.get('benefit_type'))
+                                benefit_type = self.truncateDescription(benefit_data.get('benefit_type'))
                                 if benefit_type:
                                     benefit, created = Benefit.objects.get_or_create(
                                         benefit_type=benefit_type
                                     )
                                     scheme.benefits.add(benefit)
 
-
-                        for tag_name in scheme_data['tags']:
-                            tag_name = self.truncate(tag_name)
-                            tag, created = Tag.objects.get_or_create(name=tag_name)
-                            scheme.tags.add(tag)
+                        if scheme_data["tags"] is not None:
+                            for tag_name in scheme_data['tags']:
+                                
+                                tag_name = self.truncate(tag_name)
+                                tag, created = Tag.objects.get_or_create(name=tag_name)
+                                scheme.tags.add(tag)
 
 
                     

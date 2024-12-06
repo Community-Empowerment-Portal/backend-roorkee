@@ -1,0 +1,111 @@
+[
+    {
+      "title": "Atma Nirbhar Krishi Yojana (ANKY)",
+      "objective": "The Atma Nirbhar Krishi Yojana (ANKY) is an initiative by the Government of Arunachal Pradesh aimed at promoting self-reliance in the agriculture sector. Launched on September 3, 2021, by Chief Minister Pema Khandu, the scheme seeks to boost agricultural productivity and enhance farmers’ income through financial assistance and support for various agricultural activities.",
+      "benefits": [
+        "Financial Assistance: Provides a 45% government subsidy on agricultural projects, with an additional 45% as a bank loan and 10% contribution from the beneficiary.",
+        "Credit Support: Offers credit facilities through banks such as the State Bank of India, Arunachal Pradesh Rural Bank, and Arunachal Pradesh Cooperative Apex Bank.",
+        "Focus Areas: Supports activities including scientific land terracing, double cropping, farm mechanization, tea and rubber cultivation, and apiculture."
+      ],
+      "criteria": [
+        "Individual farmers and Self-Help Groups (SHGs) residing in Arunachal Pradesh.",
+        "Applicants should possess the necessary land for agricultural activities.",
+        "Women farmers and members of SHGs are encouraged to apply."
+      ],
+      "documents": [
+        "Proof of identity (Aadhaar card, voter ID card, etc.).",
+        "Proof of residence in Arunachal Pradesh.",
+        "Land documents (ownership proof or lease agreement).",
+        "Bank account details.",
+        "Passport-size photographs.",
+        "Income certificate.",
+        "Caste certificate (if applicable).",
+        "SHG registration certificate (for SHG applicants)."
+      ],
+      "schemeUrl": "https://arunachalipr.gov.in/index.php/atma-nirbhar-krishi-yojana-anky/",
+      "id": "89c14f60-cd93-40fb-961b-54119fa16c2b"
+    },
+    {
+      "title": "Cluster Nutritional Kitchen Garden Scheme",
+      "objective": "The Cluster Nutritional Kitchen Garden Scheme is an initiative by the Government of Arunachal Pradesh aimed at promoting self-sufficiency in vegetable production and improving nutritional intake among households. By encouraging the establishment of kitchen gardens, the scheme seeks to reduce dependence on external sources for vegetables and enhance food security at the community level.",
+      "benefits": [
+        "Enhanced Nutrition: Provides households with access to fresh, organic vegetables, improving dietary diversity and overall health.",
+        "Economic Savings: Reduces household expenditure on vegetables by enabling families to grow their own produce.",
+        "Skill Development: Offers training in sustainable farming practices, empowering individuals with agricultural skills.",
+        "Community Engagement: Fosters community participation and collective effort in achieving nutritional goals."
+      ],
+      "criteria": [
+        "Residents of Arunachal Pradesh interested in establishing a kitchen garden.",
+        "Priority is given to marginal farmers and households with limited access to fresh vegetables."
+      ],
+      "documents": [
+        "Proof of residence in Arunachal Pradesh.",
+        "Land ownership or lease documents (if applicable).",
+        "Identification proof (Aadhaar card, voter ID, etc.)."
+      ],
+      "schemeUrl": "https://arunachalipr.gov.in/index.php/cluster-nutritional-kitchen-garden-scheme/",
+      "id": "c3daa2fb-03c7-4feb-9b79-7a822a72dcdf"
+    },
+    {
+      "title": "Chief Minister Arogya Arunachal Yojana (CMAAY)",
+      "objective": "The Chief Minister Arogya Arunachal Yojana (CMAAY) aims to provide quality and cashless healthcare services to the indigenous population of Arunachal Pradesh. This scheme is designed to reduce the financial burden of medical expenses, ensuring that every citizen has access to essential healthcare without out-of-pocket costs.",
+      "benefits": [
+        "Coverage of ₹5 Lakh per Family: Each family is entitled to cashless treatment up to ₹5 lakh annually for secondary and tertiary healthcare.",
+        "Network of Hospitals: Treatment is available across a network of empaneled hospitals within and outside Arunachal Pradesh.",
+        "No Age Limit: The scheme covers all members of a family, regardless of age or gender."
+      ],
+      "criteria": [
+        "All indigenous residents of Arunachal Pradesh.",
+        "Government employees and their families can also avail of the scheme benefits."
+      ],
+      "documents": [
+        "Aadhaar card or any valid identity proof issued by the Government of Arunachal Pradesh.",
+        "Proof of residence in Arunachal Pradesh.",
+        "CMAAY registration card (obtained after registration)."
+      ],
+      "schemeUrl": "https://arunachalipr.gov.in/index.php/chief-minister-arogya-arunachal-yojana-cmaay/",
+      "id": "f9925f55-2b4e-4c5d-b354-3cb3a4a0ec8d"
+    },
+    {
+      "title": "Deen Dayal Upadhyaya Swavalamban Yojana (DDUSY)",
+      "objective": "The Deen Dayal Upadhyaya Swavalamban Yojana (DDUSY) is an ambitious initiative launched by the Government of Arunachal Pradesh to empower unemployed youth by promoting entrepreneurship and self-reliance. This scheme aims to foster economic growth by encouraging small and medium enterprises across the state.",
+      "benefits": [
+        "Subsidy on Capital Investment: Eligible beneficiaries receive a 40% front-ended capital investment subsidy on projects costing between ₹10 lakh and ₹50 lakh.",
+        "Low Interest Rates: A 5% interest subsidy on bank loans for eligible businesses.",
+        "Focus on Priority Sectors: The scheme prioritizes sectors such as agro-based industries, traditional crafts, tourism, small-scale manufacturing, and services."
+      ],
+      "criteria": [
+        "Unemployed youth of Arunachal Pradesh aged between 18-35 years.",
+        "Applicants must hold a minimum qualification of Class 8 and should be residents of the state."
+      ],
+      "documents": [
+        "Aadhaar card for identification.",
+        "Proof of residence in Arunachal Pradesh.",
+        "Business proposal document.",
+        "Bank account details for loan processing."
+      ],
+      "schemeUrl": "https://arunachalipr.gov.in/index.php/deen-dayal-upadhyaya-swavalamban-yojana-ddusy/",
+      "id": "e03aacca-84b7-424a-9864-986a8492ef6f"
+    },
+    {
+      "title": "Dulari Kanya Yojana",
+      "objective": "The Dulari Kanya Yojana, launched on August 15, 2016, by the Government of Arunachal Pradesh, aims to eliminate gender bias, promote institutional deliveries, ensure child immunization, prevent child marriages, and empower females across various aspects of life.",
+      "benefits": [
+        "Financial Support: A fixed deposit of ₹20,000 is made in the name of every girl child born in government or government-recognized private hospitals.",
+        "Maturity Withdrawal: The maturity amount can be withdrawn by the beneficiary upon reaching 18 years of age, subject to verification by the concerned District Medical Officer (DMO).",
+        "Educational Incentive: Encourages the education and empowerment of the girl child by providing financial security for future endeavors."
+      ],
+      "criteria": [
+        "The girl child must be born in a government hospital or a government-recognized private hospital in Arunachal Pradesh.",
+        "The father or guardian should belong to a Scheduled Tribe of Arunachal Pradesh, be a domicile resident, or possess a household residential certificate.",
+        "The scheme is applicable for a maximum of the first two live girl children in a family."
+      ],
+      "documents": [
+        "Obtain the prescribed application form from the concerned Medical Officer in charge or Medical Superintendent.",
+        "Submit the completed form along with required documents to the Medical Officer in charge or Medical Superintendent.",
+        "After verification, the documents will be forwarded to the concerned District Medical Officer (DMO)."
+      ],
+      "schemeUrl": "https://arunachalipr.gov.in/index.php/dulari-kanya-yojana/",
+      "id": "cb86537d-628e-4468-87fb-ac0339351cab"
+    }
+  ]

@@ -650,7 +650,7 @@ class ScholarshipSchemesListView(generics.ListAPIView):
     pagination_class = SchemePagination
 
     def get_queryset(self):
-        queryset = Scheme.objects.filter(tags__name='scholarship')
+        queryset = Scheme.objects.filter(tags__name__icontains='scholarship')
         state_ids_param = self.request.query_params.get('state_ids', '[]')
 
         try:
@@ -670,13 +670,11 @@ class JobSchemesListView(generics.ListAPIView):
     pagination_class = SchemePagination
 
     def get_queryset(self):
-        queryset = Scheme.objects.filter(tags__name='job')
+        queryset = Scheme.objects.filter(Q(tags__name__icontains='job') | Q(tags__name__icontains='employment'))
         state_ids_param = self.request.query_params.get('state_ids', '[]')
 
         try:
-            # Remove square brackets and split by commas
-            state_ids = state_ids_param.strip('[]').split(',')
-            state_ids = [int(id.strip()) for id in state_ids if id.strip().isdigit()]
+            state_ids = [int(id.strip()) for id in state_ids_param.strip('[]').split(',') if id.strip().isdigit()]
         except ValueError:
             state_ids = []
 
@@ -801,8 +799,10 @@ class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
 
         scheme_filters = Q()
 
-        if tag:
-            scheme_filters &= Q(tags__name=tag)
+        if tag == "job":
+            scheme_filters &= Q(tags__name__icontains='job') | Q(tags__name__icontains='employment')
+        if tag == "scholarship":
+            scheme_filters &= Q(tags__name__icontains='scholarship')
         if state_ids:
             scheme_filters &= Q(department__state_id__in=state_ids)
         if department_ids:
