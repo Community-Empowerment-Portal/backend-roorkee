@@ -14,33 +14,19 @@ phases:
 
   build:
     commands:
-      - echo Fetching Git commit hash...
-      - GIT_COMMIT_HASH=$(git rev-parse HEAD)
       - echo Building Docker image...
-      - echo $IMAGE_REPO_NAME:$GIT_COMMIT_HASH
-      - TAG="$IMAGE_REPO_NAME:$GIT_COMMIT_HASH"
-      - TAG=$(echo ${TAG} | tr -d '[:space:]')
       
-      - docker build --build-arg DATABASE_NAME=postgres --build-arg DATABASE_USER=${DATABASE_USER} --build-arg DATABASE_PASSWORD=${DATABASE_PASSWORD} --build-arg DATABASE_HOST=${DATABASE_HOST} --build-arg DATABASE_PORT=${DATABASE_PORT} --build-arg SECRET_KEY=${SECRET_KEY} -t ${TAG} .
+      - docker build --build-arg DATABASE_NAME=postgres --build-arg DATABASE_USER=${DATABASE_USER} --build-arg DATABASE_PASSWORD=${DATABASE_PASSWORD} --build-arg DATABASE_HOST=${DATABASE_HOST} --build-arg DATABASE_PORT=${DATABASE_PORT} --build-arg SECRET_KEY=${SECRET_KEY} -t $IMAGE_REPO_NAME:latest .
 
-      - IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$GIT_COMMIT_HASH"
-      - IMAGE_URI=$(echo ${IMAGE_URI} | tr -d '[:space:]')
-      - docker tag ${TAG} ${IMAGE_URI}
-      
-      # Add latest tag
+      - echo Tagging Docker image with 'latest'...
       - LATEST_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest"
-      - docker tag ${TAG} ${LATEST_URI}
+      - docker tag $IMAGE_REPO_NAME:latest $LATEST_URI
 
   post_build:
     commands:
       - echo Verifying Docker login...
       - docker info  # This will show the Docker daemon info and confirm login status
       - echo Pushing Docker image to ECR...
-      - echo "Docker image URI is ${IMAGE_URI}"
-      - docker push ${IMAGE_URI}
-      - echo Docker image push complete.
-      
-      # Push the latest tag as well
-      - echo "Pushing latest image tag to ECR..."
+      - echo "Docker image URI is ${LATEST_URI}"
       - docker push ${LATEST_URI}
-      - echo Latest image push complete.
+      - echo Docker image push complete.

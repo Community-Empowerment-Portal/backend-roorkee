@@ -109,3 +109,6 @@ wcwidth==0.2.13
 Werkzeug==3.0.2
 whitenoise==6.8.2
 zipp==3.19.2
+scipy==1.14.1
+scikit-learn==1.6.0
+pandas==2.2.3

@@ -1,0 +1,11 @@
+version: 0.0
+os: linux
+files:
+  - source: /scripts/
+    destination: /tmp/deploy-scripts/
+    
+hooks:
+  ApplicationStart:
+    - location: scripts/wrapper.sh
+      timeout: 300
+      runas: ubuntu
