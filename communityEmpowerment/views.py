@@ -1242,7 +1242,6 @@ def get_event_stats(request):
     stats = UserEvents.objects.values('event_type').annotate(count=Count('event_type')).order_by('-count')
     return Response(stats)
 
-
 # 2️⃣ Get event breakdown by time (daily, weekly, monthly)
 @api_view(["GET"])
 @permission_classes([permissions.IsAuthenticated])
@@ -1341,8 +1340,6 @@ def get_popular_clicks(request):
     )
 
     return Response(clicks)
-
-
 class SchemeLinkListView(ListAPIView):
     serializer_class = SchemeLinkSerializer
 
