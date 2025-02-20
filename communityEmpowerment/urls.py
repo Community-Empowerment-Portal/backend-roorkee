@@ -72,8 +72,13 @@ from .views import (
     UserEventsViewSet,
     get_event_stats,
     SchemeLinkListView,
-    SchemeLinkByStateView
-
+    SchemeLinkByStateView,
+    get_event_stats,
+    get_event_timeline,
+    get_popular_schemes,
+    get_filter_usage,
+    get_popular_searches,
+    get_popular_clicks,
 )
 
 
@@ -154,6 +159,12 @@ urlpatterns = [
     path("layout-items/update-order/", LayoutItemViewSet.as_view({"post": "update_order"}), name="layout-items-update"),
     path("events/log/", UserEventsViewSet.as_view({"post": "log_event"}), name="log-user-event"),
     path("events/stats/", get_event_stats, name="event-stats"),
+    path("events/stats/", get_event_stats, name="event-stats"),
+    path("events/timeline/", get_event_timeline, name="event-timeline"),
+    path("events/popular-schemes/", get_popular_schemes, name="popular-schemes"),
+    path("events/filter-usage/", get_filter_usage, name="filter-usage"),
+    path("events/popular-searches/", get_popular_searches, name="popular-searches"),
+    path("events/popular-clicks/", get_popular_clicks, name="popular-clicks"),
     path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
 ]

@@ -4,6 +4,7 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
+from django.db.models import Count, F
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
@@ -34,6 +35,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.db.models import Q
 import logging
+from django.utils.timezone import now, timedelta
 from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_similarity, collaborative_recommendations, extract_keywords_from_feedback
 
 logger = logging.getLogger(__name__)
@@ -1216,6 +1218,113 @@ class UserEventsViewSet(viewsets.ModelViewSet):
 def get_event_stats(request):
     stats = UserEvents.objects.values('event_type').annotate(count=Count('event_type')).order_by('-count')
     return Response(stats)
+
+
+@api_view(["GET"])
+@permission_classes([permissions.IsAuthenticated])
+def get_event_stats(request):
+    stats = UserEvent.objects.values("event_type").annotate(count=Count("event_type")).order_by("-count")
+    return Response(stats)
+
+
+# 2️⃣ Get event breakdown by time (daily, weekly, monthly)
+@api_view(["GET"])
+@permission_classes([permissions.IsAuthenticated])
+def get_event_timeline(request):
+    range_type = request.GET.get("range", "daily")
+
+    if range_type == "weekly":
+        time_threshold = now() - timedelta(weeks=4)
+        time_format = "%Y-%m-%d"
+    elif range_type == "monthly":
+        time_threshold = now() - timedelta(days=90)
+        time_format = "%Y-%m"
+    else:
+        time_threshold = now() - timedelta(days=30)
+        time_format = "%Y-%m-%d"
+
+    timeline = (
+        UserEvent.objects.filter(created_at__gte=time_threshold)
+        .annotate(date=F("created_at"))
+        .extra(select={"date": f"strftime('{time_format}', created_at)"})
+        .values("date")
+        .annotate(views=Count("event_type", filter=F("event_type") == "view"),
+                  searches=Count("event_type", filter=F("event_type") == "search"),
+                  downloads=Count("event_type", filter=F("event_type") == "download"))
+        .order_by("date")
+    )
+
+    return Response(timeline)
+
+
+
+@api_view(["GET"])
+@permission_classes([permissions.IsAuthenticated])
+def get_popular_schemes(request):
+    limit = int(request.GET.get("limit", 5))
+    event_type = request.GET.get("event_type", "view")
+
+    schemes = (
+        UserEvent.objects.filter(event_type=event_type)
+        .values("scheme_id")
+        .annotate(count=Count("id"))
+        .order_by("-count")[:limit]
+    )
+
+    scheme_details = [
+        {
+            "scheme_id": scheme["scheme_id"],
+            "title": Scheme.objects.get(id=scheme["scheme_id"]).title,
+            "count": scheme["count"],
+        }
+        for scheme in schemes
+    ]
+
+    return Response(scheme_details)
+
+
+@api_view(["GET"])
+@permission_classes([permissions.IsAuthenticated])
+def get_filter_usage(request):
+    filters = (
+        UserEvent.objects.filter(event_type="filter")
+        .values("details__filter", "details__value")
+        .annotate(count=Count("id"))
+        .order_by("-count")
+    )
+
+    return Response(filters)
+
+
+@api_view(["GET"])
+@permission_classes([permissions.IsAuthenticated])
+def get_popular_searches(request):
+    limit = int(request.GET.get("limit", 10))
+
+    searches = (
+        UserEvent.objects.filter(event_type="search")
+        .values("details__query")
+        .annotate(count=Count("id"))
+        .order_by("-count")[:limit]
+    )
+
+    return Response(searches)
+
+
+
+@api_view(["GET"])
+@permission_classes([permissions.IsAuthenticated])
+def get_popular_clicks(request):
+    limit = int(request.GET.get("limit", 5))
+
+    clicks = (
+        UserEvent.objects.filter(event_type="click")
+        .values("details__url")
+        .annotate(count=Count("id"))
+        .order_by("-count")[:limit]
+    )
+
+    return Response(clicks)
 
 
 class SchemeLinkListView(ListAPIView):
