@@ -115,9 +115,13 @@ class SchemeListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         department_id = self.request.query_params.get('department_id')
+        queryset = Scheme.objects.filter(
+            department__is_active=True,
+            department__state__is_active=True
+        )
         if department_id:
-            return self.queryset.filter(department_id=department_id)
-        return self.queryset.all()
+            queryset = queryset.filter(department_id=department_id)
+        return queryset
 
 class SchemeDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Scheme.objects.all()
