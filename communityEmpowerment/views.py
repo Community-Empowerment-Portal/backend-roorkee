@@ -4,6 +4,8 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
+from rest_framework.generics import ListAPIView
+from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.exceptions import PermissionDenied
@@ -47,7 +49,7 @@ from .serializers import (
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, 
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
-    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer,
+    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
     UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer
 )
@@ -1214,3 +1216,18 @@ class UserEventsViewSet(viewsets.ModelViewSet):
 def get_event_stats(request):
     stats = UserEvents.objects.values('event_type').annotate(count=Count('event_type')).order_by('-count')
     return Response(stats)
+
+
+class SchemeLinkListView(ListAPIView):
+    serializer_class = SchemeLinkSerializer
+    queryset = Scheme.objects.select_related('department__state').only('scheme_link', 'pdf_url', 'department__state__state_name')
+
+class SchemeLinkByStateView(ListAPIView):
+    serializer_class = SchemeLinkSerializer
+
+    def get_queryset(self):
+        state_id = self.kwargs.get('state_id')
+        state = get_object_or_404(State, id=state_id)
+        return Scheme.objects.filter(department__state=state).select_related('department__state').only(
+            'scheme_link', 'pdf_url', 'department__state__state_name'
+        )
