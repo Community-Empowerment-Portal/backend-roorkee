@@ -592,3 +592,13 @@ class UserEventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserEvents
         fields = '__all__'
+
+class SchemeLinkSerializer(serializers.ModelSerializer):
+    state = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Scheme
+        fields = ['state', 'scheme_link', 'pdf_url']
+
+    def get_state(self, obj):
+        return obj.department.state.state_name if obj.department and obj.department.state else None

@@ -70,7 +70,9 @@ from .views import (
     AllProfileFieldsView,
     LayoutItemViewSet,
     UserEventsViewSet,
-    get_event_stats
+    get_event_stats,
+    SchemeLinkListView,
+    SchemeLinkByStateView
 
 )
 
@@ -152,4 +154,6 @@ urlpatterns = [
     path("layout-items/update-order/", LayoutItemViewSet.as_view({"post": "update_order"}), name="layout-items-update"),
     path("events/log/", UserEventsViewSet.as_view({"post": "log_event"}), name="log-user-event"),
     path("events/stats/", get_event_stats, name="event-stats"),
+    path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
+    path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
 ]
