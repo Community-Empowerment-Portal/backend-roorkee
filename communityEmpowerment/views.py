@@ -1218,13 +1218,6 @@ def get_event_stats(request):
     return Response(stats)
 
 
-@api_view(["GET"])
-@permission_classes([permissions.IsAuthenticated])
-def get_event_stats(request):
-    stats = UserEvent.objects.values("event_type").annotate(count=Count("event_type")).order_by("-count")
-    return Response(stats)
-
-
 # 2️⃣ Get event breakdown by time (daily, weekly, monthly)
 @api_view(["GET"])
 @permission_classes([permissions.IsAuthenticated])
