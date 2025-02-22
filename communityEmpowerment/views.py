@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
+from django.db.models import OuterRef, Subquery, IntegerField
 from django.utils.decorators import method_decorator
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.exceptions import PermissionDenied
@@ -1220,8 +1221,22 @@ def get_event_stats(request):
 
 class SchemeLinkListView(ListAPIView):
     serializer_class = SchemeLinkSerializer
-    queryset = Scheme.objects.select_related('department__state').only('scheme_link', 'pdf_url', 'department__state__state_name')
 
+    def get_queryset(self):
+        subquery = Scheme.objects.filter(department__state=OuterRef('department__state')) \
+                                .order_by('id') \
+                                .values('id')[:1]
+
+        return Scheme.objects.filter(id=Subquery(subquery, output_field=IntegerField())) \
+                            .select_related('department__state')
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        data = [
+            {"state_name": scheme.department.state.state_name, "resource_url": scheme.scheme_link}
+            for scheme in queryset
+        ]
+        return Response(data)
 class SchemeLinkByStateView(ListAPIView):
     serializer_class = SchemeLinkSerializer
 
