@@ -83,9 +83,15 @@ class StateSchemesListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         state_id = self.kwargs.get('state_id')
+        
         if state_id:
-            return Scheme.objects.filter(department__state_id=state_id)
-        return Scheme.objects.none() 
+            return Scheme.objects.filter(
+                department__state_id=state_id,
+                department__is_active=True, 
+                department__state__is_active=True 
+            )
+
+        return Scheme.objects.none()
     
 class StateDetailAPIView(generics.RetrieveAPIView):
     queryset = State.objects.all()
@@ -740,27 +746,12 @@ class ScholarshipSchemesListView(generics.ListAPIView):
     pagination_class = SchemePagination
 
     def get_queryset(self):
-        queryset = Scheme.objects.filter(tags__name__icontains='scholarship')
-        state_ids_param = self.request.query_params.get('state_ids', '[]')
+        queryset = Scheme.objects.filter(
+            tags__name__icontains='scholarship',
+            department__is_active=True,
+            department__state__is_active=True
+        )
 
-        try:
-            # Remove square brackets and split by commas
-            state_ids = state_ids_param.strip('[]').split(',')
-            state_ids = [int(id.strip()) for id in state_ids if id.strip().isdigit()]
-        except ValueError:
-            state_ids = []
-
-        if state_ids:
-            queryset = queryset.filter(department__state_id__in=state_ids)
-
-        return queryset
-
-class JobSchemesListView(generics.ListAPIView):
-    serializer_class = SchemeSerializer
-    pagination_class = SchemePagination
-
-    def get_queryset(self):
-        queryset = Scheme.objects.filter(Q(tags__name__icontains='job') | Q(tags__name__icontains='employment'))
         state_ids_param = self.request.query_params.get('state_ids', '[]')
 
         try:
@@ -772,6 +763,31 @@ class JobSchemesListView(generics.ListAPIView):
             queryset = queryset.filter(department__state_id__in=state_ids)
 
         return queryset
+
+
+class JobSchemesListView(generics.ListAPIView):
+    serializer_class = SchemeSerializer
+    pagination_class = SchemePagination
+
+    def get_queryset(self):
+        queryset = Scheme.objects.filter(
+            Q(tags__name__icontains='job') | Q(tags__name__icontains='employment'),
+            department__is_active=True,
+            department__state__is_active=True
+        )
+
+        state_ids_param = self.request.query_params.get('state_ids', '[]')
+
+        try:
+            state_ids = [int(id.strip()) for id in state_ids_param.strip('[]').split(',') if id.strip().isdigit()]
+        except ValueError:
+            state_ids = []
+
+        if state_ids:
+            queryset = queryset.filter(department__state_id__in=state_ids)
+
+        return queryset
+
     
 class SchemeBenefitsView(generics.GenericAPIView):
     serializer_class = BenefitSerializer
@@ -875,7 +891,6 @@ class SchemesByStateAndDepartmentAPIView(APIView):
 class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
     pagination_class = SchemePagination
     ordering_fields = ['title']
-    # ordering = ['-introduced_on']
 
     def post(self, request, *args, **kwargs):
         state_ids = request.data.get('state_ids', [])
@@ -885,7 +900,7 @@ class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
         funding_pattern = request.data.get('funding_pattern', None)
         search_query = request.data.get('search_query', None)
         tag = request.data.get('tag', None)
-        ordering = request.data.get('ordering', self.ordering_fields)  # Get ordering from request or use default
+        ordering = request.data.get('ordering', self.ordering_fields) 
 
         scheme_filters = Q()
 
@@ -911,20 +926,19 @@ class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
             search_filters |= Q(title__icontains=search_query) | Q(description__icontains=search_query)
             scheme_filters &= search_filters
 
+        scheme_filters &= Q(department__is_active=True, department__state__is_active=True)
+
         schemes = Scheme.objects.filter(scheme_filters).distinct()
 
-        # Apply ordering
         if ordering:
             schemes = schemes.order_by(*ordering)
 
-        # Paginate the queryset
         paginator = self.pagination_class()
         page = paginator.paginate_queryset(schemes, request)
         if page is not None:
             serializer = SchemeSerializer(page, many=True)
             return paginator.get_paginated_response(serializer.data)
 
-        # Fallback if pagination is not applied
         serializer = SchemeSerializer(schemes, many=True)
         return Response(serializer.data)
     
