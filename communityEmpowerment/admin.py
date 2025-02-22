@@ -315,8 +315,41 @@ class TagAdmin(admin.ModelAdmin):
 
 admin_site.register(Tag, TagAdmin)
 
-admin_site.register(State)
-admin_site.register(Department)
+
+class StateAdmin(admin.ModelAdmin):
+    list_display = ('state_name', 'is_active')
+    list_editable = ('is_active',)
+    list_filter = ('is_active',)
+    search_fields = ('state_name',)
+    actions = ['activate_states', 'deactivate_states']
+
+    def activate_states(self, request, queryset):
+        queryset.update(is_active=True)
+    activate_states.short_description = "Activate selected states"
+
+    def deactivate_states(self, request, queryset):
+        queryset.update(is_active=False)
+    deactivate_states.short_description = "Deactivate selected states"
+
+admin_site.register(State, StateAdmin)
+
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = ('department_name', 'state', 'is_active')
+    list_editable = ('is_active',)
+    list_filter = ('state', 'is_active')
+    search_fields = ('department_name',)
+    actions = ['activate_departments', 'deactivate_departments']
+
+    def activate_departments(self, request, queryset):
+        queryset.update(is_active=True)
+    activate_departments.short_description = "Activate selected departments"
+
+    def deactivate_departments(self, request, queryset):
+        queryset.update(is_active=False)
+    deactivate_departments.short_description = "Deactivate selected departments"
+
+admin_site.register(Department, DepartmentAdmin)
 admin_site.register(Organisation)
 admin_site.register(SchemeBeneficiary)
 admin_site.register(Benefit)

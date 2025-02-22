@@ -36,7 +36,7 @@ class TimeStampedModel(models.Model):
 # Existing models
 class State(TimeStampedModel):
     state_name = models.CharField(max_length=255, null=False, blank=False, unique = True)
-
+    is_active = models.BooleanField(default=True)
     def clean(self):
         if not self.state_name.strip():  # Disallow empty or whitespace-only names
             raise ValidationError("State name cannot be empty or whitespace.")
@@ -61,7 +61,7 @@ class State(TimeStampedModel):
 class Department(TimeStampedModel):
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='departments', null=False, blank=False)
     department_name = models.CharField(max_length=255, null=True, blank=True)
-
+    is_active = models.BooleanField(default=True)
     def clean(self):
         if re.search(r'\d', self.department_name):
             raise ValidationError("Department name cannot contain numeric characters.")
@@ -349,7 +349,6 @@ class SchemeSponsor(TimeStampedModel):
     
 class TempState(TimeStampedModel):
     state_name = models.CharField(max_length=255, null=True, blank=True)
-
     class Meta:
         abstract = True
 
