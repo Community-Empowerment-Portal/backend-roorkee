@@ -78,6 +78,7 @@ from .views import (
     get_filter_usage,
     get_popular_searches,
     get_popular_clicks,
+    SuperuserLoginView
 )
 
 
@@ -165,4 +166,5 @@ urlpatterns = [
     path("events/popular-clicks/", get_popular_clicks, name="popular-clicks"),
     path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
+    path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
 ]
