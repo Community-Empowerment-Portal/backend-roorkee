@@ -86,6 +86,7 @@ class StateSchemesListAPIView(generics.ListAPIView):
         
         if state_id:
             return Scheme.objects.filter(
+                is_active=True,
                 department__state_id=state_id,
                 department__is_active=True, 
                 department__state__is_active=True 
@@ -114,7 +115,6 @@ class OrganisationListAPIView(generics.ListAPIView):
 
 
 class SchemeListAPIView(generics.ListAPIView):
-    queryset = Scheme.objects.all()
     serializer_class = SchemeSerializer 
     filter_backends = [OrderingFilter]
     ordering_fields = ['introduced_on', 'title']
@@ -124,6 +124,7 @@ class SchemeListAPIView(generics.ListAPIView):
     def get_queryset(self):
         department_id = self.request.query_params.get('department_id')
         queryset = Scheme.objects.filter(
+            is_active=True,
             department__is_active=True,
             department__state__is_active=True
         )
@@ -748,6 +749,7 @@ class ScholarshipSchemesListView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Scheme.objects.filter(
             tags__name__icontains='scholarship',
+            is_active=True,
             department__is_active=True,
             department__state__is_active=True
         )
@@ -772,6 +774,7 @@ class JobSchemesListView(generics.ListAPIView):
     def get_queryset(self):
         queryset = Scheme.objects.filter(
             Q(tags__name__icontains='job') | Q(tags__name__icontains='employment'),
+            is_active=True,
             department__is_active=True,
             department__state__is_active=True
         )
@@ -926,7 +929,7 @@ class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
             search_filters |= Q(title__icontains=search_query) | Q(description__icontains=search_query)
             scheme_filters &= search_filters
 
-        scheme_filters &= Q(department__is_active=True, department__state__is_active=True)
+        scheme_filters &= Q(department__is_active=True, department__state__is_active=True,is_active=True,)
 
         schemes = Scheme.objects.filter(scheme_filters).distinct()
 

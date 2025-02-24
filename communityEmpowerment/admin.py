@@ -134,10 +134,18 @@ class SchemeResource(resources.ModelResource):
 
 class SchemeAdmin(ImportExportModelAdmin):
     resource_class = SchemeResource
-    list_display = ('title', 'department', 'introduced_on', 'valid_upto', 'funding_pattern')
-    search_fields = ('title', 'description')
-    list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern')
-admin_site.register(Scheme)
+    list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
+    list_editable = ('is_active',) 
+    search_fields = ('title', 'description','is_active')
+    list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
+
+    def is_active_toggle(self, obj):
+        """ Show 'Active' / 'Inactive' with color styling """
+        color = "green" if obj.is_active else "red"
+        status = "Active" if obj.is_active else "Inactive"
+        return format_html(f'<span style="color: {color}; font-weight: bold;">{status}</span>')
+    is_active_toggle.short_description = "Status"
+admin_site.register(Scheme, SchemeAdmin)
 
 class SchemeReportAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'scheme_id', 'created_at'] 
