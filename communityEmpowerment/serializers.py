@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria
+from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria, FAQ
                      , Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser,Banner, SavedFilter, LayoutItem,
                       SchemeReport, WebsiteFeedback, Tag, UserInteraction, SchemeFeedback, UserEvent, UserEvents, ProfileField, ProfileFieldChoice, ProfileFieldValue )
 from django.utils import timezone
@@ -602,3 +602,8 @@ class SchemeLinkSerializer(serializers.ModelSerializer):
 
     def get_state(self, obj):
         return obj.department.state.state_name if obj.department and obj.department.state else None
+
+class FAQSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQ
+        fields = '__all__'
