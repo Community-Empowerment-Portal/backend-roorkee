@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
 from django.db.models import Count, F
+from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
 from django.db.models import OuterRef, Subquery, IntegerField
@@ -42,14 +43,14 @@ from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_simi
 logger = logging.getLogger(__name__)
 
 from .models import (
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem,
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ,
     Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue
     
 )
 from .serializers import (
     StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer, 
-    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, 
+    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
@@ -1369,3 +1370,15 @@ class SchemeLinkByStateView(ListAPIView):
         return Scheme.objects.filter(department__state=state).select_related('department__state').only(
             'scheme_link', 'pdf_url', 'department__state__state_name'
         )
+    
+class FAQViewSet(viewsets.ModelViewSet):
+    serializer_class = FAQSerializer
+    def get_queryset(self):
+        if self.action == 'list':
+            return FAQ.objects.filter(is_active=True) 
+        return FAQ.objects.all()
+    
+    def get_permissions(self):
+        if self.action in ['list']:
+            return [AllowAny()] 
+        return [IsAdminUser()]
