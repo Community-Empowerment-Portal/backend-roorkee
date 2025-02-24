@@ -225,6 +225,7 @@ class Scheme(TimeStampedModel):
     sponsors = models.ManyToManyField('Sponsor', related_name='schemes', through='SchemeSponsor')
     tags = models.ManyToManyField('Tag', related_name='schemes', blank=True)  # Add this line
     benefits = models.ManyToManyField('Benefit', related_name='schemes', blank=True)
+    is_active = models.BooleanField(default=True)
 
     def clean(self):
         if not self.title.strip():  # Disallow empty or whitespace-only names
