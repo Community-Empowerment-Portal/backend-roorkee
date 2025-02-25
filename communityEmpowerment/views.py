@@ -1399,7 +1399,7 @@ class SuperuserLoginView(APIView):
 
         except CustomUser.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
-    
+
 class FAQViewSet(viewsets.ModelViewSet):
     serializer_class = FAQSerializer
     def get_queryset(self):
@@ -1411,7 +1411,7 @@ class FAQViewSet(viewsets.ModelViewSet):
         if self.action in ['list']:
             return [AllowAny()] 
         return [IsAdminUser()]
-    
+
 class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
     queryset = CompanyMeta.objects.all()
     serializer_class = CompanyMetaSerializer
