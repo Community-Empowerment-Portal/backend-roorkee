@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import serializers
 from django.db.models import Count, F
+from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
 from django.db.models import OuterRef, Subquery, IntegerField
@@ -44,14 +45,14 @@ from rest_framework.authtoken.models import Token
 logger = logging.getLogger(__name__)
 
 from .models import (
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem,
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ,
     Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue
     
 )
 from .serializers import (
     StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer, 
-    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, 
+    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
@@ -1369,6 +1370,7 @@ class SchemeLinkByStateView(ListAPIView):
             'scheme_link', 'pdf_url', 'department__state__state_name'
         )
     
+
 class SuperuserLoginView(APIView):
     def post(self, request, *args, **kwargs):
         username = request.data.get('username')
@@ -1398,3 +1400,15 @@ class SuperuserLoginView(APIView):
 
         except CustomUser.DoesNotExist:
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+class FAQViewSet(viewsets.ModelViewSet):
+    serializer_class = FAQSerializer
+    def get_queryset(self):
+        if self.action == 'list':
+            return FAQ.objects.filter(is_active=True) 
+        return FAQ.objects.all()
+    
+    def get_permissions(self):
+        if self.action in ['list']:
+            return [AllowAny()] 
+        return [IsAdminUser()]

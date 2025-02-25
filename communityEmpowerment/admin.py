@@ -8,7 +8,7 @@ from import_export.admin import ImportExportModelAdmin
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group, Permission
 from .models import (
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, 
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
     SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem
 )
@@ -39,7 +39,8 @@ class CustomAdminSite(admin.AdminSite):
                 'models': [
                     {'name': 'Profile Fields', 'object_name': 'ProfileField', 'admin_url': '/admin/communityEmpowerment/profilefield/'},
                     {'name': 'Profile Field Values', 'object_name': 'ProfileFieldValue', 'admin_url': '/admin/communityEmpowerment/profilefieldvalue/'},
-                    {'name': 'Layout items', 'object_name':'LayoutItem','admin_url': '/admin/communityEmpowerment/layoutitem/' }
+                    {'name': 'Layout items', 'object_name':'LayoutItem','admin_url': '/admin/communityEmpowerment/layoutitem/' },
+                    {'name': 'FAQs', 'object_name': 'FAQ', 'admin_url': '/admin/communityEmpowerment/faq/'},
                 ]
             },
             {
@@ -384,4 +385,10 @@ class LayoutItemAdmin(admin.ModelAdmin):
 
 admin_site.register(LayoutItem, LayoutItemAdmin)
 
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'is_active')
+    list_filter = ('is_active',)
+    search_fields = ('question', 'answer')
+    list_editable = ('is_active',)
 
+admin_site.register(FAQ, FAQAdmin)

@@ -817,3 +817,11 @@ class UserEvents(models.Model):
 
     def __str__(self):
         return f"{self.user} - {self.event_type} - {self.timestamp}"
+
+class FAQ(models.Model):
+    question = models.TextField()
+    answer = models.TextField()
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.question

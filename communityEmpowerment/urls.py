@@ -79,6 +79,7 @@ from .views import (
     get_popular_searches,
     get_popular_clicks,
     SuperuserLoginView
+    FAQViewSet
 )
 
 
@@ -167,4 +168,6 @@ urlpatterns = [
     path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
     path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
+    path("faqs/", FAQViewSet.as_view({'get': 'list', 'post': 'create'}), name="faq-list"),
+    path("faqs/<int:pk>/", FAQViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="faq-detail"),
 ]
