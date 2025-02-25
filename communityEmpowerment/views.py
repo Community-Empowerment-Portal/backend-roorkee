@@ -39,6 +39,8 @@ from django.db.models import Q
 import logging
 from django.utils.timezone import now, timedelta
 from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_similarity, collaborative_recommendations, extract_keywords_from_feedback
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
 
 logger = logging.getLogger(__name__)
 
@@ -1371,6 +1373,37 @@ class SchemeLinkByStateView(ListAPIView):
             'scheme_link', 'pdf_url', 'department__state__state_name'
         )
     
+
+class SuperuserLoginView(APIView):
+    def post(self, request, *args, **kwargs):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        if not username or not password:
+            return Response({"error": "Username and password are required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = CustomUser.objects.get(username=username)
+
+            if not user.is_superuser:
+                return Response({"error": "Only superusers can log in"}, status=status.HTTP_403_FORBIDDEN)
+
+            if not user.check_password(password):
+                return Response({"error": "Incorrect password"}, status=status.HTTP_400_BAD_REQUEST)
+
+            refresh = RefreshToken.for_user(user)
+            access_token = refresh.access_token
+
+            return Response({
+                "access_token": str(access_token),
+                "refresh_token": str(refresh),
+                "user_id": user.id,
+                "username": user.username
+            })
+
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
 class FAQViewSet(viewsets.ModelViewSet):
     serializer_class = FAQSerializer
     def get_queryset(self):
