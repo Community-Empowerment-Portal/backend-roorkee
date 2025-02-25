@@ -49,6 +49,14 @@ class State(TimeStampedModel):
             self.state_name = self.state_name.strip().title()
         super().save(*args, **kwargs)
 
+        if self.is_active:
+            self.departments.update(is_active=True)
+            Scheme.objects.filter(department__state=self).update(is_active=True)
+
+        if not self.is_active:
+            self.departments.update(is_active=False)
+            Scheme.objects.filter(department__state=self).update(is_active=False)
+
     class Meta:
         verbose_name = "State"
         verbose_name_plural = "States"
@@ -62,9 +70,17 @@ class Department(TimeStampedModel):
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='departments', null=False, blank=False)
     department_name = models.CharField(max_length=255, null=True, blank=True)
     is_active = models.BooleanField(default=True)
-    def clean(self):
-        if re.search(r'\d', self.department_name):
-            raise ValidationError("Department name cannot contain numeric characters.")
+    # def clean(self):
+    #     if re.search(r'\d', self.department_name):
+    #         raise ValidationError("Department name cannot contain numeric characters.")
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.is_active:
+            Scheme.objects.filter(department=self).update(is_active=True)
+
+        if not self.is_active:
+            from communityEmpowerment.models import Scheme
+            Scheme.objects.filter(department=self).update(is_active=False)
     class Meta:
         verbose_name = "Department"
         verbose_name_plural = "Departments"

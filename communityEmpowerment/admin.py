@@ -340,6 +340,21 @@ class StateAdmin(admin.ModelAdmin):
         queryset.update(is_active=False)
     deactivate_states.short_description = "Deactivate selected states"
 
+    def is_active_checkbox(self, obj):
+        """ Show 'Active' / 'Inactive' with color styling """
+        color = "green" if obj.is_active else "red"
+        status = "Active" if obj.is_active else "Inactive"
+        return format_html(f'<span style="color: {color}; font-weight: bold;">{status}</span>')
+
+    is_active_checkbox.short_description = "Status"
+
+    def save_model(self, request, obj, form, change):
+        """Override save_model to handle state deactivation"""
+        super().save_model(request, obj, form, change)
+        if not obj.is_active:
+            Department.objects.filter(state=obj).update(is_active=False)
+            Scheme.objects.filter(department__state=obj).update(is_active=False)
+
 admin_site.register(State, StateAdmin)
 
 @admin.register(Department)
