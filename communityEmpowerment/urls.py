@@ -78,7 +78,8 @@ from .views import (
     get_filter_usage,
     get_popular_searches,
     get_popular_clicks,
-    FAQViewSet
+    FAQViewSet,
+    CompanyMetaDetailView
 )
 
 
@@ -168,4 +169,5 @@ urlpatterns = [
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
     path("faqs/", FAQViewSet.as_view({'get': 'list', 'post': 'create'}), name="faq-list"),
     path("faqs/<int:pk>/", FAQViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="faq-detail"),
+    path('company-meta/', CompanyMetaDetailView.as_view(), name='company-meta'),
 ]

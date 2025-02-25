@@ -825,3 +825,42 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+    
+
+from django.db import models
+
+class CompanyMeta(models.Model):
+    name = models.CharField(max_length=255)
+    tagline = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+
+    email = models.EmailField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    whatsapp_number = models.CharField(max_length=20, blank=True, null=True)
+    support_email = models.EmailField(blank=True, null=True)
+
+    address_line1 = models.CharField(max_length=255, blank=True, null=True)
+    address_line2 = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+    postal_code = models.CharField(max_length=20, blank=True, null=True)
+
+    facebook_url = models.URLField(blank=True, null=True)
+    twitter_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True)
+    youtube_url = models.URLField(blank=True, null=True)
+
+    business_hours = models.JSONField(blank=True, null=True)
+
+    logo = models.ImageField(upload_to="company_meta/", blank=True, null=True)
+    favicon = models.ImageField(upload_to="company_meta/", blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Company Meta"
+        verbose_name_plural = "Company Meta"
+

@@ -43,7 +43,7 @@ from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_simi
 logger = logging.getLogger(__name__)
 
 from .models import (
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ,
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
     Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue
     
@@ -51,7 +51,7 @@ from .models import (
 from .serializers import (
     StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer, 
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
-    CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer,
+    CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
@@ -1379,3 +1379,10 @@ class FAQViewSet(viewsets.ModelViewSet):
         if self.action in ['list']:
             return [AllowAny()] 
         return [IsAdminUser()]
+    
+class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
+    queryset = CompanyMeta.objects.all()
+    serializer_class = CompanyMetaSerializer
+
+    def get_object(self):
+        return CompanyMeta.objects.first() 
