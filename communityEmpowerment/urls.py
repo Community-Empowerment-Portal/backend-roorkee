@@ -78,7 +78,7 @@ from .views import (
     get_filter_usage,
     get_popular_searches,
     get_popular_clicks,
-    SuperuserLoginView
+    SuperuserLoginView,
     FAQViewSet
 )
 

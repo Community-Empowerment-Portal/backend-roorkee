@@ -135,10 +135,18 @@ class SchemeResource(resources.ModelResource):
 
 class SchemeAdmin(ImportExportModelAdmin):
     resource_class = SchemeResource
-    list_display = ('title', 'department', 'introduced_on', 'valid_upto', 'funding_pattern')
-    search_fields = ('title', 'description')
-    list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern')
-admin_site.register(Scheme)
+    list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
+    list_editable = ('is_active',) 
+    search_fields = ('title', 'description','is_active')
+    list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
+
+    def is_active_toggle(self, obj):
+        """ Show 'Active' / 'Inactive' with color styling """
+        color = "green" if obj.is_active else "red"
+        status = "Active" if obj.is_active else "Inactive"
+        return format_html(f'<span style="color: {color}; font-weight: bold;">{status}</span>')
+    is_active_toggle.short_description = "Status"
+admin_site.register(Scheme, SchemeAdmin)
 
 class SchemeReportAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'scheme_id', 'created_at'] 
@@ -331,6 +339,21 @@ class StateAdmin(admin.ModelAdmin):
     def deactivate_states(self, request, queryset):
         queryset.update(is_active=False)
     deactivate_states.short_description = "Deactivate selected states"
+
+    def is_active_checkbox(self, obj):
+        """ Show 'Active' / 'Inactive' with color styling """
+        color = "green" if obj.is_active else "red"
+        status = "Active" if obj.is_active else "Inactive"
+        return format_html(f'<span style="color: {color}; font-weight: bold;">{status}</span>')
+
+    is_active_checkbox.short_description = "Status"
+
+    def save_model(self, request, obj, form, change):
+        """Override save_model to handle state deactivation"""
+        super().save_model(request, obj, form, change)
+        if not obj.is_active:
+            Department.objects.filter(state=obj).update(is_active=False)
+            Scheme.objects.filter(department__state=obj).update(is_active=False)
 
 admin_site.register(State, StateAdmin)
 
