@@ -79,7 +79,8 @@ from .views import (
     get_popular_searches,
     get_popular_clicks,
     SuperuserLoginView,
-    FAQViewSet
+    FAQViewSet,
+    CompanyMetaDetailView
 )
 
 
@@ -170,4 +171,5 @@ urlpatterns = [
     path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
     path("faqs/", FAQViewSet.as_view({'get': 'list', 'post': 'create'}), name="faq-list"),
     path("faqs/<int:pk>/", FAQViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="faq-detail"),
+    path('company-meta/', CompanyMetaDetailView.as_view(), name='company-meta'),
 ]

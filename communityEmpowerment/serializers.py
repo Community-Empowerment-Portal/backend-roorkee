@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria, FAQ
+from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria, FAQ, CompanyMeta
                      , Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser,Banner, SavedFilter, LayoutItem,
                       SchemeReport, WebsiteFeedback, Tag, UserInteraction, SchemeFeedback, UserEvent, UserEvents, ProfileField, ProfileFieldChoice, ProfileFieldValue )
 from django.utils import timezone
@@ -607,3 +607,9 @@ class FAQSerializer(serializers.ModelSerializer):
     class Meta:
         model = FAQ
         fields = '__all__'
+
+
+class CompanyMetaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CompanyMeta
+        fields = "__all__"
