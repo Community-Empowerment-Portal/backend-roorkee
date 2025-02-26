@@ -1422,3 +1422,16 @@ class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
 class ResourceViewSet(viewsets.ModelViewSet):
     queryset = Resource.objects.all()
     serializer_class = ResourceSerializer
+    def get_queryset(self):
+        state_id = self.kwargs.get("state_id")
+        if state_id:
+            from communityEmpowerment.models import State
+
+            state = State.objects.filter(id=state_id).first()
+            print("ye bhi", state)
+            if state:
+                return Resource.objects.filter(state_name=state.state_name) 
+
+            return Resource.objects.none() 
+
+        return Resource.objects.all()

@@ -74,6 +74,7 @@ class Department(TimeStampedModel):
     #     if re.search(r'\d', self.department_name):
     #         raise ValidationError("Department name cannot contain numeric characters.")
     def save(self, *args, **kwargs):
+        from communityEmpowerment.models import Scheme
         super().save(*args, **kwargs)
         if self.is_active:
             Scheme.objects.filter(department=self).update(is_active=True)
