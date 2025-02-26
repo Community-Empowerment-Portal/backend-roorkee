@@ -80,7 +80,8 @@ from .views import (
     get_popular_clicks,
     SuperuserLoginView,
     FAQViewSet,
-    CompanyMetaDetailView
+    CompanyMetaDetailView,
+    ResourceViewSet
 )
 
 
@@ -166,10 +167,13 @@ urlpatterns = [
     path("events/filter-usage/", get_filter_usage, name="filter-usage"),
     path("events/popular-searches/", get_popular_searches, name="popular-searches"),
     path("events/popular-clicks/", get_popular_clicks, name="popular-clicks"),
-    path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
+    # path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
     path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
     path("faqs/", FAQViewSet.as_view({'get': 'list', 'post': 'create'}), name="faq-list"),
     path("faqs/<int:pk>/", FAQViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="faq-detail"),
     path('company-meta/', CompanyMetaDetailView.as_view(), name='company-meta'),
+    path('schemes/resources/', ResourceViewSet.as_view({'get': 'list', 'post': 'create'}), name='scheme-resources'),
+    path('schemes/resources/<int:pk>/', ResourceViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='scheme-resource-detail'),
+    path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
 ]
