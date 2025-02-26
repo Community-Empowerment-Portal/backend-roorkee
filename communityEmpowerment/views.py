@@ -1419,19 +1419,38 @@ class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return CompanyMeta.objects.first() 
 
+# class ResourceViewSet(viewsets.ModelViewSet):
+#     queryset = Resource.objects.all()
+#     serializer_class = ResourceSerializer
+#     def get_queryset(self):
+#         state_id = self.kwargs.get("state_id")
+#         if state_id:
+#             from communityEmpowerment.models import State
+
+#             state = State.objects.filter(id=state_id).first()
+#             print("ye bhi", state)
+#             if state:
+#                 return Resource.objects.filter(state_name=state.state_name) 
+
+#             return Resource.objects.none() 
+
+#         return Resource.objects.all()
+    
 class ResourceViewSet(viewsets.ModelViewSet):
-    queryset = Resource.objects.all()
     serializer_class = ResourceSerializer
+
     def get_queryset(self):
-        state_id = self.kwargs.get("state_id")
-        if state_id:
-            from communityEmpowerment.models import State
+        from communityEmpowerment.models import State
 
-            state = State.objects.filter(id=state_id).first()
-            print("ye bhi", state)
+        state_name = self.kwargs.get("state_name")
+
+        if state_name:
+            state = State.objects.filter(state_name__iexact=state_name, is_active=True).first()
             if state:
-                return Resource.objects.filter(state_name=state.state_name) 
-
+                return Resource.objects.filter(state_name__iexact=state.state_name)
             return Resource.objects.none() 
 
-        return Resource.objects.all()
+        active_states = State.objects.filter(is_active=True).values_list("state_name", flat=True)
+        return Resource.objects.filter(state_name__in=active_states) 
+
+
