@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
 from rest_framework.permissions import IsAdminUser, AllowAny
@@ -1422,6 +1423,7 @@ class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
     
 class ResourceViewSet(viewsets.ModelViewSet):
     serializer_class = ResourceSerializer
+    renderer_classes = [JSONRenderer] 
 
     def get_queryset(self):
         from communityEmpowerment.models import State
