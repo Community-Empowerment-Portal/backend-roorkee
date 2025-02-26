@@ -74,7 +74,7 @@ class SchemePagination(PageNumberPagination):
 
 
 class StateListAPIView(generics.ListAPIView):
-    queryset = State.objects.all()
+    queryset = State.objects.filter(is_active=True)
     serializer_class = StateSerializer 
     filter_backends = [OrderingFilter]
     ordering_fields = ['created_at', 'state_name']
