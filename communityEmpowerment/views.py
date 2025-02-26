@@ -45,13 +45,13 @@ from rest_framework.authtoken.models import Token
 logger = logging.getLogger(__name__)
 
 from .models import (
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
+    State, Resource, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
     Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue
     
 )
 from .serializers import (
-    StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer, 
+    StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer,ResourceSerializer ,
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
@@ -1418,3 +1418,7 @@ class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return CompanyMeta.objects.first() 
+
+class ResourceViewSet(viewsets.ModelViewSet):
+    queryset = Resource.objects.all()
+    serializer_class = ResourceSerializer

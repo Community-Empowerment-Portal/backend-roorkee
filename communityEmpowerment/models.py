@@ -881,3 +881,10 @@ class CompanyMeta(models.Model):
         verbose_name = "Company Meta"
         verbose_name_plural = "Company Meta"
 
+
+class Resource(models.Model):
+    state_name = models.CharField(max_length=100, unique=True)
+    resource_link = models.URLField()
+
+    def __str__(self):
+        return self.state_name
