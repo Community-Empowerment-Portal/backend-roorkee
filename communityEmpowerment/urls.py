@@ -174,6 +174,6 @@ urlpatterns = [
     path("faqs/<int:pk>/", FAQViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="faq-detail"),
     path('company-meta/', CompanyMetaDetailView.as_view(), name='company-meta'),
     path('schemes/resources/', ResourceViewSet.as_view({'get': 'list', 'post': 'create'}), name='scheme-resources'),
-    path('schemes/resources/<int:pk>/', ResourceViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='scheme-resource-detail'),
-    path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
+    path("schemes/resources/<int:pk>/", ResourceViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="scheme-resource-detail"),
+    path("schemes/resources/state/<int:state_id>/", ResourceViewSet.as_view({'get': 'list'}), name="scheme-links-by-state"),
 ]
