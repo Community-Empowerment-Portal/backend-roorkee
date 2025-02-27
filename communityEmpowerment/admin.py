@@ -410,10 +410,11 @@ class LayoutItemAdmin(admin.ModelAdmin):
 admin_site.register(LayoutItem, LayoutItemAdmin)
 
 class FAQAdmin(admin.ModelAdmin):
-    list_display = ('question', 'is_active')
+    list_display = ('question', 'is_active', "order")
     list_filter = ('is_active',)
+    ordering = ("order",)
     search_fields = ('question', 'answer')
-    list_editable = ('is_active',)
+    list_editable = ('is_active', "order",)
 
 admin_site.register(FAQ, FAQAdmin)
 admin_site.register(Resource)

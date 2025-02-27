@@ -840,6 +840,29 @@ class FAQ(models.Model):
     question = models.TextField()
     answer = models.TextField()
     is_active = models.BooleanField(default=True)
+    order = models.IntegerField(default=0)  
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            original_field = FAQ.objects.get(pk=self.pk)
+            if original_field.order != self.order:
+                self.shift_orders(original_field.order, self.order)
+
+        super(FAQ, self).save(*args, **kwargs)
+    
+    def shift_orders(self, old_order, new_order):
+        if old_order < new_order:
+            FAQ.objects.filter(
+                order__gt=old_order, order__lte=new_order
+            ).update(order=models.F('order') - 1)
+        elif old_order > new_order:
+            FAQ.objects.filter(
+                order__gte=new_order, order__lt=old_order
+            ).update(order=models.F('order') + 1)
+
+        self.order = new_order
+    class Meta:
+        ordering = ["order"] 
 
     def __str__(self):
         return self.question

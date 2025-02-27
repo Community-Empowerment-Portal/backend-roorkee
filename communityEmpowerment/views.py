@@ -1404,8 +1404,8 @@ class FAQViewSet(viewsets.ModelViewSet):
     serializer_class = FAQSerializer
     def get_queryset(self):
         if self.action == 'list':
-            return FAQ.objects.filter(is_active=True) 
-        return FAQ.objects.all()
+            return FAQ.objects.filter(is_active=True).order_by("order")
+        return FAQ.objects.all().order_by("order")
     
     def get_permissions(self):
         if self.action in ['list']:
