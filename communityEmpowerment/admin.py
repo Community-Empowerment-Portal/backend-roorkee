@@ -8,7 +8,7 @@ from import_export.admin import ImportExportModelAdmin
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group, Permission
 from .models import (
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource,
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
     SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem
 )
@@ -59,6 +59,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'States', 'object_name': 'State', 'admin_url': '/admin/communityEmpowerment/state/'},
                     {'name': 'Tags', 'object_name': 'Tag', 'admin_url': '/admin/communityEmpowerment/tag/'},
                     {'name': 'Resources', 'object_name': 'Resource', 'admin_url': '/admin/communityEmpowerment/resource/'},
+                    {'name': 'Company Meta', 'object_name': 'CompanyMeta', 'admin_url': '/admin/communityEmpowerment/companymeta/'},
                 ]
             },
             {
@@ -417,3 +418,4 @@ class FAQAdmin(admin.ModelAdmin):
 
 admin_site.register(FAQ, FAQAdmin)
 admin_site.register(Resource)
+admin_site.register(CompanyMeta)
