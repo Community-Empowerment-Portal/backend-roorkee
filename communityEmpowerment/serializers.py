@@ -616,6 +616,7 @@ class CompanyMetaSerializer(serializers.ModelSerializer):
 
 
 class ResourceSerializer(serializers.ModelSerializer):
+    state_name = serializers.CharField(source="state.state_name", read_only=True)
     class Meta:
         model = Resource
-        fields = ['id', 'state_name', 'resource_link']
+        fields = ['id', 'state',"state_name", 'resource_link']
