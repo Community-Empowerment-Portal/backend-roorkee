@@ -1420,32 +1420,19 @@ class CompanyMetaDetailView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return CompanyMeta.objects.first() 
 
-    
 class ResourceViewSet(viewsets.ModelViewSet):
     serializer_class = ResourceSerializer
-    renderer_classes = [JSONRenderer] 
+    renderer_classes = [JSONRenderer]
 
     def get_queryset(self):
-        from communityEmpowerment.models import State
-
         state_id = self.kwargs.get("state_id")
-        print("ye to aa rha", state_id)
+        
         if state_id:
-            resource = Resource.objects.filter(id=state_id).first()
+            state = State.objects.filter(id=state_id, is_active=True).first()
 
-            if resource:
-                state_name = resource.state_name
-                print(f"State Name from Resource: {state_name}")
-
-                state = State.objects.filter(state_name__iexact=state_name, is_active=True).first()
-
-                if state:
-                    print(f"State {state_name} is active, returning resources")
-                    return Resource.objects.filter(state_name__iexact=state_name)
+            if state:
+                return Resource.objects.filter(state=state)
             return Resource.objects.none()
 
-        active_states = State.objects.filter(is_active=True).values_list("state_name", flat=True)
-        return Resource.objects.filter(state_name__in=active_states) 
-
-
-
+        active_states = State.objects.filter(is_active=True)
+        return Resource.objects.filter(state__in=active_states)
