@@ -907,8 +907,8 @@ class CompanyMeta(models.Model):
 
 
 class Resource(models.Model):
-    state = models.ForeignKey(State, on_delete=models.CASCADE, related_name="resources", null=True, blank=True)
+    state_name = models.CharField(max_length=100, unique=True)
     resource_link = models.URLField()
 
     def __str__(self):
-        return f"{self.state.state_name} - {self.resource_link}"
+        return self.state_name
