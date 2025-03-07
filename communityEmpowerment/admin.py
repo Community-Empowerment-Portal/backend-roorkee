@@ -7,11 +7,12 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group, Permission
+import json
 from .models import (
 
     State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
-    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem
+    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents
 )
 from django.db.models import Count
 from django.db.models import Min
@@ -71,6 +72,13 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Scheme Feedbacks', 'object_name': 'SchemeFeedback', 'admin_url': '/admin/communityEmpowerment/schemefeedback/'},
                     {'name': 'Scheme Reports', 'object_name': 'SchemeReport', 'admin_url': '/admin/communityEmpowerment/schemereport/'},
                     {'name': 'Website Feedbacks', 'object_name': 'WebsiteFeedback', 'admin_url': '/admin/communityEmpowerment/websitefeedback/'},
+                ]
+            },
+            {
+                'name': 'User Events',
+                'app_label': 'analytics',
+                'models': [
+                    {'name': 'User Events', 'object_name': 'UserEvents', 'admin_url': '/admin/communityEmpowerment/userevents/'},
                 ]
             },
             {
@@ -422,3 +430,45 @@ class FAQAdmin(admin.ModelAdmin):
 admin_site.register(FAQ, FAQAdmin)
 admin_site.register(Resource)
 admin_site.register(CompanyMeta)
+
+class UserEventsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'event_type', 'get_watch_time', 'details', 'timestamp')
+    search_fields = ('user__username', 'event_type')
+    list_filter = ('event_type', 'timestamp')
+
+    @admin.display(description="Event Type")
+    def get_event_type(self, obj):
+        try:
+            return obj.get_event_type_display()
+        except AttributeError:
+            return "Error: Invalid Event Type"
+        
+    def get_watch_time(self, obj):
+        """ Extracts watch_time separately for better display """
+        try:
+            details = obj.details if isinstance(obj.details, dict) else json.loads(obj.details)
+            return details.get('watch_time', 'N/A') 
+        except (json.JSONDecodeError, TypeError, KeyError):
+            return "N/A"
+
+
+    get_watch_time.short_description = "Watch Time"
+    def formatted_details(self, obj):
+        try:
+            if not obj.details:
+                return "-"
+
+            details = obj.details if isinstance(obj.details, dict) else json.loads(obj.details)
+            
+            formatted_json = json.dumps(details, indent=2)
+            formatted_json = formatted_json.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            formatted_json = formatted_json.replace("\n", "<br>").replace(" ", "&nbsp;")
+
+            return format_html(f"<pre>{formatted_json}</pre>")
+        except (json.JSONDecodeError, TypeError, KeyError) as e:
+            return format_html(f"<pre>Error: {str(e)}</pre>")
+
+    formatted_details.allow_tags = True
+    formatted_details.short_description = "Event Details"
+
+admin_site.register(UserEvents, UserEventsAdmin)
