@@ -911,4 +911,4 @@ class Resource(models.Model):
     resource_link = models.URLField()
 
     def __str__(self):
-        return f"{self.state.state_name} - {self.resource_link}"
+        return f"{self.state_name.state_name} - {self.resource_link}"

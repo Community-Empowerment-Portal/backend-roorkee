@@ -432,9 +432,21 @@ admin_site.register(Resource)
 admin_site.register(CompanyMeta)
 
 class UserEventsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'event_type', 'get_watch_time', 'details', 'timestamp')
+    list_display = ('id', "get_scheme_title", 'user', 'event_type', 'get_watch_time', 'details', 'timestamp')
     search_fields = ('user__username', 'event_type')
     list_filter = ('event_type', 'timestamp')
+
+    def get_scheme_title(self, obj):
+        """ Fetch scheme title and link using scheme_id """
+        try:
+            scheme = Scheme.objects.get(id=obj.scheme_id)
+            return format_html('<a href="{}" target="_blank">{}</a>', scheme.scheme_link or '#', scheme.title)
+        except Scheme.DoesNotExist:
+            return "Scheme Not Found"
+        except Exception as e:
+            return f"Error: {str(e)}"
+
+    get_scheme_title.short_description = "Scheme Title"
 
     @admin.display(description="Event Type")
     def get_event_type(self, obj):
