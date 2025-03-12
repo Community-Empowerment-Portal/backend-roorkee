@@ -38,6 +38,61 @@ def determine_tags(title, description):
         tags.append("scholarship")
     if "job" in text or "employment" in text:
         tags.append("job")
+
+    community_keywords = {
+        "sc": ["scheduled caste", "sc"],
+        "st": ["scheduled tribe", "st"],
+        "obc": ["other backward class", "obc"],
+        "general": ["general category"]
+    }
+
+    minority_keywords = {
+        "muslim": ["muslim"],
+        "christian": ["christian"],
+        "sikh": ["sikh"],
+        "buddhist": ["buddhist"],
+        "parsi": ["parsi"],
+        "jain": ["jain"],
+    }
+
+    education_keywords = {
+        "undergraduate": ["ug", "undergraduate", "bachelor"],
+        "postgraduate": ["pg", "postgraduate", "master"],
+        "phd": ["phd", "doctoral"],
+        "school": ["school", "high school", "10th", "12th"]
+    }
+    disability_keywords = {
+        "physical": ["physically disabled", "orthopedic"],
+        "visual": ["blind", "low vision"],
+        "hearing": ["hearing impaired", "deaf"],
+        "intellectual": ["intellectual disability", "autism"]
+    }
+
+    occupation_keywords = {
+        "farmer": ["farmer", "agriculture"],
+        "student": ["student"],
+        "teacher": ["teacher", "professor"],
+        "entrepreneur": ["entrepreneur", "business owner"],
+        "laborer": ["labor", "worker"]
+    }
+
+    income_keywords = {
+        "bpl": ["below poverty line", "bpl"],
+        "middle": ["middle class", "lower middle"],
+        "high": ["high income", "wealthy"]
+    }
+    def check_and_add_tags(keywords_dict, text, tags):
+        for tag, keywords in keywords_dict.items():
+            if any(keyword in text for keyword in keywords):
+                tags.append(tag)
+
+    check_and_add_tags(community_keywords, text, tags)
+    check_and_add_tags(minority_keywords, text, tags)
+    check_and_add_tags(education_keywords, text, tags)
+    check_and_add_tags(disability_keywords, text, tags)
+    check_and_add_tags(occupation_keywords, text, tags)
+    check_and_add_tags(income_keywords, text, tags)
+
     return tags
 
 def clean_field(field):

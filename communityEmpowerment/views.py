@@ -814,89 +814,6 @@ class SchemeBenefitsView(generics.GenericAPIView):
         serializer = self.get_serializer(benefits, many=True)
         return Response(serializer.data)
 
-
-class SchemesByStatesAPIView(APIView):
-    def post(self, request, *args, **kwargs):
-        state_ids = request.data.get('state_ids', [])
-
-        if not isinstance(state_ids, list):
-            return Response({'error': 'state_ids must be a list'}, status=status.HTTP_400_BAD_REQUEST)
-
-        # Fetch schemes associated with the provided state IDs
-        schemes = Scheme.objects.filter(department__state__id__in=state_ids)
-
-        # Serialize the schemes data
-        serializer = SchemeSerializer(schemes, many=True)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-class SchemesByStateAndDepartmentAPIView(APIView):
-    def post(self, request, *args, **kwargs):
-        state_id = request.data.get('state_id')
-        department_name = request.data.get('department')
-
-        if not state_id or not department_name:
-            return Response({'error': 'state_id and department are required fields'}, status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            # Fetch the state and department objects
-            state = State.objects.get(id=state_id)
-            department = Department.objects.get(state=state, department_name__iexact=department_name)
-
-            # Fetch schemes associated with the department
-            schemes = Scheme.objects.filter(department=department)
-
-            # Serialize the schemes data
-            serializer = SchemeSerializer(schemes, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except State.DoesNotExist:
-            return Response({'error': 'State not found'}, status=status.HTTP_404_NOT_FOUND)
-        except Department.DoesNotExist:
-            return Response({'error': 'Department not found in the given state'}, status=status.HTTP_404_NOT_FOUND)
-
-# class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
-#     pagination_class = SchemePagination
-
-#     def post(self, request, *args, **kwargs):
-#         # Combine data from both request.data (POST body) and query_params (GET query)
-#         state_ids = request.data.get('state_ids', request.query_params.getlist('state_ids', []))
-#         department_ids = request.data.get('department_ids', request.query_params.getlist('department_ids', []))
-#         beneficiary_keywords = request.data.get('beneficiary_keywords', request.query_params.getlist('beneficiary_keywords', []))
-#         sponsor_ids = request.data.get('sponsor_ids', request.query_params.getlist('sponsor_ids', []))
-#         funding_pattern = request.data.get('funding_pattern', request.query_params.get('funding_pattern', None))
-#         search_query = request.data.get('search_query', request.query_params.get('q', None))
-
-#         scheme_filters = Q()
-
-#         if state_ids:
-#             scheme_filters &= Q(department__state_id__in=state_ids)
-#         if department_ids:
-#             scheme_filters &= Q(department_id__in=department_ids)
-#         if beneficiary_keywords:
-#             beneficiary_filters = Q()
-#             for keyword in beneficiary_keywords:
-#                 beneficiary_filters |= Q(beneficiaries__beneficiary_type__icontains=keyword)
-#             scheme_filters &= beneficiary_filters
-#         if sponsor_ids:
-#             scheme_filters &= Q(sponsors__id__in=sponsor_ids)
-#         if funding_pattern:
-#             scheme_filters &= Q(funding_pattern__icontains=funding_pattern)
-#         if search_query:
-#             search_filters = Q(title__icontains=search_query) | Q(description__icontains=search_query)
-#             scheme_filters &= search_filters
-
-#         schemes = Scheme.objects.filter(scheme_filters).distinct()
-
-#         # Paginate the queryset
-#         paginator = self.pagination_class()
-#         page = paginator.paginate_queryset(schemes, request)
-#         if page is not None:
-#             serializer = SchemeSerializer(page, many=True)
-#             return paginator.get_paginated_response(serializer.data)
-
-#         # Fallback if pagination is not applied
-#         serializer = SchemeSerializer(schemes, many=True)
-#         return Response(serializer.data)
         
 class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
     pagination_class = SchemePagination
@@ -912,7 +829,35 @@ class SchemesByMultipleStatesAndDepartmentsAPIView(APIView):
         tag = request.data.get('tag', None)
         ordering = request.data.get('ordering', self.ordering_fields) 
 
+
+        user_profile = request.data.get('user_profile', {})  # Dictionary containing profile data
+        user_tags = []
+
+        profile_field_mappings = {
+            "community": ["sc", "st", "obc", "general"],
+            "minority": ["muslim", "christian", "sikh", "buddhist", "parsi", "jain"],
+            "education": ["undergraduate", "postgraduate", "phd", "school"],
+            "disability": ["physical", "visual", "hearing", "intellectual"],
+            "occupation": ["farmer", "student", "teacher", "entrepreneur", "laborer"],
+            "income": ["bpl", "middle", "high"]
+        }
+
+        for field, possible_tags in profile_field_mappings.items():
+            field_value = user_profile.get(field, "").lower()
+            if field_value in possible_tags:
+                user_tags.append(field_value)
+
+
         scheme_filters = Q()
+
+        if tag:
+            scheme_filters &= Q(tags__name__icontains=tag)
+
+        if user_tags:
+            tag_filters = Q()
+            for user_tag in user_tags:
+                tag_filters |= Q(tags__name__icontains=user_tag)
+            scheme_filters &= tag_filters
 
         if tag == "job":
             scheme_filters &= Q(tags__name__icontains='job') | Q(tags__name__icontains='employment')
