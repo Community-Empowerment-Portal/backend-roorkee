@@ -910,5 +910,17 @@ class Resource(models.Model):
     state_name = models.ForeignKey(State, on_delete=models.CASCADE, related_name="resources", null=True, blank=True)
     resource_link = models.URLField()
 
+    def get_queryset(self):
+        state_id = self.kwargs.get("state_id")
+        
+        if state_id:
+            state = State.objects.filter(id=state_id, is_active=True).first()
+
+            if state:
+                return Resource.objects.filter(state_name=state)
+            return Resource.objects.none()
+
+        return Resource.objects.filter(state_name__is_active=True)
+
     def __str__(self):
         return f"{self.state_name.state_name} - {self.resource_link}"
