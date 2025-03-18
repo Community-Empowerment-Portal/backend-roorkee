@@ -197,8 +197,8 @@ class ProfileFieldChoiceInline(admin.TabularInline):
         return True
 
 class ProfileFieldAdmin(admin.ModelAdmin):
-    list_display = ('name', 'field_type', 'is_active','position',)
-    list_filter = ['is_active', 'field_type']
+    list_display = ('name', 'field_type', 'is_active','position', 'is_fixed')
+    list_filter = ['is_active', 'field_type', 'is_fixed']
     list_editable = ['is_active', 'position']
     # readonly_fields = ['name', 'field_type', 'placeholder', 'min_value', 'max_value']
     inlines = [ProfileFieldChoiceInline]
@@ -207,8 +207,16 @@ class ProfileFieldAdmin(admin.ModelAdmin):
         return True
 
     def has_delete_permission(self, request, obj=None):
-        """Disallow deleting fields."""
+        if obj and obj.is_fixed:
+            return False
         return True
+    
+    def get_readonly_fields(self, request, obj=None):
+        if obj and obj.is_fixed:
+            return ['name', 'field_type', 'placeholder', 'min_value', 'max_value', 'is_fixed']
+        return []
+    
+
 admin_site.register(ProfileField, ProfileFieldAdmin)
 
 class ProfileFieldValueAdmin(admin.ModelAdmin):

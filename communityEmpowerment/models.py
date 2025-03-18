@@ -550,6 +550,7 @@ class ProfileField(models.Model):
     min_value = models.IntegerField(blank=True, null=True, help_text="Minimum value for integer fields.")
     max_value = models.IntegerField(blank=True, null=True, help_text="Maximum value for integer fields.")
     position = models.IntegerField(default=1)
+    is_fixed = models.BooleanField(default=False)
 
     def clean(self):
         # Ensure min_value is less than max_value if both are set
