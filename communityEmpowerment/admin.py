@@ -145,12 +145,19 @@ class SchemeResource(resources.ModelResource):
         export_order = ('id', 'title', 'department__department_name', 'introduced_on', 'valid_upto', 'funding_pattern', 'description', 'scheme_link')
 
 
+
+class ProcedureInline(admin.TabularInline):
+    model = Procedure
+    extra = 1
+
+
 class SchemeAdmin(ImportExportModelAdmin):
     resource_class = SchemeResource
     list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
     list_editable = ('is_active',) 
     search_fields = ('title', 'description','is_active')
     list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
+    inlines = [ProcedureInline]
 
     def is_active_toggle(self, obj):
         """ Show 'Active' / 'Inactive' with color styling """
@@ -193,15 +200,15 @@ class ProfileFieldAdmin(admin.ModelAdmin):
     list_display = ('name', 'field_type', 'is_active','position',)
     list_filter = ['is_active', 'field_type']
     list_editable = ['is_active', 'position']
-    readonly_fields = ['name', 'field_type', 'placeholder', 'min_value', 'max_value']
+    # readonly_fields = ['name', 'field_type', 'placeholder', 'min_value', 'max_value']
     inlines = [ProfileFieldChoiceInline]
     def has_add_permission(self, request):
         """Disallow adding new fields."""
-        return False
+        return True
 
     def has_delete_permission(self, request, obj=None):
         """Disallow deleting fields."""
-        return False
+        return True
 admin_site.register(ProfileField, ProfileFieldAdmin)
 
 class ProfileFieldValueAdmin(admin.ModelAdmin):
