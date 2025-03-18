@@ -190,11 +190,11 @@ class ProfileFieldChoiceInline(admin.TabularInline):
     model = ProfileFieldChoice
     extra = 0
     fields = ('value', 'is_active')
-    readonly_fields = ('value',)
-    can_delete = False
+    # readonly_fields = ('value',)
+    can_delete = True
     def has_add_permission(self, request, obj=None):
         """Prevent adding new choices inline."""
-        return False
+        return True
 
 class ProfileFieldAdmin(admin.ModelAdmin):
     list_display = ('name', 'field_type', 'is_active','position',)
@@ -219,13 +219,13 @@ admin_site.register(ProfileFieldValue)
 class ProfileFieldInline(admin.TabularInline):
     model = ProfileFieldValue
     extra = 0
-    readonly_fields = ('field', 'value') 
+    # readonly_fields = ('field', 'value') 
 
     def has_add_permission(self, request, obj):
-        return False 
+        return True
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        return True
 
 
 class CustomUserAdmin(UserAdmin):
