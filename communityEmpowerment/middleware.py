@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 # List of cacheable endpoints - only include read-only, non-user-specific endpoints
 CACHEABLE_ENDPOINTS = [
     "schemes/multi-state-departments",
-    "states/",
     "departments/",
     "organisations/",
     "schemes/",
