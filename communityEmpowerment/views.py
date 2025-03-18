@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
+from django.db.models.functions import TruncDate, TruncMonth
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
@@ -1185,35 +1186,48 @@ class UserEventsViewSet(viewsets.ModelViewSet):
     
 
 @api_view(['GET'])
-@permission_classes([permissions.IsAuthenticated])
 def get_event_stats(request):
-    stats = UserEvents.objects.values('event_type').annotate(count=Count('event_type')).order_by('-count')
+    state = request.GET.get('state', None)
+    events = UserEvents.objects.all()
+
+    if state:
+        events = events.filter(details__state=state)
+
+    stats = (
+        events.values("event_type")
+        .annotate(count=Count("event_type"))
+        .order_by("-count")
+    )
     return Response(stats)
 
-# 2️⃣ Get event breakdown by time (daily, weekly, monthly)
+
 @api_view(["GET"])
-@permission_classes([permissions.IsAuthenticated])
 def get_event_timeline(request):
     range_type = request.GET.get("range", "daily")
+    state = request.GET.get("state", None)
 
+    # Set time threshold
     if range_type == "weekly":
         time_threshold = now() - timedelta(weeks=4)
-        time_format = "%Y-%m-%d"
     elif range_type == "monthly":
         time_threshold = now() - timedelta(days=90)
-        time_format = "%Y-%m"
     else:
         time_threshold = now() - timedelta(days=30)
-        time_format = "%Y-%m-%d"
+
+    timeline_query = UserEvents.objects.filter(timestamp__gte=time_threshold)
+    
+    if state:
+        timeline_query = timeline_query.filter(details__state=state)
 
     timeline = (
-        UserEvent.objects.filter(created_at__gte=time_threshold)
-        .annotate(date=F("created_at"))
-        .extra(select={"date": f"strftime('{time_format}', created_at)"})
+        timeline_query.annotate(date=TruncDate("timestamp"))
         .values("date")
-        .annotate(views=Count("event_type", filter=F("event_type") == "view"),
-                  searches=Count("event_type", filter=F("event_type") == "search"),
-                  downloads=Count("event_type", filter=F("event_type") == "download"))
+        .annotate(
+            views=Count("id", filter=Q(event_type="view")),
+            searches=Count("id", filter=Q(event_type="search")),
+            downloads=Count("id", filter=Q(event_type="download")),
+            filters=Count("id", filter=Q(event_type="filter")),
+        )
         .order_by("date")
     )
 
@@ -1221,15 +1235,20 @@ def get_event_timeline(request):
 
 
 
+
 @api_view(["GET"])
-@permission_classes([permissions.IsAuthenticated])
 def get_popular_schemes(request):
     limit = int(request.GET.get("limit", 5))
     event_type = request.GET.get("event_type", "view")
+    state = request.GET.get("state", None)
+
+    schemes_query = UserEvents.objects.filter(event_type=event_type)
+
+    if state:
+        schemes_query = schemes_query.filter(details__state=state)
 
     schemes = (
-        UserEvent.objects.filter(event_type=event_type)
-        .values("scheme_id")
+        schemes_query.values("scheme_id")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
@@ -1246,12 +1265,18 @@ def get_popular_schemes(request):
     return Response(scheme_details)
 
 
+
 @api_view(["GET"])
-@permission_classes([permissions.IsAuthenticated])
 def get_filter_usage(request):
+    state = request.GET.get("state", None)
+
+    filter_query = UserEvents.objects.filter(event_type="filter")
+    
+    if state:
+        filter_query = filter_query.filter(details__state=state)
+
     filters = (
-        UserEvent.objects.filter(event_type="filter")
-        .values("details__filter", "details__value")
+        filter_query.values("details__filter", "details__value")
         .annotate(count=Count("id"))
         .order_by("-count")
     )
@@ -1260,13 +1285,17 @@ def get_filter_usage(request):
 
 
 @api_view(["GET"])
-@permission_classes([permissions.IsAuthenticated])
 def get_popular_searches(request):
     limit = int(request.GET.get("limit", 10))
+    state = request.GET.get("state", None)
+
+    search_query = UserEvents.objects.filter(event_type="search")
+
+    if state:
+        search_query = search_query.filter(details__state=state)
 
     searches = (
-        UserEvent.objects.filter(event_type="search")
-        .values("details__query")
+        search_query.values("details__query")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
@@ -1275,19 +1304,25 @@ def get_popular_searches(request):
 
 
 
+
 @api_view(["GET"])
-@permission_classes([permissions.IsAuthenticated])
 def get_popular_clicks(request):
     limit = int(request.GET.get("limit", 5))
+    state = request.GET.get("state", None)
+
+    click_query = UserEvents.objects.filter(event_type="click")
+
+    if state:
+        click_query = click_query.filter(details__state=state)
 
     clicks = (
-        UserEvent.objects.filter(event_type="click")
-        .values("details__url")
+        click_query.values("details__url")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
 
     return Response(clicks)
+
 class SchemeLinkListView(ListAPIView):
     serializer_class = SchemeLinkSerializer
 
