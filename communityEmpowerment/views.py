@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
+from django.db.models.functions import TruncDate, TruncMonth
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
@@ -1191,33 +1192,43 @@ def get_event_stats(request):
     return Response(stats)
 
 # 2️⃣ Get event breakdown by time (daily, weekly, monthly)
+
+from django.db.models.functions import TruncDate
+from django.db.models import Count, Q
+
 @api_view(["GET"])
 @permission_classes([permissions.IsAuthenticated])
 def get_event_timeline(request):
     range_type = request.GET.get("range", "daily")
 
+    # Set time threshold based on range type
     if range_type == "weekly":
         time_threshold = now() - timedelta(weeks=4)
-        time_format = "%Y-%m-%d"
     elif range_type == "monthly":
         time_threshold = now() - timedelta(days=90)
-        time_format = "%Y-%m"
     else:
         time_threshold = now() - timedelta(days=30)
-        time_format = "%Y-%m-%d"
 
+    print(f"Time Threshold: {time_threshold}")
+
+    # Fix the ORM query
     timeline = (
-        UserEvent.objects.filter(created_at__gte=time_threshold)
-        .annotate(date=F("created_at"))
-        .extra(select={"date": f"strftime('{time_format}', created_at)"})
+        UserEvents.objects.filter(timestamp__gte=time_threshold)
+        .annotate(date=TruncDate("timestamp"))  # Ensure correct field
         .values("date")
-        .annotate(views=Count("event_type", filter=F("event_type") == "view"),
-                  searches=Count("event_type", filter=F("event_type") == "search"),
-                  downloads=Count("event_type", filter=F("event_type") == "download"))
+        .annotate(
+            views=Count("id", filter=Q(event_type="view")),
+            searches=Count("id", filter=Q(event_type="search")),
+            downloads=Count("id", filter=Q(event_type="download")),
+            filters=Count("id", filter=Q(event_type="filter")),  # Added for filter events
+        )
         .order_by("date")
     )
 
+    print(f"Timeline Data: {list(timeline)}")  # Debugging Output
+
     return Response(timeline)
+
 
 
 
