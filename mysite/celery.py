@@ -38,14 +38,20 @@ app.conf.beat_scheduler = 'django_celery_beat.schedulers:DatabaseScheduler'
 app.autodiscover_tasks()
 
 # Define the task schedule
+# app.conf.beat_schedule = {
+#     'scrape-and-process-schemes-every-5-minutes': {
+#         'task': 'myapp.tasks.scrape_and_process_schemes',
+#         'schedule': crontab(minute='*/5'),  # Run every 5 minutes
+#     },
+# }
+
+# @app.task(bind=True)
+# def debug_task(self):
+#     print(f'Request: {self.request!r}')
+
 app.conf.beat_schedule = {
-    'scrape-and-process-schemes-every-5-minutes': {
-        'task': 'myapp.tasks.scrape_and_process_schemes',
-        'schedule': crontab(minute='*/5'),  # Run every 5 minutes
+    'check-urls-every-24-hours': {
+        'task': 'communityEmpowerment.tasks.check_urls_task',
+        'schedule': crontab(minute=0, hour='0'),  #Runs every midnight
     },
 }
-
-@app.task(bind=True)
-def debug_task(self):
-    print(f'Request: {self.request!r}')
-

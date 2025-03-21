@@ -127,9 +127,11 @@
 from celery import shared_task
 from django.core.management import call_command
 
-@shared_task
-def scrape_and_process_schemes():
-    call_command('run_all_scripts_proxy')  
+# @shared_task
+# def scrape_and_process_schemes():
+#     call_command('run_all_scripts_proxy')  
     # print("Data loaded successfully.")
 
-    
+@shared_task
+def check_urls_task():
+    call_command('check_urls')  # Calls the check_urls.py command

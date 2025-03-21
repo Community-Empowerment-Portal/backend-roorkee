@@ -239,9 +239,18 @@ CACHES = {
 
 
 # Celery configuration
+REDIS_HOST = os.getenv('REDIS_HOST', 'localhost:6379/0')  # Default to local Redis if not set
+
+# Ensure correct Redis URL format
+if not REDIS_HOST.startswith("redis://"):
+    REDIS_HOST = f"redis://{REDIS_HOST}"
+
+CELERY_BROKER_URL = REDIS_HOST
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
 # REDIS_HOST = os.getenv('REDIS_HOST')
 # REDIS_PORT = os.getenv('REDIS_PORT')
-# CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0' # CELERY_RESULT_BACKEND = CELE>
+# CELERY_RESULT_BACKEND = CELE>
 # CELERY_TASK_SERIALIZER = 'json'
 # CELERY_RESULT_SERIALIZER = 'json'
 # CELERY_ACCEPT_CONTENT = ['json']
