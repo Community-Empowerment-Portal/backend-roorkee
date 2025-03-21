@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria, FAQ, CompanyMeta
                      , Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser,Banner, SavedFilter, LayoutItem,
-                      SchemeReport, WebsiteFeedback, Tag, Resource, UserInteraction, SchemeFeedback, UserEvent, UserEvents, ProfileField, ProfileFieldChoice, ProfileFieldValue )
+                      SchemeReport, WebsiteFeedback, Tag, Resource, UserInteraction, SchemeFeedback, UserEvent, UserEvents, ProfileField, ProfileFieldChoice, ProfileFieldValue, Announcement )
 from django.utils import timezone
 from django.core.mail import EmailMessage
 from django.core.mail import EmailMultiAlternatives
@@ -620,3 +620,9 @@ class ResourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Resource
         fields = ['id', "state_name", 'resource_link']
+
+
+class AnnouncementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Announcement
+        fields = '__all__'

@@ -925,3 +925,12 @@ class Resource(models.Model):
 
     def __str__(self):
         return f"{self.state_name.state_name} - {self.resource_link}"
+
+class Announcement(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title

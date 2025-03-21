@@ -1,15 +1,16 @@
-import json
 import os
-import requests
+import json
 import logging
+import requests
 import concurrent.futures
 from django.core.management.base import BaseCommand
 
-TIMEOUT = 10  
+TIMEOUT = 10
 LOG_FILE = "url_check.log"
 
 # Configure logging
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+
 
 def check_url(url):
     """Check if a URL is accessible."""
@@ -29,41 +30,70 @@ def check_url(url):
         logging.error("❌ ERROR: %s is not accessible. Reason: %s", url, e)
         return False
 
-def check_urls_in_json(json_file):
-    """Read JSON file and check all URLs inside."""
-    if not os.path.exists(json_file):
-        logging.error("❌ ERROR: File %s not found.", json_file)
-        return
-    
-    with open(json_file, "r", encoding="utf-8") as f:
-        data = json.load(f)
-        
-    urls = []
-    for schemes in data:
-        urls.append(schemes.get("scheme_link", "") or schemes.get("schemeUrl", ""))
-        urls.append(schemes.get("pdfUrl", ""))
 
-    # Use ThreadPoolExecutor to check multiple URLs concurrently
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        executor.map(check_url, urls)
+def load_urls(file_path):
+    """Load URLs from a JSON file and extract relevant links."""
+    if not os.path.exists(file_path):
+        logging.error("❌ ERROR: File %s not found.", file_path)
+        return []
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError as e:
+            logging.error("❌ ERROR: Failed to parse JSON in %s. Reason: %s", file_path, e)
+            return []
+
+    urls = []
+    if isinstance(data, list):
+        for entry in data:
+            urls.append(entry.get("scheme_link", "") or entry.get("schemeUrl", ""))
+            urls.append(entry.get("pdfUrl", ""))
+    elif isinstance(data, dict) and "urls" in data:
+        urls.extend(data["urls"])
+    else:
+        logging.warning("⚠️ Unexpected format in %s", file_path)
+
+    return list(filter(None, urls))  # Remove empty strings
+
+
+def process_json_files(directory):
+    """Process all JSON files in the given directory."""
+    if not os.path.isdir(directory):
+        logging.error("❌ ERROR: Invalid directory %s", directory)
+        return
+
+    for filename in os.listdir(directory):
+        if filename.endswith(".json"):
+            file_path = os.path.join(directory, filename)
+            logging.info("\n📂 Processing file: %s", file_path)
+            urls = load_urls(file_path)
+
+            if not urls:
+                logging.warning("⚠️ No valid URLs found in %s", filename)
+                continue
+
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+                executor.map(check_url, urls)
+
 
 class Command(BaseCommand):
-    help = "Check URLs in all JSON files"
+    help = "Check URLs from JSON files in a given directory."
 
-    def handle(self, *args, **kwargs):
-        states_and_ut = [
-            "punjab", "andhraPradesh", "gujarat", "haryana", "Uttar Pradesh", "assam",
-            "maharashtra", "manipur", "meghalaya", "kerala", "tamilnadu", "jammuAndKashmir",
-            "puducherry", "odisha", "himachalPradesh", "madhyaPradesh", "uttarakhand",
-            "sikkim", "telangana", "chhattisgarh", "arunachalpradesh", "delhi", "ladakh",
-            "dadraAndNagarHaveli", "nagaland", "chandigarh", "andamanAndNicobar"
-        ]
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--directory",
+            type=str,
+            help="Path to the directory containing JSON files. Defaults to 'scrapedData'."
+        )
 
-        base_dir = os.path.join(os.path.dirname(__file__), '..', 'scrapedData')
+    def handle(self, *args, **options):
+        directory = os.path.join(os.path.dirname(__file__), "..", "scrapedData")
 
-        for state_name in states_and_ut:
-            file_path = os.path.join(base_dir, f"{state_name}.json")
-            logging.info("\n🔍 Checking URLs in %s...", file_path)
-            check_urls_in_json(file_path)
+        if not os.path.isdir(directory):
+            self.stderr.write(self.style.ERROR(f"❌ Invalid directory: {directory}"))
+            return
 
+        logging.info("🚀 Starting URL checks in directory: %s", directory)
+        process_json_files(directory)
         self.stdout.write(self.style.SUCCESS("✅ URL Checking Completed!"))

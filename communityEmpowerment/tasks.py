@@ -126,6 +126,7 @@
 # communityEmpowerment/tasks.py
 from celery import shared_task
 from django.core.management import call_command
+from django.core.mail import send_mail
 
 # @shared_task
 # def scrape_and_process_schemes():
@@ -135,3 +136,15 @@ from django.core.management import call_command
 @shared_task
 def check_urls_task():
     call_command('check_urls')  # Calls the check_urls.py command
+
+
+@shared_task
+def send_email_task(subject, message, recipient_email):
+    send_mail(
+        subject,
+        message,
+        'your_email@example.com',  # Change to your sender email
+        [recipient_email],
+        fail_silently=False,
+    )
+    return f"Email sent to {recipient_email}"

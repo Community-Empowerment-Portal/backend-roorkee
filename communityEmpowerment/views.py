@@ -43,13 +43,16 @@ from django.utils.timezone import now, timedelta
 from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_similarity, collaborative_recommendations, extract_keywords_from_feedback
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from .tasks import send_email_task
+
+
 
 logger = logging.getLogger(__name__)
 
 from .models import (
     State, Resource, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
     Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
-    Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue
+    Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue, Announcement
     
 )
 from .serializers import (
@@ -59,7 +62,7 @@ from .serializers import (
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
-    UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer
+    UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
 )
 
 from rest_framework.exceptions import NotFound
@@ -1417,3 +1420,20 @@ class ResourceViewSet(viewsets.ModelViewSet):
 
         active_states = State.objects.filter(is_active=True)
         return Resource.objects.filter(state_name__in=active_states)
+
+class AnnouncementListView(generics.ListAPIView):
+    queryset = Announcement.objects.filter(is_active=True).order_by('-created_at')
+    serializer_class = AnnouncementSerializer
+
+
+@api_view(['POST'])
+def send_custom_email(request):
+    subject = request.data.get('subject')
+    message = request.data.get('message')
+    recipient_email = request.data.get('recipient_email')
+
+    if not all([subject, message, recipient_email]):
+        return Response({"error": "Missing fields"}, status=400)
+
+    send_email_task.delay(subject, message, recipient_email)
+    return Response({"message": "Email is being sent"}, status=200)
