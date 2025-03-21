@@ -1011,6 +1011,9 @@ class SchemeReportViewSet(viewsets.ModelViewSet):
     serializer_class = SchemeReportSerializer
     permission_classes = [permissions.IsAuthenticated]  # Ensure only authenticated users can access
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class WebsiteFeedbackViewSet(viewsets.ModelViewSet):
     queryset = WebsiteFeedback.objects.all()

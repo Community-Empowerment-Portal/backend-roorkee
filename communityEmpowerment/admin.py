@@ -8,6 +8,8 @@ from import_export.admin import ImportExportModelAdmin
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group, Permission
 import json
+from django.utils.timezone import localtime
+import pytz
 from .models import (
 
     State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta,
@@ -56,7 +58,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Organizations', 'object_name': 'Organisation', 'admin_url': '/admin/communityEmpowerment/organisation/'},
                     {'name': 'Procedures', 'object_name': 'Procedure', 'admin_url': '/admin/communityEmpowerment/procedure/'},
                     {'name': 'Scheme Beneficiaries', 'object_name': 'SchemeBeneficiary', 'admin_url': '/admin/communityEmpowerment/schemebeneficiary/'},
-                    {'name': 'Scheme Documents', 'object_name': 'SchemeDocument', 'admin_url': '/admin/communityEmpowerment/schemedocument/'},
+                    {'name': 'Documents', 'object_name': 'Document', 'admin_url': '/admin/communityEmpowerment/document/'},
                     {'name': 'Scheme Sponsors', 'object_name': 'SchemeSponsor', 'admin_url': '/admin/communityEmpowerment/schemesponsor/'},
                     {'name': 'States', 'object_name': 'State', 'admin_url': '/admin/communityEmpowerment/state/'},
                     {'name': 'Tags', 'object_name': 'Tag', 'admin_url': '/admin/communityEmpowerment/tag/'},
@@ -407,7 +409,7 @@ admin_site.register(SchemeBeneficiary)
 admin_site.register(Benefit)
 admin_site.register(Criteria)
 admin_site.register(Procedure)
-admin_site.register(SchemeDocument)
+admin_site.register(Document)
 admin_site.register(SchemeSponsor)
 
 admin_site.register(ClockedSchedule)
@@ -448,9 +450,15 @@ admin_site.register(Resource)
 admin_site.register(CompanyMeta)
 
 class UserEventsAdmin(admin.ModelAdmin):
-    list_display = ('id', "get_scheme_title", 'user', 'event_type', 'get_watch_time', 'details', 'timestamp')
+    list_display = ('id', "get_scheme_title", 'user', 'event_type', 'get_watch_time', 'details', 'get_timestamp_ist')
     search_fields = ('user__username', 'event_type')
     list_filter = ('event_type', 'timestamp')
+
+    @admin.display(description='Timestamp (IST)')
+    def get_timestamp_ist(self, obj):
+        ist_timezone = pytz.timezone('Asia/Kolkata')
+        local_timestamp = localtime(obj.timestamp, ist_timezone)
+        return local_timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
     def get_scheme_title(self, obj):
         """ Fetch scheme title and link using scheme_id """
