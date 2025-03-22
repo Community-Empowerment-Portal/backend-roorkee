@@ -81,7 +81,7 @@ from .views import (
     CompanyMetaDetailView,
     ResourceViewSet,
     AnnouncementListView,
-    send_custom_email
+    send_manual_email
 )
 
 
@@ -175,5 +175,5 @@ urlpatterns = [
     path("schemes/resources/<int:pk>/", ResourceViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="scheme-resource-detail"),
     path("schemes/resources/state/<int:state_id>/", ResourceViewSet.as_view({'get': 'list'}), name="scheme-links-by-state"),
     path('announcements/', AnnouncementListView.as_view(), name='announcements-list'),
-    path('send-email/', send_custom_email, name='send-email'),
+    path('send-email/', send_manual_email, name='send-email'),
 ]

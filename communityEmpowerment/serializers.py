@@ -27,6 +27,7 @@ from django.utils.text import slugify
 import random
 import string
 import requests
+import re
 
 User = get_user_model()
 class TimeStampedModelSerializer(serializers.ModelSerializer):
@@ -625,4 +626,12 @@ class ResourceSerializer(serializers.ModelSerializer):
 class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
-        fields = '__all__'
+        fields = "__all__"
+    
+    def to_representation(self, instance):
+            """Sanitize and properly format the description field"""
+            data = super().to_representation(instance)
+            cleaned_description = re.sub(r"\s*\n\s*", "\n", instance.description)  # Remove unnecessary spaces around newlines
+            cleaned_description = cleaned_description.replace("", "").strip()  # Remove unwanted Unicode chars
+            data["description"] = cleaned_description
+            return data

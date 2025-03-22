@@ -88,7 +88,7 @@ class CustomAdminSite(admin.AdminSite):
                 'app_label': 'assets',
                 'models': [
                     {'name': 'Banners', 'object_name': 'Banner', 'admin_url': '/admin/communityEmpowerment/banner/'},
-                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcements/'}
+                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcement/'}
                 ]
             },
             {
@@ -508,6 +508,7 @@ class UserEventsAdmin(admin.ModelAdmin):
     formatted_details.short_description = "Event Details"
 
 admin_site.register(UserEvents, UserEventsAdmin)
+
 
 class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'is_active')

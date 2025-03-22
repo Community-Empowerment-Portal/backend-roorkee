@@ -43,7 +43,7 @@ from django.utils.timezone import now, timedelta
 from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_similarity, collaborative_recommendations, extract_keywords_from_feedback
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
-from .tasks import send_email_task
+
 
 
 
@@ -1430,7 +1430,7 @@ class AnnouncementListView(generics.ListAPIView):
 
 
 @api_view(['POST'])
-def send_custom_email(request):
+def send_manual_email(request):
     subject = request.data.get('subject')
     message = request.data.get('message')
     recipient_email = request.data.get('recipient_email')
@@ -1438,5 +1438,11 @@ def send_custom_email(request):
     if not all([subject, message, recipient_email]):
         return Response({"error": "Missing fields"}, status=400)
 
-    send_email_task.delay(subject, message, recipient_email)
-    return Response({"message": "Email is being sent"}, status=200)
+    send_mail(
+        subject,
+        message,
+        settings.EMAIL_FROM,
+        [recipient_email],
+        fail_silently=False,
+    )
+    return Response({"message": "Email sent successfully"}, status=200)

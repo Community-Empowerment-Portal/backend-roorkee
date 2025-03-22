@@ -55,3 +55,11 @@ app.conf.beat_schedule = {
         'schedule': crontab(minute=0, hour='0'),  #Runs every midnight
     },
 }
+
+
+app.conf.beat_schedule = {
+    "send-weekly-email": {
+        "task": "your_app.tasks.send_weekly_email",
+        "schedule": crontab(day_of_week=0, hour=9, minute=0),  # Every Monday at 9 AM
+    },
+}

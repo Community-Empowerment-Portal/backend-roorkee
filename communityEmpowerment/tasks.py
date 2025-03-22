@@ -138,13 +138,17 @@ def check_urls_task():
     call_command('check_urls')  # Calls the check_urls.py command
 
 
+from celery import shared_task
+from django.core.mail import send_mail
+from django.conf import settings
+
 @shared_task
-def send_email_task(subject, message, recipient_email):
-    send_mail(
-        subject,
-        message,
-        'your_email@example.com',  # Change to your sender email
-        [recipient_email],
-        fail_silently=False,
-    )
-    return f"Email sent to {recipient_email}"
+def send_weekly_email():
+    recipients = ["user1@example.com", "user2@example.com"]  
+    subject = "Weekly Update"
+    message = "This is your weekly update. Stay tuned for more!"
+
+    for recipient in recipients:
+        send_mail(subject, message, settings.EMAIL_FROM, [recipient], fail_silently=False)
+
+    return f"Weekly emails sent to {len(recipients)} users"
