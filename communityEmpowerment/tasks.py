@@ -144,9 +144,9 @@ from django.conf import settings
 
 @shared_task
 def send_weekly_email():
-    recipients = ["user1@example.com", "user2@example.com"]  
+    recipients = ["karthikreddy0165@gmail.com", "karthik.r23csai@nst.rishihood.edu.in"]  
     subject = "Weekly Update"
-    message = "This is your weekly update. Stay tuned for more!"
+    message = "Analytics report"
 
     for recipient in recipients:
         send_mail(subject, message, settings.EMAIL_FROM, [recipient], fail_silently=False)
