@@ -80,6 +80,8 @@ from .views import (
     FAQViewSet,
     CompanyMetaDetailView,
     ResourceViewSet,
+    AnnouncementListView,
+    send_manual_email,
     get_user_summary,
     get_user_popular_schemes,
     get_user_event_timeline,
@@ -186,4 +188,6 @@ urlpatterns = [
     path('schemes/resources/', ResourceViewSet.as_view({'get': 'list', 'post': 'create'}), name='scheme-resources'),
     path("schemes/resources/<int:pk>/", ResourceViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name="scheme-resource-detail"),
     path("schemes/resources/state/<int:state_id>/", ResourceViewSet.as_view({'get': 'list'}), name="scheme-links-by-state"),
+    path('announcements/', AnnouncementListView.as_view(), name='announcements-list'),
+    path('send-email/', send_manual_email, name='send-email'),
 ]

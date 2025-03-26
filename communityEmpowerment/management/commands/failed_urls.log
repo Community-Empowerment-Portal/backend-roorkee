@@ -1,0 +1,371 @@
+2025-03-25 15:40:42,134 - ERROR - ❌ FAILED: https://rd.odisha.gov.in/scheme/bsy (Status: 404)
+2025-03-25 15:42:01,557 - ERROR - ❌ CONNECTION ERROR: https://haryana.gov.in/scheme/financial-assistance-to-non-school-going-disabled-childrenless-than-18-years/
+2025-03-25 15:42:02,513 - ERROR - ❌ CONNECTION ERROR: https://haryana.gov.in/scheme/old-age-samman-allowance/
+2025-03-25 15:42:02,514 - ERROR - ❌ ERROR:  https://scdd.kerala.gov.in/index.php/schemes/economic-development-programmes (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:42:03,977 - ERROR - ❌ CONNECTION ERROR: https://scdd.kerala.gov.in/index.php/schemes/educational-programmes
+2025-03-25 15:42:03,978 - ERROR - ❌ CONNECTION ERROR: https://scdd.kerala.gov.in/index.php/schemes/social-development-schemes
+2025-03-25 15:42:14,153 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/empowerment-individuals-third-gender-community
+2025-03-25 15:42:14,792 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/state-resources-and-rehabilitation-center
+2025-03-25 15:42:14,817 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/indira-gandhi-national-disability-pension-scheme
+2025-03-25 15:42:15,063 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/senior-citizen-support-scheme
+2025-03-25 15:42:15,265 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/implementation-national-trust-act-1999
+2025-03-25 15:42:24,362 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/district-rehabilitation-district-disabled-rehabilitation-center-scheme
+2025-03-25 15:42:24,990 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/pleasant-support-scheme
+2025-03-25 15:42:24,997 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/disabled-wedding-incentive-scheme
+2025-03-25 15:42:25,213 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/accessibility-statement
+2025-03-25 15:42:25,411 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/grant-aid-voluntary-organizations-working-area-%E2%80%8B%E2%80%8Bdisabled-welfare
+2025-03-25 15:42:34,517 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/state-source-disabled-institute-and-state-resource-and-rehabilitation-center
+2025-03-25 15:42:35,137 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/government-institutions-teaching-disabilities
+2025-03-25 15:42:35,141 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/art-planning-scheme
+2025-03-25 15:42:35,355 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/alcohol-addiction-campaign
+2025-03-25 15:42:35,575 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/physical-referral-rehabilitation-center
+2025-03-25 15:42:44,685 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/artificial-limbs-and-accessories-delivery-plans
+2025-03-25 15:42:45,286 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/leprosy-welfare-scheme
+2025-03-25 15:42:45,306 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/prohibition-program
+2025-03-25 15:42:45,530 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/cerebral-palsy-gait-labelles-physical-referral-rehabilitation-center
+2025-03-25 15:42:45,720 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/motorized-tricycle-battery-operated-supply-scheme-divyangjan
+2025-03-25 15:42:54,833 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/accessibility-options
+2025-03-25 15:42:55,435 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/petrol-powered-two-wheeler-scooterscooty-two-spare-wheels-divyangjan
+2025-03-25 15:42:55,458 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/shelter-home-mental-ill-women
+2025-03-25 15:42:55,692 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/indira-gandhi-national-widow-pension-scheme
+2025-03-25 15:42:55,891 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/commissioner-disabled
+2025-03-25 15:43:00,530 - ERROR - ❌ CONNECTION ERROR: https://sw.cg.gov.in/social-security-pension-scheme
+2025-03-25 15:43:10,391 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/gharaunda
+2025-03-25 15:43:10,439 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/disabled-scholarship-scheme
+2025-03-25 15:43:10,441 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/loan-scheme-self-employed-disabled-chhattisgarh-disabled-finance-and-development-corporation
+2025-03-25 15:43:10,473 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/potency-development-plan
+2025-03-25 15:43:10,702 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/horizon-immense-possibilities
+2025-03-25 15:43:20,581 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/deficit-disabilities-rehabilitation-program
+2025-03-25 15:43:20,628 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/social-assistance-program
+2025-03-25 15:43:20,689 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/indira-gandhi-national-old-age-pension-scheme
+2025-03-25 15:43:20,694 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/national-family-assistance-scheme
+2025-03-25 15:43:20,695 - ERROR - ❌ ERROR: Value -2035.634 and Link Road - 3.40 Km Date (CE lt 1059\n(Revised) 31.03.2022 dt-16.06.23) (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:43:20,799 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D010DO00612072019032620280 (Status: 403)
+2025-03-25 15:43:20,869 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/chhattisgarh-chief-ministers-pilgrimage-plan
+2025-03-25 15:43:20,898 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D030DO00616012019011213271 (Status: 403)
+2025-03-25 15:43:20,962 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D031DO00628062023011545167 (Status: 403)
+2025-03-25 15:43:20,989 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D001DO00605092019032440255 (Status: 403)
+2025-03-25 15:43:21,083 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D001DO00605092019032404330 (Status: 403)
+2025-03-25 15:43:21,279 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D019DO00617052023035308689 (Status: 403)
+2025-03-25 15:43:21,373 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D019DO00615052019040312055 (Status: 403)
+2025-03-25 15:43:21,464 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D026DO00612072019122333324 (Status: 403)
+2025-03-25 15:43:21,493 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D023DO00602122024052806010 (Status: 403)
+2025-03-25 15:43:21,558 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D012DO00616012020042741258 (Status: 403)
+2025-03-25 15:43:21,610 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D030DO00616012019010943594 (Status: 403)
+2025-03-25 15:43:21,642 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D027DO00627062019121401678 (Status: 403)
+2025-03-25 15:43:21,693 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D027DO00627062019121333315 (Status: 403)
+2025-03-25 15:43:21,736 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D026DO00611072019054100642 (Status: 403)
+2025-03-25 15:43:21,787 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D026DO00611072019054646768 (Status: 403)
+2025-03-25 15:43:21,832 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D031DO00628062023124410458 (Status: 403)
+2025-03-25 15:43:22,457 - ERROR - ❌ CONNECTION ERROR: http://agmarknet.nic.in
+2025-03-25 15:43:22,870 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D016DO00601012019121215891 (Status: 403)
+2025-03-25 15:43:22,871 - ERROR - ❌ ERROR: 3/6 HS Tower L 2434(S) (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:43:22,964 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D010DO00612072019031721727 (Status: 403)
+2025-03-25 15:43:22,984 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D010DO00612072019033356277 (Status: 403)
+2025-03-25 15:43:22,985 - ERROR - ❌ ERROR: None (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:43:23,050 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D026DO00612072019123614447 (Status: 403)
+2025-03-25 15:43:23,073 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D031DO00605032024051350646 (Status: 403)
+2025-03-25 15:43:23,141 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D016DO00601012019121506222 (Status: 403)
+2025-03-25 15:43:23,166 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D023DO00621102024030700225 (Status: 403)
+2025-03-25 15:43:23,167 - ERROR - ❌ ERROR: 4249 (S) (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:43:23,251 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D010DO00612072019033250104 (Status: 403)
+2025-03-25 15:43:23,341 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D019DO00615052019040403253 (Status: 403)
+2025-03-25 15:43:23,421 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D027DO00627062019121310857 (Status: 403)
+2025-03-25 15:43:23,672 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D026DO00612072019125736373 (Status: 403)
+2025-03-25 15:43:23,680 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D026DO00611072019060211641 (Status: 403)
+2025-03-25 15:43:24,005 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D030DO00615032023103211264 (Status: 403)
+2025-03-25 15:43:24,241 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/jharkhand/Home/ViewDoc?id=D010DO00612072019032958119 (Status: 403)
+2025-03-25 15:43:24,442 - ERROR - ❌ CONNECTION ERROR: https://ladakh.gov.in/scheme/mahatma-gandhi-national-rural-employment-guarantee-act/
+2025-03-25 15:43:24,453 - ERROR - ❌ CONNECTION ERROR: https://ladakh.gov.in/scheme/pradhan-mantri-kisan-samman-nidhi-pm-kisan/
+2025-03-25 15:43:26,571 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83085 (Status: 404)
+2025-03-25 15:43:26,703 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3552 (Status: 404)
+2025-03-25 15:43:26,820 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19703 (Status: 404)
+2025-03-25 15:43:26,833 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83091 (Status: 404)
+2025-03-25 15:43:26,947 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19674 (Status: 404)
+2025-03-25 15:43:26,959 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3478 (Status: 404)
+2025-03-25 15:43:26,993 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19687 (Status: 404)
+2025-03-25 15:43:27,122 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3560 (Status: 404)
+2025-03-25 15:43:27,237 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19617 (Status: 404)
+2025-03-25 15:43:27,352 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3577 (Status: 404)
+2025-03-25 15:43:27,374 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3570 (Status: 404)
+2025-03-25 15:43:27,399 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3207 (Status: 404)
+2025-03-25 15:43:27,478 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7612 (Status: 404)
+2025-03-25 15:43:27,608 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6688 (Status: 404)
+2025-03-25 15:43:27,657 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27501 (Status: 404)
+2025-03-25 15:43:27,677 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19670 (Status: 404)
+2025-03-25 15:43:27,789 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19646 (Status: 404)
+2025-03-25 15:43:27,811 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3575 (Status: 404)
+2025-03-25 15:43:27,895 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6728 (Status: 404)
+2025-03-25 15:43:28,075 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27471 (Status: 404)
+2025-03-25 15:43:28,095 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19724 (Status: 404)
+2025-03-25 15:43:28,178 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19718 (Status: 404)
+2025-03-25 15:43:28,306 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6801 (Status: 404)
+2025-03-25 15:43:28,353 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6849 (Status: 404)
+2025-03-25 15:43:28,375 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27488 (Status: 404)
+2025-03-25 15:43:28,453 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3553 (Status: 404)
+2025-03-25 15:43:28,484 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19653 (Status: 404)
+2025-03-25 15:43:28,588 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6859 (Status: 404)
+2025-03-25 15:43:28,659 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6854 (Status: 404)
+2025-03-25 15:43:28,759 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3550 (Status: 404)
+2025-03-25 15:43:28,863 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6902 (Status: 404)
+2025-03-25 15:43:28,898 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27503 (Status: 404)
+2025-03-25 15:43:28,936 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83092 (Status: 404)
+2025-03-25 15:43:29,026 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3545 (Status: 404)
+2025-03-25 15:43:29,069 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3549 (Status: 404)
+2025-03-25 15:43:29,143 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83099 (Status: 404)
+2025-03-25 15:43:29,276 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3578 (Status: 404)
+2025-03-25 15:43:29,302 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83096 (Status: 404)
+2025-03-25 15:43:29,345 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7075 (Status: 404)
+2025-03-25 15:43:29,410 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83088 (Status: 404)
+2025-03-25 15:43:29,483 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27495 (Status: 404)
+2025-03-25 15:43:29,585 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83094 (Status: 404)
+2025-03-25 15:43:29,611 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3576 (Status: 404)
+2025-03-25 15:43:29,683 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7084 (Status: 404)
+2025-03-25 15:43:29,811 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27465 (Status: 404)
+2025-03-25 15:43:29,863 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3556 (Status: 404)
+2025-03-25 15:43:29,888 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83078 (Status: 404)
+2025-03-25 15:43:29,937 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/26772 (Status: 404)
+2025-03-25 15:43:30,018 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27514 (Status: 404)
+2025-03-25 15:43:30,139 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27457 (Status: 404)
+2025-03-25 15:43:30,215 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19618 (Status: 404)
+2025-03-25 15:43:30,266 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6850 (Status: 404)
+2025-03-25 15:43:30,297 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3572 (Status: 404)
+2025-03-25 15:43:30,345 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6802 (Status: 404)
+2025-03-25 15:43:30,391 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19655 (Status: 404)
+2025-03-25 15:43:30,427 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6858 (Status: 404)
+2025-03-25 15:43:30,625 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6857 (Status: 404)
+2025-03-25 15:43:30,669 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3569 (Status: 404)
+2025-03-25 15:43:30,741 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/self-reliance-center
+2025-03-25 15:43:30,760 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6852 (Status: 404)
+2025-03-25 15:43:30,772 - ERROR - ⏳ TIMEOUT: https://sw.cg.gov.in/en/national-integrated-rehabilitation-program
+2025-03-25 15:43:30,826 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3574 (Status: 404)
+2025-03-25 15:43:30,962 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83098 (Status: 404)
+2025-03-25 15:43:31,029 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19713 (Status: 404)
+2025-03-25 15:43:31,059 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83086 (Status: 404)
+2025-03-25 15:43:31,106 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6722 (Status: 404)
+2025-03-25 15:43:31,165 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7082 (Status: 404)
+2025-03-25 15:43:31,166 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7070 (Status: 404)
+2025-03-25 15:43:31,230 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19704 (Status: 404)
+2025-03-25 15:43:31,259 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3610 (Status: 404)
+2025-03-25 15:43:31,350 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6690 (Status: 404)
+2025-03-25 15:43:31,367 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7053 (Status: 404)
+2025-03-25 15:43:31,483 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83090 (Status: 404)
+2025-03-25 15:43:31,504 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83084 (Status: 404)
+2025-03-25 15:43:31,539 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3211 (Status: 404)
+2025-03-25 15:43:31,765 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19694 (Status: 404)
+2025-03-25 15:43:31,789 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27483 (Status: 404)
+2025-03-25 15:43:31,837 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3315 (Status: 404)
+2025-03-25 15:43:31,846 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19244 (Status: 404)
+2025-03-25 15:43:31,897 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83089 (Status: 404)
+2025-03-25 15:43:31,920 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6692 (Status: 404)
+2025-03-25 15:43:31,965 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83083 (Status: 404)
+2025-03-25 15:43:31,972 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7618 (Status: 404)
+2025-03-25 15:43:32,049 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19706 (Status: 404)
+2025-03-25 15:43:32,091 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6805 (Status: 404)
+2025-03-25 15:43:32,102 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6806 (Status: 404)
+2025-03-25 15:43:32,177 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6691 (Status: 404)
+2025-03-25 15:43:32,178 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19701 (Status: 404)
+2025-03-25 15:43:32,220 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19691 (Status: 404)
+2025-03-25 15:43:32,232 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3573 (Status: 404)
+2025-03-25 15:43:32,346 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6689 (Status: 404)
+2025-03-25 15:43:32,364 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3564 (Status: 404)
+2025-03-25 15:43:32,452 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19693 (Status: 404)
+2025-03-25 15:43:32,469 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6847 (Status: 404)
+2025-03-25 15:43:32,491 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7078 (Status: 404)
+2025-03-25 15:43:32,588 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3571 (Status: 404)
+2025-03-25 15:43:32,594 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7616 (Status: 404)
+2025-03-25 15:43:32,633 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6848 (Status: 404)
+2025-03-25 15:43:32,777 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19248 (Status: 404)
+2025-03-25 15:43:32,818 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19648 (Status: 404)
+2025-03-25 15:43:32,868 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83095 (Status: 404)
+2025-03-25 15:43:32,869 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/26775 (Status: 404)
+2025-03-25 15:43:32,903 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6787 (Status: 404)
+2025-03-25 15:43:32,912 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19658 (Status: 404)
+2025-03-25 15:43:32,946 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3614 (Status: 404)
+2025-03-25 15:43:32,998 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6891 (Status: 404)
+2025-03-25 15:43:33,027 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7068 (Status: 404)
+2025-03-25 15:43:33,039 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/7614 (Status: 404)
+2025-03-25 15:43:33,142 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3562 (Status: 404)
+2025-03-25 15:43:33,223 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19651 (Status: 404)
+2025-03-25 15:43:33,266 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83087 (Status: 404)
+2025-03-25 15:43:33,275 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6843 (Status: 404)
+2025-03-25 15:43:33,304 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3611 (Status: 404)
+2025-03-25 15:43:33,315 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83082 (Status: 404)
+2025-03-25 15:43:33,351 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3566 (Status: 404)
+2025-03-25 15:43:33,390 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3568 (Status: 404)
+2025-03-25 15:43:33,431 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/26799 (Status: 404)
+2025-03-25 15:43:33,441 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/3616 (Status: 404)
+2025-03-25 15:43:33,477 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6855 (Status: 404)
+2025-03-25 15:43:33,544 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/106857 (Status: 404)
+2025-03-25 15:43:33,557 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19649 (Status: 404)
+2025-03-25 15:43:33,598 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83097 (Status: 404)
+2025-03-25 15:43:33,684 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/83093 (Status: 404)
+2025-03-25 15:43:33,755 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6895 (Status: 404)
+2025-03-25 15:43:33,829 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/19672 (Status: 404)
+2025-03-25 15:43:33,875 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/6712 (Status: 404)
+2025-03-25 15:43:34,725 - ERROR - ❌ FAILED: https://www.tn.gov.in/scheme/data_view/27137 (Status: 404)
+2025-03-25 15:43:35,120 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/reimbursement-college-fees-deserving-scheduled-caste-students-studying-professional-colleges-top-20 (Status: 500)
+2025-03-25 15:43:35,125 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/financial-assistance-scheduled-castes-funeral-rites (Status: 500)
+2025-03-25 15:43:35,900 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/assistance-under-scst-prevention-atrocities-act (Status: 500)
+2025-03-25 15:43:35,935 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/award-pre-matric-scholarship-sc-students (Status: 500)
+2025-03-25 15:43:35,937 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/financial-assistance-construct-sanitary-latrine (Status: 500)
+2025-03-25 15:43:35,945 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/vocational-training (Status: 500)
+2025-03-25 15:43:36,455 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/opening-and-maintenance-boys-and-girls-hostels (Status: 500)
+2025-03-25 15:43:36,679 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/award-pre-matric-scholarship-students-whose-parents-are-engaged-unclean-occupation (Status: 500)
+2025-03-25 15:43:36,713 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/distribution-free-house-sites-scheduled-casteother-economically-backward-classes (Status: 500)
+2025-03-25 15:43:36,889 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/supply-dhotis-and-sarees-sc-people (Status: 500)
+2025-03-25 15:43:36,982 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/award-adhoc-merit-grant-special-incentive-sc-students (Status: 500)
+2025-03-25 15:43:37,226 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/providing-civic-amenities-scheduled-caste-areas (Status: 500)
+2025-03-25 15:43:37,244 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/grant-retention-scholarship-sc-girl-students (Status: 500)
+2025-03-25 15:43:37,414 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/award-opportunity-cost-parents-sc-girl-students (Status: 500)
+2025-03-25 15:43:37,512 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/grant-dr-ambedkar-financial-assistance-studying-professional-colleges (Status: 500)
+2025-03-25 15:43:37,704 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/grant-financial-assistance-poor-sc-pregnant-lactating-women (Status: 500)
+2025-03-25 15:43:37,709 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/award-post-matric-scholarship-sc-students (Status: 500)
+2025-03-25 15:43:37,986 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/grant-house-construction-subsidy-scheduled-caste-people (Status: 500)
+2025-03-25 15:43:38,040 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/financial-assistance-marriage-poor-sc-brides (Status: 500)
+2025-03-25 15:43:38,248 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/dr-br-ambedkar-memorial-award-sc-students (Status: 500)
+2025-03-25 15:43:38,486 - ERROR - ❌ FAILED: https://adwelfare.py.gov.in/stipend-sc-trainees-technical-training-institutions (Status: 500)
+2025-03-25 15:43:38,591 - ERROR - ❌ CONNECTION ERROR: https://ukrdd.uk.gov.in/?page_id=5189
+2025-03-25 15:43:38,704 - ERROR - ❌ CONNECTION ERROR: https://ukrdd.uk.gov.in/?page_id=5487
+2025-03-25 15:43:38,812 - ERROR - ❌ FAILED: https://rural.nic.in/disha (Status: 404)
+2025-03-25 15:43:39,128 - ERROR - ❌ CONNECTION ERROR: https://ukrdd.uk.gov.in/?page_id=5622
+2025-03-25 15:43:39,643 - ERROR - ❌ CONNECTION ERROR: https://ukrdd.uk.gov.in/?page_id=5859
+2025-03-25 15:43:48,450 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4085
+2025-03-25 15:43:48,715 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4495
+2025-03-25 15:43:48,755 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4088
+2025-03-25 15:43:49,129 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4292
+2025-03-25 15:43:49,646 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/wp-content/uploads/2020/01/01/Indira-Amma-Guidline.pdf
+2025-03-25 15:43:49,766 - ERROR - ❌ CONNECTION ERROR: https://ukrdd.uk.gov.in/?page_id=4197
+2025-03-25 15:43:58,454 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4107
+2025-03-25 15:43:58,716 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4354
+2025-03-25 15:43:58,757 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4492
+2025-03-25 15:43:58,833 - ERROR - ❌ CONNECTION ERROR: https://ukrdd.uk.gov.in/?page_id=5500
+2025-03-25 15:43:59,131 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4082
+2025-03-25 15:43:59,746 - ERROR - ❌ FAILED: https://scholarships.gov.in/ (Status: 403)
+2025-03-25 15:43:59,768 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4072
+2025-03-25 15:44:08,456 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4300
+2025-03-25 15:44:08,758 - ERROR - ⏳ TIMEOUT: http://ukrdd.uk.gov.in/?page_id=4377
+2025-03-25 15:44:13,536 - ERROR - ❌ ERROR: Not Found (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:13,559 - ERROR - ❌ ERROR: Information not available in document. (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:13,559 - ERROR - ❌ ERROR: Not available in document (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:13,697 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/%E2%80%9CGramashakti-Supply-of-Low-Input-Technology-Poultry-Birds-to-Rural-Farmers-2018.pdf (Status: 403)
+2025-03-25 15:44:13,697 - ERROR - ❌ ERROR: SCHEME_HAS_NO_SCHEME_LINK (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:13,801 - ERROR - ❌ ERROR: YSP- (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:13,910 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/Human%20Resource%20Development%20.pdf (Status: 403)
+2025-03-25 15:44:13,910 - ERROR - ❌ ERROR: Not available in the context (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:13,911 - ERROR - ❌ ERROR: Not specified in document (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,207 - ERROR - ❌ ERROR: www.dhtc.goa.gov.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,383 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/modified%20Scheme.pdf (Status: 403)
+2025-03-25 15:44:14,384 - ERROR - ❌ ERROR: Not Available (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,384 - ERROR - ❌ ERROR: in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,385 - ERROR - ❌ ERROR: Check Official Gazette, Series I No. 5 dated 30th April, 2020 (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,441 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/promotion%20of%20Mechanization%20in%20Agriculture.pdf (Status: 403)
+2025-03-25 15:44:14,671 - ERROR - ❌ ERROR: not specified (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,672 - ERROR - ❌ ERROR: N/A (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:14,877 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/GDDPGA-%202_1.pdf (Status: 403)
+2025-03-25 15:44:15,011 - ERROR - ❌ ERROR: Information not available in the text (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:15,104 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/Women%E2%80%99s-Festival-Kerkar-Awards.pdf (Status: 403)
+2025-03-25 15:44:15,254 - ERROR - ❌ ERROR: Not available in the text (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:15,352 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/shri%20anna%20milet%20scheme.pdf (Status: 403)
+2025-03-25 15:44:15,791 - ERROR - ❌ ERROR: not applicable (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:15,791 - ERROR - ❌ ERROR: www.swachhbharaturban.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:15,792 - ERROR - ❌ ERROR: Gazette Notification No. 3/1/WS/2015-16/D.Agri/3235 SERIES I No.16 dated 16.07.2015. (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:15,914 - ERROR - ❌ ERROR: Information not available in the context (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:15,974 - ERROR - ❌ ERROR: www.goagovt.nic.in/gazette.htm (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:16,184 - ERROR - ❌ ERROR: NA (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:16,298 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/speciall%20incentiv%20to%20sugarcane%20grower.pdf (Status: 403)
+2025-03-25 15:44:16,528 - ERROR - ❌ ERROR: Not mentioned in text (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:17,551 - ERROR - ❌ CONNECTION ERROR: http://www.egazette.nic.in
+2025-03-25 15:44:17,827 - ERROR - ❌ ERROR: GSCA (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:18,360 - ERROR - ❌ ERROR: Not mentioned (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:18,492 - ERROR - ❌ ERROR: Not provided (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:18,572 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/GDDPGA-%204_1.pdf (Status: 403)
+2025-03-25 15:44:18,733 - ERROR - ❌ ERROR: Series I no. 1 dated 6th April, 2017 (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:18,734 - ERROR - ❌ ERROR: Reg. No. GR/RNP/GOA/32 RNI No. GOAENG/2002/6410 (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:18,917 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/sri%20scheme.pdf (Status: 403)
+2025-03-25 15:44:18,931 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/Ammendment%20to%20schemw.pdf (Status: 403)
+2025-03-25 15:44:18,932 - ERROR - ❌ ERROR: www.dstwm.goa.gov.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:19,475 - ERROR - ❌ ERROR: www.ahvs.goa.gov.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:19,641 - ERROR - ❌ ERROR: Information not available in the document. (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:19,641 - ERROR - ❌ ERROR: No link mentioned (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:19,674 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/addendum%20to%20community%20farming.pdf (Status: 403)
+2025-03-25 15:44:19,767 - ERROR - ❌ ERROR: Not available (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:19,847 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/community%20farming.pdf (Status: 403)
+2025-03-25 15:44:20,091 - ERROR - ❌ ERROR: Not specified in text (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,191 - ERROR - ❌ ERROR: OFFICIAL GAZETTE (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,229 - ERROR - ❌ ERROR: Not Mentioned (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,254 - ERROR - ❌ ERROR: Not applicable (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,254 - ERROR - ❌ ERROR: null (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,255 - ERROR - ❌ ERROR: Not specified (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,448 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/GDDPGA-%201_1.pdf (Status: 403)
+2025-03-25 15:44:20,543 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/GDDPGA-%203_1.pdf (Status: 403)
+2025-03-25 15:44:20,745 - ERROR - ❌ ERROR: Not available in document. (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,815 - ERROR - ❌ ERROR: DAC/COMPCELL/10-Schemes/2018-19 (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,843 - ERROR - ❌ ERROR: www.rrrlf.gov.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:20,972 - ERROR - ❌ ERROR: PMKSY portal (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:21,147 - ERROR - ❌ ERROR: unavailable (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:23,894 - ERROR - ⏳ TIMEOUT: https://gpps.goa.gov.in/wp-content/uploads/2023/04/Employment-Subsidy-Scheme.pdf
+2025-03-25 15:44:23,895 - ERROR - ❌ ERROR: Not available in the document (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:24,031 - ERROR - ❌ ERROR: www.goaelectricity.gov.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:24,439 - ERROR - ❌ FAILED: http://www.ghrssidc.org/about-ghrssidc/activities/schemes-for-self-empl... (Status: 405)
+2025-03-25 15:44:25,663 - ERROR - ⏳ TIMEOUT: http://mhupa.gov.in
+2025-03-25 15:44:26,067 - ERROR - ❌ ERROR: www.goaprintingpress.gov.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:26,531 - ERROR - ❌ ERROR: Not.-3/Crops & PP/80/3/SSSSKL/Financ1al Assistance to Sanj1vam Sahakar1 Sakhar Karkhana Ltd. (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:27,013 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/goa/Manures%20and%20fertlizer%20.pdf (Status: 403)
+2025-03-25 15:44:29,492 - ERROR - ❌ ERROR: Not specified in the document (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:31,654 - ERROR - ⏳ TIMEOUT: https://www.goa.gov.in/government/schemes/
+2025-03-25 15:44:31,779 - ERROR - ❌ FAILED: https://wptbc.assam.gov.in/information-services/central-earmarked-scheme-to-sc (Status: 404)
+2025-03-25 15:44:32,424 - ERROR - ❌ CONNECTION ERROR: https://egazette.nic.in/WriteReadData/2019/201503.pdf
+2025-03-25 15:44:32,459 - ERROR - ⏳ TIMEOUT: http://www.goaprintingpress.gov.in
+2025-03-25 15:44:32,577 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/economic-upliftment (Status: 500)
+2025-03-25 15:44:32,593 - ERROR - ❌ CONNECTION ERROR: https://sjsa.maharashtra.gov.in/en/scheme-category/social-remedies
+2025-03-25 15:44:32,909 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/disability-welfare (Status: 500)
+2025-03-25 15:44:32,929 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/social-integration (Status: 500)
+2025-03-25 15:44:33,009 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/awards (Status: 500)
+2025-03-25 15:44:33,031 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/special-assistance (Status: 500)
+2025-03-25 15:44:33,351 - ERROR - ❌ CONNECTION ERROR: https://ddd.gov.in/scheme/atal-mission-for-rejuvenation-and-urban-transformation-amrut/
+2025-03-25 15:44:33,358 - ERROR - ❌ CONNECTION ERROR: https://ddd.gov.in/scheme/swabhimaan-scheme/
+2025-03-25 15:44:33,359 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/education-training (Status: 500)
+2025-03-25 15:44:33,385 - ERROR - ❌ FAILED: https://sjsa.maharashtra.gov.in/en/scheme-category/employment (Status: 500)
+2025-03-25 15:44:34,032 - ERROR - ⏳ TIMEOUT: http://www.goaprintingpress.gov.in/
+2025-03-25 15:44:34,278 - ERROR - ❌ CONNECTION ERROR: https://ddd.gov.in/scheme/food-security-and-functional-epos/
+2025-03-25 15:44:34,481 - ERROR - ❌ CONNECTION ERROR: https://ddd.gov.in/scheme/pradhan-mantri-mudra-yojana/
+2025-03-25 15:44:36,468 - ERROR - ❌ ERROR: www.socialjustice.nic.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:37,243 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30100?Scheme=Chief%20Minister%20Rural%20Housing%20Scheme (Status: 404)
+2025-03-25 15:44:37,321 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30039?Scheme=Dairy%20Development%20Programme (Status: 404)
+2025-03-25 15:44:37,334 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30052?Scheme=Antyodaya%20Anna%20Yojana%20(AAY)%20Scheme (Status: 404)
+2025-03-25 15:44:37,358 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30059?Scheme=Agriculture%20Census (Status: 404)
+2025-03-25 15:44:37,682 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30071?Scheme=Comprehensive%20Educational%20Load%20Scheme%20(CELS) (Status: 404)
+2025-03-25 15:44:37,737 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30043?Scheme=Border%20Area%20Development%20Programme (Status: 404)
+2025-03-25 15:44:37,861 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30065?Scheme=Accredited%20Social%20Health%20Activist%20(ASHA) (Status: 404)
+2025-03-25 15:44:38,035 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/beggars%20and%20Poor%20people.pdf (Status: 403)
+2025-03-25 15:44:38,059 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/gadiya_luhar_orders.pdf (Status: 403)
+2025-03-25 15:44:38,262 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30094?Scheme=Border%20Area%20Development%20Programme (Status: 404)
+2025-03-25 15:44:38,301 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30062?Scheme=Establishment%20of%20Agency%20for%20Reporting%20Agriculture%20Statistics%20(EARAS) (Status: 404)
+2025-03-25 15:44:38,360 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/18821.pdf (Status: 403)
+2025-03-25 15:44:38,642 - ERROR - ❌ FAILED: https://sikkim.gov.in/scheme/scheme-info/30070?Scheme=Chief%20Minister%E2%80%99s%20Free%20Scholarship%20Scheme%20(CMFSS) (Status: 404)
+2025-03-25 15:44:38,698 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/gadiya_luhar_notification.pdf (Status: 403)
+2025-03-25 15:44:38,865 - ERROR - ❌ ERROR: tribal.nic.in (Reason: Request URL is missing an 'http://' or 'https://' protocol.)
+2025-03-25 15:44:39,068 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/hostel_Rules_76613.pdf (Status: 403)
+2025-03-25 15:44:39,116 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/FormatofCollageCertificate%20.pdf (Status: 403)
+2025-03-25 15:44:39,296 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/Hostel_49067.pdf (Status: 403)
+2025-03-25 15:44:39,481 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/55881.pdf (Status: 403)
+2025-03-25 15:44:39,564 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Tenders/43610.pdf (Status: 403)
+2025-03-25 15:44:39,774 - ERROR - ❌ FAILED: https://launchpad-pdf.s3.ap-south-1.amazonaws.com/pdfs/rajasthan/Orders/Hostel_46992.pdf (Status: 403)
+2025-03-25 15:44:49,707 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/pension-to-the-disabled-persons
+2025-03-25 15:44:49,739 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/PARVARISH_scheme
+2025-03-25 15:44:49,744 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/petrol-subsidy-to-persons-with-disability
+2025-03-25 15:44:49,747 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/the-financial-assistance-to-dependent-children-of-widows-and-destitute-women
+2025-03-25 15:44:49,782 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/old-age-pension
+2025-03-25 15:44:59,709 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/national-family-benefit-scheme
+2025-03-25 15:44:59,741 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/pension-to-widows-and-destitute-women
+2025-03-25 15:44:59,745 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/Foster-Care
+2025-03-25 15:44:59,748 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/national-programme-for-rehabilitation-of-persons-with-disabilities-nprpd
+2025-03-25 15:44:59,791 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/assistance-for-purchase-of-aids-appliances
+2025-03-25 15:45:09,712 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/financial-assistance-for-the-marriage-of-daughter-of-widows-destitute-women-belonging-to-schedule-caste
+2025-03-25 15:45:09,743 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/unemployment-allowance-to-disabled-persons
+2025-03-25 15:45:09,746 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/ICDS
+2025-03-25 15:45:09,749 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/Sponsorship-Scheme
+2025-03-25 15:45:09,792 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/issuing-of-identity-cards-to-disabled-persons
+2025-03-25 15:45:19,713 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/POSHAN-Abhiyaan
+2025-03-25 15:45:19,744 - ERROR - ⏳ TIMEOUT: http://chdsw.gov.in/index.php/scheme/inter-caste-marriage

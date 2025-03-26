@@ -43,13 +43,17 @@ from django.utils.timezone import now, timedelta
 from communityEmpowerment.utils.utils import recommend_schemes, load_cosine_similarity, collaborative_recommendations, extract_keywords_from_feedback
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+import json
+from django.core.mail import EmailMessage
+
+
 
 logger = logging.getLogger(__name__)
 
 from .models import (
     State, Resource, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
     Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
-    Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue
+    Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue, Announcement
     
 )
 from .serializers import (
@@ -59,7 +63,7 @@ from .serializers import (
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
-    UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer
+    UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
 )
 
 from rest_framework.exceptions import NotFound
@@ -1577,3 +1581,34 @@ class ResourceViewSet(viewsets.ModelViewSet):
 
         active_states = State.objects.filter(is_active=True)
         return Resource.objects.filter(state_name__in=active_states)
+
+class AnnouncementListView(generics.ListAPIView):
+    queryset = Announcement.objects.filter(is_active=True).order_by('-created_at')
+    serializer_class = AnnouncementSerializer
+
+
+@api_view(['POST'])
+def send_manual_email(request):
+    try:
+        data = json.loads(request.POST.get("data", "{}"))  # Parse JSON from form-data
+    except json.JSONDecodeError:
+        return Response({"error": "Invalid JSON"}, status=400)
+
+    subject = data.get("subject")
+    message = data.get("message")
+    recipient_email = data.get("recipient_email")
+    attachment = request.FILES.get("attachment")  # Get the uploaded file
+
+    if not all([subject, message, recipient_email]):
+        return Response({"error": "Missing fields"}, status=400)
+
+    email = EmailMessage(subject, message, settings.EMAIL_FROM, [recipient_email])
+
+    if attachment:
+        email.attach(attachment.name, attachment.read(), attachment.content_type)  # Attach the file
+
+    try:
+        email.send(fail_silently=False)
+        return Response({"message": "Email sent successfully"}, status=200)
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)

@@ -14,8 +14,8 @@ import pytz
 from .models import (
 
     State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta,
-    Benefit, Criteria, Procedure, Document, Document, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
-    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents
+    Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
+    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement
 )
 from django.db.models import Count
 from django.db.models import Min
@@ -89,6 +89,7 @@ class CustomAdminSite(admin.AdminSite):
                 'app_label': 'assets',
                 'models': [
                     {'name': 'Banners', 'object_name': 'Banner', 'admin_url': '/admin/communityEmpowerment/banner/'},
+                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcement/'}
                 ]
             },
             {
@@ -514,3 +515,10 @@ class UserEventsAdmin(admin.ModelAdmin):
     formatted_details.short_description = "Event Details"
 
 admin_site.register(UserEvents, UserEventsAdmin)
+
+
+class AnnouncementAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at', 'is_active')
+    search_fields = ('title',)
+
+admin_site.register(Announcement, AnnouncementAdmin)
