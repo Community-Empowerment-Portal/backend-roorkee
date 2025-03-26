@@ -20,13 +20,13 @@ class Migration(migrations.Migration):
                 ('is_active', models.BooleanField(default=True)),
             ],
         ),
-        migrations.AlterModelOptions(
-            name='faq',
-            options={'ordering': ['order']},
-        ),
-        migrations.AddField(
-            model_name='faq',
-            name='order',
-            field=models.IntegerField(default=0),
-        ),
+        # migrations.AlterModelOptions(
+        #     name='faq',
+        #     options={'ordering': ['order']},
+        # ),
+        # migrations.AddField(
+        #     model_name='faq',
+        #     name='order',
+        #     field=models.IntegerField(default=0),
+        # ),
     ]
