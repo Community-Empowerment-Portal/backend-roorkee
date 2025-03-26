@@ -1326,6 +1326,163 @@ def get_popular_clicks(request):
 
     return Response(clicks)
 
+@api_view(["GET"])
+def get_user_summary(request):
+
+    user_events = UserEvents.objects.filter(user=request.user)
+
+    stats = (
+        user_events.values("event_type")
+        .annotate(count=Count("id"))
+        .order_by("-count")
+    )
+
+    user_data = {
+        "total_events": user_events.count(),
+        "event_breakdown": stats,
+    }
+
+    return Response(user_data)
+
+
+@api_view(["GET"])
+def get_user_popular_schemes(request):
+    user_id = request.GET.get("user_id")
+    limit = int(request.GET.get("limit", 5))
+
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    schemes = (
+        UserEvents.objects.filter(user=request.user)
+        .values("scheme_id")
+        .annotate(count=Count("id"))
+        .order_by("-count")[:limit]
+    )
+
+    scheme_details = [
+        {
+            "scheme_id": scheme["scheme_id"],
+            "title": Scheme.objects.get(id=scheme["scheme_id"]).title,
+            "count": scheme["count"],
+        }
+        for scheme in schemes
+    ]
+
+    return Response(scheme_details)
+
+
+@api_view(["GET"])
+def get_user_event_timeline(request):
+    user_id = request.GET.get("user_id")
+    range_type = request.GET.get("range", "daily")
+
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    if range_type == "weekly":
+        time_threshold = now() - timedelta(weeks=4)
+    elif range_type == "monthly":
+        time_threshold = now() - timedelta(days=90)
+    else:
+        time_threshold = now() - timedelta(days=30)
+
+    timeline_query = UserEvents.objects.filter(user=request.user, timestamp__gte=time_threshold)
+
+    timeline = (
+        timeline_query.annotate(date=TruncDate("timestamp"))
+        .values("date")
+        .annotate(
+            views=Count("id", filter=Q(event_type="view")),
+            searches=Count("id", filter=Q(event_type="search")),
+            downloads=Count("id", filter=Q(event_type="download")),
+            clicks=Count("id", filter=Q(event_type="click")),
+        )
+        .order_by("date")
+    )
+
+    return Response(timeline)
+
+@api_view(["GET"])
+def get_user_search_history(request):
+    user_id = request.GET.get("user_id")
+    limit = int(request.GET.get("limit", 10))
+
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    searches = (
+        UserEvents.objects.filter(user=request.user, event_type="search")
+        .values("details__query")
+        .annotate(count=Count("id"))
+        .order_by("-count")[:limit]
+    )
+
+    return Response(searches)
+
+
+@api_view(["GET"])
+def get_user_click_history(request):
+    user_id = request.GET.get("user_id")
+    limit = int(request.GET.get("limit", 5))
+
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    clicks = (
+        UserEvents.objects.filter(user=request.user, event_type="click")
+        .values("details__url")
+        .annotate(count=Count("id"))
+        .order_by("-count")[:limit]
+    )
+
+    return Response(clicks)
+
+@api_view(["GET"])
+def get_user_filter_usage(request):
+    user_id = request.GET.get("user_id")
+
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    filters = (
+        UserEvents.objects.filter(user=request.user, event_type="filter")
+        .values("details__filter", "details__value")
+        .annotate(count=Count("id"))
+        .order_by("-count")
+    )
+
+    return Response(filters)
+
+
+@api_view(["GET"])
+def get_user_download_history(request):
+    user_id = request.GET.get("user_id")
+    limit = int(request.GET.get("limit", 5))
+
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    downloads = (
+        UserEvents.objects.filter(user=request.user, event_type="download")
+        .values("scheme_id", "timestamp")
+        .order_by("-timestamp")[:limit]
+    )
+
+    scheme_details = [
+        {
+            "scheme_id": download["scheme_id"],
+            "title": Scheme.objects.get(id=download["scheme_id"]).title,
+            "download_time": download["timestamp"].strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        for download in downloads
+    ]
+
+    return Response(scheme_details)
+
+
+
+
 class SchemeLinkListView(ListAPIView):
     serializer_class = SchemeLinkSerializer
 

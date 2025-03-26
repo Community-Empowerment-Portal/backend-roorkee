@@ -79,7 +79,14 @@ from .views import (
     SuperuserLoginView,
     FAQViewSet,
     CompanyMetaDetailView,
-    ResourceViewSet
+    ResourceViewSet,
+    get_user_summary,
+    get_user_popular_schemes,
+    get_user_event_timeline,
+    get_user_search_history,
+    get_user_click_history,
+    get_user_filter_usage,
+    get_user_download_history,
 )
 
 
@@ -163,6 +170,13 @@ urlpatterns = [
     path("events/filter-usage/", get_filter_usage, name="filter-usage"),
     path("events/popular-searches/", get_popular_searches, name="popular-searches"),
     path("events/popular-clicks/", get_popular_clicks, name="popular-clicks"),
+    path("events/user-summary/", get_user_summary, name="user-summary"),
+    path("events/user-popular-schemes/", get_user_popular_schemes, name="user-popular-schemes"),
+    path("events/user-timeline/", get_user_event_timeline, name="user-timeline"),
+    path("events/user-search-history/", get_user_search_history, name="user-search-history"),
+    path("events/user-click-history/", get_user_click_history, name="user-click-history"),
+    path("events/user-filter-usage/", get_user_filter_usage, name="user-filter-usage"),
+    path("events/user-download-history/", get_user_download_history, name="user-download-history"),
     # path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
     path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
