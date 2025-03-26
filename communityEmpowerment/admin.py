@@ -8,6 +8,7 @@ from import_export.admin import ImportExportModelAdmin
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group, Permission
 import json
+from django.urls import reverse
 from django.utils.timezone import localtime
 import pytz
 from .models import (
@@ -171,9 +172,15 @@ class SchemeAdmin(ImportExportModelAdmin):
 admin_site.register(Scheme, SchemeAdmin)
 
 class SchemeReportAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'scheme_id', 'created_at'] 
+    list_display = ['id', 'linked_user', 'scheme_id', 'created_at'] 
     list_filter = ['created_at'] 
-admin_site.register(SchemeReport)
+
+    def linked_user(self, obj):
+        url = reverse('admin:communityEmpowerment_customuser_change', args=[obj.user.id])
+        return format_html('<a href="{}">{}</a>', url, obj.user.username)
+    
+    linked_user.short_description = "User"
+admin_site.register(SchemeReport, SchemeReportAdmin)
 
 class WebsiteFeedbackAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'description', 'created_at'] 
