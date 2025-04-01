@@ -1374,13 +1374,15 @@ def get_user_popular_schemes(request):
 
 @api_view(["GET"])
 def get_user_event_timeline(request):
-    user_id = request.GET.get("user_id")
+    user_id = request.user.id
     range_type = request.GET.get("range", "daily")
 
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
+    if range_type == "daily":
+        time_threshold = now().replace(hour=0, minute=0, second=0, microsecond=0)
 
-    if range_type == "weekly":
+    elif range_type == "weekly":
         time_threshold = now() - timedelta(weeks=4)
     elif range_type == "monthly":
         time_threshold = now() - timedelta(days=90)
