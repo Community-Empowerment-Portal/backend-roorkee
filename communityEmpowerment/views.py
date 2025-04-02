@@ -1211,19 +1211,29 @@ def get_event_stats(request):
 
 @api_view(["GET"])
 def get_event_timeline(request):
-    range_type = request.GET.get("range", "daily")
+    from_date = request.GET.get("from", None)
+    to_date = request.GET.get("to", None)
+    range_type = request.GET.get("range", None)
     state = request.GET.get("state", None)
 
-    # Set time threshold
-    if range_type == "weekly":
-        time_threshold = now() - timedelta(weeks=4)
-    elif range_type == "monthly":
-        time_threshold = now() - timedelta(days=90)
-    else:
-        time_threshold = now() - timedelta(days=30)
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
+        if not from_date or not to_date:
+            return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
 
-    timeline_query = UserEvents.objects.filter(timestamp__gte=time_threshold)
-    
+    else:
+        if range_type == "weekly":
+            from_date = now() - timedelta(weeks=4)
+        elif range_type == "monthly":
+            from_date = now() - timedelta(days=90)
+        else:
+            from_date = now() - timedelta(days=30)
+        
+        to_date = now()
+
+    timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
+
     if state:
         timeline_query = timeline_query.filter(details__state=state)
 
