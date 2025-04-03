@@ -1348,7 +1348,7 @@ def get_user_summary(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
     user_events = UserEvents.objects.filter(user_id=user_id)
@@ -1376,7 +1376,7 @@ def get_user_popular_schemes(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
     schemes = (
@@ -1409,7 +1409,7 @@ def get_user_event_timeline(request):
     if not user_id:
         return Response({"error": "user_id is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid user_id"}, status=400)
 
     if from_date and to_date:
@@ -1454,7 +1454,7 @@ def get_user_search_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
     searches = (
@@ -1476,7 +1476,7 @@ def get_user_click_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
     clicks = (
@@ -1496,7 +1496,7 @@ def get_user_filter_usage(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
     filters = (
@@ -1518,7 +1518,7 @@ def get_user_download_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
-    if not User.objects.filter(id=user_id).exists():
+    if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
     downloads = (
