@@ -1343,8 +1343,15 @@ def get_popular_clicks(request):
 
 @api_view(["GET"])
 def get_user_summary(request):
+    user_id = request.GET.get("user_id")
 
-    user_events = UserEvents.objects.filter(user=request.user)
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
+    user_events = UserEvents.objects.filter(user_id=user_id)
 
     stats = (
         user_events.values("event_type")
@@ -1360,6 +1367,7 @@ def get_user_summary(request):
     return Response(user_data)
 
 
+
 @api_view(["GET"])
 def get_user_popular_schemes(request):
     user_id = request.GET.get("user_id")
@@ -1368,8 +1376,11 @@ def get_user_popular_schemes(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     schemes = (
-        UserEvents.objects.filter(user=request.user)
+        UserEvents.objects.filter(user_id=user_id)
         .values("scheme_id")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
@@ -1387,35 +1398,37 @@ def get_user_popular_schemes(request):
     return Response(scheme_details)
 
 
+
 @api_view(["GET"])
 def get_user_event_timeline(request):
+    user_id = request.GET.get("user_id", None)
     from_date = request.GET.get("from", None)
     to_date = request.GET.get("to", None)
-    range_type = request.GET.get("range", None)
-    
-    user = request.user
+    range_type = request.GET.get("range", None) 
+
+    if not user_id:
+        return Response({"error": "user_id is required"}, status=400)
+
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid user_id"}, status=400)
 
     if from_date and to_date:
         from_date = parse_date(from_date)
         to_date = parse_date(to_date)
         if not from_date or not to_date:
             return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
-
     else:
-        if range_type == "daily":
-            from_date = now().replace(hour=0, minute=0, second=0, microsecond=0)
-        elif range_type == "weekly":
+
+        if range_type == "weekly":
             from_date = now() - timedelta(weeks=4)
         elif range_type == "monthly":
             from_date = now() - timedelta(days=90)
         else:
-            from_date = now() - timedelta(days=30) 
+            from_date = now() - timedelta(days=30)
 
         to_date = now()
 
-    timeline_query = UserEvents.objects.filter(
-        user=user, timestamp__date__range=[from_date, to_date]
-    )
+    timeline_query = UserEvents.objects.filter(user_id=user_id, timestamp__date__range=[from_date, to_date])
 
     timeline = (
         timeline_query.annotate(date=TruncDate("timestamp"))
@@ -1431,6 +1444,8 @@ def get_user_event_timeline(request):
 
     return Response(timeline)
 
+
+
 @api_view(["GET"])
 def get_user_search_history(request):
     user_id = request.GET.get("user_id")
@@ -1439,14 +1454,18 @@ def get_user_search_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     searches = (
-        UserEvents.objects.filter(user=request.user, event_type="search")
+        UserEvents.objects.filter(user_id=user_id, event_type="search")
         .values("details__query")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
 
     return Response(searches)
+
 
 
 @api_view(["GET"])
@@ -1457,14 +1476,18 @@ def get_user_click_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     clicks = (
-        UserEvents.objects.filter(user=request.user, event_type="click")
+        UserEvents.objects.filter(user_id=user_id, event_type="click")
         .values("details__url")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
 
     return Response(clicks)
+
 
 @api_view(["GET"])
 def get_user_filter_usage(request):
@@ -1473,14 +1496,18 @@ def get_user_filter_usage(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     filters = (
-        UserEvents.objects.filter(user=request.user, event_type="filter")
+        UserEvents.objects.filter(user_id=user_id, event_type="filter")
         .values("details__filter", "details__value")
         .annotate(count=Count("id"))
         .order_by("-count")
     )
 
     return Response(filters)
+
 
 
 @api_view(["GET"])
@@ -1491,8 +1518,11 @@ def get_user_download_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     downloads = (
-        UserEvents.objects.filter(user=request.user, event_type="download")
+        UserEvents.objects.filter(user_id=user_id, event_type="download")
         .values("scheme_id", "timestamp")
         .order_by("-timestamp")[:limit]
     )
@@ -1507,6 +1537,7 @@ def get_user_download_history(request):
     ]
 
     return Response(scheme_details)
+
 
 
 
@@ -1636,3 +1667,11 @@ def send_manual_email(request):
         return Response({"message": "Email sent successfully"}, status=200)
     except Exception as e:
         return Response({"error": str(e)}, status=500)
+    
+
+class UserListView(APIView):
+
+    def get(self, request, format=None):
+        users = CustomUser.objects.all().values('id', 'username', 'name', 'email')
+
+        return Response(users, status=status.HTTP_200_OK)
