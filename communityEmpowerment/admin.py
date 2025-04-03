@@ -308,13 +308,7 @@ class TagAdmin(admin.ModelAdmin):
     readonly_fields = ("tag_names",)
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
-
-        valid_categories = ["scholarship", "job", "sc", "st", "obc", "minority"]
-        return (
-            queryset.filter(category__in=valid_categories)
-            .order_by('category')
-            .distinct('category')  
-        )
+        return queryset.order_by('category').distinct('category')
 
     def category_display(self, obj):
         return obj.category
