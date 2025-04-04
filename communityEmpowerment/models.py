@@ -933,10 +933,16 @@ class Announcement(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
-    def save(self, *args, **kwargs):
+    def clean(self):
         if self.is_active:
-            # Deactivate all other announcements before saving the new one
-            Announcement.objects.filter(is_active=True).update(is_active=False)
+            active_count = Announcement.objects.filter(is_active=True).exclude(pk=self.pk).count()
+
+            # Allow saving only if active announcements are less than 4
+            if active_count >= 4:
+                raise ValidationError("You can have a maximum of 4 active announcements.")
+
+    def save(self, *args, **kwargs):
+        self.clean() 
         super().save(*args, **kwargs)
 
     def __str__(self):

@@ -45,6 +45,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 import json
 from django.core.mail import EmailMessage
+import requests
 
 
 
@@ -1612,3 +1613,15 @@ def send_manual_email(request):
         return Response({"message": "Email sent successfully"}, status=200)
     except Exception as e:
         return Response({"error": str(e)}, status=500)
+
+@csrf_exempt
+def proxy_view(request):
+    target_url = request.GET.get('url')
+    if not target_url:
+        return JsonResponse({'error': 'No URL provided'}, status=400)
+
+    try:
+        response = requests.get(target_url)
+        return HttpResponse(response.content, status=response.status_code, content_type=response.headers.get('Content-Type', 'text/html'))
+    except requests.exceptions.RequestException as e:
+        return JsonResponse({'error': str(e)}, status=500)

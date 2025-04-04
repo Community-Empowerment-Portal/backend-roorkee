@@ -1,71 +1,81 @@
 describe('Django Admin RBAC with Groups', () => {
-  it('Admin creates a group, assigns permissions, and adds a user to the group', () => {
-   
-    //admin login
-    cy.admin_login('karthik', 'Test@123')
-    // Go to Group Creation Page
-    cy.visit('/auth/group/add/')
+  it('Admin creates a group with view permissions', () => {
+    cy.admin_login('karthik', 'Test@123');
+    cy.visit('/auth/group/add/');
+    cy.get('input[name="name"]').type('Viewer');
+    cy.get('input[placeholder="Filter"]').first().type('view');
+    cy.get('.selector-chooseall').click();
+    cy.save();
+    cy.url().should('include', '/auth/group');
+    cy.contains('Viewer').should('be.visible');
+  });
 
-    // Create a new group
-    cy.get('input[name="name"]').type('Viewer')
+  it('Admin creates testuser without staff permissions', () => {
+    cy.admin_login('karthik', 'Test@123');
+    cy.visit('/communityEmpowerment/customuser/add/');
+    cy.get('input[name="username"]').type('testuser');
+    cy.get('input[name="email"]').type('testuser@gmail.com');
+    cy.get('input[name="password1"]').type('Epson&l3115');
+    cy.get('input[name="password2"]').type('Epson&l3115');
+    cy.save();
+    cy.admin_logout();
+  });
 
-    // Filter all view permissions
-    cy.get('input[placeholder="Filter"]').first().type('view')
+  it('Ensure non-staff user is denied admin access', () => {
+    cy.admin_login('testuser', 'Epson&l3115');
+    cy.get('.errornote').should('be.visible');
+  });
 
-    // Choose All the permisssions
-    cy.get('.selector-chooseall').click()
+  it('Admin deletes and recreates testuser with Viewer group', () => {
+    cy.admin_login('karthik', 'Test@123');
+    cy.visit('/communityEmpowerment/customuser/');
+    cy.contains('testuser').click();
+    cy.get('.deletelink').click();
+    cy.get('input[value="Yes, I’m sure"]').click();
 
-    // Save the changes 
-    cy.save()
+    cy.visit('/communityEmpowerment/customuser/add/');
+    cy.get('input[name="username"]').type('testuser');
+    cy.get('input[name="email"]').type('testuser@gmail.com');
+    cy.get('input[name="password1"]').type('Epson&l3115');
+    cy.get('input[name="password2"]').type('Epson&l3115');
+    cy.get('input[name="is_staff"]').check();
+    cy.get('input[name="_continue"]').click();
+    cy.get('#id_groups_add_all_link').click();
+    cy.save();
+    cy.admin_logout();
+  });
 
-    // Ensuring auto redirect to groups page 
-    cy.url().should('include', '/auth/group')
-    
-    // Ensure the group created is visible 
-    cy.contains('Viewer').should('be.visible')
+  it('Ensure Viewer user has restricted access', () => {
+    cy.admin_login('testuser', 'Epson&l3115');
+    cy.visit('/communityEmpowerment/scheme/');
+    cy.get('.results').should('be.visible');
+    cy.visit('/communityEmpowerment/scheme/add', { failOnStatusCode: false });
+    cy.contains('403 Forbidden').should('be.visible');
+  });
 
-    // Go to user creation page
-    cy.visit('/communityEmpowerment/customuser/add/')
+  it('Upgrade testuser to full access', () => {
+    cy.admin_login('karthik', 'Test@123');
+    cy.visit('/communityEmpowerment/customuser/');
+    cy.contains('testuser').click();
+    cy.get('#id_user_permissions_add_all_link').click();
+    cy.save();
+    cy.admin_logout();
+  });
 
-    // Enter the required credentials
-    cy.get('input[name="username"]').type('testuser')
-    cy.get('input[name="email"]').type('testuser@gmail.com')
-    cy.get('input[name="password1"]').type('Epson&l3115')
-    cy.get('input[name="password2"]').type('Epson&l3115')
+  it('Ensure upgraded user can delete groups', () => {
+    cy.admin_login('testuser', 'Epson&l3115');
+    cy.visit('/auth/group');
+    cy.contains('Viewer').click();
+    cy.get('.deletelink').click();
+    cy.get('input[value="Yes, I’m sure"]').click();
+    cy.contains('The group “Viewer” was deleted successfully.').should('be.visible');
+  });
 
-    //Note: not checking is_staff checkbox to check accessibility to admin portal 
-    cy.save()
-    cy.admin_logout()
-
-    // Login as a non staff user
-    cy.admin_login('testuser','Passw0rd')
-
-    // ensure error is thrown 
-    cy.get('.errornote').should('be.visible')
-
-    cy.admin_login('karthik', 'Test@123')
-    cy.visit('/communityEmpowerment/customuser')
-    cy.contains('testuser').should('be.visible').click()
-    cy.get('.deletelink').click()
-    cy.get('input[value="Yes, I’m sure"]').should('be.visible').click()
-
-    // Go to user creation page
-    cy.visit('/communityEmpowerment/customuser/add/')
-
-    // Enter the required credentials
-    cy.get('input[name="username"]').type('testuser')
-    cy.get('input[name="email"]').type('testuser@gmail.com')
-    cy.get('input[name="password1"]').type('Epson&l3115')
-    cy.get('input[name="password2"]').type('Epson&l3115')
-
-    cy.get('input[name="is_staff"]').check()
-    cy.get('input[name="_continue"]').click()
-    cy.get('option[title="Viewer"]').click()
-    cy.get('#id_groups_add_link').click()
-    cy.save()
-    cy.admin_logout()
-    cy.admin_login('testuser','Epson&l3115')
-
-  })
-
-})
+  it('Admin deletes testuser', () => {
+    cy.admin_login('karthik', 'Test@123');
+    cy.visit('/communityEmpowerment/customuser/');
+    cy.contains('testuser').click();
+    cy.get('.deletelink').click();
+    cy.get('input[value="Yes, I’m sure"]').click();
+  });
+});
