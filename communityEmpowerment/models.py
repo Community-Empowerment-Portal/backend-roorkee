@@ -883,9 +883,9 @@ class UserEvents(models.Model):
         ('error', 'Error Event'),
     ]
     
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     event_type = models.CharField(max_length=20, choices=EVENT_TYPES)
-    scheme_id = models.IntegerField(null=True, blank=True)
+    scheme = models.ForeignKey(Scheme, on_delete=models.SET_NULL, null=True, blank=True)
     details = models.JSONField(blank=True, null=True) 
     timestamp = models.DateTimeField(auto_now_add=True)
     ip_address = models.GenericIPAddressField(null=True, blank=True)
