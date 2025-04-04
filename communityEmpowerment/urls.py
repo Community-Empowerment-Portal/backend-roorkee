@@ -89,6 +89,7 @@ from .views import (
     get_user_click_history,
     get_user_filter_usage,
     get_user_download_history,
+    UserListView
     proxy_view
 )
 
@@ -191,5 +192,6 @@ urlpatterns = [
     path("schemes/resources/state/<int:state_id>/", ResourceViewSet.as_view({'get': 'list'}), name="scheme-links-by-state"),
     path('announcements/', AnnouncementListView.as_view(), name='announcements-list'),
     path('send-email/', send_manual_email, name='send-email'),
+    path('users/list/', UserListView.as_view(), name='user-list'),
     path('proxy/', proxy_view, name='proxy-view')
 ]

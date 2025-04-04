@@ -171,19 +171,37 @@ class Organisation(TimeStampedModel):
     def __str__(self):
         return self.organisation_name or "N/A"
     
-class Tag(DirtyFieldsMixin,TimeStampedModel):
+class Tag(DirtyFieldsMixin, TimeStampedModel):
     CATEGORY_CHOICES = [
         ("scholarship", "Scholarship"),
         ("job", "Job Opening"),
+        ("govt_job", "Government Job"),
+        ("private_job", "Private Job"),
+        ("internship", "Internship"),
+        ("skill_based_job", "Skill-Based Job"),
+        ("defense_job", "Defense & Police Job"),
         ("sc", "Scheduled Caste (SC)"),
         ("st", "Scheduled Tribe (ST)"),
         ("obc", "Other Backward Classes (OBC)"),
         ("minority", "Minority Community"),
         ("general", "General"),
+        ("financial_assistance", "Financial Assistance & Subsidies"),
+        ("women", "Women-Centric Schemes"),
+        ("agriculture", "Agriculture & Farmers"),
+        ("senior_citizen", "Senior Citizens & Pension"),
+        ("disability", "Disability & Special Needs"),
+        ("business", "Startups & Business Development"),
+        ("education", "Education & Training"),
+        ("health", "Health & Insurance"),
+        ("housing", "Housing & Infrastructure"),
+        ("youth_skill", "Youth & Skill Development"),
+        ("state_specific", "State-Specific Schemes"),
     ]
+
     name = models.CharField(max_length=255, unique=True)
     weight = models.FloatField(default=1.0)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default="general")
+
     class Meta:
         verbose_name = "Tag"
         verbose_name_plural = "Tags"
@@ -192,15 +210,40 @@ class Tag(DirtyFieldsMixin,TimeStampedModel):
     def save(self, *args, **kwargs):
         scholarship_keywords = ["scholarship", "fellowship", "grant"]
         job_keywords = ["job", "employment", "recruitment", "vacancy", "career"]
+        govt_job_keywords = ["govt job", "government recruitment", "public sector", "sarkari naukri"]
+        private_job_keywords = ["private job", "corporate hiring", "MNC recruitment"]
+        internship_keywords = ["internship", "apprentice", "trainee", "training program"]
+        skill_job_keywords = ["freelance", "gig work", "self-employment", "contract job"]
+        defense_job_keywords = ["army recruitment", "navy job", "air force", "police hiring", "defense"]
         sc_keywords = ["sc", "scheduled caste"]
         st_keywords = ["st", "scheduled tribe"]
         obc_keywords = ["obc", "other backward classes"]
         minority_keywords = ["minority", "muslim", "christian", "sikh", "buddhist", "jain", "parsi"]
+        financial_keywords = ["loan", "subsidy", "financial assistance", "funding", "support"]
+        women_keywords = ["women", "girl child", "mahila", "beti", "nari"]
+        agriculture_keywords = ["farmer", "agriculture", "kisaan", "crop"]
+        senior_keywords = ["senior citizen", "pension", "old age", "vridh"]
+        disability_keywords = ["disability", "divyang", "handicapped", "pwd", "special needs"]
+        business_keywords = ["startup", "business", "entrepreneur", "MSME", "self-employment"]
+        education_keywords = ["education", "training", "coaching"]
+        health_keywords = ["health", "insurance", "medical", "ayushman"]
+        housing_keywords = ["housing", "home", "pradhan mantri awas"]
+        youth_keywords = ["skill development", "training", "youth"]
 
         tag_lower = self.name.lower()
 
         if any(keyword in tag_lower for keyword in scholarship_keywords):
             self.category = "scholarship"
+        elif any(keyword in tag_lower for keyword in govt_job_keywords):
+            self.category = "govt_job"
+        elif any(keyword in tag_lower for keyword in private_job_keywords):
+            self.category = "private_job"
+        elif any(keyword in tag_lower for keyword in internship_keywords):
+            self.category = "internship"
+        elif any(keyword in tag_lower for keyword in skill_job_keywords):
+            self.category = "skill_based_job"
+        elif any(keyword in tag_lower for keyword in defense_job_keywords):
+            self.category = "defense_job"
         elif any(keyword in tag_lower for keyword in job_keywords):
             self.category = "job"
         elif any(keyword in tag_lower for keyword in sc_keywords):
@@ -211,14 +254,28 @@ class Tag(DirtyFieldsMixin,TimeStampedModel):
             self.category = "obc"
         elif any(keyword in tag_lower for keyword in minority_keywords):
             self.category = "minority"
+        elif any(keyword in tag_lower for keyword in financial_keywords):
+            self.category = "financial_assistance"
+        elif any(keyword in tag_lower for keyword in women_keywords):
+            self.category = "women"
+        elif any(keyword in tag_lower for keyword in agriculture_keywords):
+            self.category = "agriculture"
+        elif any(keyword in tag_lower for keyword in senior_keywords):
+            self.category = "senior_citizen"
+        elif any(keyword in tag_lower for keyword in disability_keywords):
+            self.category = "disability"
+        elif any(keyword in tag_lower for keyword in business_keywords):
+            self.category = "business"
+        elif any(keyword in tag_lower for keyword in education_keywords):
+            self.category = "education"
+        elif any(keyword in tag_lower for keyword in health_keywords):
+            self.category = "health"
+        elif any(keyword in tag_lower for keyword in housing_keywords):
+            self.category = "housing"
+        elif any(keyword in tag_lower for keyword in youth_keywords):
+            self.category = "youth_skill"
         else:
             self.category = "general"
-
-        if self.pk: 
-            old_tag = Tag.objects.get(pk=self.pk)
-            if old_tag.weight != self.weight:
-                related_tags = Tag.objects.filter(category=self.category)
-                related_tags.update(weight=self.weight)
 
         super().save(*args, **kwargs)
 

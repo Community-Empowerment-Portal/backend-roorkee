@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
+from django.utils.dateparse import parse_date
 from django.db.models.functions import TruncDate, TruncMonth
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
@@ -1211,19 +1212,29 @@ def get_event_stats(request):
 
 @api_view(["GET"])
 def get_event_timeline(request):
-    range_type = request.GET.get("range", "daily")
+    from_date = request.GET.get("from", None)
+    to_date = request.GET.get("to", None)
+    range_type = request.GET.get("range", None)
     state = request.GET.get("state", None)
 
-    # Set time threshold
-    if range_type == "weekly":
-        time_threshold = now() - timedelta(weeks=4)
-    elif range_type == "monthly":
-        time_threshold = now() - timedelta(days=90)
-    else:
-        time_threshold = now() - timedelta(days=30)
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
+        if not from_date or not to_date:
+            return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
 
-    timeline_query = UserEvents.objects.filter(timestamp__gte=time_threshold)
-    
+    else:
+        if range_type == "weekly":
+            from_date = now() - timedelta(weeks=4)
+        elif range_type == "monthly":
+            from_date = now() - timedelta(days=90)
+        else:
+            from_date = now() - timedelta(days=30)
+        
+        to_date = now()
+
+    timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
+
     if state:
         timeline_query = timeline_query.filter(details__state=state)
 
@@ -1333,8 +1344,15 @@ def get_popular_clicks(request):
 
 @api_view(["GET"])
 def get_user_summary(request):
+    user_id = request.GET.get("user_id")
 
-    user_events = UserEvents.objects.filter(user=request.user)
+    if not user_id:
+        return Response({"error": "User ID is required"}, status=400)
+
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
+    user_events = UserEvents.objects.filter(user_id=user_id)
 
     stats = (
         user_events.values("event_type")
@@ -1350,6 +1368,7 @@ def get_user_summary(request):
     return Response(user_data)
 
 
+
 @api_view(["GET"])
 def get_user_popular_schemes(request):
     user_id = request.GET.get("user_id")
@@ -1358,8 +1377,11 @@ def get_user_popular_schemes(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     schemes = (
-        UserEvents.objects.filter(user=request.user)
+        UserEvents.objects.filter(user_id=user_id)
         .values("scheme_id")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
@@ -1377,22 +1399,37 @@ def get_user_popular_schemes(request):
     return Response(scheme_details)
 
 
+
 @api_view(["GET"])
 def get_user_event_timeline(request):
-    user_id = request.GET.get("user_id")
-    range_type = request.GET.get("range", "daily")
+    user_id = request.GET.get("user_id", None)
+    from_date = request.GET.get("from", None)
+    to_date = request.GET.get("to", None)
+    range_type = request.GET.get("range", None) 
 
     if not user_id:
-        return Response({"error": "User ID is required"}, status=400)
+        return Response({"error": "user_id is required"}, status=400)
 
-    if range_type == "weekly":
-        time_threshold = now() - timedelta(weeks=4)
-    elif range_type == "monthly":
-        time_threshold = now() - timedelta(days=90)
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid user_id"}, status=400)
+
+    if from_date and to_date:
+        from_date = parse_date(from_date)
+        to_date = parse_date(to_date)
+        if not from_date or not to_date:
+            return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
     else:
-        time_threshold = now() - timedelta(days=30)
 
-    timeline_query = UserEvents.objects.filter(user=request.user, timestamp__gte=time_threshold)
+        if range_type == "weekly":
+            from_date = now() - timedelta(weeks=4)
+        elif range_type == "monthly":
+            from_date = now() - timedelta(days=90)
+        else:
+            from_date = now() - timedelta(days=30)
+
+        to_date = now()
+
+    timeline_query = UserEvents.objects.filter(user_id=user_id, timestamp__date__range=[from_date, to_date])
 
     timeline = (
         timeline_query.annotate(date=TruncDate("timestamp"))
@@ -1408,6 +1445,8 @@ def get_user_event_timeline(request):
 
     return Response(timeline)
 
+
+
 @api_view(["GET"])
 def get_user_search_history(request):
     user_id = request.GET.get("user_id")
@@ -1416,14 +1455,18 @@ def get_user_search_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     searches = (
-        UserEvents.objects.filter(user=request.user, event_type="search")
+        UserEvents.objects.filter(user_id=user_id, event_type="search")
         .values("details__query")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
 
     return Response(searches)
+
 
 
 @api_view(["GET"])
@@ -1434,14 +1477,18 @@ def get_user_click_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     clicks = (
-        UserEvents.objects.filter(user=request.user, event_type="click")
+        UserEvents.objects.filter(user_id=user_id, event_type="click")
         .values("details__url")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
 
     return Response(clicks)
+
 
 @api_view(["GET"])
 def get_user_filter_usage(request):
@@ -1450,14 +1497,18 @@ def get_user_filter_usage(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     filters = (
-        UserEvents.objects.filter(user=request.user, event_type="filter")
+        UserEvents.objects.filter(user_id=user_id, event_type="filter")
         .values("details__filter", "details__value")
         .annotate(count=Count("id"))
         .order_by("-count")
     )
 
     return Response(filters)
+
 
 
 @api_view(["GET"])
@@ -1468,8 +1519,11 @@ def get_user_download_history(request):
     if not user_id:
         return Response({"error": "User ID is required"}, status=400)
 
+    if not CustomUser.objects.filter(id=user_id).exists():
+        return Response({"error": "Invalid User ID"}, status=400)
+
     downloads = (
-        UserEvents.objects.filter(user=request.user, event_type="download")
+        UserEvents.objects.filter(user_id=user_id, event_type="download")
         .values("scheme_id", "timestamp")
         .order_by("-timestamp")[:limit]
     )
@@ -1484,6 +1538,7 @@ def get_user_download_history(request):
     ]
 
     return Response(scheme_details)
+
 
 
 
@@ -1613,6 +1668,14 @@ def send_manual_email(request):
         return Response({"message": "Email sent successfully"}, status=200)
     except Exception as e:
         return Response({"error": str(e)}, status=500)
+    
+
+class UserListView(APIView):
+
+    def get(self, request, format=None):
+        users = CustomUser.objects.all().values('id', 'username', 'name', 'email')
+
+        return Response(users, status=status.HTTP_200_OK)
 
 @csrf_exempt
 def proxy_view(request):
