@@ -1441,7 +1441,7 @@ def get_user_event_timeline(request):
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
-            clicks=Count("id", filter=Q(event_type="click")),
+            clicks=Count("id", filter=Q(event_type="apply")),
         )
         .order_by("date")
     )
