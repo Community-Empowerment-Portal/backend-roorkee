@@ -207,6 +207,17 @@ class Tag(DirtyFieldsMixin, TimeStampedModel):
         verbose_name_plural = "Tags"
         ordering = ['name']
 
+    def match_keywords(self, text, keywords):
+        for kw in keywords:
+            kw = kw.lower()
+            if kw in ["sc", "st", "obc"]:
+                if re.search(rf'\b{re.escape(kw)}\b', text):
+                    return True
+            else:
+                if kw in text:
+                    return True
+        return False
+
     def save(self, *args, **kwargs):
         scholarship_keywords = ["scholarship", "fellowship", "grant"]
         job_keywords = ["job", "employment", "recruitment", "vacancy", "career"]
@@ -232,47 +243,47 @@ class Tag(DirtyFieldsMixin, TimeStampedModel):
 
         tag_lower = self.name.lower()
 
-        if any(keyword in tag_lower for keyword in scholarship_keywords):
+        if self.match_keywords(tag_lower, scholarship_keywords):
             self.category = "scholarship"
-        elif any(keyword in tag_lower for keyword in govt_job_keywords):
+        elif self.match_keywords(tag_lower, govt_job_keywords):
             self.category = "govt_job"
-        elif any(keyword in tag_lower for keyword in private_job_keywords):
+        elif self.match_keywords(tag_lower, private_job_keywords):
             self.category = "private_job"
-        elif any(keyword in tag_lower for keyword in internship_keywords):
+        elif self.match_keywords(tag_lower, internship_keywords):
             self.category = "internship"
-        elif any(keyword in tag_lower for keyword in skill_job_keywords):
+        elif self.match_keywords(tag_lower, skill_job_keywords):
             self.category = "skill_based_job"
-        elif any(keyword in tag_lower for keyword in defense_job_keywords):
+        elif self.match_keywords(tag_lower, defense_job_keywords):
             self.category = "defense_job"
-        elif any(keyword in tag_lower for keyword in job_keywords):
+        elif self.match_keywords(tag_lower, job_keywords):
             self.category = "job"
-        elif any(keyword in tag_lower for keyword in sc_keywords):
+        elif self.match_keywords(tag_lower, sc_keywords):
             self.category = "sc"
-        elif any(keyword in tag_lower for keyword in st_keywords):
+        elif self.match_keywords(tag_lower, st_keywords):
             self.category = "st"
-        elif any(keyword in tag_lower for keyword in obc_keywords):
+        elif self.match_keywords(tag_lower, obc_keywords):
             self.category = "obc"
-        elif any(keyword in tag_lower for keyword in minority_keywords):
+        elif self.match_keywords(tag_lower, minority_keywords):
             self.category = "minority"
-        elif any(keyword in tag_lower for keyword in financial_keywords):
+        elif self.match_keywords(tag_lower, financial_keywords):
             self.category = "financial_assistance"
-        elif any(keyword in tag_lower for keyword in women_keywords):
+        elif self.match_keywords(tag_lower, women_keywords):
             self.category = "women"
-        elif any(keyword in tag_lower for keyword in agriculture_keywords):
+        elif self.match_keywords(tag_lower, agriculture_keywords):
             self.category = "agriculture"
-        elif any(keyword in tag_lower for keyword in senior_keywords):
+        elif self.match_keywords(tag_lower, senior_keywords):
             self.category = "senior_citizen"
-        elif any(keyword in tag_lower for keyword in disability_keywords):
+        elif self.match_keywords(tag_lower, disability_keywords):
             self.category = "disability"
-        elif any(keyword in tag_lower for keyword in business_keywords):
+        elif self.match_keywords(tag_lower, business_keywords):
             self.category = "business"
-        elif any(keyword in tag_lower for keyword in education_keywords):
+        elif self.match_keywords(tag_lower, education_keywords):
             self.category = "education"
-        elif any(keyword in tag_lower for keyword in health_keywords):
+        elif self.match_keywords(tag_lower, health_keywords):
             self.category = "health"
-        elif any(keyword in tag_lower for keyword in housing_keywords):
+        elif self.match_keywords(tag_lower, housing_keywords):
             self.category = "housing"
-        elif any(keyword in tag_lower for keyword in youth_keywords):
+        elif self.match_keywords(tag_lower, youth_keywords):
             self.category = "youth_skill"
         else:
             self.category = "general"
@@ -281,6 +292,7 @@ class Tag(DirtyFieldsMixin, TimeStampedModel):
 
     def __str__(self):
         return self.name or "N/A"
+
 
 
      
