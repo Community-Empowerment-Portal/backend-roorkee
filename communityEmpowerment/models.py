@@ -985,21 +985,32 @@ class Resource(models.Model):
 
 
 class Announcement(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(storage=MediaStorage(), upload_to='announcements/')
     is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
+        # Validate max 4 active announcements
         if self.is_active:
             active_count = Announcement.objects.filter(is_active=True).exclude(pk=self.pk).count()
-
-            # Allow saving only if active announcements are less than 4
             if active_count >= 4:
                 raise ValidationError("You can have a maximum of 4 active announcements.")
+        
+        if self.image:
+            try:
+                img = Image.open(self.image)
+                width, height = img.size
+                expected_ratio = 16 / 9
+                actual_ratio = width / height
+                if not (abs(actual_ratio - expected_ratio) < 0.05):
+                    raise ValidationError("Image must have a 16:9 aspect ratio.")
+            except Exception:
+                raise ValidationError("Invalid image uploaded.")
 
     def save(self, *args, **kwargs):
-        self.clean() 
+        self.full_clean()
         super().save(*args, **kwargs)
 
     def __str__(self):
