@@ -89,8 +89,8 @@ from .views import (
     get_user_click_history,
     get_user_filter_usage,
     get_user_download_history,
-    UserListView
-    proxy_view
+    UserListView,
+    proxy_view,
 )
 
 

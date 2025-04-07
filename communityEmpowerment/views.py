@@ -1380,20 +1380,23 @@ def get_user_popular_schemes(request):
     if not CustomUser.objects.filter(id=user_id).exists():
         return Response({"error": "Invalid User ID"}, status=400)
 
-    schemes = (
-        UserEvents.objects.filter(user_id=user_id)
+    scheme_interactions = (
+        UserEvents.objects.filter(user_id=user_id, scheme__isnull=False) 
         .values("scheme_id")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
     )
 
+    scheme_ids = [entry["scheme_id"] for entry in scheme_interactions]
+    schemes = {scheme.id: scheme.title for scheme in Scheme.objects.filter(id__in=scheme_ids)}
+
     scheme_details = [
         {
             "scheme_id": scheme["scheme_id"],
-            "title": Scheme.objects.get(id=scheme["scheme_id"]).title,
+            "title": schemes.get(scheme["scheme_id"], "Unknown Scheme"),  
             "count": scheme["count"],
         }
-        for scheme in schemes
+        for scheme in scheme_interactions
     ]
 
     return Response(scheme_details)
@@ -1438,7 +1441,7 @@ def get_user_event_timeline(request):
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
-            clicks=Count("id", filter=Q(event_type="click")),
+            clicks=Count("id", filter=Q(event_type="apply")),
         )
         .order_by("date")
     )
