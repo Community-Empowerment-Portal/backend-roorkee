@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 import re
 from dirtyfields import DirtyFieldsMixin
 from orderable.models import Orderable
-
+from PIL import Image, UnidentifiedImageError
 from storages.backends.s3boto3 import S3Boto3Storage
 
 class MediaStorage(S3Boto3Storage):
@@ -1014,12 +1014,12 @@ class Announcement(models.Model):
             try:
                 img = Image.open(self.image)
                 width, height = img.size
-                expected_ratio = 16 / 9
+                expected_ratio = 2 / 1
                 actual_ratio = width / height
-                if not (abs(actual_ratio - expected_ratio) < 0.05):
-                    raise ValidationError("Image must have a 16:9 aspect ratio.")
-            except Exception:
-                raise ValidationError("Invalid image uploaded.")
+                if not (abs(actual_ratio - expected_ratio) < 0.09):
+                    raise ValidationError(f"Image must have a 2:1 aspect ratio.{ actual_ratio}")
+            except Exception as e:
+                raise ValidationError(f"Error processing image: {str(e)}")
 
     def save(self, *args, **kwargs):
         self.full_clean()
