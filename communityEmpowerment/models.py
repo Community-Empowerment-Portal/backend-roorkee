@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 import re
 from dirtyfields import DirtyFieldsMixin
 from orderable.models import Orderable
-
+from PIL import Image, UnidentifiedImageError
 from storages.backends.s3boto3 import S3Boto3Storage
 
 class MediaStorage(S3Boto3Storage):
@@ -997,21 +997,32 @@ class Resource(models.Model):
 
 
 class Announcement(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(storage=MediaStorage(), upload_to='announcements/')
     is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
+        # Validate max 4 active announcements
         if self.is_active:
             active_count = Announcement.objects.filter(is_active=True).exclude(pk=self.pk).count()
-
-            # Allow saving only if active announcements are less than 4
             if active_count >= 4:
                 raise ValidationError("You can have a maximum of 4 active announcements.")
+        
+        if self.image:
+            try:
+                img = Image.open(self.image)
+                width, height = img.size
+                expected_ratio = 2 / 1
+                actual_ratio = width / height
+                if not (abs(actual_ratio - expected_ratio) < 0.09):
+                    raise ValidationError(f"Image must have a 2:1 aspect ratio.{ actual_ratio}")
+            except Exception as e:
+                raise ValidationError(f"Error processing image: {str(e)}")
 
     def save(self, *args, **kwargs):
-        self.clean() 
+        self.full_clean()
         super().save(*args, **kwargs)
 
     def __str__(self):
