@@ -7,7 +7,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
 from django.utils.dateparse import parse_date
-from django.db.models.functions import TruncDate, TruncMonth
+from django.db.models.functions import TruncDate, TruncMonth, TruncWeek
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
@@ -1402,13 +1402,12 @@ def get_user_popular_schemes(request):
     return Response(scheme_details)
 
 
-
 @api_view(["GET"])
 def get_user_event_timeline(request):
-    user_id = request.GET.get("user_id", None)
+    user_id = request.GET.get("user_id")
+    range_type = request.GET.get("range", None)
     from_date = request.GET.get("from", None)
     to_date = request.GET.get("to", None)
-    range_type = request.GET.get("range", None) 
 
     if not user_id:
         return Response({"error": "user_id is required"}, status=400)
@@ -1422,31 +1421,41 @@ def get_user_event_timeline(request):
         if not from_date or not to_date:
             return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
     else:
-
         if range_type == "weekly":
-            from_date = now() - timedelta(weeks=4)
+            from_date = now() - timedelta(weeks=8)
         elif range_type == "monthly":
-            from_date = now() - timedelta(days=90)
+            from_date = now() - timedelta(days=180)
         else:
             from_date = now() - timedelta(days=30)
-
         to_date = now()
 
-    timeline_query = UserEvents.objects.filter(user_id=user_id, timestamp__date__range=[from_date, to_date])
+    timeline_query = UserEvents.objects.filter(
+        user_id=user_id,
+        timestamp__date__range=[from_date, to_date]
+    )
+
+
+    if range_type == "monthly":
+        truncate = TruncMonth("timestamp")
+    elif range_type == "weekly":
+        truncate = TruncWeek("timestamp")
+    else:
+        truncate = TruncDate("timestamp")
 
     timeline = (
-        timeline_query.annotate(date=TruncDate("timestamp"))
-        .values("date")
+        timeline_query.annotate(period=truncate)
+        .values("period")
         .annotate(
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
             clicks=Count("id", filter=Q(event_type="apply")),
         )
-        .order_by("date")
+        .order_by("period")
     )
 
     return Response(timeline)
+
 
 
 
@@ -1484,7 +1493,7 @@ def get_user_click_history(request):
         return Response({"error": "Invalid User ID"}, status=400)
 
     clicks = (
-        UserEvents.objects.filter(user_id=user_id, event_type="click")
+        UserEvents.objects.filter(user_id=user_id, event_type="apply")
         .values("details__url")
         .annotate(count=Count("id"))
         .order_by("-count")[:limit]
