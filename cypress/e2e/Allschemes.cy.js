@@ -1,22 +1,17 @@
-// Simplified Schemes Management Test Suite
-// Focuses on essential test cases only: CRUD, permissions, and search functionality
-
 describe('Scheme Management - Essential Tests', () => {
-  // Generate unique ID for test data
-  const testId = Date.now();
   
   // Simple test data structures
   const testData = {
-    state: `Test State ${testId}`,
-    department: `Test Department ${testId}`,
-    scheme: `Test Scheme ${testId}`,
-    updatedScheme: `Updated Scheme ${testId}`
+    state: `Test State`,
+    department: `Test Department`,
+    scheme: `Test Scheme`,
+    updatedScheme: `Updated Scheme`
   };
   
   // Store created record IDs for cleanup
   const createdIds = {};
   
-  // User credentials - from fixture or defaults
+  // User credentials
   const users = {
     admin: { username: 'admin', password: 'adminpassword' },
     editor: { username: 'editor', password: 'editorpassword' },
@@ -25,36 +20,25 @@ describe('Scheme Management - Essential Tests', () => {
 
   // Helper function to create prerequisites
   const createPrerequisites = () => {
-    // Create state
-    cy.visit('/admin/communityEmpowerment/state/add/');
-    cy.fillAdminForm({ 'name': testData.state }, 'input');
+    cy.visit('/communityEmpowerment/state/add/');
+    cy.fillAdminForm({ 'state_name': testData.state }, 'input');
     cy.save();
     cy.url().then(url => {
-      createdIds.state = url.split('/').filter(Boolean).pop();
-      
-      // Create department (depends on state)
-      cy.visit('/admin/communityEmpowerment/department/add/');
-      cy.fillAdminForm({ 'name': testData.department }, 'input');
-      
-      // Associate with state if the field exists
-      cy.get('body').then($body => {
-        if ($body.find('select[name="state"]').length) {
-          cy.get('select[name="state"] option')
-            .contains(testData.state)
-            .then($option => {
-              if ($option.length) {
-                cy.get('select[name="state"]').select($option.val());
-              }
-            });
-        }
-      });
-      
-      cy.save();
-      cy.url().then(url => {
-        createdIds.department = url.split('/').filter(Boolean).pop();
-      });
+      const parts = url.split('/').filter(Boolean);
+      createdIds.state = parts[parts.length - 2];
+    });
+  
+    cy.visit('/communityEmpowerment/department/add/');
+    cy.fillAdminForm({ 'department_name': testData.department }, 'input');
+  
+    cy.get('select[name="state"]').select(testData.state); 
+    cy.save();
+    cy.url().then(url => {
+      const parts = url.split('/').filter(Boolean);
+      createdIds.department = parts[parts.length - 2];
     });
   };
+  
 
   // Login as admin before tests
   before(() => {
@@ -74,31 +58,31 @@ describe('Scheme Management - Essential Tests', () => {
   const cleanupTestData = () => {
     // Delete scheme first (to avoid foreign key constraints)
     if (createdIds.scheme) {
-      cy.visit(`/admin/communityEmpowerment/scheme/${createdIds.scheme}/delete/`);
-      cy.contains('Yes, I\'m sure').click();
+      cy.visit(`/communityEmpowerment/scheme/${createdIds.scheme}/delete/`);
+      cy.contains("Yes, I\'m sure").click();
     }
     
     // Delete department
     if (createdIds.department) {
-      cy.visit(`/admin/communityEmpowerment/department/${createdIds.department}/delete/`);
-      cy.contains('Yes, I\'m sure').click();
+      cy.visit(`/communityEmpowerment/department/${createdIds.department}/delete/`);
+      cy.contains("Yes, I\'m sure").click();
     }
     
     // Delete state
     if (createdIds.state) {
-      cy.visit(`/admin/communityEmpowerment/state/${createdIds.state}/delete/`);
-      cy.contains('Yes, I\'m sure').click();
+      cy.visit(`/communityEmpowerment/state/${createdIds.state}/delete/`);
+      cy.contains("Yes, I\'m sure").click();
     }
   };
 
   // 1. BASIC CRUD OPERATIONS
   context('1. Basic CRUD Operations', () => {
     it('should create a new scheme', () => {
-      cy.visit('/admin/communityEmpowerment/scheme/add/');
+      cy.visit('/communityEmpowerment/scheme/add/');
       
       // Fill basic scheme information
-      cy.fillAdminForm({ 'name': testData.scheme }, 'input');
-      cy.fillAdminForm({ 'short_description': 'Test scheme description' }, 'textarea');
+      cy.fillAdminForm({ 'title': testData.scheme }, 'textarea');
+      cy.fillAdminForm({ 'description': 'Test scheme description' }, 'textarea');
       
       // Associate with department if the field exists
       cy.get('body').then($body => {
@@ -112,15 +96,7 @@ describe('Scheme Management - Essential Tests', () => {
             });
         }
         
-        // Check for states field
-        if ($body.find('.field-states').length) {
-          cy.selectAdminManyToMany('states', testData.state);
-        }
       });
-      
-      // Set active status
-      cy.fillAdminForm({ 'is_active': true }, 'checkbox');
-      
       // Save the new scheme
       cy.save();
       cy.verifyMessage('success', 'added successfully');
@@ -133,7 +109,7 @@ describe('Scheme Management - Essential Tests', () => {
     
     it('should read and verify scheme details', () => {
       // Visit the scheme list
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Verify the scheme appears in the list
       cy.get('#result_list').should('contain', testData.scheme);
@@ -142,35 +118,35 @@ describe('Scheme Management - Essential Tests', () => {
       cy.contains(testData.scheme).click();
       
       // Verify scheme details
-      cy.get('input[name="name"]').should('have.value', testData.scheme);
-      cy.get('textarea[name="short_description"]').should('have.value', 'Test scheme description');
+      cy.get('textarea[name="title"]').should('have.value', testData.scheme);
+      cy.get('textarea[name="description"]').should('have.value', 'Test scheme description');
     });
     
     it('should update scheme details', () => {
       // Visit the scheme edit page
-      cy.visit(`/admin/communityEmpowerment/scheme/${createdIds.scheme}/change/`);
+      cy.visit(`/communityEmpowerment/scheme/${createdIds.scheme}/change/`);
       
       // Update the name
-      cy.fillAdminForm({ 'name': testData.updatedScheme }, 'input');
-      cy.fillAdminForm({ 'short_description': 'Updated description' }, 'textarea');
+      cy.fillAdminForm({ 'title': testData.updatedScheme }, 'textarea');
+      cy.fillAdminForm({ 'description': 'Updated description' }, 'textarea');
       
       // Save changes
       cy.save();
       cy.verifyMessage('success', 'changed successfully');
       
       // Verify changes in list view
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       cy.get('#result_list').should('contain', testData.updatedScheme);
     });
     
     it('should delete a scheme', () => {
       // Create a scheme specifically for deletion
-      cy.visit('/admin/communityEmpowerment/scheme/add/');
-      const deleteScheme = `Delete Test ${testId}`;
+      cy.visit('/communityEmpowerment/scheme/add/');
+      const deleteScheme = `Delete Test`;
       
       // Fill minimal required fields
-      cy.fillAdminForm({ 'name': deleteScheme }, 'input');
-      cy.fillAdminForm({ 'short_description': 'To be deleted' }, 'textarea');
+      cy.fillAdminForm({ 'title': deleteScheme }, 'input');
+      cy.fillAdminForm({ 'description': 'To be deleted' }, 'textarea');
       
       // Associate with department if needed
       cy.get('body').then($body => {
@@ -193,8 +169,8 @@ describe('Scheme Management - Essential Tests', () => {
         const deleteId = url.split('/').filter(Boolean).pop();
         
         // Visit delete page
-        cy.visit(`/admin/communityEmpowerment/scheme/${deleteId}/delete/`);
-        cy.contains('Yes, I\'m sure').click();
+        cy.visit(`/communityEmpowerment/scheme/${deleteId}/delete/`);
+        cy.contains("Yes, I\'m sure").click();
         
         // Verify deletion
         cy.verifyMessage('success', 'deleted successfully');
@@ -213,7 +189,7 @@ describe('Scheme Management - Essential Tests', () => {
       cy.admin_login(users.editor.username, users.editor.password);
       
       // Visit schemes list
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Editor should be able to view schemes
       cy.get('#result_list').should('exist');
@@ -249,7 +225,7 @@ describe('Scheme Management - Essential Tests', () => {
       cy.admin_login(users.viewer.username, users.viewer.password);
       
       // Visit schemes list
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Viewer should be able to view schemes list
       cy.get('#result_list').should('exist');
@@ -281,7 +257,7 @@ describe('Scheme Management - Essential Tests', () => {
   context('3. Search and Filter Functionality', () => {
     it('should search for schemes by name', () => {
       // Visit scheme list
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Search for the updated scheme name
       cy.get('#searchbar').type(testData.updatedScheme);
@@ -291,12 +267,12 @@ describe('Scheme Management - Essential Tests', () => {
       cy.get('#result_list').should('contain', testData.updatedScheme);
       
       // Clear search
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
     });
     
     it('should filter schemes by department or state', () => {
       // Visit scheme list
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Check for filter options
       cy.get('#changelist-filter').then($filter => {
