@@ -1,0 +1,145 @@
+{
+  "users": {
+    "admin": {
+      "username": "admin",
+      "password": "adminpassword",
+      "email": "admin@example.com",
+      "firstName": "Admin",
+      "lastName": "User",
+      "description": "User with full administrative access",
+      "permissions": {
+        "isStaff": true,
+        "isSuperuser": true,
+        "isActive": true,
+        "groups": [],
+        "userPermissions": [],
+        "canAdd": ["*"],
+        "canChange": ["*"],
+        "canDelete": ["*"],
+        "canView": ["*"]
+      },
+      "expectedUi": {
+        "hasAddButtons": true,
+        "hasSaveButtons": true,
+        "hasDeleteButtons": true,
+        "hasListFilters": true,
+        "hasBulkActions": true,
+        "canEditInlineFields": true,
+        "accessibleSections": [
+          "Access Management",
+          "Layouts",
+          "All Schemes",
+          "Feedback & Reports",
+          "User Events",
+          "Assets",
+          "Periodic Tasks",
+          "Token Blacklist"
+        ]
+      }
+    },
+    "editor": {
+      "username": "editor",
+      "password": "editorpassword",
+      "email": "editor@example.com",
+      "firstName": "Editor",
+      "lastName": "User",
+      "description": "User with content editing permissions but limited administrative access",
+      "permissions": {
+        "isStaff": true,
+        "isSuperuser": false,
+        "isActive": true,
+        "groups": ["Content Editors"],
+        "userPermissions": [
+          "view_state", "change_state",
+          "view_department", "change_department",
+          "view_faq", "change_faq", "add_faq",
+          "view_banner", "change_banner", "add_banner",
+          "view_announcement", "change_announcement", "add_announcement",
+          "view_layoutitem", "change_layoutitem",
+          "change_scheme", "view_scheme"
+        ],
+        "canAdd": ["faq", "banner", "announcement"],
+        "canChange": ["state", "department", "faq", "banner", "announcement", "layoutitem", "scheme"],
+        "canDelete": [],
+        "canView": ["state", "department", "faq", "banner", "announcement", "layoutitem", "customuser", "userevent", "scheme"]
+      },
+      "expectedUi": {
+        "hasAddButtons": {
+          "faq": true,
+          "banner": true,
+          "announcement": true,
+          "state": false,
+          "department": false,
+          "layoutitem": false,
+          "customuser": false
+        },
+        "hasSaveButtons": true,
+        "hasDeleteButtons": false,
+        "hasListFilters": true,
+        "hasBulkActions": false,
+        "canEditInlineFields": {
+          "faq.is_active": true,
+          "faq.order": true,
+          "banner.is_active": true,
+          "layoutitem.is_active": false,
+          "layoutitem.order": false
+        },
+        "accessibleSections": [
+          "Layouts",
+          "All Schemes",
+          "Feedback & Reports"
+        ]
+      }
+    },
+    "viewer": {
+      "username": "viewer",
+      "password": "viewerpassword",
+      "email": "viewer@example.com",
+      "firstName": "Viewer",
+      "lastName": "User",
+      "description": "User with read-only access to content",
+      "permissions": {
+        "isStaff": true,
+        "isSuperuser": false,
+        "isActive": true,
+        "groups": ["Content Viewers"],
+        "userPermissions": [
+          "view_state",
+          "view_department",
+          "view_faq",
+          "view_banner",
+          "view_announcement",
+          "view_layoutitem",
+          "view_userevent",
+          "view_scheme"
+        ],
+        "canAdd": [],
+        "canChange": [],
+        "canDelete": [],
+        "canView": ["state", "department", "faq", "banner", "announcement", "layoutitem", "userevent", "scheme"]
+      },
+      "expectedUi": {
+        "hasAddButtons": false,
+        "hasSaveButtons": false,
+        "hasDeleteButtons": false,
+        "hasListFilters": true,
+        "hasBulkActions": false,
+        "canEditInlineFields": false,
+        "accessibleSections": [
+          "All Schemes",
+          "Feedback & Reports"
+        ]
+      }
+    }
+  },
+  "testDefaults": {
+    "stateName": "Test State",
+    "departmentName": "Test Department",
+    "faqQuestion": "Test FAQ Question",
+    "bannerTitle": "Test Banner",
+    "announcementTitle": "Test Announcement",
+    "layoutItemTitle": "Test Layout Item",
+    "testUserPrefix": "testuser",
+    "timestamp": "Date.now()"
+  }
+}
