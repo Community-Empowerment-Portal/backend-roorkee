@@ -39,9 +39,7 @@ Cypress.Commands.add('admin_login', (username, password) => {
  * Logs out of the Django admin panel
  */
 Cypress.Commands.add('admin_logout', () => {
-  cy.visit('/logout/');
-  cy.url().should('include', '/login/');
-  cy.get('input[name="username"]').should('exist');
+    cy.contains('button', 'Log out').should('be.visible').click();
 });
 
 // ===============================

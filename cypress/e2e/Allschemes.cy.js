@@ -46,6 +46,12 @@ describe('Scheme Management - Essential Tests', () => {
     cy.admin_login(users.admin.username, users.admin.password);
     createPrerequisites();
   });
+  
+  beforeEach(() => {
+    cy.session('admin-session', () => {
+      cy.admin_login(users.admin.username, users.admin.password);
+    });
+  });
 
   // Logout after all tests
   after(() => {
@@ -59,7 +65,7 @@ describe('Scheme Management - Essential Tests', () => {
     // Delete scheme first (to avoid foreign key constraints)
     if (createdIds.scheme) {
       cy.visit(`/communityEmpowerment/scheme/${createdIds.scheme}/delete/`);
-      cy.contains("Yes, I\'m sure").click();
+      cy.contains('Yes, I\'m sure').click();
     }
     
     // Delete department
@@ -100,11 +106,6 @@ describe('Scheme Management - Essential Tests', () => {
       // Save the new scheme
       cy.save();
       cy.verifyMessage('success', 'added successfully');
-      
-      // Store the scheme ID for later use
-      cy.url().then(url => {
-        createdIds.scheme = url.split('/').filter(Boolean).pop();
-      });
     });
     
     it('should read and verify scheme details', () => {
@@ -117,6 +118,11 @@ describe('Scheme Management - Essential Tests', () => {
       // Visit the scheme detail page
       cy.contains(testData.scheme).click();
       
+      // Store the scheme ID for later use
+      cy.url().then(url => {
+        const parts = url.split('/').filter(Boolean);
+      createdIds.scheme = parts[parts.length - 2];
+      });
       // Verify scheme details
       cy.get('textarea[name="title"]').should('have.value', testData.scheme);
       cy.get('textarea[name="description"]').should('have.value', 'Test scheme description');
@@ -145,7 +151,7 @@ describe('Scheme Management - Essential Tests', () => {
       const deleteScheme = `Delete Test`;
       
       // Fill minimal required fields
-      cy.fillAdminForm({ 'title': deleteScheme }, 'input');
+      cy.fillAdminForm({ 'title': deleteScheme }, 'textarea');
       cy.fillAdminForm({ 'description': 'To be deleted' }, 'textarea');
       
       // Associate with department if needed
@@ -163,14 +169,21 @@ describe('Scheme Management - Essential Tests', () => {
       
       // Save the scheme
       cy.save();
+      cy.verifyMessage('success', 'added successfully');
+      cy.wait(2000)
+      cy.get('#result_list').should('contain', deleteScheme);
       
+      // Visit the scheme detail page
+      cy.contains(deleteScheme).click();
+
       // Get the ID and delete it
       cy.url().then(url => {
-        const deleteId = url.split('/').filter(Boolean).pop();
+        const parts = url.split('/').filter(Boolean);
+        deleteId = parts[parts.length - 2];
         
         // Visit delete page
         cy.visit(`/communityEmpowerment/scheme/${deleteId}/delete/`);
-        cy.contains("Yes, I\'m sure").click();
+        cy.get('input[type="submit"][value="Yes, I’m sure"]').click();
         
         // Verify deletion
         cy.verifyMessage('success', 'deleted successfully');
@@ -182,9 +195,7 @@ describe('Scheme Management - Essential Tests', () => {
   // 2. PERMISSION TESTS
   context('2. User Role Permissions', () => {
     it('should test editor permissions on schemes', () => {
-      // Logout as admin
-      cy.admin_logout();
-      
+      cy.wait(2000)
       // Login as editor
       cy.admin_login(users.editor.username, users.editor.password);
       
@@ -213,13 +224,11 @@ describe('Scheme Management - Essential Tests', () => {
       // Logout editor
       cy.admin_logout();
       
-      // Login back as admin
-      cy.admin_login(users.admin.username, users.admin.password);
     });
     
     it('should test viewer permissions on schemes', () => {
       // Logout as admin
-      cy.admin_logout();
+      cy.wait(2000)
       
       // Login as viewer
       cy.admin_login(users.viewer.username, users.viewer.password);
@@ -248,8 +257,6 @@ describe('Scheme Management - Essential Tests', () => {
       // Logout viewer
       cy.admin_logout();
       
-      // Login back as admin
-      cy.admin_login(users.admin.username, users.admin.password);
     });
   });
 
