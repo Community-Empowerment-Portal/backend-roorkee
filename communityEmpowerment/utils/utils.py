@@ -17,21 +17,30 @@ def load_cosine_similarity():
 
 def recommend_schemes(scheme_id, cosine_sim, top_n=5):
     try:
-        scheme = Scheme.objects.get(id=scheme_id)
-        scheme_index = scheme.id
+        schemes = list(Scheme.objects.all().order_by('id')) 
+        scheme_ids = [s.id for s in schemes]
 
-        recommended_schemes = [] 
-        
-        top_indices = cosine_sim[scheme_index].argsort()[-top_n:][::-1]
+        if scheme_id not in scheme_ids:
+            return []
 
-        for index in top_indices:
-            recommended_scheme = Scheme.objects.get(id=index)
-            recommended_schemes.append(recommended_scheme)
+        scheme_index = scheme_ids.index(scheme_id)
+
+        top_indices = cosine_sim[scheme_index].argsort()[::-1]
+
+        recommended_schemes = []
+        count = 0
+        for idx in top_indices:
+            if idx != scheme_index:  # skip the same scheme
+                recommended_schemes.append(schemes[idx])
+                count += 1
+            if count == top_n:
+                break
 
         return recommended_schemes
 
     except Scheme.DoesNotExist:
         return []
+
 
 
 def collaborative_recommendations(user_id, top_n=5, keywords=None):

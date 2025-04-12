@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
     def load_data(self, data):
         for state_data in data['states']:
-            state_name = self.truncate(state_data['state_name'])
+            state_name = self.truncate(state_data['state_name']).strip().title()
             state, created = State.objects.get_or_create(
                 state_name=state_name
             )
