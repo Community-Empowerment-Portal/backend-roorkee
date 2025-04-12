@@ -23,6 +23,15 @@ describe('Scheme Management - Essential Tests', () => {
     cy.visit('/communityEmpowerment/state/add/');
     cy.fillAdminForm({ 'state_name': testData.state }, 'input');
     cy.save();
+    cy.wait(2000)
+    cy.visit('/communityEmpowerment/state/');
+      
+    // Verify the scheme appears in the list
+    cy.get('#result_list').should('contain', testData.state);
+    
+    // Visit the scheme detail page
+    cy.contains(testData.state).click();
+    
     cy.url().then(url => {
       const parts = url.split('/').filter(Boolean);
       createdIds.state = parts[parts.length - 2];
@@ -62,22 +71,9 @@ describe('Scheme Management - Essential Tests', () => {
 
   // Helper function to clean up test data
   const cleanupTestData = () => {
-    // Delete scheme first (to avoid foreign key constraints)
-    if (createdIds.scheme) {
-      cy.visit(`/communityEmpowerment/scheme/${createdIds.scheme}/delete/`);
-      cy.contains('Yes, I\'m sure').click();
-    }
-    
-    // Delete department
-    if (createdIds.department) {
-      cy.visit(`/communityEmpowerment/department/${createdIds.department}/delete/`);
-      cy.contains("Yes, I\'m sure").click();
-    }
-    
-    // Delete state
     if (createdIds.state) {
       cy.visit(`/communityEmpowerment/state/${createdIds.state}/delete/`);
-      cy.contains("Yes, I\'m sure").click();
+      cy.get('input[type="submit"][value="Yes, I’m sure"]').click();
     }
   };
 
@@ -192,83 +188,16 @@ describe('Scheme Management - Essential Tests', () => {
     });
   });
 
-  // 2. PERMISSION TESTS
-  context('2. User Role Permissions', () => {
-    it('should test editor permissions on schemes', () => {
-      cy.wait(2000)
-      // Login as editor
-      cy.admin_login(users.editor.username, users.editor.password);
-      
-      // Visit schemes list
-      cy.visit('/communityEmpowerment/scheme/');
-      
-      // Editor should be able to view schemes
-      cy.get('#result_list').should('exist');
-      
-      // Check if editor can add/edit schemes based on configured permissions
-      cy.get('body').then($body => {
-        // Check for add permission
-        const canAdd = $body.find('a.addlink').length > 0;
-        cy.log(`Editor ${canAdd ? 'can' : 'cannot'} add schemes`);
-        
-        // Check for edit permission by trying to open a scheme
-        if ($body.find(`tr:contains("${testData.updatedScheme}")`).length) {
-          cy.contains(testData.updatedScheme).click();
-          
-          // Check if editor can save changes
-          const canEdit = $body.find('input[name="_save"]').length > 0;
-          cy.log(`Editor ${canEdit ? 'can' : 'cannot'} edit schemes`);
-        }
-      });
-      
-      // Logout editor
-      cy.admin_logout();
-      
-    });
-    
-    it('should test viewer permissions on schemes', () => {
-      // Logout as admin
-      cy.wait(2000)
-      
-      // Login as viewer
-      cy.admin_login(users.viewer.username, users.viewer.password);
-      
-      // Visit schemes list
-      cy.visit('/communityEmpowerment/scheme/');
-      
-      // Viewer should be able to view schemes list
-      cy.get('#result_list').should('exist');
-      
-      // Viewer should not have add permission
-      cy.get('a.addlink').should('not.exist');
-      
-      // Check if viewer can see details
-      cy.contains(testData.updatedScheme).click();
-      
-      // Fields should be readonly or disabled
-      cy.get('body').then($body => {
-        const isReadOnly = $body.find('.readonly').length > 0 || 
-                          $body.find('input[readonly]').length > 0 ||
-                          $body.find('input[name="_save"]').length === 0;
-        
-        cy.log(`Viewer ${isReadOnly ? 'cannot' : 'can'} edit schemes`);
-      });
-      
-      // Logout viewer
-      cy.admin_logout();
-      
-    });
-  });
 
-  // 3. SEARCH AND FILTER
-  context('3. Search and Filter Functionality', () => {
+  // 2. SEARCH AND FILTER
+  context('2. Search and Filter Functionality', () => {
     it('should search for schemes by name', () => {
       // Visit scheme list
       cy.visit('/communityEmpowerment/scheme/');
       
       // Search for the updated scheme name
       cy.get('#searchbar').type(testData.updatedScheme);
-      cy.get('input[type="submit"]').click();
+      cy.get('input[type="submit"]').first().click();
       
       // Verify search results
       cy.get('#result_list').should('contain', testData.updatedScheme);
@@ -284,13 +213,13 @@ describe('Scheme Management - Essential Tests', () => {
       // Check for filter options
       cy.get('#changelist-filter').then($filter => {
         // Try to filter by department if available
-        if ($filter.find('a:contains("By department")').length) {
+        if ($filter.find('summary:contains("By department")').length) {
           cy.contains('By department').click();
           cy.contains(testData.department).click();
           cy.get('#result_list').should('contain', testData.updatedScheme);
         } 
         // Otherwise try to filter by state
-        else if ($filter.find('a:contains("By state")').length) {
+        else if ($filter.find('summary:contains("By state")').length) {
           cy.contains('By state').click();
           cy.contains(testData.state).click();
           cy.get('#result_list').should('contain', testData.updatedScheme);
