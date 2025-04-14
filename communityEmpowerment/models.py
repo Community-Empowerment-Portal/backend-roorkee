@@ -999,7 +999,8 @@ class Resource(models.Model):
 class Announcement(models.Model):
     title = models.CharField(max_length=255, unique=True)
     description = models.TextField()
-    image = models.ImageField(storage=MediaStorage(), upload_to='announcements/')
+    view_link = models.URLField(blank=True, null=True)
+    apply_link = models.URLField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -1010,17 +1011,6 @@ class Announcement(models.Model):
             if active_count >= 4:
                 raise ValidationError("You can have a maximum of 4 active announcements.")
         
-        if self.image:
-            try:
-                img = Image.open(self.image)
-                width, height = img.size
-                expected_ratio = 2 / 1
-                actual_ratio = width / height
-                if not (abs(actual_ratio - expected_ratio) < 0.09):
-                    raise ValidationError(f"Image must have a 2:1 aspect ratio.{ actual_ratio}")
-            except Exception as e:
-                raise ValidationError(f"Error processing image: {str(e)}")
-
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
