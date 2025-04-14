@@ -21,7 +21,7 @@ describe('Admin Analytics and Reporting', () => {
   context('User Event Analytics', () => {
     beforeEach(() => {
       // Start each test at the user events page
-      cy.visit('/admin/communityEmpowerment/userevent/');
+      cy.visit('/communityEmpowerment/userevent/');
     });
 
     it('should display and interact with user events list', () => {
@@ -70,7 +70,7 @@ describe('Admin Analytics and Reporting', () => {
   context('Analytics Dashboards', () => {
     it('should access available analytics dashboards', () => {
       // Try to find and access analytics pages
-      cy.visit('/admin/');
+      cy.visit('/');
       
       // List of common analytics-related keywords
       const analyticsKeywords = ['Analytics', 'Dashboard', 'Statistics', 'Reports', 'Metrics', 'Popular'];
@@ -109,7 +109,7 @@ describe('Admin Analytics and Reporting', () => {
     });
     
     it('should verify data is displayed in dashboard tables if available', () => {
-      cy.visit('/admin/');
+      cy.visit('/');
       
       // Find links to admin index or dashboard
       cy.get('a').then($links => {
@@ -142,7 +142,7 @@ describe('Admin Analytics and Reporting', () => {
   context('Report Generation and Export', () => {
     it('should test CSV export functionality for user events', () => {
       // Navigate to user events page
-      cy.visit('/admin/communityEmpowerment/userevent/');
+      cy.visit('/communityEmpowerment/userevent/');
       
       // Check if export action is available
       cy.get('body').then($body => {

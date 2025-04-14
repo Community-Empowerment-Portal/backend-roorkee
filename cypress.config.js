@@ -6,8 +6,7 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'http://127.0.0.1:8000/admin',
     setupNodeEvents(on, config) {
-      // Configure webpack preprocessor with enhanced module resolution
-      const options = {
+      on('file:preprocessor', webpackPreprocessor({
         webpackOptions: {
           resolve: {
             extensions: ['.js', '.jsx', '.json'],
@@ -33,12 +32,9 @@ module.exports = defineConfig({
             ]
           }
         }
-      }
-      on('file:preprocessor', webpackPreprocessor(options))
-      
+      }))
       return config
     },
-    experimentalSessionAndOrigin: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 30000,
     viewportWidth: 1200,
@@ -47,12 +43,10 @@ module.exports = defineConfig({
       admin_username: 'admin',
       admin_password: 'adminpassword'
     },
-    retries: {
-      runMode: 2,
-      openMode: 0
-    },
+    retries: 0, 
     screenshotOnRunFailure: true,
     video: false,
-    chromeWebSecurity: false
+    chromeWebSecurity: false,
+    experimentalSessionAndOrigin: true
   }
 })

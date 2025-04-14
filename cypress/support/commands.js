@@ -1,23 +1,9 @@
-// ***********************************************
-// Custom Cypress Commands for Django Admin Testing
-// ***********************************************
-
 const DEFAULT_TIMEOUT = 10000;
 
-/**
- * Helper: Fetch user configuration from fixture
- */
 const getUserConfig = (userType) => {
   return cy.fixture('admin-test-users.json').then(data => data.users[userType]);
 };
 
-// ===============================
-// Login / Logout Commands
-// ===============================
-
-/**
- * Logs in to the Django admin panel
- */
 Cypress.Commands.add('admin_login', (username, password) => {
   cy.visit('/login/');
   cy.get('input[name="username"]', { timeout: DEFAULT_TIMEOUT }).should('exist').clear().type(username);
