@@ -1018,6 +1018,15 @@ class SchemeReportViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
+class AllSchemeReportsView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        reports = SchemeReport.objects.all()
+        serializer = SchemeReportSerializer(reports, many=True)
+        return Response(serializer.data)
+
+
 class WebsiteFeedbackViewSet(viewsets.ModelViewSet):
     queryset = WebsiteFeedback.objects.all()
     serializer_class = WebsiteFeedbackSerializer
