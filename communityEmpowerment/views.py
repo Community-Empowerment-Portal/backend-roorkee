@@ -1032,6 +1032,14 @@ class WebsiteFeedbackViewSet(viewsets.ModelViewSet):
     serializer_class = WebsiteFeedbackSerializer
     permission_classes = [permissions.IsAuthenticated] 
 
+class AllWebsiteFeedbackView(APIView):
+    permission_classes = [AllowAny] 
+
+    def get(self, request):
+        feedbacks = WebsiteFeedback.objects.all()
+        serializer = WebsiteFeedbackSerializer(feedbacks, many=True)
+        return Response(serializer.data)
+
 
 class RecommendSchemesAPIView(APIView):
     def get(self, request, scheme_id):
