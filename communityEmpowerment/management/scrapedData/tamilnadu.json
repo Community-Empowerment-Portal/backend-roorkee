@@ -4283,5 +4283,685 @@
       "documents": [],
       "department_name": "Agriculture - Farmers Welfare Department",
       "id": "d88d058c-6f16-4015-a763-b327d3ef7e7b"
-  }
+  },
+  {
+    "description": "The students studying in Rashtriya Indian Military College, Dehradun are eligible for this scholarship. The scholarship amount is INR 4,000 per month.",
+    "tags": [
+        "Scholarship",
+        "Education",
+        "Military College"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Students studying in Rashtriya Indian Military College, Dehradun"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through the Directorate of Collegiate Education"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Directorate of Collegiate Education, Government of Tamil Nadu"
+        }
+    ],
+    "valid_upto": "Not available in the text",
+    "funding_pattern": "INR 4,000 per month",
+    "introduced_on": "Not available in the text",
+    "title": "R. I. M. C. Dehradun Scholarship, Tamil Nadu",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "documents": [],
+    "criteria": [],
+    "department_name": "Directorate of Collegiate Education, Government of Tamil Nadu",
+    "id": "82261c7f-ddda-4459-b3d6-7fa935d898ba"
+},
+{
+    "description": "The scholarship is applicable for the wards of deceased government servants who died in harness.",
+    "tags": [
+        "scholarship",
+        "Tamil Nadu",
+        "Deceased Government Servants"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Wards of deceased government servants"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through the Directorate of Collegiate Education"
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Deceased Government Servants Scholarship, Tamil Nadu",
+    "funding_pattern": "Tuition fees, hostel fees and other admissible items of special fees",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Deceased government servants who died in harness"
+        }
+    ],
+    "id": "4f2441bb-23c6-4e83-9905-fcd94381e24d"
+},
+{
+    "description": "PhD Scholarship offered by the Directorate of Collegiate Education, Government of Tamil Nadu",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "students pursuing the first year, second year or third year of full-time PhD research from a government or government-aided college of arts and science"
+        },
+        {
+            "beneficiary_type": "students having M.Phil. qualification and studying in the first or second year of PhD course"
+        },
+        {
+            "beneficiary_type": "students who have scored 60% marks in postgraduate degree"
+        }
+    ],
+    "tags": [
+        "PhD",
+        "Scholarship",
+        "Tamil Nadu",
+        "Higher Education",
+        "Research",
+        "Government of Tamil Nadu",
+        "Directorate of Collegiate Education"
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through the Directorate of Collegiate Education"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Directorate of Collegiate Education, Government of Tamil Nadu"
+        }
+    ],
+    "valid_upto": "Not available",
+    "funding_pattern": "INR 3,000 per month",
+    "introduced_on": "Not Available",
+    "title": "PhD Scholarship, Tamil Nadu",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "criteria": [
+        {
+            "description": "The students pursuing the first year, second year or third year of full-time PhD research from a government or government-aided college of arts and science can apply."
+        },
+        {
+            "description": "The applicant must have scored 60% marks in postgraduate degree."
+        },
+        {
+            "description": "The students, who are pursuing a part-time course or are in receipt of any other scholarship are not eligible to apply."
+        }
+    ],
+    "documents": [],
+    "id": "2469c863-9a96-4337-b376-f6aec327defe"
+},
+{
+    "description": "This scholarship is applicable only for girl students who are pursuing postgraduate degree courses in Arts and Science from a recognised college in Tamil Nadu. Variable financial assistance. Apply offline through the Directorate of Collegiate Education",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Girl students"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "Tamil Nadu",
+        "Postgraduate",
+        "Arts",
+        "Science",
+        "girl students"
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through the Directorate of Collegiate Education"
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "funding_pattern": "Variable",
+    "title": "EVR Nagammai Scholarship, Tamil Nadu",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "criteria": [
+        {
+            "description": "Pursuing postgraduate degree courses in Arts and Science from a recognised college in Tamil Nadu."
+        }
+    ],
+    "documents": [],
+    "id": "5192f390-89be-4726-9725-f7db8e73c859"
+},
+{
+    "description": "CENTRAL SECTOR SCHEME OF SCHOLARSHP (CSSS) for UG first year students. Minimum qualification above 60 percentage (Higher Secondary). Community and Subject Based. UG yearly INR 10,000  PG YEARLY INR 20,000",
+    "tags": [
+        "scholarship",
+        "higher education",
+        "UG",
+        "PG",
+        "central sector scheme"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "UG first year students"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply online"
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "introduced_on": "",
+    "title": "CENTRAL SECTOR SCHEME OF SCHOLARSHP (CSSS)",
+    "funding_pattern": "INR 10,000 for UG and INR 20,000 for PG yearly",
+    "criteria": [
+        {
+            "description": "Minimum qualification above 60 percentage (Higher Secondary)"
+        }
+    ],
+    "documents": [],
+    "department_name": "Ministry of Human Resource Development (MHRD)",
+    "id": "d4637f70-2319-455e-b075-593ab0c8c05b"
+},
+{
+    "description": "Financial assistance of up to INR 6,000",
+    "tags": [
+        "scholarship",
+        "Differently Abled"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Differently abled person's son or daughter"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through concerned District Office of Differently Abled Welfare"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Commissionerate for Welfare of Differently Abled, Government of Tamil Nadu"
+        }
+    ],
+    "valid_upto": "",
+    "funding_pattern": "INR 6,000",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Scholarship to Son and Daughter of Differently Abled Persons, Tamil Nadu ",
+    "introduced_on": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "1. The wards of any differently abled person holding the Identity card issued by the Welfare Board of Differently Abled can apply for this scholarship.\n2.  The scholarship is applicable for studies from class 11th to Postgraduate level (including ITI/Polytechnic diploma courses)."
+        }
+    ],
+    "id": "f73e7d47-13d9-49c1-8a29-b47df28d2ae3"
+},
+{
+    "description": "Scholarship for Differently Abled Students from Class 9th Onwards",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Differently Abled Students"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Differently Abled",
+        "Education",
+        "Tamil Nadu"
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through concerned District Office of Differently Abled Welfare"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Commissionerate for Welfare of Differently Abled, Government of Tamil Nadu"
+        }
+    ],
+    "valid_upto": "",
+    "funding_pattern": "Financial assistance of up to INR 7,000 per annum",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Scholarship for Differently Abled Students from Class 9th Onwards, Tamil Nadu",
+    "introduced_on": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Studying in class 9th to postgraduate level (including Vocational, Professional, Medical and Engineering courses)"
+        },
+        {
+            "description": "Scored at least 40% marks in the previous qualifying examination"
+        }
+    ],
+    "id": "652fd031-81c9-47f5-9b35-b76fbd8701b5"
+},
+{
+    "description": "Scholarship for Differently Abled Students towards Purchase of Books and Note Books",
+    "tags": [
+        "Scholarship",
+        "Differently Abled",
+        "Students",
+        "Tamil Nadu"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Differently-Abled students"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through concerned District Office of Differently Abled Welfare"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Commissionerate for Welfare of Differently Abled, Government of Tamil Nadu"
+        }
+    ],
+    "valid_upto": "",
+    "introduced_on": "",
+    "funding_pattern": "INR 100 per month (for students of class 1 to 5)\nINR 300 per month (for students of class 6 to 8)",
+    "title": "Scholarship for Differently Abled Students towards Purchase of Books and Note Books, Tamil Nadu",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "criteria": [
+        {
+            "description": "The students studying in class 1 to 8."
+        }
+    ],
+    "documents": [],
+    "id": "8c92040b-b8de-4e87-931c-87e07e3f994a"
+},
+{
+    "description": "Provides financial assistance for tuition fees, examination fees, special fees, and other compulsory fees up to approximately INR 10,000 for students belonging to BC/MBC/DNC categories pursuing higher education.",
+    "tags": [
+        "Education",
+        "Scholarship",
+        "BC",
+        "MBC",
+        "DNC",
+        "Tamil Nadu"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "BC"
+        },
+        {
+            "beneficiary_type": "MBC"
+        },
+        {
+            "beneficiary_type": "DNC"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply through the district office of Backward Classes and Minority Welfare"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Government of Tamil Nadu"
+        }
+    ],
+    "valid_upto": "",
+    "funding_pattern": "Full funding up to INR 10,000",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Free Education Schemes for BC, MBC & DNC students, Tamil Nadu",
+    "introduced_on": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Students pursuing a 3-year degree or polytechnic diploma course or professional degree course."
+        },
+        {
+            "description": "Annual family income less than INR 50,000"
+        }
+    ],
+    "department_name": "Department of Backward Classes and Most Backward Classes and Minority Welfare",
+    "id": "82ba8ee4-5577-4a66-9d23-c0e36a33d040"
+},
+{
+    "description": "Incentive Scheme for Rural MBC/DNC Girl Students",
+    "tags": [
+        "Girl Child",
+        "Education",
+        "Minority Welfare"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Rural girl students belonging to MBC/DNC category"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply through the district office of Backward Classes and Minority Welfare"
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "introduced_on": "",
+    "title": "Incentive Scheme for Rural MBC/DNC Girl Students, Tamil Nadu",
+    "funding_pattern": "INR 500 per annum to students of class 3rd to 5th\nINR 1,000 per annum to students of class 6th",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Studying in class 3rd to 6th"
+        },
+        {
+            "description": "Annual income of the family should not be more than INR 25,000"
+        }
+    ],
+    "department_name": "Department of Backward Classes and Most Backward Classes and Minority Welfare, Government of Tamil Nadu",
+    "id": "4ff6bd21-c9ab-4b1d-9a6f-e6813fec94ec"
+},
+{
+    "description": "Thanthai Periyar Memorial Award for students pursuing polytechnic diploma",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "BC"
+        },
+        {
+            "beneficiary_type": "MBC"
+        },
+        {
+            "beneficiary_type": "DNC"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Tamil Nadu",
+        "Polytechnic",
+        "BC",
+        "MBC",
+        "DNC"
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply through the district office of Backward Classes and Minority Welfare"
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "funding_pattern": "INR 3,000 per annum for three years",
+    "title": "Thanthai Periyar Memorial Award, Tamil Nadu",
+    "introduced_on": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "The top two boys and two girls of each district in Tamil Nadu who have scored highest marks in class 10th and are pursuing a Polytechnic diploma can apply for this scholarship."
+        }
+    ],
+    "id": "3d48300b-1cef-44a0-92a3-4954e39821ae"
+},
+{
+    "description": "The top two boys and two girls of each district in Tamil Nadu who have scored highest marks in class 12th and are pursuing a Professional degree course (medical, engineering, law, etc.) can apply for this scholarship.\nThe scheme is open only for BC/MBC/DNC students",
+    "tags": [
+        "Scholarship",
+        "Merit-based scholarship",
+        "Minority scholarship"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "BC"
+        },
+        {
+            "beneficiary_type": "MBC"
+        },
+        {
+            "beneficiary_type": "DNC"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply through the district office of Backward Classes and Minority Welfare"
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "INR 3,000 per annum for four years or till the normal completion of course",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Perarignar Anna Memorial Award, Tamil Nadu",
+    "introduced_on": "",
+    "criteria": [
+        {
+            "description": "The top two boys and two girls of each district in Tamil Nadu who have scored highest marks in class 12th and are pursuing a Professional degree course (medical, engineering, law, etc.) can apply for this scholarship."
+        }
+    ],
+    "documents": [],
+    "department_name": "Department of Backward Classes and Most Backward Classes and Minority Welfare, Government of Tamil Nadu",
+    "id": "b7c1ea02-668f-42ef-b53b-993d2b9f2822"
+},
+{
+    "description": "Vidyadhan Scholarship Program by Sarojini Damodaran Foundation offers financial assistance up to INR 6,000 per annum for class 11th & 12th to eligible students.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Residents of Andhra Pradesh, Gujarat, Karnataka, Maharashtra, Kerala and Telangana"
+        },
+        {
+            "beneficiary_type": "Students who have passed class 10th / SSLC from the specified states"
+        },
+        {
+            "beneficiary_type": "Families with an annual income not exceeding INR 2 Lakh"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Education",
+        "Class 11th & 12th",
+        "Financial Assistance",
+        "Tamil Nadu",
+        "Andhra Pradesh",
+        "Gujarat",
+        "Karnataka",
+        "Maharashtra",
+        "Kerala",
+        "Telangana"
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply online through Sarojini Damodaran Foundation’s website"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "Sarojini Damodaran Foundation"
+        }
+    ],
+    "valid_upto": "",
+    "funding_pattern": "Up to INR 6,000 per annum",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Vidyadhan Scholarship Program",
+    "introduced_on": "",
+    "criteria": [
+        {
+            "description": "Resident of Andhra Pradesh, Gujarat, Karnataka, Maharashtra, Kerala or Telangana"
+        },
+        {
+            "description": "Passed class 10th / SSLC from specified states"
+        },
+        {
+            "description": "Family income less than INR 2 Lakh per annum"
+        }
+    ],
+    "documents": [],
+    "id": "d2799b29-c15f-4343-a857-743ab25c3276"
+},
+{
+    "description": "The students of class 10th can apply for this scholarship. Note: The students studying through open schools or distance learning can also apply if they are below 18 years of age. Award Details: INR 1,250 per month for class 11th and 12th INR 2,000 per monthfor under graduates and postgraduates For PhD students – the amount specified by UGC",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "10th class students"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "10th class",
+        "NCERT",
+        "pre-matric",
+        "school education"
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply offline through respective state liaison officer"
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "National Council of Educational Research and Training (NCERT)"
+        }
+    ],
+    "valid_upto": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "introduced_on": "",
+    "title": "National Talent Search Exam NTSE ",
+    "funding_pattern": "Monthly",
+    "criteria": [
+        {
+            "description": "Students of class 10th"
+        }
+    ],
+    "documents": [],
+    "id": "9e46bb79-624b-44cd-bf3e-270e55bea1ca"
+},
+{
+    "description": "Free Education Schemes for SC / ST students, Tamil Nadu ",
+    "tags": [
+        "Education",
+        "Scholarship",
+        "SC",
+        "ST"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC students"
+        },
+        {
+            "beneficiary_type": "ST students"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "Apply through the Educational Institutions."
+        }
+    ],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "funding_pattern": "Rs.3,000 each per annum for a period of 5 years",
+    "title": "Free Education Schemes for SC / ST students, Tamil Nadu ",
+    "introduced_on": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "1000 boys and 1000 girls belonging to Adi Dravidar, Tribal and Adi Dravidar converted to Christianity communities"
+        }
+    ],
+    "department_name": "Adi Dravidar and Tribal Welfare Department",
+    "id": "fff1df59-d95d-4201-9612-d5b045ee9957"
+},
+{
+    "description": "",
+    "tags": [
+        "scholarship",
+        "Post Matric"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "BC"
+        },
+        {
+            "beneficiary_type": "MBC"
+        },
+        {
+            "beneficiary_type": "DNC"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "introduced_on": "",
+    "title": "Post metric scholarship for BC / MBC/ DNC",
+    "funding_pattern": "",
+    "documents": [],
+    "criteria": [],
+    "id": "7426cfdf-3563-4b21-bd9f-58816194a8ba"
+},
+{
+    "description": "",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "SC",
+        "ST"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "funding_pattern": "",
+    "title": "Post metric scholarship for SC/ST",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "criteria": [],
+    "documents": [],
+    "id": "fbbc60a9-bc7f-466d-81ff-0088683232d6"
+},
+{
+    "description": "Post metric scholarship for Differently abled students",
+    "tags": [
+        "scholarship",
+        "post-matric",
+        "differently abled"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Differently abled students"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Post metric scholarship for Differently abled students",
+    "introduced_on": "",
+    "criteria": [],
+    "documents": [],
+    "id": "92033a66-6660-4b47-82d9-51c48f84cb67"
+},
+{
+    "description": "",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Minority students"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "minority",
+        "Post Matric"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "",
+    "scheme_link": "https://tndce.tn.gov.in/Home/scholarship#",
+    "title": "Post metric scholarship for Minority students",
+    "introduced_on": "",
+    "documents": [],
+    "criteria": [],
+    "id": "0d65ab13-3f2c-43c3-9670-293c39223df7"
+}
 ]

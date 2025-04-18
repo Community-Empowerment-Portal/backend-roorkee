@@ -392,7 +392,8 @@ state_data_files = {
     "Chhattisgarh": "chhattisgarh.json",
     "Rajasthan": "rajasthan.json",
     "Tamilnadu": "tamilnadu.json",
-    "Nagaland": "nagaland.json"
+    "Nagaland": "nagaland.json",
+    "West Bengal": "westBengal.json",
 }
 
 # Initialize the combined data structure
@@ -420,7 +421,7 @@ transform_and_add_goa_data("Goa",goa_data,combined_data)
 transform_and_add_jharkhand_data(jharkhand_data, combined_data)
 
 # Save the combined data to a new JSON file
-with open(base_file_path + "/combined_schemes_data.json", "w") as file:
+with open(base_file_path + "/combined_schemes_data.json", "w", encoding="utf-8") as file:
     json.dump(combined_data, file, ensure_ascii=False, indent=4)
 
 # print("Combined data has been successfully saved to combined_schemes_data.json")
