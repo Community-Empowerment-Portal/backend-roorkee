@@ -1210,5 +1210,197 @@
       "criteria": [],
       "documents": [],
       "id": "1367341e-019c-4b24-912c-f1e1f53dbb86"
-  }
+  },
+  {
+    "description": "Under this scheme Scholarship are being given to the meritorious students of Govt./ Provincialised H.S.S./ H.S. of Assam having Physical Disability (Differently Abled Students) @ Rs.400/- for the students studding in class-IX-X and @ Rs.500/- to the students studding in class-XI-XII as per budget provision.",
+    "tags": [
+        "Scholarship",
+        "Physical Disability",
+        "Students",
+        "Assam"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Students with Physical Disability"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "Not Available",
+    "introduced_on": "Not Available",
+    "funding_pattern": "Scholarship",
+    "title": "Scholarship to the students having Physical Disability:",
+    "scheme_link": "https://madhyamik.assam.gov.in/portlets/scholarships",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Meritorious students of Govt./Provincialised H.S.S./H.S. of Assam having Physical Disability"
+        },
+        {
+            "description": "Studying in class IX-XII"
+        }
+    ],
+    "id": "3dbc1c7d-f185-490e-ac0f-0399425054ab"
+},
+{
+    "description": "Scholarship to the Domicile students studying in Sainik School Goalpara, Assam @ Rs.30,000/- per annum. Scholarship are being provided to all the Domicile students of Assam studying in Sainik School Goalpara, Assam @ Rs.30,000/- per student per annum. Scholarship to the students of Assam studying in Rashtriya Indian Military College, Dehradun @Rs.30,000/- per annum",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Domicile students studying in Sainik School Goalpara, Assam"
+        },
+        {
+            "beneficiary_type": "Students of Assam studying in Rashtriya Indian Military College, Dehradun"
+        }
+    ],
+    "tags": [
+        "School Scholarship",
+        "Student Scholarship"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "Rs.30,000/- per annum",
+    "introduced_on": "",
+    "title": "Sainik School Scholarship",
+    "scheme_link": "https://madhyamik.assam.gov.in/portlets/scholarships",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Students of Assam studying in Sainik School Goalpara"
+        }
+    ],
+    "id": "7e5d8e23-f21a-486a-8766-256a003cd6c0"
+},
+{
+    "description": "Scholarship are being awarded to all the cadets studying in Rashtriya Indian Military College, (RIMC) Dehradun An amount of Rs.30,000.00 is paid to the cadets who are from Assam and studying at RIMC, Dehradun.)",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "cadets studying in Rashtriya Indian Military College"
+        }
+    ],
+    "tags": [
+        "Military",
+        "scholarship",
+        "training",
+        "Allied",
+        "cadets",
+        "Assam"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://madhyamik.assam.gov.in/portlets/scholarships",
+    "introduced_on": "",
+    "title": "Military and Allied training scholarship Scheme (Rimc)",
+    "funding_pattern": "Rs.30,000.00",
+    "criteria": [],
+    "documents": [],
+    "id": "590428fd-6ea5-40ca-831c-89116f1307d2"
+},
+{
+    "description": "Scholarship to Girls’ Students of Class-IX to XII under Gender Responsive Budget: Under this scheme SC/ST Girls’ students are given @ Rs. 300/- per month for students reading is class-IX – X and @ 350/- per month class – XI – XII.",
+    "tags": [
+        "scholarship",
+        "girls' education",
+        "SC/ST"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC/ST Girls’ students"
+        },
+        {
+            "beneficiary_type": "Class-IX – X"
+        },
+        {
+            "beneficiary_type": "Class – XI – XII"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "Rs. 300/- per month for students of class-IX – X and @ 350/- per month for class – XI – XII.",
+    "introduced_on": "",
+    "title": "Gender Responsive Budget",
+    "scheme_link": "https://madhyamik.assam.gov.in/portlets/scholarships",
+    "criteria": [],
+    "documents": [],
+    "id": "00598a3c-d7f3-49ec-846c-b4ba9c7b8f63"
+},
+{
+    "description": "The Scheme is meant for all SC/ST girls who pass class VIII and enrol in class IX in State Government, Government-aided or Local Body Schools in the academic year 2016-17 onward and all girls who pass class VIII from Kasturba Gandhi Balika Vidyalayas (irrespective of whether from SC/ST or not). The girls should be unmarried and below 16 years of age (as on 31-03-2016) at the time of joining class IX will be eligible for the benefit under this scheme. Married girls are excluded from the scheme. Girls studying in class IX in private unaided schools and the schools run by Central Government are also excluded from the scheme.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC girls"
+        },
+        {
+            "beneficiary_type": "ST girls"
+        },
+        {
+            "beneficiary_type": "All girls from Kasturba Gandhi Balika Vidyalayas"
+        }
+    ],
+    "tags": [
+        "Education",
+        "Girls",
+        "SC",
+        "ST",
+        "Secondary Education",
+        "Incentive"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "Not specified",
+    "funding_pattern": "Not specified",
+    "introduced_on": "Not specified",
+    "title": "National Scheme of Incentive to Girls for Secondary Education.(NSIGSE)",
+    "scheme_link": "https://madhyamik.assam.gov.in/portlets/scholarships",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Pass class VIII and enroll in class IX in State Government, Government-aided, or Local Body Schools."
+        },
+        {
+            "description": "Unmarried and below 16 years of age as of March 31, 2016."
+        }
+    ],
+    "id": "0b19a7da-572d-4ec4-91af-a0645f27f6fd"
+},
+{
+    "description": "National Talent Search Scheme is a flagship activity of National Council of Educational Research & Training (NCERT). This programme has been in place, in different forms, since, 1963. The purpose of the scheme is to identify the talented students and nurture their talent on the basis of examination conducted. Scholarship is awarded to the successful students as per NTS Rules. 15% of scholarship is reserved for students belonging to SC category, 7.5% scholarship for students belonging to ST category and 3% for Physically Challenged Group of students. At the national level, one thousand scholarships are awarded annually the candidates are selected, based on their merit in Multiple Choice Question (MCQ) test administered. Tests are taken in the area of Scholastic Aptitude Test(SAT), Mental Ability Test(MAT) and Language Comprehensive Test of their standard. The format of examination change by the NCERT, New Delhi from time to timePresently the examination is conducted for students of Class-X only.On the basis of the National Talent Search Examination 1000 scholarship is awarded at the National Level. Earlier the amount of scholarship was Rs.500/- per month and the scholarship is awarded to the students for his studies up to Ph. D. level. Recently, the amount of scholarship has been revised as under:",
+    "tags": [
+        "scholarship",
+        "national",
+        "education",
+        "talent",
+        "NCERT",
+        "students"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Students of Class-X"
+        }
+    ],
+    "procedures": [
+        {
+            "step_description": "There are two stages of selection for award of scholarship. For Stage-I, selection is done by State through a written examination. Students who qualify in Stage-I are allowed to appear for Stage-II examination conducted by National Council of Education Research and Training (NCERT). Generally Stage-I Examination is conducted in the month of November each year and the Stage-II is conducted in the month of May each year."
+        }
+    ],
+    "sponsors": [
+        {
+            "sponsor_type": "NCERT"
+        }
+    ],
+    "valid_upto": "Ph. D. level",
+    "funding_pattern": "scholarship",
+    "introduced_on": "1963",
+    "title": "National Talent Search Examination (NTSE)",
+    "scheme_link": "https://madhyamik.assam.gov.in/portlets/scholarships",
+    "criteria": [
+        {
+            "description": "Students of Class-X studying in Government, Local Body, Govt. Aided, Private Schools are eligible to appear for Stage –I examination."
+        }
+    ],
+    "documents": [],
+    "id": "55b804e4-3902-4266-ad7b-d7dd921591a2"
+}
 ]

@@ -1,0 +1,167 @@
+[
+    {
+        "description": "Financial Assistance for Education in West Bengal",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students of West Bengal"
+            }
+        ],
+        "tags": [
+            "education",
+            "financial aid",
+            "scholarship",
+            "students",
+            "west bengal"
+        ],
+        "procedures": [
+            {
+                "step_description": "Register online"
+            },
+            {
+                "step_description": "Upload required documents within 90 days from the date of registration"
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsor_type": "Government of West Bengal"
+            }
+        ],
+        "valid_upto": "Not specified",
+        "funding_pattern": "Not specified",
+        "introduced_on": "Not specified",
+        "title": "Financial Assistance for Education",
+        "scheme_link": "https://cmrf.wb.gov.in",
+        "criteria": [
+            {
+                "description": "Applicant should be a permanent resident of the State of West Bengal."
+            },
+            {
+                "description": "Studying in any institution of the State after passing out Secondary or equivalent/Higher Secondary or equivalent/Under Graduate Examination from any Board/Council/University of the State of West Bengal."
+            },
+            {
+                "description": "Securing 50% and above but less than 60% marks in aggregate in Madhyamik or equivalent examination/Higher Secondary or equivalent examination for financial assistance in Higher Secondary level/Under Graduate level respectively."
+            },
+            {
+                "description": "Securing 50% and above but less than 53% marks in aggregate in Graduation for assistance in Post Graduate level."
+            },
+            {
+                "description": "Yearly family income does not exceed Rs. 1,20,000/- only."
+            },
+            {
+                "description": "Not enjoying any Government/Non-Government scholarship/stipend for the same course/stage of study."
+            },
+            {
+                "description": "An applicant is eligible for registration once in a year (365 days)."
+            }
+        ],
+        "documents": [
+            "Prayer addressed to the Hon’ble Chief Minister for financial assistance",
+            "Recommendation to the Hon’ble Chief Minister from local MLA / MP",
+            "Family Income Certificate",
+            "Self-Declaration by the student",
+            "Admit Card of 10th standard examination",
+            "Mark Sheet of qualifying examination",
+            "Rank card of the entrance examination (for professional courses)",
+            "Allotment letter (for professional courses)",
+            "First page of Pass Book of applicant’s active savings Bank Account",
+            "Admission receipt for current academic year / semester"
+        ],
+        "id": "f70d900c-1ef7-4fa4-9625-c53189abc12a"
+    },
+    {
+        "description": "Financial Assistance for Health scheme provides financial assistance to the patients of West Bengal for their treatment who are permanent residents and not able to bear the cost of treatment.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Patient"
+            }
+        ],
+        "tags": [
+            "health",
+            "financial assistance",
+            "medical treatment",
+            "healthcare"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not Available",
+        "scheme_link": "https://cmrf.wb.gov.in",
+        "funding_pattern": "Not Available",
+        "title": "Financial Assistance for Health",
+        "introduced_on": "Not Available",
+        "documents": [
+            "Prayer addressed to the Hon’ble Chief Minister for financial assistance duly signed by the patient / patient’s guardian. Complete address, mobile number and e-mail ID (if any) might be mentioned in application",
+            "Recommendation to the Hon’ble Chief Minister from local MLA / MP",
+            "Family Income Certificate issued by competent authority (Minister-in-Charge / Minister of State / DM / SDO / BDO / Joint BDO / Executive Officer in case of Municipality Area / Officer in the rank of Deputy Commissioner and above in case of Municipal Corporation area)",
+            "Estimate (for present & upcoming treatment up to one year) of current date from Hospital/Nursing Home indicating tentative O.T. date in case of operation, if any. This estimate must be signed by the treating Doctor/Department Head along with stamp/seal and countersigned by the Superintendent/Director/Manager/Proprietor of the respective Hospital/Nursing Home along with stamp/seal",
+            "In case of kidney transplantation, affidavit from 1st Class Judicial Magistrate for Blood Related Donor or No Objection Certificate (NOC) from Health Department, Govt. of West Bengal for Non-Blood Related Donor"
+        ],
+        "criteria": [
+            {
+                "description": "Patient should be a permanent resident of the State of West Bengal"
+            },
+            {
+                "description": "Patient undergoing treatment at Hospital / Nursing Home and unable to bear the cost of treatment"
+            },
+            {
+                "description": "Patient who is not eligible to get benefits under Employees State Insurance Scheme or any other insurance scheme or to get reimbursement from the employer"
+            },
+            {
+                "description": "Patient whose annual family income does not exceed Rs.1,20,000/-only"
+            },
+            {
+                "description": "A patient can avail the assistance only once in a year"
+            }
+        ],
+        "id": "074697b3-0a7e-48c5-9a2f-357e90a12dca"
+    },
+    {
+        "description": "With a view to assisting the meritorious students belonging to economically backward families in the State of West Bengal to pursue higher studies, the Government of West Bengal introduces this scheme of giving scholarships at different levels of higher studies, at educational institutions based in West Bengal. The Swami Vivekananda Merit Cum Means Scholarship Scheme has been thoroughly revamped in the year 2016 to cover more number of students as well as to enhance the scholarship amounts significantly.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students studying in regular mode of Class XI and XII"
+            },
+            {
+                "beneficiary_type": "Students at Under Graduate level in Science/Arts/Commerce, Engineering, Medical and Technical / Professional courses"
+            },
+            {
+                "beneficiary_type": "Post Graduate level students pursuing Science/Arts/Commerce & Technical/Management"
+            },
+            {
+                "beneficiary_type": "Students pursuing M.Phil courses and Doctoral courses (NON-NET JUNIOR RESEARCH FELLOW and NET-LECTURERSHIP) from State-aided Institutions"
+            },
+            {
+                "beneficiary_type": "Girls Students pursuing Post Graduate courses in Science, Arts and Commerce stream"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "higher education",
+            "merit-cum-means",
+            "West Bengal"
+        ],
+        "procedures": [
+            {
+                "step_description": "Furnishing of Bank details of the applicant, i.e. A/C No., Bank Name, IFS Code of Bank is mandatory."
+            },
+            {
+                "step_description": "There will be no need to submit hard copy of the application."
+            }
+        ],
+        "sponsors": [],
+        "valid_upto": "",
+        "funding_pattern": "scholarship",
+        "introduced_on": "2016",
+        "title": "Swami Vivekananda Merit-cum-Means Scholarship",
+        "scheme_link": "https://svmcm.wb.gov.in/",
+        "criteria": [
+            {
+                "description": "Students should pass in the year 2024,2023 or 2022 or 2021 with at least 60% marks in aggregate in the last qualifying examination"
+            },
+            {
+                "description": "Family income less than Rs.2,50,000/- per annum"
+            }
+        ],
+        "documents": [],
+        "id": "c44dfaef-8d24-4bc9-b035-21f2468e0a7b"
+    }
+]

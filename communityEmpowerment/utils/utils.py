@@ -14,32 +14,43 @@ def load_cosine_similarity():
 
     with open(cosine_sim_path, 'rb') as f:
         return pickle.load(f)
-
+    
 def recommend_schemes(scheme_id, cosine_sim, top_n=5):
     try:
-        schemes = list(Scheme.objects.all().order_by('id')) 
-        scheme_ids = [s.id for s in schemes]
+        schemes = list(Scheme.objects.select_related('department').all().order_by('id'))
+        id_to_index = {s.id: idx for idx, s in enumerate(schemes)}
 
-        if scheme_id not in scheme_ids:
+        if scheme_id not in id_to_index:
             return []
 
-        scheme_index = scheme_ids.index(scheme_id)
+        scheme_index = id_to_index[scheme_id]
+        selected_scheme = schemes[scheme_index]
+        selected_state = selected_scheme.department.state
 
-        top_indices = cosine_sim[scheme_index].argsort()[::-1]
+        similarity_scores = cosine_sim[scheme_index]
+
+        similar_indices_scores = sorted(
+            [
+                (i, score) for i, score in enumerate(similarity_scores)
+                if i != scheme_index and schemes[i].department.state == selected_state
+            ],
+            key=lambda x: x[1],
+            reverse=True
+        )
 
         recommended_schemes = []
-        count = 0
-        for idx in top_indices:
-            if idx != scheme_index:  # skip the same scheme
-                recommended_schemes.append(schemes[idx])
-                count += 1
-            if count == top_n:
-                break
+        for i, score in similar_indices_scores[:top_n]:
+            recommended_schemes.append({
+                'scheme': schemes[i],
+                'score': round(float(score), 4)
+            })
 
         return recommended_schemes
 
-    except Scheme.DoesNotExist:
+    except Exception as e:
         return []
+
+
 
 
 

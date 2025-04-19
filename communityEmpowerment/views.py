@@ -1050,14 +1050,19 @@ class RecommendSchemesAPIView(APIView):
 
         cosine_sim = load_cosine_similarity()
 
-        recommended_schemes = recommend_schemes(scheme.id, cosine_sim, top_n=10)
+        recommended = recommend_schemes(scheme.id, cosine_sim, top_n=10)
 
-        serializer = SchemeSerializer(recommended_schemes, many=True)
-        
+        response_data = []
+        for item in recommended:
+            scheme_data = SchemeSerializer(item['scheme']).data
+            scheme_data['score'] = item['score']
+            response_data.append(scheme_data)
+
         return Response({
-            'scheme': SchemeSerializer(scheme).data, 
-            'recommended_schemes': serializer.data 
+            'scheme': SchemeSerializer(scheme).data,
+            'recommended_schemes': response_data
         })
+
     
 
 class HybridRecommendationView(APIView):

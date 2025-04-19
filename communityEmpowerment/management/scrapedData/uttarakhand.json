@@ -533,5 +533,96 @@
       "documents": [],
       "criteria": [],
       "id": "186e4c90-c4d2-47a1-a704-c51af6861c17"
-  }
+  },
+  {
+    "description": "",
+    "tags": [
+        "Higher Education",
+        "Scholarship"
+    ],
+    "beneficiaries": [],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://cmheiss.samarth.ac.in/index.php",
+    "introduced_on": "JUNE 2024-25",
+    "title": "Chief Minister Higher Education Encouragement Scholarship Scheme",
+    "funding_pattern": "",
+    "criteria": [],
+    "documents": [],
+    "id": "4d4c07c0-c47d-44c3-a06d-bb9747cb77e5"
+},
+{
+    "description": "सैन्य बलों में चयनित अभ्यर्थियों को पुरस्कार योजना",
+    "tags": [
+        "Armed Forces",
+        "Award Scheme",
+        "Selected Candidates"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Selected Candidates"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "2025 Jun",
+    "funding_pattern": "Not Available",
+    "introduced_on": "2025 Jan",
+    "title": "ARMED FORCES SELECTED CANDIDATES AWARD SCHEME",
+    "scheme_link": "https://scholarship-uttarakhand.samarth.ac.in/",
+    "documents": [],
+    "criteria": [],
+    "id": "598b0b64-afed-4bf9-9adb-493253551b7e"
+},
+{
+    "description": "Special financial assistance for students who have qualified in the preliminary exams of UPSC/UKPSC and Military Institutions to prepare for the main examination.",
+    "tags": [
+        "UPSC",
+        "UKPSC",
+        "Coaching",
+        "Financial Assistance",
+        "Students"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Students"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "2025 Jun",
+    "scheme_link": "https://scholarship-uttarakhand.samarth.ac.in/",
+    "introduced_on": "Not available",
+    "title": "UPSC/UKPCS PRE QUALIFIED STUDENTS COACHING SCHEME",
+    "funding_pattern": "Not available",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Qualifying in the preliminary exams of UPSC/UKPSC and Military Institutions"
+        }
+    ],
+    "id": "b932660b-966e-46a0-a0ff-57431ef78eb4"
+},
+{
+    "description": "मुख्यमंत्री मेधावी छात्रवृत्ति प्रोत्साहन योजना",
+    "tags": [
+        "scholarship",
+        "student",
+        "admission",
+        "higher-education",
+        "top-rank"
+    ],
+    "beneficiaries": [],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "2025 June",
+    "introduced_on": "2024 July",
+    "scheme_link": "https://scholarship-uttarakhand.samarth.ac.in/",
+    "title": "CM Scholarship for admission in Top 50 NIRF Ranking Institutions",
+    "funding_pattern": "Not available",
+    "criteria": [],
+    "documents": [],
+    "id": "3bf2051b-6478-4b8b-8878-c53bdb0e0dec"
+}
 ]

@@ -48,5 +48,150 @@
         ],
         "documents": [],
         "department_name": "Directorate of Information & Cultural Affairs"
+    },
+    {
+        "description": "Tripura Govt. Merit-Cum-Means Scholarship scheme 1977\nEligibility: 1.Marks required 55% for general category and 50% for S.T/S.C students\n2.No income bar\nCourse of studies: 1)1st yr general degree courses - Rs.90/-P.M (Hosteler), Rs.60/-P.M (Day Scholar)\n2)2nd yr onwards general Degree courses - Rs.140/-P.M (Hosteler), Rs.90/-P.M (Day Scholar)\n3)Post Graduate courses - Rs.160/-P.M (Hosteler), Rs.130/-P.M (Day Scholar)",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "General"
+            },
+            {
+                "beneficiary_type": "ST"
+            },
+            {
+                "beneficiary_type": "SC"
+            }
+        ],
+        "tags": [
+            "Scholarship",
+            "Merit-cum-Means",
+            "Higher Education"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Government of Tripura"
+            }
+        ],
+        "valid_upto": "",
+        "introduced_on": "1977",
+        "scheme_link": "https://highereducation.tripura.gov.in/DHE/scholarship-scheme",
+        "title": "Tripura Govt. Merit-Cum-Means Scholarship Scheme 1977",
+        "funding_pattern": "Monthly stipend",
+        "documents": [],
+        "criteria": [
+            {
+                "description": "Marks required 55% for general category and 50% for S.T/S.C students"
+            },
+            {
+                "description": "No income bar"
+            }
+        ],
+        "id": "3e4da2f8-2375-4647-ad76-df0ba7a73ed5"
+    },
+    {
+        "description": "This document outlines various scholarship schemes offered by the Higher Education Department of Tripura. These schemes cater to different student categories, including lower-income groups, polytechnic and engineering students, post-graduate researchers, and blind students.  Each scheme has specific eligibility criteria and offers varying stipend rates.  The document provides a detailed breakdown of the courses covered under each scheme, along with the corresponding stipend amounts for hostellers and day scholars.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Lower Income Group students"
+            },
+            {
+                "beneficiary_type": "Students of polytechnic institute"
+            },
+            {
+                "beneficiary_type": "Students of Tripura Engg.College"
+            },
+            {
+                "beneficiary_type": "Post Graduate Research Fellowship"
+            },
+            {
+                "beneficiary_type": "Blind Students"
+            }
+        ],
+        "tags": [
+            "Scholarship",
+            "Higher Education",
+            "Financial Assistance",
+            "Students",
+            "Tripura",
+            "Post Matric",
+            "Engineering",
+            "Polytechnic",
+            "Research Fellowship",
+            "Blind Students"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Higher Education Department of Tripura"
+            }
+        ],
+        "valid_upto": "Not Available",
+        "scheme_link": "https://highereducation.tripura.gov.in/DHE/scholarship-scheme",
+        "introduced_on": "Not Available",
+        "title": "Scholarship Schemes by Higher Education Department, Tripura",
+        "funding_pattern": "Monthly Stipend",
+        "documents": [],
+        "criteria": [
+            {
+                "description": "No marks bar."
+            },
+            {
+                "description": "Income bar up to Rs.5,000/- P.M"
+            },
+            {
+                "description": "50% Marks required in M.A/M.Sc/M.Com with Hons in Degree."
+            },
+            {
+                "description": "Blind students only."
+            }
+        ],
+        "id": "58f0ccce-5715-4007-b728-be14c71942f5"
+    },
+    {
+        "description": "“NEC MERIT SCHOLARSHIP” New increased rate wef.01.04.2017.\nEligibility cut off marks would be 70% for General and 60% for ST/SC category.\nThe income ceiling of the beneficiary’s parents/guardians should not exceed Rs.4.5 lakhs per annum.\nDiploma level - Rs.20,000.00 P.A\nDegree level - Rs.22,000.00 P.A\nPost Graduate level - Rs.25,000.00 P.A\nM.Phil - Rs.30,000.00 P.A\nPh.D. (the subject topics for M.Phil and Ph.D should invariable be directly specifically and currently relevant to the NER Region.) - Rs.30,000.00 P.A\n\nDr.Ambedkar Post Matric Scholarship for Economically Backward Classes (EBC) General Category students\nNo Marks Bar.\nIncome 1.oo lakh per year of parents,\nGovernment Institution only.\nGroup-A (Engineering Degree & Post Graduate Level courses including M.Phil, Ph.D., Commercial Pilot license (including Helicopter Pilot & Multiengine rating) courses, Post Graduate Diploma courses in various branches of Management, L.L.M.) - Rs. 750/- Rs.350/-\nGroup-B (Post Graduate courses M.A./M.Sc./M.Com/ M.Ed etc.) - Rs.510/- Rs.335/-\nGroup- C (All other courses leading to a Graduate Degree B.A/B.Sc./B.Com. etc.) - Rs.400/- Rs.210/-\nGroup-D (All Post Matriculation level non Degree courses for which entrance qualification is High School (class-X), e.g. senior secondary certificate (class-XI & XII) both General & Pocational stream, I.T.I course, three (3) years Diploma courses in polytechnics, etc.) - Rs.260/- Rs.160/-",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students from Economically Backward Classes (EBC) General Category"
+            },
+            {
+                "beneficiary_type": "General and ST/SC category students"
+            }
+        ],
+        "tags": [
+            "Higher Education",
+            "Scholarship",
+            "Merit Scholarship",
+            "Post Matric Scholarship",
+            "EBC",
+            "Dr.Ambedkar Scholarship",
+            "NER Region"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "",
+        "introduced_on": "",
+        "funding_pattern": "Rs.20,000.00 to Rs.30,000.00 P.A\nRs. 750/- to Rs.350/-",
+        "title": "NEC Merit Scholarship & Dr. Ambedkar Post Matric Scholarship",
+        "scheme_link": "https://highereducation.tripura.gov.in/DHE/scholarship-scheme",
+        "criteria": [
+            {
+                "description": "70% for General and 60% for ST/SC category."
+            },
+            {
+                "description": "The income ceiling of the beneficiary’s parents/guardians should not exceed Rs.4.5 lakhs per annum."
+            },
+            {
+                "description": "No Marks Bar."
+            },
+            {
+                "description": "Income 1.oo lakh per year of parents"
+            },
+            {
+                "description": "Government Institution only."
+            }
+        ],
+        "documents": [],
+        "id": "8beef5c0-d58b-4afc-92de-1bcc5226bf82"
     }
     ]
