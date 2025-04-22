@@ -1067,28 +1067,216 @@ class RecommendSchemesAPIView(APIView):
 
 class HybridRecommendationView(APIView):
     permission_classes = [IsAuthenticated]
+    pagination_class = SchemePagination
+    ordering_fields = ['title']
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        top_n = int(request.query_params.get('top_n', 5))
+        top_n = int(request.query_params.get('top_n', 10))
 
-        # Get the user's latest feedback
+        state_ids = request.query_params.getlist('state_ids')
+        department_ids = request.query_params.getlist('department_ids')
+        beneficiary_keywords = request.query_params.getlist('beneficiary_keywords')
+        sponsor_ids = request.query_params.getlist('sponsor_ids')
+        funding_pattern = request.query_params.get('funding_pattern', None)
+        search_query = request.query_params.get('search_query', None)
+        tag = request.query_params.get('tag', None)
+        ordering = request.query_params.getlist('ordering') or self.ordering_fields
+
+        user_profile = request.query_params.get('user_profile', {})
+        if isinstance(user_profile, str):
+            import json
+            try:
+                user_profile = json.loads(user_profile)
+            except:
+                user_profile = {}
+
+        user_tags = []
+
+        profile_field_mappings = {
+            "community": ["sc", "st", "obc", "general"],
+            "minority": ["muslim", "christian", "sikh", "buddhist", "parsi", "jain"],
+            "education": ["undergraduate", "postgraduate", "phd", "school"],
+            "disability": ["physical", "visual", "hearing", "intellectual"],
+            "occupation": ["farmer", "student", "teacher", "entrepreneur", "laborer"],
+            "income": ["bpl", "middle", "high"]
+        }
+
+        for field, possible_tags in profile_field_mappings.items():
+            field_value = user_profile.get(field, "").lower()
+            if field_value in possible_tags:
+                user_tags.append(field_value)
+
+        scheme_filters = Q(department__is_active=True, department__state__is_active=True, is_active=True)
+
+        if tag:
+            scheme_filters &= Q(tags__name__icontains=tag)
+
+        if user_tags:
+            tag_filters = Q()
+            for user_tag in user_tags:
+                tag_filters |= Q(tags__name__icontains=user_tag)
+            scheme_filters &= tag_filters
+
+        if tag == "job":
+            scheme_filters &= Q(tags__name__icontains='job') | Q(tags__name__icontains='employment')
+        if tag == "scholarship":
+            scheme_filters &= Q(tags__name__icontains='scholarship')
+        if state_ids:
+            scheme_filters &= Q(department__state_id__in=state_ids)
+        if department_ids:
+            scheme_filters &= Q(department_id__in=department_ids)
+        if beneficiary_keywords:
+            beneficiary_filters = Q()
+            for keyword in beneficiary_keywords:
+                beneficiary_filters |= Q(beneficiaries__beneficiary_type__icontains=keyword)
+            scheme_filters &= beneficiary_filters
+        if sponsor_ids:
+            scheme_filters &= Q(sponsors__id__in=sponsor_ids)
+        if funding_pattern:
+            scheme_filters &= Q(funding_pattern__icontains=funding_pattern)
+        if search_query:
+            scheme_filters &= Q(title__icontains=search_query) | Q(description__icontains=search_query)
+
         feedback = WebsiteFeedback.objects.filter(user=user).order_by('-created_at').first()
+        keywords = extract_keywords_from_feedback(feedback.description) if feedback else None
 
-        # Extract keywords from feedback if it exists
-        keywords = None
-        if feedback:
-            keywords = extract_keywords_from_feedback(feedback.description)
-
-        collaborative_schemes = collaborative_recommendations(user.id, top_n=top_n, keywords=keywords)
-
+        recommended_schemes = collaborative_recommendations(user.id, top_n=top_n, keywords=keywords)
         state_based_schemes = Scheme.objects.filter(department__state=user.state_of_residence)
+        all_recommendations = list(set(recommended_schemes) | set(state_based_schemes))
 
-        final_recommendations = list(set(collaborative_schemes) | set(state_based_schemes))[:top_n]
+        recommended_filtered = Scheme.objects.filter(pk__in=[s.id for s in all_recommendations]).filter(scheme_filters).distinct()
 
-        serializer = SchemeSerializer(final_recommendations, many=True)
+        remaining_schemes = Scheme.objects.filter(scheme_filters).exclude(id__in=recommended_filtered.values_list('id', flat=True)).distinct()
+
+        final_schemes = list(recommended_filtered) + list(remaining_schemes)
+
+        if ordering:
+            final_schemes.sort(key=lambda x: getattr(x, ordering[0].lstrip('-')), reverse=ordering[0].startswith('-'))
+
+        paginator = self.pagination_class()
+        page = paginator.paginate_queryset(final_schemes, request)
+        if page is not None:
+            serializer = SchemeSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+
+        serializer = SchemeSerializer(final_schemes, many=True)
         return Response(serializer.data)
+
     
+
+
+class UnifiedSchemesAPIView(APIView):
+    pagination_class = SchemePagination
+    ordering_fields = ['title']
+    permission_classes = [AllowAny]
+
+    def get_user_tags(self, user_profile):
+        profile_field_mappings = {
+            "community": ["sc", "st", "obc", "general"],
+            "minority": ["muslim", "christian", "sikh", "buddhist", "parsi", "jain"],
+            "education": ["undergraduate", "postgraduate", "phd", "school"],
+            "disability": ["physical", "visual", "hearing", "intellectual"],
+            "occupation": ["farmer", "student", "teacher", "entrepreneur", "laborer"],
+            "income": ["bpl", "middle", "high"]
+        }
+
+        user_tags = []
+        for field, tags in profile_field_mappings.items():
+            value = user_profile.get(field, "").lower()
+            if value in tags:
+                user_tags.append(value)
+        return user_tags
+
+    def apply_filters(self, request, user_tags):
+        from django.db.models import Q
+        
+        query_params = request.query_params
+        state_ids = query_params.getlist('state_ids')
+        department_ids = query_params.getlist('department_ids')
+        beneficiary_keywords = query_params.getlist('beneficiary_keywords')
+        sponsor_ids = query_params.getlist('sponsor_ids')
+        funding_pattern = query_params.get('funding_pattern')
+        search_query = query_params.get('search_query')
+        tag = query_params.get('tag')
+
+        scheme_filters = Q(department__is_active=True, department__state__is_active=True, is_active=True)
+
+        if tag:
+            scheme_filters &= Q(tags__name__icontains=tag)
+
+        if user_tags:
+            tag_filters = Q()
+            for user_tag in user_tags:
+                tag_filters |= Q(tags__name__icontains=user_tag)
+            scheme_filters &= tag_filters
+
+        if tag == "job":
+            scheme_filters &= Q(tags__name__icontains='job') | Q(tags__name__icontains='employment')
+        if tag == "scholarship":
+            scheme_filters &= Q(tags__name__icontains='scholarship')
+        if state_ids:
+            scheme_filters &= Q(department__state_id__in=state_ids)
+        if department_ids:
+            scheme_filters &= Q(department_id__in=department_ids)
+        if beneficiary_keywords:
+            bf_filter = Q()
+            for keyword in beneficiary_keywords:
+                bf_filter |= Q(beneficiaries__beneficiary_type__icontains=keyword)
+            scheme_filters &= bf_filter
+        if sponsor_ids:
+            scheme_filters &= Q(sponsors__id__in=sponsor_ids)
+        if funding_pattern:
+            scheme_filters &= Q(funding_pattern__icontains=funding_pattern)
+        if search_query:
+            scheme_filters &= Q(title__icontains=search_query) | Q(description__icontains=search_query)
+
+        return scheme_filters
+
+    def get(self, request, *args, **kwargs):
+        user = request.user if request.user.is_authenticated else None
+        ordering = request.query_params.getlist('ordering') or self.ordering_fields
+        top_n = int(request.query_params.get('top_n', 10))
+
+        user_profile = request.query_params.get('user_profile', '{}')
+        import json
+        try:
+            user_profile = json.loads(user_profile)
+        except:
+            user_profile = {}
+
+        user_tags = self.get_user_tags(user_profile)
+        scheme_filters = self.apply_filters(request, user_tags)
+
+        recommended_schemes = []
+        if user:
+            feedback = WebsiteFeedback.objects.filter(user=user).order_by('-created_at').first()
+            keywords = extract_keywords_from_feedback(feedback.description) if feedback else None
+
+            collaborative_schemes = collaborative_recommendations(user.id, top_n=top_n, keywords=keywords)
+            state_based = Scheme.objects.filter(department__state=user.state_of_residence)
+            all_recommended = list(set(collaborative_schemes) | set(state_based))
+
+            recommended_schemes = Scheme.objects.filter(pk__in=[s.id for s in all_recommended]).filter(scheme_filters).distinct()
+
+        excluded_ids = recommended_schemes.values_list('id', flat=True)
+        other_schemes = Scheme.objects.filter(scheme_filters).exclude(id__in=excluded_ids).distinct()
+
+        final_schemes = list(recommended_schemes) + list(other_schemes)
+
+        if ordering:
+            final_schemes.sort(key=lambda x: getattr(x, ordering[0].lstrip('-')), reverse=ordering[0].startswith('-'))
+
+        paginator = self.pagination_class()
+        page = paginator.paginate_queryset(final_schemes, request)
+        if page is not None:
+            serializer = SchemeSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+
+        serializer = SchemeSerializer(final_schemes, many=True)
+        return Response(serializer.data)
+
+
 
 class SaveSchemeInteractionView(APIView):
     permission_classes = [IsAuthenticated]
