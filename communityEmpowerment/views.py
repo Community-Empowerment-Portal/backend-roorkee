@@ -1165,11 +1165,13 @@ class HybridRecommendationView(APIView):
 
     
 
-
 class UnifiedSchemesAPIView(APIView):
     pagination_class = SchemePagination
     ordering_fields = ['title']
     permission_classes = [AllowAny]
+
+    def get_data_source(self, request):
+        return request.data if request.method == "POST" else request.query_params
 
     def get_user_tags(self, user_profile):
         profile_field_mappings = {
@@ -1188,17 +1190,16 @@ class UnifiedSchemesAPIView(APIView):
                 user_tags.append(value)
         return user_tags
 
-    def apply_filters(self, request, user_tags):
+    def apply_filters(self, data, user_tags):
         from django.db.models import Q
         
-        query_params = request.query_params
-        state_ids = query_params.getlist('state_ids')
-        department_ids = query_params.getlist('department_ids')
-        beneficiary_keywords = query_params.getlist('beneficiary_keywords')
-        sponsor_ids = query_params.getlist('sponsor_ids')
-        funding_pattern = query_params.get('funding_pattern')
-        search_query = query_params.get('search_query')
-        tag = query_params.get('tag')
+        state_ids = data.get("state_ids", [])
+        department_ids = data.get("department_ids", [])
+        beneficiary_keywords = data.get("beneficiary_keywords", [])
+        sponsor_ids = data.get("sponsor_ids", [])
+        funding_pattern = data.get("funding_pattern")
+        search_query = data.get("search_query")
+        tag = data.get("tag")
 
         scheme_filters = Q(department__is_active=True, department__state__is_active=True, is_active=True)
 
@@ -1233,20 +1234,22 @@ class UnifiedSchemesAPIView(APIView):
 
         return scheme_filters
 
-    def get(self, request, *args, **kwargs):
+    def handle_request(self, request):
         user = request.user if request.user.is_authenticated else None
-        ordering = request.query_params.getlist('ordering') or self.ordering_fields
-        top_n = int(request.query_params.get('top_n', 10))
+        data = self.get_data_source(request)
+        ordering = data.get("ordering", self.ordering_fields)
+        top_n = int(data.get("top_n", 10))
 
-        user_profile = request.query_params.get('user_profile', '{}')
-        import json
-        try:
-            user_profile = json.loads(user_profile)
-        except:
-            user_profile = {}
+        user_profile = data.get("user_profile", {})
+        if isinstance(user_profile, str):
+            import json
+            try:
+                user_profile = json.loads(user_profile)
+            except:
+                user_profile = {}
 
         user_tags = self.get_user_tags(user_profile)
-        scheme_filters = self.apply_filters(request, user_tags)
+        scheme_filters = self.apply_filters(data, user_tags)
 
         recommended_schemes = []
         if user:
@@ -1259,7 +1262,7 @@ class UnifiedSchemesAPIView(APIView):
 
             recommended_schemes = Scheme.objects.filter(pk__in=[s.id for s in all_recommended]).filter(scheme_filters).distinct()
 
-        excluded_ids = recommended_schemes.values_list('id', flat=True)
+        excluded_ids = [s.id for s in recommended_schemes]
         other_schemes = Scheme.objects.filter(scheme_filters).exclude(id__in=excluded_ids).distinct()
 
         final_schemes = list(recommended_schemes) + list(other_schemes)
@@ -1275,6 +1278,13 @@ class UnifiedSchemesAPIView(APIView):
 
         serializer = SchemeSerializer(final_schemes, many=True)
         return Response(serializer.data)
+
+    def get(self, request, *args, **kwargs):
+        return self.handle_request(request)
+
+    def post(self, request, *args, **kwargs):
+        return self.handle_request(request)
+
 
 
 
