@@ -1419,7 +1419,6 @@ def get_event_stats(request):
     )
     return Response(stats)
 
-
 @api_view(["GET"])
 def get_event_timeline(request):
     from_date = request.GET.get("from", None)
@@ -1432,16 +1431,22 @@ def get_event_timeline(request):
         to_date = parse_date(to_date)
         if not from_date or not to_date:
             return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
-
     else:
+        today = now().date()
         if range_type == "weekly":
-            from_date = now() - timedelta(weeks=4)
+            from_date = today - timedelta(weeks=4)
         elif range_type == "monthly":
-            from_date = now() - timedelta(days=90)
+            from_date = today - timedelta(days=90)
+        elif range_type == "quarterly":
+            from_date = today - timedelta(days=90) 
+        elif range_type == "halfyearly":
+            from_date = today - timedelta(days=182)  
+        elif range_type == "annual":
+            from_date = today - timedelta(days=365)
         else:
-            from_date = now() - timedelta(days=30)
+            from_date = today - timedelta(days=30) 
         
-        to_date = now()
+        to_date = today
 
     timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
 
@@ -1618,7 +1623,7 @@ def get_user_event_timeline(request):
     user_id = request.GET.get("user_id", None)
     from_date = request.GET.get("from", None)
     to_date = request.GET.get("to", None)
-    range_type = request.GET.get("range", None) 
+    range_type = request.GET.get("range", None)
 
     if not user_id:
         return Response({"error": "user_id is required"}, status=400)
@@ -1632,17 +1637,26 @@ def get_user_event_timeline(request):
         if not from_date or not to_date:
             return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
     else:
-
+        today = now().date()
         if range_type == "weekly":
-            from_date = now() - timedelta(weeks=4)
+            from_date = today - timedelta(weeks=4)
         elif range_type == "monthly":
-            from_date = now() - timedelta(days=90)
+            from_date = today - timedelta(days=90)
+        elif range_type == "quarterly":
+            from_date = today - timedelta(days=90)
+        elif range_type == "halfyearly":
+            from_date = today - timedelta(days=182)
+        elif range_type == "annual":
+            from_date = today - timedelta(days=365)
         else:
-            from_date = now() - timedelta(days=30)
+            from_date = today - timedelta(days=30)
 
-        to_date = now()
+        to_date = today
 
-    timeline_query = UserEvents.objects.filter(user_id=user_id, timestamp__date__range=[from_date, to_date])
+    timeline_query = UserEvents.objects.filter(
+        user_id=user_id,
+        timestamp__date__range=[from_date, to_date]
+    )
 
     timeline = (
         timeline_query.annotate(date=TruncDate("timestamp"))
