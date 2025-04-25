@@ -7,7 +7,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
 from django.utils.dateparse import parse_date
-from django.db.models.functions import TruncDate, TruncMonth
+from django.db.models.functions import TruncDate, TruncMonth, TruncDay, TruncWeek
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
@@ -1448,14 +1448,13 @@ def get_event_timeline(request):
         elif range_type == "monthly":
             from_date = today - timedelta(days=90)
         elif range_type == "quarterly":
-            from_date = today - timedelta(days=90) 
+            from_date = today - timedelta(days=90)
         elif range_type == "halfyearly":
-            from_date = today - timedelta(days=182)  
+            from_date = today - timedelta(days=182)
         elif range_type == "annual":
             from_date = today - timedelta(days=365)
         else:
-            from_date = today - timedelta(days=30) 
-        
+            from_date = today - timedelta(days=30)
         to_date = today
 
     timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
@@ -1463,16 +1462,23 @@ def get_event_timeline(request):
     if state:
         timeline_query = timeline_query.filter(details__state=state)
 
+    if range_type == "weekly":
+        trunc_func = TruncWeek("timestamp")
+    elif range_type in ["monthly", "quarterly", "halfyearly", "annual"]:
+        trunc_func = TruncMonth("timestamp")
+    else:
+        trunc_func = TruncDay("timestamp")
+
     timeline = (
-        timeline_query.annotate(date=TruncDate("timestamp"))
-        .values("date")
+        timeline_query.annotate(period=trunc_func)
+        .values("period")
         .annotate(
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
             filters=Count("id", filter=Q(event_type="filter")),
         )
-        .order_by("date")
+        .order_by("period")
     )
 
     return Response(timeline)
