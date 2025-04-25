@@ -1505,14 +1505,14 @@ def get_event_timeline(request):
 
 
 
+
 @api_view(["GET"])
 def get_popular_schemes(request):
-    limit = int(request.GET.get("limit", 5))
+    limit = int(request.GET.get("limit", 10))
     event_type = request.GET.get("event_type", "view")
-    state = request.GET.get("state", None)
+    state = request.GET.get("state")
 
     schemes_query = UserEvents.objects.filter(event_type=event_type)
-
     if state:
         schemes_query = schemes_query.filter(details__state=state)
 
@@ -1522,10 +1522,13 @@ def get_popular_schemes(request):
         .order_by("-count")[:limit]
     )
 
+    scheme_ids = [s["scheme_id"] for s in schemes]
+    scheme_map = {s.id: s.title for s in Scheme.objects.filter(id__in=scheme_ids)}
+
     scheme_details = [
         {
             "scheme_id": scheme["scheme_id"],
-            "title": Scheme.objects.get(id=scheme["scheme_id"]).title,
+            "title": scheme_map.get(scheme["scheme_id"], "Unknown"),
             "count": scheme["count"],
         }
         for scheme in schemes
