@@ -1633,7 +1633,6 @@ def get_user_popular_schemes(request):
     return Response(scheme_details)
 
 
-
 @api_view(["GET"])
 def get_user_event_timeline(request):
     user_id = request.GET.get("user_id", None)
@@ -1666,8 +1665,14 @@ def get_user_event_timeline(request):
             from_date = today - timedelta(days=365)
         else:
             from_date = today - timedelta(days=30)
-
         to_date = today
+
+    if range_type == "weekly":
+        trunc_func = TruncWeek("timestamp")
+    elif range_type in ["monthly", "quarterly", "halfyearly", "annual"]:
+        trunc_func = TruncMonth("timestamp")
+    else:
+        trunc_func = TruncDate("timestamp") 
 
     timeline_query = UserEvents.objects.filter(
         user_id=user_id,
@@ -1675,15 +1680,15 @@ def get_user_event_timeline(request):
     )
 
     timeline = (
-        timeline_query.annotate(date=TruncDate("timestamp"))
-        .values("date")
+        timeline_query.annotate(period=trunc_func)
+        .values("period")
         .annotate(
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
             clicks=Count("id", filter=Q(event_type="apply")),
         )
-        .order_by("date")
+        .order_by("period")
     )
 
     return Response(timeline)
