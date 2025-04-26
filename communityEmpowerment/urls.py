@@ -91,6 +91,7 @@ from .views import (
     get_user_click_history,
     get_user_filter_usage,
     get_user_download_history,
+    get_event_by_range,
     UserListView,
     proxy_view,
     UnifiedSchemesAPIView,
@@ -177,6 +178,8 @@ urlpatterns = [
     path("events/log/", UserEventsViewSet.as_view({"post": "log_event"}), name="log-user-event"),
     path("events/stats/", get_event_stats, name="event-stats"),
     path("events/timeline/", get_event_timeline, name="event-timeline"),
+    path("events/range-timeline/", get_event_by_range, name="event-timeline"),
+
     path("events/popular-schemes/", get_popular_schemes, name="popular-schemes"),
     path("events/filter-usage/", get_filter_usage, name="filter-usage"),
     path("events/popular-searches/", get_popular_searches, name="popular-searches"),
