@@ -432,6 +432,31 @@ class UserProfileView(generics.GenericAPIView):
         response_data = self.get_serializer(user).data
         return Response(response_data)
     
+class AllUserProfilesView(generics.GenericAPIView):
+    serializer_class = UserProfileSerializer
+
+    def get(self, request, *args, **kwargs):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        users = User.objects.all()
+
+        all_users_data = []
+
+        for user in users:
+            serializer = self.get_serializer(user)
+            user_data = serializer.data
+
+
+            dynamic_field_values = ProfileFieldValue.objects.filter(user=user, field__is_active=True)
+            dynamic_fields = {
+                value.field.name: value.value for value in dynamic_field_values
+            }
+            user_data["dynamic_fields"] = dynamic_fields
+
+            all_users_data.append(user_data)
+
+        return Response(all_users_data)
+    
 
 class UserProfileFieldValuesView(generics.GenericAPIView):
     serializer_class = UserProfileSerializer
