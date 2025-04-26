@@ -47,6 +47,8 @@ from rest_framework.authtoken.models import Token
 import json
 from django.core.mail import EmailMessage
 import requests
+from calendar import monthrange
+from datetime import date
 
 
 
@@ -1484,6 +1486,98 @@ def get_event_timeline(request):
     return Response(timeline)
 
 
+@api_view(["GET"])
+def get_event_by_range(request):
+    range_type = request.GET.get("type")
+    month = request.GET.get("month")
+    year = request.GET.get("year")
+    state = request.GET.get("state", None)
+
+    today = now().date()
+
+    if range_type not in ["weekly", "monthly", "quarterly", "halfyearly", "annual"]:
+        return Response({"error": "Invalid or missing 'type'. Must be weekly, monthly, quarterly, halfyearly, annual."}, status=400)
+
+    try:
+        if range_type == "monthly":
+            if not month or not year:
+                return Response({"error": "Please provide 'month' and 'year' for monthly range."}, status=400)
+            month = int(month)
+            year = int(year)
+            _, last_day = monthrange(year, month)
+            from_date = date(year, month, 1)
+            to_date = date(year, month, last_day)
+        
+        elif range_type == "weekly":
+            if not year or not month:
+                return Response({"error": "Please provide 'month' and 'year' for weekly range."}, status=400)
+            month = int(month)
+            year = int(year)
+            from_date = date(year, month, 1)
+            to_date = from_date + timedelta(weeks=1) - timedelta(days=1)
+            if to_date.month != month:
+                to_date = date(year, monthrange(year, month)[1])
+        
+        elif range_type == "quarterly":
+            if not year or not month:
+                return Response({"error": "Please provide 'month' and 'year' to identify quarter."}, status=400)
+            month = int(month)
+            year = int(year)
+            quarter = ((month - 1) // 3) + 1
+            start_month = 3 * (quarter - 1) + 1
+            from_date = date(year, start_month, 1)
+            _, last_day = monthrange(year, start_month + 2)
+            to_date = date(year, start_month + 2, last_day)
+        
+        elif range_type == "halfyearly":
+            if not year or not month:
+                return Response({"error": "Please provide 'month' and 'year' to identify half year."}, status=400)
+            month = int(month)
+            year = int(year)
+            if month <= 6:
+                from_date = date(year, 1, 1)
+                to_date = date(year, 6, 30)
+            else:
+                from_date = date(year, 7, 1)
+                to_date = date(year, 12, 31)
+        
+        elif range_type == "annual":
+            if not year:
+                return Response({"error": "Please provide 'year' for annual range."}, status=400)
+            year = int(year)
+            from_date = date(year, 1, 1)
+            to_date = date(year, 12, 31)
+
+    except ValueError:
+        return Response({"error": "Invalid month or year format."}, status=400)
+
+
+    timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
+
+    if state:
+        timeline_query = timeline_query.filter(details__state=state)
+
+
+    if range_type == "weekly":
+        trunc_func = TruncDay("timestamp")
+    elif range_type == "monthly":
+        trunc_func = TruncDay("timestamp")
+    else:
+        trunc_func = TruncMonth("timestamp")
+
+    timeline = (
+        timeline_query.annotate(period=trunc_func)
+        .values("period")
+        .annotate(
+            views=Count("id", filter=Q(event_type="view")),
+            searches=Count("id", filter=Q(event_type="search")),
+            downloads=Count("id", filter=Q(event_type="download")),
+            filters=Count("id", filter=Q(event_type="filter")),
+        )
+        .order_by("period")
+    )
+
+    return Response(timeline)
 
 
 @api_view(["GET"])
