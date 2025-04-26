@@ -43,6 +43,7 @@ elif(os.getenv('ENVIRONMENT') == 'production'):
     CORS_ALLOW_ALL_ORIGINS = False
     CORS_ALLOWED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',') 
     SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
     SECURE_CROSS_ORIGIN_EMBEDDER_POLICY = 'require-corp'
     CSRF_COOKIE_SECURE = True
