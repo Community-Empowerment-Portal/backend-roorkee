@@ -91,10 +91,12 @@ from .views import (
     get_user_click_history,
     get_user_filter_usage,
     get_user_download_history,
+    get_event_by_range,
     UserListView,
     proxy_view,
     UnifiedSchemesAPIView,
-    UserProfileFieldValuesView
+    UserProfileFieldValuesView,
+    AllUserProfilesView
 )
 
 
@@ -126,6 +128,7 @@ urlpatterns = [
     path('states/<int:state_id>/schemes/', StateSchemesListAPIView.as_view(), name='state-schemes-list'),  
     path('user/profile/', UserProfileView.as_view(), name='user-profile'),
     path('profile-field-values/<int:user_id>/', UserProfileFieldValuesView.as_view(), name='user-profile-fields'),
+    path('user-profile-fields/', AllUserProfilesView.as_view(), name='all-user-profile-fields'),
     path('user/preferences/', PreferenceView.as_view(), name='user-preferences'),
     # path('recommendations/', RecommendationsAPIView.as_view(), name='recommendations'),
  
@@ -177,6 +180,8 @@ urlpatterns = [
     path("events/log/", UserEventsViewSet.as_view({"post": "log_event"}), name="log-user-event"),
     path("events/stats/", get_event_stats, name="event-stats"),
     path("events/timeline/", get_event_timeline, name="event-timeline"),
+    path("events/range-timeline/", get_event_by_range, name="event-timeline"),
+
     path("events/popular-schemes/", get_popular_schemes, name="popular-schemes"),
     path("events/filter-usage/", get_filter_usage, name="filter-usage"),
     path("events/popular-searches/", get_popular_searches, name="popular-searches"),
