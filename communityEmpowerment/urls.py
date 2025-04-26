@@ -93,7 +93,8 @@ from .views import (
     get_user_download_history,
     UserListView,
     proxy_view,
-    UnifiedSchemesAPIView
+    UnifiedSchemesAPIView,
+    UserProfileFieldValuesView
 )
 
 
@@ -124,6 +125,7 @@ urlpatterns = [
     path('schemes/<int:scheme_id>/sponsors/', SchemeSponsorsListAPIView.as_view(), name='scheme-sponsors-list'),  # Add the new URL pattern
     path('states/<int:state_id>/schemes/', StateSchemesListAPIView.as_view(), name='state-schemes-list'),  
     path('user/profile/', UserProfileView.as_view(), name='user-profile'),
+    path('profile-field-values/<int:user_id>/', UserProfileFieldValuesView.as_view(), name='user-profile-fields'),
     path('user/preferences/', PreferenceView.as_view(), name='user-preferences'),
     # path('recommendations/', RecommendationsAPIView.as_view(), name='recommendations'),
  
