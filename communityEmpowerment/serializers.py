@@ -517,6 +517,13 @@ class ProfileFieldSerializer(serializers.ModelSerializer):
         model = ProfileField
         fields = ['id', 'name', 'field_type', 'is_required', 'is_active', 'choices']
 
+class ProfileFieldValueSerializer(serializers.ModelSerializer):
+    field_name = serializers.CharField(source='field.name', read_only=True)
+
+    class Meta:
+        model = ProfileFieldValue
+        fields = ['id', 'user', 'field', 'field_name', 'value']
+
 
 class CustomUserSerializer(serializers.ModelSerializer):
     dynamic_fields = serializers.SerializerMethodField()

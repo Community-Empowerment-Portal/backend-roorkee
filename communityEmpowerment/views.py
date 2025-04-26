@@ -63,7 +63,7 @@ from .serializers import (
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
-    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
+    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
     UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
 )
@@ -430,6 +430,31 @@ class UserProfileView(generics.GenericAPIView):
 
         # Return updated data
         response_data = self.get_serializer(user).data
+        return Response(response_data)
+    
+
+class UserProfileFieldValuesView(generics.GenericAPIView):
+    serializer_class = UserProfileSerializer
+    permission_classes = [AllowAny]
+    def get_object(self):
+        user_id = self.kwargs.get('user_id')
+        return CustomUser.objects.get(id=user_id)
+
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(user)
+        response_data = serializer.data
+        dynamic_field_values = ProfileFieldValue.objects.filter(user=user, field__is_active=True)
+        dynamic_fields = {
+        value.field.name: value.value for value in dynamic_field_values
+    }
+        profile_fields = ProfileField.objects.all()
+        ordered_profile_fields = sorted(profile_fields, key=lambda field: field.position)
+        response_data["dynamic_fields"] = dynamic_fields
+        response_data["ordered_profile_fields"] = [
+            {"name": field.name, "field_type": field.field_type, "position": field.position}
+            for field in ordered_profile_fields
+        ]
         return Response(response_data)
 
 class AllProfileFieldsView(generics.GenericAPIView):
@@ -1480,14 +1505,14 @@ def get_event_timeline(request):
 
 
 
+
 @api_view(["GET"])
 def get_popular_schemes(request):
-    limit = int(request.GET.get("limit", 5))
+    limit = int(request.GET.get("limit", 10))
     event_type = request.GET.get("event_type", "view")
-    state = request.GET.get("state", None)
+    state = request.GET.get("state")
 
     schemes_query = UserEvents.objects.filter(event_type=event_type)
-
     if state:
         schemes_query = schemes_query.filter(details__state=state)
 
@@ -1497,10 +1522,13 @@ def get_popular_schemes(request):
         .order_by("-count")[:limit]
     )
 
+    scheme_ids = [s["scheme_id"] for s in schemes]
+    scheme_map = {s.id: s.title for s in Scheme.objects.filter(id__in=scheme_ids)}
+
     scheme_details = [
         {
             "scheme_id": scheme["scheme_id"],
-            "title": Scheme.objects.get(id=scheme["scheme_id"]).title,
+            "title": scheme_map.get(scheme["scheme_id"], "Unknown"),
             "count": scheme["count"],
         }
         for scheme in schemes
