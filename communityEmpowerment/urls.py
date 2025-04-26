@@ -95,7 +95,8 @@ from .views import (
     UserListView,
     proxy_view,
     UnifiedSchemesAPIView,
-    UserProfileFieldValuesView
+    UserProfileFieldValuesView,
+    AllUserProfilesView
 )
 
 
@@ -127,6 +128,7 @@ urlpatterns = [
     path('states/<int:state_id>/schemes/', StateSchemesListAPIView.as_view(), name='state-schemes-list'),  
     path('user/profile/', UserProfileView.as_view(), name='user-profile'),
     path('profile-field-values/<int:user_id>/', UserProfileFieldValuesView.as_view(), name='user-profile-fields'),
+    path('user-profile-fields/', AllUserProfilesView.as_view(), name='all-user-profile-fields'),
     path('user/preferences/', PreferenceView.as_view(), name='user-preferences'),
     # path('recommendations/', RecommendationsAPIView.as_view(), name='recommendations'),
  
