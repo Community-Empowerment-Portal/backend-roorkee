@@ -713,13 +713,15 @@ def verify_email(request, uidb64, token):
         user = CustomUser.objects.get(pk=user_id)
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-
+    context = {
+        'frontend_url': settings.FRONTEND_URL
+    }
     if user is not None and default_token_generator.check_token(user, token):
         user.is_email_verified = True
         user.save()
-        return render(request, 'email_verified.html')
+        return render(request, 'email_verified.html', context)
     else:
-        return render(request, 'email_verification_failed.html')
+        return render(request, 'email_verification_failed.html', context)
     
 class PasswordResetRequestView(APIView):
     @method_decorator(csrf_exempt)
