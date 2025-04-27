@@ -59,7 +59,14 @@ app.conf.beat_schedule = {
 
 app.conf.beat_schedule = {
     "send-weekly-email": {
-        "task": "your_app.tasks.send_weekly_email",
+        "task": "communityEmpowerment.tasks.send_weekly_email",
         "schedule": crontab(day_of_week=0, hour=9, minute=0),  # Every Monday at 9 AM
+    },
+}
+
+app.conf.beat_schedule = {
+    "send_saved_scheme_expiry_reminders": {
+        "task": "communityEmpowerment.tasks.send_expiry_email_task",
+        "schedule": crontab(hour=0, minute=0),  # every day at 12:00 AM
     },
 }

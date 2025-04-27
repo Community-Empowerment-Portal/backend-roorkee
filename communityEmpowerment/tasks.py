@@ -127,6 +127,8 @@
 from celery import shared_task
 from django.core.management import call_command
 from django.core.mail import send_mail
+from django.conf import settings
+
 
 # @shared_task
 # def scrape_and_process_schemes():
@@ -138,9 +140,6 @@ def check_urls_task():
     call_command('check_urls')  # Calls the check_urls.py command
 
 
-from celery import shared_task
-from django.core.mail import send_mail
-from django.conf import settings
 
 @shared_task
 def send_weekly_email():
@@ -152,3 +151,7 @@ def send_weekly_email():
         send_mail(subject, message, settings.EMAIL_FROM, [recipient], fail_silently=False)
 
     return f"Weekly emails sent to {len(recipients)} users"
+
+@shared_task
+def send_expiry_email_task():
+    call_command("send_expiry_mails")
