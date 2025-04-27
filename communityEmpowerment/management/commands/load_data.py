@@ -1,7 +1,8 @@
 import json
 import os
 from django.core.management.base import BaseCommand
-from communityEmpowerment.models import State, Department, Organisation, Scheme, Beneficiary, Document, Sponsor, SchemeBeneficiary, SchemeDocument, SchemeSponsor, Criteria, Procedure,Tag, Benefit
+from communityEmpowerment.models import State, Department, Resource,Organisation, Scheme, Beneficiary, Document, Sponsor, SchemeBeneficiary, SchemeDocument, SchemeSponsor, Criteria, Procedure,Tag, Benefit
+from urllib.parse import urlparse
 
 class Command(BaseCommand):
     help = 'Load data from JSON file into database'
@@ -26,6 +27,7 @@ class Command(BaseCommand):
         return value
 
     def load_data(self, data):
+        state_resources = {}
         for state_data in data['states']:
             state_name = self.truncate(state_data['state_name']).strip().title()
             state, created = State.objects.get_or_create(
@@ -72,6 +74,14 @@ class Command(BaseCommand):
                             scheme.scheme_link = scheme_link
                             scheme.pdf_url = pdf_url
                             scheme.save()
+
+                        parsed_url = urlparse(scheme_link)
+                        if parsed_url.scheme and parsed_url.netloc:
+                            base_url = f"{parsed_url.scheme}://{parsed_url.netloc}"
+                            if state.id not in state_resources:
+                                state_resources[state.id] = set()
+                            state_resources[state.id].add(base_url)
+
 
                         for beneficiary_data in scheme_data['beneficiaries']:
                             beneficiary_type = self.truncate(beneficiary_data)
@@ -142,6 +152,15 @@ class Command(BaseCommand):
                                 tag_name = self.truncate(tag_name)
                                 tag, created = Tag.objects.get_or_create(name=tag_name)
                                 scheme.tags.add(tag)
+        
+
+        for state_id, base_urls in state_resources.items():
+            state = State.objects.get(id=state_id)
+            for base_url in base_urls:
+                Resource.objects.get_or_create(
+                    state_name=state,
+                    resource_link=base_url
+                )
 
 
                     
