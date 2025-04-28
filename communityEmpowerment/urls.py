@@ -96,7 +96,9 @@ from .views import (
     proxy_view,
     UnifiedSchemesAPIView,
     UserProfileFieldValuesView,
-    AllUserProfilesView
+    AllUserProfilesView,
+    signup_analytics,
+    login_analytics
 )
 
 
@@ -166,6 +168,8 @@ urlpatterns = [
     path('feedback/scheme-reports/<int:pk>/', SchemeReportViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='scheme-report-detail'),
     path('feedback/website-feedback/', WebsiteFeedbackViewSet.as_view({'post': 'create', 'get': 'list'}), name='website-feedback'),
     path('website-feedback/all/', AllWebsiteFeedbackView.as_view(), name='all-website-feedback'),
+    path('analytics/registrations/', signup_analytics, name='registration-analytics'),
+    path('analytics/logins/', login_analytics, name='login-analytics'),
     path('feedback/website-feedback/<int:pk>/', WebsiteFeedbackViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='website-feedback-detail'),
     path('scheme/<int:scheme_id>/recommendations/', RecommendSchemesAPIView.as_view(), name='scheme_recommendations'),
     path('recommendations/', HybridRecommendationView.as_view(), name='hybrid-recommendations'),
