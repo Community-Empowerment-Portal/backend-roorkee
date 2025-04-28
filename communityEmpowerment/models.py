@@ -1539,10 +1539,17 @@ class Tag(DirtyFieldsMixin, TimeStampedModel):
         return self.name or "N/A"
 
 
+class Organization(models.Model):
+    name = models.CharField(max_length=255)
+    domain = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
      
 
 class Scheme(TimeStampedModel):
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.TextField(null = True, blank = True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='schemes', null=True, blank=True)
     introduced_on = models.TextField(null = True, blank = True)
@@ -1954,6 +1961,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('West Bengal', 'West Bengal'),
         
     ]
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)
