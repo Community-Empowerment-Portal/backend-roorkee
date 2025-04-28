@@ -57,7 +57,9 @@ from .views import (
     # EmploymentChoicesView,
     UserSavedSchemesFilterView,
     SchemeReportViewSet,
+    AllSchemeReportsView,
     WebsiteFeedbackViewSet,
+    AllWebsiteFeedbackView,
     RecommendSchemesAPIView,
     HybridRecommendationView,
     SaveSchemeInteractionView,
@@ -89,8 +91,12 @@ from .views import (
     get_user_click_history,
     get_user_filter_usage,
     get_user_download_history,
+    get_event_by_range,
     UserListView,
     proxy_view,
+    UnifiedSchemesAPIView,
+    UserProfileFieldValuesView,
+    AllUserProfilesView
 )
 
 
@@ -121,6 +127,8 @@ urlpatterns = [
     path('schemes/<int:scheme_id>/sponsors/', SchemeSponsorsListAPIView.as_view(), name='scheme-sponsors-list'),  # Add the new URL pattern
     path('states/<int:state_id>/schemes/', StateSchemesListAPIView.as_view(), name='state-schemes-list'),  
     path('user/profile/', UserProfileView.as_view(), name='user-profile'),
+    path('profile-field-values/<int:user_id>/', UserProfileFieldValuesView.as_view(), name='user-profile-fields'),
+    path('user-profile-fields/', AllUserProfilesView.as_view(), name='all-user-profile-fields'),
     path('user/preferences/', PreferenceView.as_view(), name='user-preferences'),
     # path('recommendations/', RecommendationsAPIView.as_view(), name='recommendations'),
  
@@ -148,13 +156,16 @@ urlpatterns = [
     path('password-reset/', PasswordResetRequestView.as_view(), name='password_reset_request'),
     path('password-reset-confirm/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('schemes/<int:scheme_id>/benefits/', SchemeBenefitListAPIView.as_view(), name='scheme-benefits'),
-    path('schemes/multi-state-departments/', SchemesByMultipleStatesAndDepartmentsAPIView.as_view(), name='schemes-by-multiple-state-and-department'),
+    # path('schemes/multi-state-departments/', SchemesByMultipleStatesAndDepartmentsAPIView.as_view(), name='schemes-by-multiple-state-and-department'),
+    path('schemes/multi-state-departments/', UnifiedSchemesAPIView.as_view(), name='schemes-by-multiple-state-and-department'),
     path('user/me/', CurrentUserDetailView.as_view(), name='current-user-detail'),
     path('resend-verification-email/', ResendVerificationEmailView.as_view(), name='resend-verification-email'),
     path('saved-schemes/filter/', UserSavedSchemesFilterView.as_view(), name='user-saved-schemes-filter'),
     path('feedback/scheme-reports/', SchemeReportViewSet.as_view({'post': 'create', 'get': 'list'}), name='scheme-reports'),
+    path('scheme-reports/all/', AllSchemeReportsView.as_view(), name='all-scheme-reports'),
     path('feedback/scheme-reports/<int:pk>/', SchemeReportViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='scheme-report-detail'),
     path('feedback/website-feedback/', WebsiteFeedbackViewSet.as_view({'post': 'create', 'get': 'list'}), name='website-feedback'),
+    path('website-feedback/all/', AllWebsiteFeedbackView.as_view(), name='all-website-feedback'),
     path('feedback/website-feedback/<int:pk>/', WebsiteFeedbackViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='website-feedback-detail'),
     path('scheme/<int:scheme_id>/recommendations/', RecommendSchemesAPIView.as_view(), name='scheme_recommendations'),
     path('recommendations/', HybridRecommendationView.as_view(), name='hybrid-recommendations'),
@@ -169,6 +180,8 @@ urlpatterns = [
     path("events/log/", UserEventsViewSet.as_view({"post": "log_event"}), name="log-user-event"),
     path("events/stats/", get_event_stats, name="event-stats"),
     path("events/timeline/", get_event_timeline, name="event-timeline"),
+    path("events/range-timeline/", get_event_by_range, name="event-timeline"),
+
     path("events/popular-schemes/", get_popular_schemes, name="popular-schemes"),
     path("events/filter-usage/", get_filter_usage, name="filter-usage"),
     path("events/popular-searches/", get_popular_searches, name="popular-searches"),

@@ -25,15 +25,32 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if(os.getenv('ENVIRONMENT') == 'development'):
+if os.getenv('ENVIRONMENT') == 'development':
     DEBUG = True
+
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+    CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1']
+
+    CORS_ALLOW_ALL_ORIGINS = True
+
+
+
 elif(os.getenv('ENVIRONMENT') == 'production'):
     DEBUG = False
+    ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS','').split(',')
+    CSRF_TRUSTED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',')
+    CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOWED_ORIGINS = os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',') 
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
+    SECURE_CROSS_ORIGIN_EMBEDDER_POLICY = 'require-corp'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
 
-ALLOWED_HOSTS = ["3.109.208.148",'*']
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Application definition
 
@@ -76,24 +93,21 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
 
-# Allow credentials (cookies, etc.)
 CORS_ALLOW_CREDENTIALS = True
 
-# Allow specific headers
 CORS_ALLOW_HEADERS = [
     'content-type',
     'authorization',
 ]
 
-# Allow specific methods
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
     'PUT',
     'DELETE',
 ]
+
 
 ROOT_URLCONF = 'mysite.urls'
 from datetime import timedelta
@@ -208,6 +222,7 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_MEDIA_STORAGE_BUCKET_NAME = os.getenv('AWS_MEDIA_STORAGE_BUCKET_NAME')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_PDF_STORAGE_BUCKET_NAME = os.getenv('AWS_PDF_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
 AWS_S3_MEDIA_CUSTOM_DOMAIN = f'https://{AWS_MEDIA_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
@@ -226,7 +241,7 @@ REDIS_HOST = os.getenv('REDIS_HOST')
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': f'rediss://{REDIS_HOST}/0',  # Using f-string for interpola>
+        'LOCATION': f'rediss://{REDIS_HOST}/0',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'CONNECTION_POOL_KWARGS': {
@@ -248,22 +263,7 @@ if not REDIS_HOST.startswith("redis://"):
 CELERY_BROKER_URL = REDIS_HOST
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
-# REDIS_HOST = os.getenv('REDIS_HOST')
-# REDIS_PORT = os.getenv('REDIS_PORT')
-# CELERY_RESULT_BACKEND = CELE>
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TIMEZONE = 'UTC'
-# CELERY_ENABLE_UTC = True
 
-
-
-
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME= os.getenv('AWS_S3_REGION_NAME')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -275,6 +275,3 @@ EMAIL_FROM = os.getenv('EMAIL_FROM')
 
 SITE_URL = os.getenv('SITE_URL')
 FRONTEND_URL = os.getenv('FRONTEND_URL')
-
-
-AUTH_USER_MODEL = 'communityEmpowerment.CustomUser'

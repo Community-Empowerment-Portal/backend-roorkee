@@ -1002,5 +1002,218 @@
             }
         ],
         "id": "ac9af820-e70d-4e09-aaad-a9e97581eb2e"
+    },
+    {
+        "description": "Every scholarship has its own set of eligibility criteria that students need to fulfill and be eligible to apply for the scholarship opportunity. One of the key criteria that are applicable for eKalyan, ( Govt of Jharkhand ) scholarships is to be a permanent resident of Jharkhand. Correct knowledge of many other aspects like academic qualifications, family income limit, aadhaar number, bank account etc.. leads to the successful application of scholarships. Know the detailed eligibility criteria before applying online.\nStudents are not required to provide their bank account details like bank account number, IFSC code in the Post Matric application form. Scholarship amount will be automatically transferred to Aadhaar linked bank account number through ABPS.\nCheck status of your AADHAAR linked bank account number (click here)",
+        "beneficiaries": [],
+        "tags": [
+            "pre matric",
+            "sc",
+            "scholarship",
+            "jharkhand",
+            "ekalyan"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not available",
+        "introduced_on": "Not available",
+        "scheme_link": "https://ekalyan.cgg.gov.in/",
+        "title": "Pre Matric SC Scheme",
+        "funding_pattern": "scholarship",
+        "documents": [],
+        "criteria": [],
+        "id": "1649165f-f609-437b-a89c-4cb89f510d64"
+    },
+    {
+        "description": "The Pre Matric ST Scheme is a scholarship program for ST students in Jharkhand. Applicants must be permanent residents of Jharkhand, meet certain academic qualifications, and have a family income below the specified limit. They also need to have an Aadhaar number. The scholarship amount will be directly transferred to the student's Aadhaar-linked bank account.",
+        "tags": [
+            "Scholarship",
+            "Pre-Matric",
+            "ST",
+            "Jharkhand",
+            "eKalyan"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "ST students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not specified",
+        "introduced_on": "Not specified",
+        "scheme_link": "https://ekalyan.cgg.gov.in/",
+        "title": "Pre Matric ST Scheme",
+        "funding_pattern": "Not specified",
+        "criteria": [
+            {
+                "description": "Permanent resident of Jharkhand"
+            },
+            {
+                "description": "Meet academic qualifications"
+            },
+            {
+                "description": "Family income below specified limit"
+            },
+            {
+                "description": "Possess Aadhaar number"
+            }
+        ],
+        "documents": [],
+        "id": "86530397-9ac0-4408-a6be-a8af46ab9f3d"
+    },
+    {
+        "description": "The Pre Matric BC Scheme is a scholarship opportunity available to students who are permanent residents of Jharkhand. Applicants must meet certain eligibility criteria, including academic qualifications, family income limits, and possession of an Aadhaar number and bank account. The scholarship amount will be automatically transferred to the Aadhaar-linked bank account.",
+        "tags": [
+            "Pre Matric",
+            "BC",
+            "Scholarship",
+            "Jharkhand",
+            "eKalyan"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "BC"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not specified",
+        "funding_pattern": "Not specified",
+        "scheme_link": "https://ekalyan.cgg.gov.in/",
+        "title": "Pre Matric BC Scheme",
+        "introduced_on": "Not specified",
+        "criteria": [
+            {
+                "description": "Be a permanent resident of Jharkhand"
+            },
+            {
+                "description": "Meet the academic qualifications"
+            },
+            {
+                "description": "Be within the family income limit"
+            },
+            {
+                "description": "Have an Aadhaar number"
+            },
+            {
+                "description": "Have a bank account"
+            }
+        ],
+        "documents": [],
+        "id": "e4f66d41-a144-4fba-ac14-e20d147f4aae"
+    },
+    {
+        "description": "Every scholarship has its own set of eligibility criteria that students need to fulfill and be eligible to apply for the scholarship opportunity. One of the key criteria that are applicable for eKalyan, ( Govt of Jharkhand ) scholarships is to be a permanent resident of Jharkhand. Correct knowledge of many other aspects like academic qualifications, family income limit, aadhaar number, bank account etc.. leads to the successful application of scholarships. Know the detailed eligibility criteria before applying online. Students are not required to provide their bank account details like bank account number, IFSC code in the Post Matric application form. Scholarship amount will be automatically transferred to Aadhaar linked bank account number through ABPS. Check status of your AADHAAR linked bank account number (click here)",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC students"
+            }
+        ],
+        "tags": [
+            "post-matric",
+            "scholarship",
+            "education",
+            "jharkhand",
+            "ekalyan"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not available in the given text",
+        "scheme_link": "https://ekalyan.cgg.gov.in/",
+        "introduced_on": "Not available in the given text",
+        "title": "Post Matric SC Scheme",
+        "funding_pattern": "scholarship",
+        "criteria": [
+            {
+                "description": "Permanent resident of Jharkhand"
+            },
+            {
+                "description": "Aadhaar linked bank account"
+            }
+        ],
+        "documents": [],
+        "id": "bfb02cd5-2080-40fc-8bf3-40d70102d3e4"
+    },
+    {
+        "description": "The Post Matric Scholarship Scheme provides financial assistance to students of Jharkhand for their education. Key eligibility criteria includes being a permanent resident of Jharkhand and having an Aadhaar linked bank account.  Applicants need not provide bank details during application as disbursal happens through ABPS. For more details, please refer to the scheme link.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Student"
+            }
+        ],
+        "tags": [
+            "education",
+            "scholarship",
+            "post-matric",
+            "jharkhand",
+            "students"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not specified",
+        "introduced_on": "Not specified",
+        "funding_pattern": "Not specified",
+        "title": "Post Matric ST Scheme",
+        "scheme_link": "https://ekalyan.cgg.gov.in/",
+        "criteria": [
+            {
+                "description": "Permanent resident of Jharkhand"
+            },
+            {
+                "description": "Aadhaar linked bank account"
+            },
+            {
+                "description": "Meet academic qualifications"
+            },
+            {
+                "description": "Meet the family income limit"
+            }
+        ],
+        "documents": [],
+        "id": "c264218f-eed4-480a-b8c6-9b77d007ecff"
+    },
+    {
+        "description": "The Post Matric BC Scheme provides financial assistance to BC students for their post-matriculation education. Key eligibility criteria include being a permanent resident of Jharkhand, meeting academic qualifications, adhering to the family income limit, and possessing an Aadhaar number. The scholarship amount is directly transferred to the student's Aadhaar-linked bank account.",
+        "tags": [
+            "Post Matric",
+            "BC",
+            "Jharkhand",
+            "Scholarship",
+            "Education",
+            "Financial Assistance",
+            "Aadhaar"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "BC"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Not specified",
+        "scheme_link": "https://ekalyan.cgg.gov.in/",
+        "introduced_on": "Not specified",
+        "title": "Post Matric BC Scheme",
+        "funding_pattern": "Not specified",
+        "documents": [],
+        "criteria": [
+            {
+                "description": "Be a permanent resident of Jharkhand"
+            },
+            {
+                "description": "Meet the academic qualifications"
+            },
+            {
+                "description": "Family income must be below the defined limit"
+            },
+            {
+                "description": "Possess an Aadhaar number"
+            },
+            {
+                "description": "Have a bank account"
+            }
+        ],
+        "id": "db731873-67d2-488b-a1b7-8ea9a77c02a5"
     }
 ]

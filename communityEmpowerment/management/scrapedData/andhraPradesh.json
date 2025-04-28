@@ -464,5 +464,342 @@
       "criteria": [],
       "documents": [],
       "id": "b135ac87-cd9f-4d49-88fc-6729ff7085a3"
-  }
+  },
+  {
+    "description": "Admissions in the Hostels are given to Poor ST Students who are having White Ration Card and whose annual income is below 45,000/- providing all facilities such as food, cosmetics, accommodation, Note Books, Bedding material, uniform, night wear, slippers, sports material, etc., for free of cost.",
+    "tags": [
+        "hostel",
+        "education",
+        "ST",
+        "welfare"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST Students"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "title": "Administration of Pre – Metric Hostels",
+    "funding_pattern": "Free of cost",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Poor ST Students"
+        },
+        {
+            "description": "Having White Ration Card"
+        },
+        {
+            "description": "Annual income below 45,000/-"
+        }
+    ],
+    "id": "45ff551e-18e6-4aac-be99-5b0c98bc9d5a"
+},
+{
+    "description": "Admissions in the Hostels are given to Poor ST Students who are having White Ration Card and whose annual income is below 45,000/- providing all facilities such as food, cosmetics, accommodation, Bedding material, slippers, sports material, night wear etc., for free of cost.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST Students"
+        }
+    ],
+    "tags": [
+        "hostel",
+        "ST",
+        "students",
+        "poor",
+        "food",
+        "accommodation",
+        "sports",
+        "free"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "Free",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "title": "Administration of Post – Metric Hostels",
+    "introduced_on": "",
+    "criteria": [
+        {
+            "description": "Poor ST Students"
+        },
+        {
+            "description": "Having White Ration Card"
+        },
+        {
+            "description": "Annual income below 45,000/-"
+        }
+    ],
+    "documents": [],
+    "id": "7c1181e9-2bdd-4de1-b696-00102f6e3ce5"
+},
+{
+    "description": "All ST Students with White Ration Card and who are having White Ration card or whose annual income is below Rs.2,00,000/- are eligible for applying of Scholarships from Intermediate and above courses. All the ST students who applies for Scholarships will be given fee Reimbursement, Mess fee, exam Fee, etc.,",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST students"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "ST",
+        "Post Matric",
+        "Fee Reimbursement",
+        "Mess Fee",
+        "Exam Fee"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "funding_pattern": "scholarship",
+    "title": "Post Metric Scholarships",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "criteria": [
+        {
+            "description": "White Ration Card"
+        },
+        {
+            "description": "Annual income below Rs.2,00,000/-"
+        },
+        {
+            "description": "Intermediate and above courses"
+        }
+    ],
+    "documents": [],
+    "id": "f641c5cf-65a7-4144-aa28-e383fbe4806d"
+},
+{
+    "description": "All ST Students of classes from V to VIII having White Ration Card and whose annual parental income is below Rs.2, 00,000/- are eligible for applying of Scholarships.\nAll ST Students of classes from IX to X having White Ration Card and whose annual parental income is below Rs.2, 00,000/- are eligible for applying of Scholarships.\nThis scheme is for providing financial assistance to ST students pursuing studies in schools run by the Government, local bodies such as Mandal, Zilla Parishad and Municipalities or schools aided by the Government.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST Students"
+        }
+    ],
+    "tags": [
+        "ST",
+        "Students",
+        "scholarship",
+        "school",
+        "Government",
+        "Education"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "scholarship",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "title": "Pre Metric Scholarships",
+    "introduced_on": "",
+    "criteria": [
+        {
+            "description": "Classes V to VIII having White Ration Card and whose annual parental income is below Rs.2,00,000/-"
+        },
+        {
+            "description": "Classes IX to X having White Ration Card and whose annual parental income is below Rs.2,00,000/-"
+        }
+    ],
+    "documents": [],
+    "id": "e99ec0cb-393d-4602-a91e-4b66959ca869"
+},
+{
+    "description": "ST Students of 3rd Class,  5th Class & 8th classes who are having white ration card and whose annual parental income is below 70,000 are eligible for this scheme.\n3rd Class (Residential) 14 seats, 5th Class (Residential) 7 seats & 8th Class (Residential) 7 students will be given admissions to private schools in the district.\nFor 3rd class each student fee will be paid, uniforms, books, tie, belt, shoes and accommodation in school hostel will be given.\nFor 5th class each student fee will be paid, uniforms, books, tie, belt, shoes and accommodation in school hostel will be given.\nFor 8th class each student fee will be paid, uniforms, books, tie, belt, shoes and accommodation in school hostel will be given.",
+    "tags": [
+        "Education",
+        "School",
+        "ST",
+        "Students",
+        "Residential"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST Students of 3rd Class, 5th Class & 8th classes"
+        },
+        {
+            "beneficiary_type": "whose annual parental income is below 70,000"
+        },
+        {
+            "beneficiary_type": "having white ration card"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "Not Available",
+    "introduced_on": "Not Available",
+    "funding_pattern": "Not Available",
+    "title": "Best Available Schools",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "criteria": [
+        {
+            "description": "ST Students of 3rd Class, 5th Class & 8th classes who are having white ration card and whose annual parental income is below 70,000"
+        }
+    ],
+    "documents": [],
+    "id": "abdd707f-f622-445f-8dea-f49283f91108"
+},
+{
+    "description": "This scheme is to provide financial assistance upto 10 Lakhs to 15 Lakhs as grant to ST students to persue their higher education in foreign countries. The family income of applicant from all sources shall not exceed Rs.6.00 Lakhs per annum.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST students"
+        }
+    ],
+    "tags": [
+        "higher education",
+        "abroad",
+        "financial assistance",
+        "ST",
+        "grant"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "title": "Ambedkar Over Seas Vidhyanidhi",
+    "funding_pattern": "grant",
+    "criteria": [
+        {
+            "description": "The family income of applicant from all sources shall not exceed Rs.6.00 Lakhs per annum."
+        }
+    ],
+    "documents": [],
+    "id": "7296a391-44d3-409e-89f6-cbd725d444c3"
+},
+{
+    "description": "This scheme is to provide Admission for meritorious poor students belonging to ST into reputed Private Junior Colleges,introduced by the Government from the year 2011-12.The District Selection Committee has selected the following junior colleges to implement the scheme for the year 2019-2020.\n\nSri Chaitanya Boys Junior College, Gollapudi\nSri Chaitanya Mahila Junior Kalasala, Siddiq Nagar, Poranki\nSri Gayathri Junior College, Kanuru.\nSri Gayathri Junior College, Krishnanagar, Kanuru.\nNRI Junior College, Ibrahimpatnam.\n\nThe Government have allotted (24) seats providing admissions to poor students on merit basis to Krishna District under the scheme for the year 2019-2020.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Meritorious poor students belonging to ST"
+        }
+    ],
+    "tags": [
+        "Education",
+        "Admissions",
+        "Scheduled Tribes",
+        "Meritorious students",
+        "Junior Colleges",
+        "Government Scheme"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "2019-2020",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "introduced_on": "2011-12",
+    "title": "Admission into Corporate colleges",
+    "funding_pattern": "Government Funded",
+    "documents": [],
+    "criteria": [],
+    "id": "b58e58bc-8f1c-47b8-918f-98fabbc1b7e7"
+},
+{
+    "description": "This Scheme is to provide financial assistance to the ST Students to meet the coaching fee and expenses for All India Civil Services and State Group Services.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST Students"
+        }
+    ],
+    "tags": [
+        "Civil Services",
+        "Financial Assistance",
+        "Coaching Fee"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "funding_pattern": "",
+    "introduced_on": "",
+    "title": "NTR Vidyonnathi Scheme",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "documents": [],
+    "criteria": [],
+    "id": "2f065ece-0909-4651-a2bb-a85a229dd3dd"
+},
+{
+    "description": "This Scheme is to provide financial assistance to ST graduates imparting training in administration of justice.\n\nThe rate of stipend is Rs.1000/- per month uniformly for all (03)years. The amount towards purchase of books and furniture as one time grant in 1st year Rs. 6000/-",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST graduates"
+        }
+    ],
+    "tags": [
+        "Financial Assistance",
+        "ST Graduates",
+        "Law Graduates",
+        "Legal Training"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "introduced_on": "",
+    "title": "Financial Assistance to ST LAW Graduates",
+    "funding_pattern": "stipend is Rs.1000/- per month uniformly for all (03)years and one time grant of Rs. 6000/- in 1st year",
+    "criteria": [
+        {
+            "description": "He / She must be Law graduate (BL / LLB) must enroll in Bar council and belongs to Scheduled Caste."
+        },
+        {
+            "description": "Annual Income: Income limit for eligibility for admission of candidates for Undergoing training in administration of justice be enhanced as in the case of Government of India’s pattern in respect of Post – Matric Scholarships for students in Professional and Post Graduate Courses i.e., Rs.2.00 Lakhs per annum."
+        }
+    ],
+    "documents": [],
+    "id": "9cefbc5f-ecaf-4bbf-a33d-e41655c210d2"
+},
+{
+    "description": "The Government has extended the benefit of free power up to 100 units to ST consumers under Jagjeevan Jyothi scheme. ST households consuming 125 units per month would be supplied free power.The scheme was earlier applicable up to 75 units and now, it has been extended to 100 units to benefit more than 15,000 ST consumers, providing over Rs.1.60 crore subsidy per annum, which will be reimbursed by the Tribal welfare department immediately.",
+    "tags": [
+        "Free Power",
+        "ST",
+        "Subsidy",
+        "Tribal Welfare"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST households"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "introduced_on": "",
+    "title": "Jagjeevan Jyothi (Free Power 0 to 100 Units)",
+    "funding_pattern": "Subsidy",
+    "criteria": [],
+    "documents": [],
+    "id": "64487f02-4b39-4373-b9ac-9bc33b7413d2"
+},
+{
+    "description": "This Scheme is to provide financial assistance to the ST Students for coaching in TOEFL / IELTS / GRE and GMAT and other for admission in foreign Universities.ST Graduates or final year students at Graduation Level whose family income is less than Rs. 2.00 Lakhs per annum are eligible under the scheme.",
+    "tags": [
+        "Education",
+        "Skill Development",
+        "Financial Assistance",
+        "ST Students"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "ST Students"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "",
+    "introduced_on": "",
+    "scheme_link": "https://krishna.ap.gov.in/district-tribal-welfare-office/",
+    "title": "Skill Upgradation Scheme",
+    "funding_pattern": "financial assistance",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "ST Graduates or final year students at Graduation Level whose family income is less than Rs. 2.00 Lakhs per annum"
+        }
+    ],
+    "id": "080cab48-8eb2-46e4-970e-c95cd179a9e4"
+}
 ]

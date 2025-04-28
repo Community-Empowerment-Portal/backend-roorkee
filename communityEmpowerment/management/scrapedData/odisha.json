@@ -206,5 +206,944 @@
       "documents": [],
       "criteria": [],
       "id": "19d579b5-9f0c-4742-9538-3c8d5cc0bf67"
-  }
+  },
+  {
+    "description": "Nirman Shramik Kalyan Yojana (Edn Astt) provides scholarships for various courses.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "education",
+        "assistance"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "30 May, 2025",
+    "funding_pattern": "scholarship",
+    "introduced_on": "",
+    "title": "Nirman Shramik Kalyan Yojana (Edn Astt)",
+    "scheme_link": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "X"
+        },
+        {
+            "description": "Plus 2"
+        },
+        {
+            "description": "Plus 3 M. A. M. Com. M. Sc."
+        },
+        {
+            "description": "Architecture Ayurvedic Engineering - B.Tech Course Homeopathy Hotel Management M. Sc. M. Tech. Master in Computer Application (MCA) Master of Business Administration (MBA) Medical Pharmacy"
+        },
+        {
+            "description": "B. Ed. Nursing Teacher Training"
+        },
+        {
+            "description": "VI VII"
+        },
+        {
+            "description": "VIII"
+        },
+        {
+            "description": "IX"
+        }
+    ],
+    "department_name": "Labour & ESI Department",
+    "id": "152ab8e0-c8fa-4d19-8f9a-1c2dcf43415f"
+},
+{
+    "description": "BOC Scholarship",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "education",
+        "higher education"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "5 May, 2025",
+    "scheme_link": "not specified",
+    "introduced_on": "not specified",
+    "title": "BOC Scholarship",
+    "funding_pattern": "scholarship",
+    "criteria": [],
+    "documents": [],
+    "department_name": "Skill Development & Technical Education Department",
+    "id": "a326e9dd-6102-41ca-a8bf-ea32d000ab46"
+},
+{
+    "description": "Scholarship amount : As per course duration (Per year)\nTarget (no. of scholarship) : As per applications received",
+    "tags": [
+        "Pre-Matric",
+        "Scholarship",
+        "Education",
+        "Component-2",
+        "Class 1 to 10"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "30 Apr, 2025",
+    "scheme_link": "",
+    "funding_pattern": "scholarship",
+    "title": "Pre-Matric Component-2 ( Class 1 to 10 )",
+    "introduced_on": "",
+    "criteria": [],
+    "documents": [],
+    "department_name": "ST&SC and MBC Welfare Department",
+    "id": "f122037b-299a-4a00-8940-53a2cd437aff"
+},
+{
+    "description": "Shahid Madho Singh Haath Kharcha Yojna provides financial assistance to students of various categories and courses. The scholarship amount is Rs. 5000/- and is available only once.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC"
+        },
+        {
+            "beneficiary_type": "SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Financial Assistance",
+        "Education",
+        "Students"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "30 Apr, 2025",
+    "introduced_on": "Not available in the document",
+    "scheme_link": "Not available in the document",
+    "title": "Shahid Madho Singh Haath Kharcha Yojna",
+    "funding_pattern": "As per applications received",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Applicant is eligible for Shahid Madho Singh Haath Kharcha Yojna in scholarship portal irrespective of applying/availing in any other department schemes."
+        }
+    ],
+    "department_name": "ST&SC and MBC Welfare Department",
+    "id": "dfae1afb-7789-45fd-ab73-678ce47b1a68"
+},
+{
+    "description": "Scholarship amount : As per course duration (Per year)\nTarget (no. of scholarship) : As per applications received",
+    "tags": [
+        "Pre Matric Scholarship",
+        "Education",
+        "ST&SC and MBC Welfare Department"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "20 Apr, 2025",
+    "funding_pattern": "",
+    "introduced_on": "",
+    "title": "Pre Matric",
+    "scheme_link": "",
+    "documents": [],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        }
+    ],
+    "department_name": "ST&SC and MBC Welfare Department",
+    "id": "ac8ecc96-4a2e-4510-97da-7493b2a613a0"
+},
+{
+    "description": "Krishi Vidya Nidhi Yojana provides scholarships to students pursuing various courses.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Education",
+        "Agriculture",
+        "Students"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "31 Dec, 2024",
+    "scheme_link": "Not Available",
+    "funding_pattern": "Scholarship amount : As per course duration (Per year)",
+    "title": "Krishi Vidya Nidhi Yojana",
+    "introduced_on": "Not Available",
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        }
+    ],
+    "department_name": "Agriculture & FE Department",
+    "id": "f71b2eea-dddd-45f1-9e2a-724f3becce9c"
+},
+{
+    "description": "Scholarship amount : Rs. 10,000 Per year. Target (no. of scholarship) : 10,000. Avail the scholarship only once in a year",
+    "tags": [
+        "Scholarship",
+        "Higher Education"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "18 Mar, 2025",
+    "scheme_link": "null",
+    "funding_pattern": "Yearly",
+    "title": "Scholarship Scheme",
+    "introduced_on": "null",
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "department_name": "Higher Education Department",
+    "id": "49c4553d-da05-4c25-a0dd-112e26c70d86"
+},
+{
+    "description": "NUA-O Scholarship",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "tags": [
+        "Higher Education",
+        "Scholarship"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "20 Mar, 2024",
+    "introduced_on": "",
+    "funding_pattern": "Yearly",
+    "title": "NUA-O Scholarship",
+    "scheme_link": "",
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "department_name": "Higher Education Department",
+    "id": "dfc581a9-375d-40e7-b852-9d8245604ec7"
+},
+{
+    "description": "Scholarship amount : Rs. 20,000 Per year. Target (no. of scholarship) : 10,000. Avail the scholarship only once in a year",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Higher Education"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "18 Mar, 2025",
+    "introduced_on": "",
+    "scheme_link": "",
+    "title": "",
+    "funding_pattern": "Yearly",
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "department_name": "Higher Education Department",
+    "id": "c463d897-bbd6-4f6b-b3b2-3173f46b85a6"
+},
+{
+    "description": "NUA-O Scholarship - II",
+    "tags": [
+        "Scholarship",
+        "Higher Education"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "20 Mar, 2024",
+    "funding_pattern": "Yearly",
+    "introduced_on": "Not Available",
+    "title": "NUA-O Scholarship - II",
+    "scheme_link": "Not Available",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "department_name": "Higher Education Department",
+    "id": "5b15b350-a731-472e-8653-2dfd87cf184e"
+},
+{
+    "description": "Scholarship amount : Rs. 15,000 Per year\nTarget (no. of scholarship) : 5,000",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "tags": [
+        "Scholarship",
+        "Higher Education"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "18 Mar, 2025",
+    "funding_pattern": "Yearly",
+    "introduced_on": "Not available",
+    "title": "Higher Education Department",
+    "scheme_link": "Not available",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "id": "299cbcc3-facc-44d2-b147-a9aee0b3ce35"
+},
+{
+    "description": "Vyasakabi Fakirmohan Bhasabruti scholarship program offers financial assistance to students pursuing various courses. The scholarship amount for UG Merit is Rs. 20,000 and for PG Merit is Rs. 30,000 (One Time). The number of scholarships awarded is based on the number of applications received. Applicants can avail the scholarship only once, irrespective of applying/availing in any other department schemes.",
+    "tags": [
+        "Scholarship",
+        "Higher Education",
+        "Financial Assistance",
+        "Merit-based"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "25 Feb, 2025",
+    "introduced_on": "",
+    "scheme_link": "",
+    "title": "Vyasakabi Fakirmohan Bhasabruti",
+    "funding_pattern": "One-Time",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "department_name": "Higher Education Department",
+    "id": "e834fc37-bd96-476f-81c3-2c1875dc5b67"
+},
+{
+    "description": "Scholarship amount : Rs. 30,000 Per year\\nTarget (no. of scholarship) : 15,000\\nAvail the scholarship only once in a year\\nApplicant is eligible to apply & avail Godabarisha Vidyarthi Protsahana Yojana (LAPTOP DBT) in scholarship portal irrespective of applying/availing in any other department schemes.",
+    "tags": [
+        "Higher Education",
+        "Scholarship"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "2 Mar, 2025",
+    "funding_pattern": "Yearly",
+    "introduced_on": "",
+    "title": "Godabarisha Vidyarthi Protsahana Yojana (LAPTOP DBT)",
+    "scheme_link": "",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "department_name": "Higher Education Department",
+    "id": "b6c96ede-4a69-4850-8476-0ad61dcc1a8f"
+},
+{
+    "description": "Gopabandhu Sikhya Sahayata Yojana is a scholarship scheme for students of Odisha. The scholarship amount is Rs. 20,000 per year and the target is as per applications received. The last date to apply is March 7, 2025.",
+    "tags": [
+        "Scholarship",
+        "Education",
+        "Odisha",
+        "Students"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "General"
+        },
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "7 Mar, 2025",
+    "scheme_link": "",
+    "introduced_on": "",
+    "title": "Gopabandhu Sikhya Sahayata Yojana",
+    "funding_pattern": "As per applications received",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "department_name": "Higher Education Department",
+    "id": "39596669-ceed-4a45-bfe1-98da8c58125b"
+},
+{
+    "description": "Junior Merit Scholarship for students of class 11 and 12.",
+    "tags": [
+        "scholarship",
+        "school education",
+        "higher secondary"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Boys"
+        },
+        {
+            "beneficiary_type": "Girls"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "2025-02-15",
+    "introduced_on": "",
+    "funding_pattern": "Rs. 3,000 Per year",
+    "title": "Junior Merit (Class - 11 to 12)",
+    "scheme_link": "",
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 600000.00 ( Six Lakh ) per annum."
+        }
+    ],
+    "department_name": "School & Mass Education Department",
+    "id": "ef8eb618-1d2a-47cd-a933-cdd0be4e56e7"
+},
+{
+    "description": "Pathani Samanta Mathematics Talent (Class - 11 to 12)  Target (no. of scholarship) : 1,000",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "tags": [
+        "scholarship",
+        "education",
+        "mathematics",
+        "talent",
+        "school",
+        "mass education"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "15 Feb, 2025",
+    "scheme_link": "Not Available",
+    "funding_pattern": "Scholarship amount : Rs. 5,000 Per year",
+    "title": "Pathani Samanta Mathematics Talent (Class - 11 to 12)",
+    "introduced_on": "Not Available",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 600000.00 ( Six Lakh ) per annum."
+        }
+    ],
+    "documents": [],
+    "department_name": "School & Mass Education Department",
+    "id": "ac66ad16-856a-49b9-831e-bf9cfddc6c63"
+},
+{
+    "description": "Scholarship amount : As per course duration (Per year)\nTarget (no. of scholarship) : As per applications received\nAvail the scholarship only once",
+    "tags": [
+        "orphan",
+        "scholarship",
+        "education",
+        "plus 2",
+        "ug",
+        "pg"
+    ],
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "31 Dec, 2024",
+    "scheme_link": "",
+    "introduced_on": "",
+    "title": "Green Passage (Orphans Students)",
+    "funding_pattern": "Yearly",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 600000.00 ( Six Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "department_name": "Skill Development & Technical Education Department",
+    "id": "5957be59-e48f-45a0-96c1-f28065cc9d4f"
+},
+{
+    "description": "Scholarship amount : As per course duration (Per year)\nTarget (no. of scholarship) : As per applications received\nAvail the scholarship only once in a year\nApplicant is eligible to apply avail Sudakshya for Girls Child in scholarship portal irrespective of applying/availing in only Post Matric Scholarship under the STSC and MBC department schemes.",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "Girls"
+        }
+    ],
+    "tags": [
+        "Sudakshya",
+        "Scholarship",
+        "Girls",
+        "Education"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "3 Nov, 2024",
+    "introduced_on": "",
+    "scheme_link": "",
+    "title": "Sudakshya for Girls Child",
+    "funding_pattern": "Yearly",
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 600000.00 ( Six Lakh ) per annum."
+        }
+    ],
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "department_name": "Skill Development & Technical Education Department",
+    "id": "4796adad-42e8-42ed-a0cd-25cab9c35c25"
+},
+{
+    "description": "Post Matric Scholarship",
+    "beneficiaries": [
+        {
+            "beneficiary_type": "SC"
+        },
+        {
+            "beneficiary_type": "ST"
+        },
+        {
+            "beneficiary_type": "OBC/SEBC"
+        },
+        {
+            "beneficiary_type": "EBC"
+        },
+        {
+            "beneficiary_type": "General"
+        }
+    ],
+    "tags": [
+        "Post Matric Scholarship",
+        "scholarship",
+        "ST",
+        "SC",
+        "OBC",
+        "EBC",
+        "General"
+    ],
+    "procedures": [],
+    "sponsors": [],
+    "valid_upto": "15 Mar, 2025",
+    "funding_pattern": "Scholarship amount : As per course duration (Per year)",
+    "introduced_on": "Not available",
+    "title": "Post Matric Scholarship",
+    "scheme_link": "Not available",
+    "documents": [
+        "Aadhaar Card of student",
+        "Caste Certificate of the Student",
+        "Residence Certificate of the Student",
+        "Passport size Photograph of student",
+        "Ration Card of the Parent/ guardian",
+        "Beneficiary Id of the Parent/ guardian",
+        "Matriculation Certificate of the Student",
+        "Marksheet of last exam passed"
+    ],
+    "criteria": [
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 250000.00 ( Two Lakh Fifty Thousand ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 800000.00 ( Eight Lakh ) per annum."
+        },
+        {
+            "description": "Parents/ guardian's from all sources shall not exceed Rs. 600000.00 ( Six Lakh ) per annum."
+        }
+    ],
+    "department_name": "ST&SC and MBC Welfare Department",
+    "id": "ebe3c63e-bb9e-49c9-9142-8fff1bb1f23a"
+}
 ]

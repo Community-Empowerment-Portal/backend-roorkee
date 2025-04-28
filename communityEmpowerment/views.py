@@ -7,7 +7,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework import serializers
 from django.db.models import Count, F
 from django.utils.dateparse import parse_date
-from django.db.models.functions import TruncDate, TruncMonth
+from django.db.models.functions import TruncDate, TruncMonth, TruncDay, TruncWeek
 from rest_framework.permissions import IsAdminUser, AllowAny
 from rest_framework.generics import ListAPIView
 from django.shortcuts import get_object_or_404
@@ -47,6 +47,8 @@ from rest_framework.authtoken.models import Token
 import json
 from django.core.mail import EmailMessage
 import requests
+from calendar import monthrange
+from datetime import date
 
 
 
@@ -63,7 +65,7 @@ from .serializers import (
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
-    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer,
+    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
     UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
 )
@@ -431,6 +433,56 @@ class UserProfileView(generics.GenericAPIView):
         # Return updated data
         response_data = self.get_serializer(user).data
         return Response(response_data)
+    
+class AllUserProfilesView(generics.GenericAPIView):
+    serializer_class = UserProfileSerializer
+
+    def get(self, request, *args, **kwargs):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        users = User.objects.all()
+
+        all_users_data = []
+
+        for user in users:
+            serializer = self.get_serializer(user)
+            user_data = serializer.data
+
+
+            dynamic_field_values = ProfileFieldValue.objects.filter(user=user, field__is_active=True)
+            dynamic_fields = {
+                value.field.name: value.value for value in dynamic_field_values
+            }
+            user_data["dynamic_fields"] = dynamic_fields
+
+            all_users_data.append(user_data)
+
+        return Response(all_users_data)
+    
+
+class UserProfileFieldValuesView(generics.GenericAPIView):
+    serializer_class = UserProfileSerializer
+    permission_classes = [AllowAny]
+    def get_object(self):
+        user_id = self.kwargs.get('user_id')
+        return CustomUser.objects.get(id=user_id)
+
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(user)
+        response_data = serializer.data
+        dynamic_field_values = ProfileFieldValue.objects.filter(user=user, field__is_active=True)
+        dynamic_fields = {
+        value.field.name: value.value for value in dynamic_field_values
+    }
+        profile_fields = ProfileField.objects.all()
+        ordered_profile_fields = sorted(profile_fields, key=lambda field: field.position)
+        response_data["dynamic_fields"] = dynamic_fields
+        response_data["ordered_profile_fields"] = [
+            {"name": field.name, "field_type": field.field_type, "position": field.position}
+            for field in ordered_profile_fields
+        ]
+        return Response(response_data)
 
 class AllProfileFieldsView(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
@@ -688,13 +740,15 @@ def verify_email(request, uidb64, token):
         user = CustomUser.objects.get(pk=user_id)
     except (TypeError, ValueError, OverflowError, User.DoesNotExist):
         user = None
-
+    context = {
+        'frontend_url': settings.FRONTEND_URL
+    }
     if user is not None and default_token_generator.check_token(user, token):
         user.is_email_verified = True
         user.save()
-        return render(request, 'email_verified.html')
+        return render(request, 'email_verified.html', context)
     else:
-        return render(request, 'email_verification_failed.html')
+        return render(request, 'email_verification_failed.html', context)
     
 class PasswordResetRequestView(APIView):
     @method_decorator(csrf_exempt)
@@ -1018,10 +1072,27 @@ class SchemeReportViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
+class AllSchemeReportsView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        reports = SchemeReport.objects.all()
+        serializer = SchemeReportSerializer(reports, many=True)
+        return Response(serializer.data)
+
+
 class WebsiteFeedbackViewSet(viewsets.ModelViewSet):
     queryset = WebsiteFeedback.objects.all()
     serializer_class = WebsiteFeedbackSerializer
     permission_classes = [permissions.IsAuthenticated] 
+
+class AllWebsiteFeedbackView(APIView):
+    permission_classes = [AllowAny] 
+
+    def get(self, request):
+        feedbacks = WebsiteFeedback.objects.all()
+        serializer = WebsiteFeedbackSerializer(feedbacks, many=True)
+        return Response(serializer.data)
 
 
 class RecommendSchemesAPIView(APIView):
@@ -1033,40 +1104,243 @@ class RecommendSchemesAPIView(APIView):
 
         cosine_sim = load_cosine_similarity()
 
-        recommended_schemes = recommend_schemes(scheme.id, cosine_sim, top_n=10)
+        recommended = recommend_schemes(scheme.id, cosine_sim, top_n=10)
 
-        serializer = SchemeSerializer(recommended_schemes, many=True)
-        
+        response_data = []
+        for item in recommended:
+            scheme_data = SchemeSerializer(item['scheme']).data
+            scheme_data['score'] = item['score']
+            response_data.append(scheme_data)
+
         return Response({
-            'scheme': SchemeSerializer(scheme).data, 
-            'recommended_schemes': serializer.data 
+            'scheme': SchemeSerializer(scheme).data,
+            'recommended_schemes': response_data
         })
+
     
 
 class HybridRecommendationView(APIView):
     permission_classes = [IsAuthenticated]
+    pagination_class = SchemePagination
+    ordering_fields = ['title']
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        top_n = int(request.query_params.get('top_n', 5))
+        top_n = int(request.query_params.get('top_n', 10))
 
-        # Get the user's latest feedback
+        state_ids = request.query_params.getlist('state_ids')
+        department_ids = request.query_params.getlist('department_ids')
+        beneficiary_keywords = request.query_params.getlist('beneficiary_keywords')
+        sponsor_ids = request.query_params.getlist('sponsor_ids')
+        funding_pattern = request.query_params.get('funding_pattern', None)
+        search_query = request.query_params.get('search_query', None)
+        tag = request.query_params.get('tag', None)
+        ordering = request.query_params.getlist('ordering') or self.ordering_fields
+
+        user_profile = request.query_params.get('user_profile', {})
+        if isinstance(user_profile, str):
+            import json
+            try:
+                user_profile = json.loads(user_profile)
+            except:
+                user_profile = {}
+
+        user_tags = []
+
+        profile_field_mappings = {
+            "community": ["sc", "st", "obc", "general"],
+            "minority": ["muslim", "christian", "sikh", "buddhist", "parsi", "jain"],
+            "education": ["undergraduate", "postgraduate", "phd", "school"],
+            "disability": ["physical", "visual", "hearing", "intellectual"],
+            "occupation": ["farmer", "student", "teacher", "entrepreneur", "laborer"],
+            "income": ["bpl", "middle", "high"]
+        }
+
+        for field, possible_tags in profile_field_mappings.items():
+            field_value = user_profile.get(field, "").lower()
+            if field_value in possible_tags:
+                user_tags.append(field_value)
+
+        scheme_filters = Q(department__is_active=True, department__state__is_active=True, is_active=True)
+
+        if tag:
+            scheme_filters &= Q(tags__name__icontains=tag)
+
+        if user_tags:
+            tag_filters = Q()
+            for user_tag in user_tags:
+                tag_filters |= Q(tags__name__icontains=user_tag)
+            scheme_filters &= tag_filters
+
+        if tag == "job":
+            scheme_filters &= Q(tags__name__icontains='job') | Q(tags__name__icontains='employment')
+        if tag == "scholarship":
+            scheme_filters &= Q(tags__name__icontains='scholarship')
+        if state_ids:
+            scheme_filters &= Q(department__state_id__in=state_ids)
+        if department_ids:
+            scheme_filters &= Q(department_id__in=department_ids)
+        if beneficiary_keywords:
+            beneficiary_filters = Q()
+            for keyword in beneficiary_keywords:
+                beneficiary_filters |= Q(beneficiaries__beneficiary_type__icontains=keyword)
+            scheme_filters &= beneficiary_filters
+        if sponsor_ids:
+            scheme_filters &= Q(sponsors__id__in=sponsor_ids)
+        if funding_pattern:
+            scheme_filters &= Q(funding_pattern__icontains=funding_pattern)
+        if search_query:
+            scheme_filters &= Q(title__icontains=search_query) | Q(description__icontains=search_query)
+
         feedback = WebsiteFeedback.objects.filter(user=user).order_by('-created_at').first()
+        keywords = extract_keywords_from_feedback(feedback.description) if feedback else None
 
-        # Extract keywords from feedback if it exists
-        keywords = None
-        if feedback:
-            keywords = extract_keywords_from_feedback(feedback.description)
-
-        collaborative_schemes = collaborative_recommendations(user.id, top_n=top_n, keywords=keywords)
-
+        recommended_schemes = collaborative_recommendations(user.id, top_n=top_n, keywords=keywords)
         state_based_schemes = Scheme.objects.filter(department__state=user.state_of_residence)
+        all_recommendations = list(set(recommended_schemes) | set(state_based_schemes))
 
-        final_recommendations = list(set(collaborative_schemes) | set(state_based_schemes))[:top_n]
+        recommended_filtered = Scheme.objects.filter(pk__in=[s.id for s in all_recommendations]).filter(scheme_filters).distinct()
 
-        serializer = SchemeSerializer(final_recommendations, many=True)
+        remaining_schemes = Scheme.objects.filter(scheme_filters).exclude(id__in=recommended_filtered.values_list('id', flat=True)).distinct()
+
+        final_schemes = list(recommended_filtered) + list(remaining_schemes)
+
+        if ordering:
+            final_schemes.sort(key=lambda x: getattr(x, ordering[0].lstrip('-')), reverse=ordering[0].startswith('-'))
+
+        paginator = self.pagination_class()
+        page = paginator.paginate_queryset(final_schemes, request)
+        if page is not None:
+            serializer = SchemeSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+
+        serializer = SchemeSerializer(final_schemes, many=True)
         return Response(serializer.data)
+
     
+
+class UnifiedSchemesAPIView(APIView):
+    pagination_class = SchemePagination
+    ordering_fields = ['title']
+    permission_classes = [AllowAny]
+
+    def get_data_source(self, request):
+        return request.data if request.method == "POST" else request.query_params
+
+    def get_user_tags(self, user_profile):
+        profile_field_mappings = {
+            "community": ["sc", "st", "obc", "general"],
+            "minority": ["muslim", "christian", "sikh", "buddhist", "parsi", "jain"],
+            "education": ["undergraduate", "postgraduate", "phd", "school"],
+            "disability": ["physical", "visual", "hearing", "intellectual"],
+            "occupation": ["farmer", "student", "teacher", "entrepreneur", "laborer"],
+            "income": ["bpl", "middle", "high"]
+        }
+
+        user_tags = []
+        for field, tags in profile_field_mappings.items():
+            value = user_profile.get(field, "").lower()
+            if value in tags:
+                user_tags.append(value)
+        return user_tags
+
+    def apply_filters(self, data, user_tags):
+        from django.db.models import Q
+        
+        state_ids = data.get("state_ids", [])
+        department_ids = data.get("department_ids", [])
+        beneficiary_keywords = data.get("beneficiary_keywords", [])
+        sponsor_ids = data.get("sponsor_ids", [])
+        funding_pattern = data.get("funding_pattern")
+        search_query = data.get("search_query")
+        tag = data.get("tag")
+
+        scheme_filters = Q(department__is_active=True, department__state__is_active=True, is_active=True)
+
+        if tag:
+            scheme_filters &= Q(tags__name__icontains=tag)
+
+        if user_tags:
+            tag_filters = Q()
+            for user_tag in user_tags:
+                tag_filters |= Q(tags__name__icontains=user_tag)
+            scheme_filters &= tag_filters
+
+        if tag == "job":
+            scheme_filters &= Q(tags__name__icontains='job') | Q(tags__name__icontains='employment')
+        if tag == "scholarship":
+            scheme_filters &= Q(tags__name__icontains='scholarship')
+        if state_ids:
+            scheme_filters &= Q(department__state_id__in=state_ids)
+        if department_ids:
+            scheme_filters &= Q(department_id__in=department_ids)
+        if beneficiary_keywords:
+            bf_filter = Q()
+            for keyword in beneficiary_keywords:
+                bf_filter |= Q(beneficiaries__beneficiary_type__icontains=keyword)
+            scheme_filters &= bf_filter
+        if sponsor_ids:
+            scheme_filters &= Q(sponsors__id__in=sponsor_ids)
+        if funding_pattern:
+            scheme_filters &= Q(funding_pattern__icontains=funding_pattern)
+        if search_query:
+            scheme_filters &= Q(title__icontains=search_query) | Q(description__icontains=search_query)
+
+        return scheme_filters
+
+    def handle_request(self, request):
+        user = request.user if request.user.is_authenticated else None
+        data = self.get_data_source(request)
+        ordering = data.get("ordering", self.ordering_fields)
+        top_n = int(data.get("top_n", 10))
+
+        user_profile = data.get("user_profile", {})
+        if isinstance(user_profile, str):
+            import json
+            try:
+                user_profile = json.loads(user_profile)
+            except:
+                user_profile = {}
+
+        user_tags = self.get_user_tags(user_profile)
+        scheme_filters = self.apply_filters(data, user_tags)
+
+        recommended_schemes = []
+        if user:
+            feedback = WebsiteFeedback.objects.filter(user=user).order_by('-created_at').first()
+            keywords = extract_keywords_from_feedback(feedback.description) if feedback else None
+
+            collaborative_schemes = collaborative_recommendations(user.id, top_n=top_n, keywords=keywords)
+            state_based = Scheme.objects.filter(department__state=user.state_of_residence)
+            all_recommended = list(set(collaborative_schemes) | set(state_based))
+
+            recommended_schemes = Scheme.objects.filter(pk__in=[s.id for s in all_recommended]).filter(scheme_filters).distinct()
+
+        excluded_ids = [s.id for s in recommended_schemes]
+        other_schemes = Scheme.objects.filter(scheme_filters).exclude(id__in=excluded_ids).distinct()
+
+        final_schemes = list(recommended_schemes) + list(other_schemes)
+
+        if ordering:
+            final_schemes.sort(key=lambda x: getattr(x, ordering[0].lstrip('-')), reverse=ordering[0].startswith('-'))
+
+        paginator = self.pagination_class()
+        page = paginator.paginate_queryset(final_schemes, request)
+        if page is not None:
+            serializer = SchemeSerializer(page, many=True)
+            return paginator.get_paginated_response(serializer.data)
+
+        serializer = SchemeSerializer(final_schemes, many=True)
+        return Response(serializer.data)
+
+    def get(self, request, *args, **kwargs):
+        return self.handle_request(request)
+
+    def post(self, request, *args, **kwargs):
+        return self.handle_request(request)
+
+
+
 
 class SaveSchemeInteractionView(APIView):
     permission_classes = [IsAuthenticated]
@@ -1209,7 +1483,6 @@ def get_event_stats(request):
     )
     return Response(stats)
 
-
 @api_view(["GET"])
 def get_event_timeline(request):
     from_date = request.GET.get("from", None)
@@ -1222,47 +1495,151 @@ def get_event_timeline(request):
         to_date = parse_date(to_date)
         if not from_date or not to_date:
             return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
-
     else:
+        today = now().date()
         if range_type == "weekly":
-            from_date = now() - timedelta(weeks=4)
+            from_date = today - timedelta(weeks=4)
         elif range_type == "monthly":
-            from_date = now() - timedelta(days=90)
+            from_date = today - timedelta(days=90)
+        elif range_type == "quarterly":
+            from_date = today - timedelta(days=90)
+        elif range_type == "halfyearly":
+            from_date = today - timedelta(days=182)
+        elif range_type == "annual":
+            from_date = today - timedelta(days=365)
         else:
-            from_date = now() - timedelta(days=30)
-        
-        to_date = now()
+            from_date = today - timedelta(days=30)
+        to_date = today
 
     timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
 
     if state:
         timeline_query = timeline_query.filter(details__state=state)
 
+    if range_type == "weekly":
+        trunc_func = TruncWeek("timestamp")
+    elif range_type in ["monthly", "quarterly", "halfyearly", "annual"]:
+        trunc_func = TruncMonth("timestamp")
+    else:
+        trunc_func = TruncDay("timestamp")
+
     timeline = (
-        timeline_query.annotate(date=TruncDate("timestamp"))
-        .values("date")
+        timeline_query.annotate(period=trunc_func)
+        .values("period")
         .annotate(
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
             filters=Count("id", filter=Q(event_type="filter")),
         )
-        .order_by("date")
+        .order_by("period")
+    )
+
+    return Response(timeline)
+
+
+@api_view(["GET"])
+def get_event_by_range(request):
+    range_type = request.GET.get("type")
+    month = request.GET.get("month")
+    year = request.GET.get("year")
+    state = request.GET.get("state", None)
+
+    today = now().date()
+
+    if range_type not in ["weekly", "monthly", "quarterly", "halfyearly", "annual"]:
+        return Response({"error": "Invalid or missing 'type'. Must be weekly, monthly, quarterly, halfyearly, annual."}, status=400)
+
+    try:
+        if range_type == "monthly":
+            if not month or not year:
+                return Response({"error": "Please provide 'month' and 'year' for monthly range."}, status=400)
+            month = int(month)
+            year = int(year)
+            _, last_day = monthrange(year, month)
+            from_date = date(year, month, 1)
+            to_date = date(year, month, last_day)
+        
+        elif range_type == "weekly":
+            if not year or not month:
+                return Response({"error": "Please provide 'month' and 'year' for weekly range."}, status=400)
+            month = int(month)
+            year = int(year)
+            from_date = date(year, month, 1)
+            to_date = from_date + timedelta(weeks=1) - timedelta(days=1)
+            if to_date.month != month:
+                to_date = date(year, monthrange(year, month)[1])
+        
+        elif range_type == "quarterly":
+            if not year or not month:
+                return Response({"error": "Please provide 'month' and 'year' to identify quarter."}, status=400)
+            month = int(month)
+            year = int(year)
+            quarter = ((month - 1) // 3) + 1
+            start_month = 3 * (quarter - 1) + 1
+            from_date = date(year, start_month, 1)
+            _, last_day = monthrange(year, start_month + 2)
+            to_date = date(year, start_month + 2, last_day)
+        
+        elif range_type == "halfyearly":
+            if not year or not month:
+                return Response({"error": "Please provide 'month' and 'year' to identify half year."}, status=400)
+            month = int(month)
+            year = int(year)
+            if month <= 6:
+                from_date = date(year, 1, 1)
+                to_date = date(year, 6, 30)
+            else:
+                from_date = date(year, 7, 1)
+                to_date = date(year, 12, 31)
+        
+        elif range_type == "annual":
+            if not year:
+                return Response({"error": "Please provide 'year' for annual range."}, status=400)
+            year = int(year)
+            from_date = date(year, 1, 1)
+            to_date = date(year, 12, 31)
+
+    except ValueError:
+        return Response({"error": "Invalid month or year format."}, status=400)
+
+
+    timeline_query = UserEvents.objects.filter(timestamp__date__range=[from_date, to_date])
+
+    if state:
+        timeline_query = timeline_query.filter(details__state=state)
+
+
+    if range_type == "weekly":
+        trunc_func = TruncDay("timestamp")
+    elif range_type == "monthly":
+        trunc_func = TruncDay("timestamp")
+    else:
+        trunc_func = TruncMonth("timestamp")
+
+    timeline = (
+        timeline_query.annotate(period=trunc_func)
+        .values("period")
+        .annotate(
+            views=Count("id", filter=Q(event_type="view")),
+            searches=Count("id", filter=Q(event_type="search")),
+            downloads=Count("id", filter=Q(event_type="download")),
+            filters=Count("id", filter=Q(event_type="filter")),
+        )
+        .order_by("period")
     )
 
     return Response(timeline)
 
 
 
-
 @api_view(["GET"])
 def get_popular_schemes(request):
-    limit = int(request.GET.get("limit", 5))
+    limit = int(request.GET.get("limit", 10))
     event_type = request.GET.get("event_type", "view")
-    state = request.GET.get("state", None)
+    state = request.GET.get("state")
 
     schemes_query = UserEvents.objects.filter(event_type=event_type)
-
     if state:
         schemes_query = schemes_query.filter(details__state=state)
 
@@ -1272,10 +1649,13 @@ def get_popular_schemes(request):
         .order_by("-count")[:limit]
     )
 
+    scheme_ids = [s["scheme_id"] for s in schemes]
+    scheme_map = {s.id: s.title for s in Scheme.objects.filter(id__in=scheme_ids)}
+
     scheme_details = [
         {
             "scheme_id": scheme["scheme_id"],
-            "title": Scheme.objects.get(id=scheme["scheme_id"]).title,
+            "title": scheme_map.get(scheme["scheme_id"], "Unknown"),
             "count": scheme["count"],
         }
         for scheme in schemes
@@ -1402,13 +1782,12 @@ def get_user_popular_schemes(request):
     return Response(scheme_details)
 
 
-
 @api_view(["GET"])
 def get_user_event_timeline(request):
     user_id = request.GET.get("user_id", None)
     from_date = request.GET.get("from", None)
     to_date = request.GET.get("to", None)
-    range_type = request.GET.get("range", None) 
+    range_type = request.GET.get("range", None)
 
     if not user_id:
         return Response({"error": "user_id is required"}, status=400)
@@ -1422,28 +1801,43 @@ def get_user_event_timeline(request):
         if not from_date or not to_date:
             return Response({"error": "Invalid date format. Use YYYY-MM-DD"}, status=400)
     else:
-
+        today = now().date()
         if range_type == "weekly":
-            from_date = now() - timedelta(weeks=4)
+            from_date = today - timedelta(weeks=4)
         elif range_type == "monthly":
-            from_date = now() - timedelta(days=90)
+            from_date = today - timedelta(days=90)
+        elif range_type == "quarterly":
+            from_date = today - timedelta(days=90)
+        elif range_type == "halfyearly":
+            from_date = today - timedelta(days=182)
+        elif range_type == "annual":
+            from_date = today - timedelta(days=365)
         else:
-            from_date = now() - timedelta(days=30)
+            from_date = today - timedelta(days=30)
+        to_date = today
 
-        to_date = now()
+    if range_type == "weekly":
+        trunc_func = TruncWeek("timestamp")
+    elif range_type in ["monthly", "quarterly", "halfyearly", "annual"]:
+        trunc_func = TruncMonth("timestamp")
+    else:
+        trunc_func = TruncDate("timestamp") 
 
-    timeline_query = UserEvents.objects.filter(user_id=user_id, timestamp__date__range=[from_date, to_date])
+    timeline_query = UserEvents.objects.filter(
+        user_id=user_id,
+        timestamp__date__range=[from_date, to_date]
+    )
 
     timeline = (
-        timeline_query.annotate(date=TruncDate("timestamp"))
-        .values("date")
+        timeline_query.annotate(period=trunc_func)
+        .values("period")
         .annotate(
             views=Count("id", filter=Q(event_type="view")),
             searches=Count("id", filter=Q(event_type="search")),
             downloads=Count("id", filter=Q(event_type="download")),
             clicks=Count("id", filter=Q(event_type="apply")),
         )
-        .order_by("date")
+        .order_by("period")
     )
 
     return Response(timeline)
