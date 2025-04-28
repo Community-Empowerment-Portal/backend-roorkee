@@ -49,6 +49,7 @@ from django.core.mail import EmailMessage
 import requests
 from calendar import monthrange
 from datetime import date
+import calendar
 
 
 
@@ -1938,6 +1939,94 @@ def get_user_download_history(request):
 
 
 
+@api_view(['GET'])
+def signup_analytics(request):
+    month = request.query_params.get('month')
+    year = request.query_params.get('year')
+
+    now = timezone.now()
+    
+    if not month:
+        month = now.month
+    else:
+        try:
+            month = int(month)
+            if month < 1 or month > 12:
+                raise ValueError("Month must be between 1 and 12.")
+        except ValueError:
+            return Response({"error": "Invalid month parameter. Pass a number between 1 and 12."}, status=400)
+
+    if not year:
+        year = now.year
+    else:
+        try:
+            year = int(year)
+            if year < 1900 or year > 2100:
+                raise ValueError("Year must be between 1900 and 2100.")
+        except ValueError:
+            return Response({"error": "Invalid year parameter. Pass a valid year like 2023."}, status=400)
+
+    first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+    last_day_number = calendar.monthrange(year, month)[1]
+    last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+    users = CustomUser.objects.filter(
+        date_joined__range=(first_day, last_day)
+    )
+
+    count = users.count()
+
+    return Response({
+        "year": year,
+        "month": month,
+        "signups_count": count,
+    })
+
+
+@api_view(['GET'])
+def login_analytics(request):
+    month = request.query_params.get('month')
+    year = request.query_params.get('year')
+
+    now = timezone.now()
+    
+    if not month:
+        month = now.month
+    else:
+        try:
+            month = int(month)
+            if month < 1 or month > 12:
+                raise ValueError("Month must be between 1 and 12.")
+        except ValueError:
+            return Response({"error": "Invalid month parameter. Pass a number between 1 and 12."}, status=400)
+
+    if not year:
+        year = now.year
+    else:
+        try:
+            year = int(year)
+            if year < 1900 or year > 2100:
+                raise ValueError("Year must be between 1900 and 2100.")
+        except ValueError:
+            return Response({"error": "Invalid year parameter. Pass a valid year like 2023."}, status=400)
+
+    first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+    last_day_number = calendar.monthrange(year, month)[1]
+    last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+    users = CustomUser.objects.filter(
+        last_login__range=(first_day, last_day)
+    )
+
+    count = users.count()
+
+    return Response({
+        "year": year,
+        "month": month,
+        "logins_count": count,
+    })
+
+
 
 
 class SchemeLinkListView(ListAPIView):
@@ -2070,7 +2159,7 @@ def send_manual_email(request):
 class UserListView(APIView):
 
     def get(self, request, format=None):
-        users = CustomUser.objects.all().values('id', 'username', 'name', 'email')
+        users = CustomUser.objects.all().values('id', 'username', 'name', 'email', 'is_staff', 'is_active', 'is_superuser')
 
         return Response(users, status=status.HTTP_200_OK)
 
