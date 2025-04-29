@@ -53,7 +53,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Users', 'object_name': 'CustomUser', 'admin_url': '/admin/communityEmpowerment/customuser/'},
                     {'name': 'Groups', 'object_name': 'Group', 'admin_url': '/admin/auth/group/'},
                     {'name': 'Permissions', 'object_name': 'Permission', 'admin_url': '/admin/auth/permission/'},
-                    {'name': 'Organization', 'object_name': 'Organization', 'admin_url': '/admin/communityEmpowerment/organization/'},
+                    {'name': 'Tenants', 'object_name': 'Organization', 'admin_url': '/admin/communityEmpowerment/organization/'},
                 ]
             },
             {
@@ -535,4 +535,4 @@ class AnnouncementAdmin(OrganizationScopedAdmin):
     search_fields = ('title',)
 
 admin_site.register(Announcement, AnnouncementAdmin)
-admin_site.register(Organization, OrganizationScopedAdmin)
+admin_site.register(Organization)

@@ -38,6 +38,10 @@ class Organization(models.Model):
     domain = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = "Tenant" 
+        verbose_name_plural = "Tenants"
+
     def __str__(self):
         return self.name
     
@@ -1614,6 +1618,7 @@ class Beneficiary(TimeStampedModel):
 class SchemeBeneficiary(TimeStampedModel):
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, related_name='scheme_beneficiaries')
     beneficiary = models.ForeignKey(Beneficiary, on_delete=models.CASCADE, related_name='beneficiary_schemes')
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Scheme Beneficiary"
@@ -1688,6 +1693,7 @@ class Sponsor(TimeStampedModel):
 class SchemeSponsor(TimeStampedModel):
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, related_name='scheme_sponsors')
     sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE, related_name='sponsor_schemes')
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Scheme Sponsor"
