@@ -13,7 +13,7 @@ from django.utils.timezone import localtime
 import pytz
 from .models import (
 
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta,
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta, Organization,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
     SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement
 )
@@ -21,6 +21,23 @@ from django.db.models import Count
 from django.db.models import Min
 from orderable.admin import OrderableAdmin
 from django.utils.html import format_html
+
+
+
+
+class OrganizationScopedAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(organization=request.user.organization)
+
+    def save_model(self, request, obj, form, change):
+        if not obj.organization_id:
+            obj.organization = request.user.organization
+        super().save_model(request, obj, form, change)
+
+        
 # Custom Admin Site
 class CustomAdminSite(admin.AdminSite):
     site_header = "Community Empowerment Portal Admin Panel"
@@ -36,6 +53,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Users', 'object_name': 'CustomUser', 'admin_url': '/admin/communityEmpowerment/customuser/'},
                     {'name': 'Groups', 'object_name': 'Group', 'admin_url': '/admin/auth/group/'},
                     {'name': 'Permissions', 'object_name': 'Permission', 'admin_url': '/admin/auth/permission/'},
+                    {'name': 'Organization', 'object_name': 'Organization', 'admin_url': '/admin/communityEmpowerment/organization/'},
                 ]
             },
             {
@@ -155,7 +173,7 @@ class ProcedureInline(admin.TabularInline):
     extra = 1
 
 
-class SchemeAdmin(ImportExportModelAdmin):
+class SchemeAdmin(ImportExportModelAdmin, OrganizationScopedAdmin):
     resource_class = SchemeResource
     list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
     list_editable = ('is_active',) 
@@ -255,7 +273,7 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {"fields": ("username", "email", "password")}),
-        ("Personal Info", {"fields": ["name"]}),
+        ("Personal Info", {"fields": ["name", "organization"]}),
         ("Important Dates", {"fields": ["last_login"]}),
     )
     add_fieldsets = (
@@ -270,6 +288,7 @@ class CustomUserAdmin(UserAdmin):
                     "password2",
                     "is_active",
                     "is_staff",
+                    "organization",
                 ),
             },
         ),
@@ -516,3 +535,4 @@ class AnnouncementAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 admin_site.register(Announcement, AnnouncementAdmin)
+admin_site.register(Organization)
