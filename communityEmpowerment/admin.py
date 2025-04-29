@@ -22,6 +22,22 @@ from django.db.models import Min
 from orderable.admin import OrderableAdmin
 from django.utils.html import format_html
 
+from django.contrib.admin import SimpleListFilter
+
+
+
+class OrganizationScopedRelatedFilter(SimpleListFilter):
+    title = 'Department'
+    parameter_name = 'department'
+
+    def lookups(self, request, model_admin):
+        org = request.user.organization
+        return [(d.id, d.name) for d in Department.objects.filter(organization=org)]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(department__id=self.value())
+        return queryset
 
 
 
@@ -36,6 +52,23 @@ class OrganizationScopedAdmin(admin.ModelAdmin):
         if not obj.organization_id:
             obj.organization = request.user.organization
         super().save_model(request, obj, form, change)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if not request.user.is_superuser:
+            if db_field.name == "department":
+                kwargs["queryset"] = Department.objects.filter(organization=request.user.organization)
+            elif db_field.name == "state":
+                kwargs["queryset"] = State.objects.filter(organization=request.user.organization)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if not request.user.is_superuser:
+            org = request.user.organization
+            if db_field.name == "tags":
+                kwargs["queryset"] = Tag.objects.filter(organization=org)
+            elif db_field.name == "benefits":
+                kwargs["queryset"] = Benefit.objects.filter(organization=org)
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
 
         
 # Custom Admin Site
@@ -178,7 +211,7 @@ class SchemeAdmin(ImportExportModelAdmin, OrganizationScopedAdmin):
     list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
     list_editable = ('is_active',) 
     search_fields = ('title', 'description','is_active')
-    list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
+    list_filter = (OrganizationScopedRelatedFilter, 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
     inlines = [ProcedureInline]
 
     def is_active_toggle(self, obj):
@@ -321,7 +354,7 @@ admin_site.register(CustomUser, CustomUserAdmin)
 
 class TagAdmin(OrganizationScopedAdmin):
     list_display = ('category_display', 'tag_count', 'weight', 'tag_names_preview')
-    list_filter = ('category',)
+    # list_filter = ('category',)
     search_fields = ('category',)
     ordering = ["category"]
     readonly_fields = ("tag_names",)
@@ -411,7 +444,7 @@ admin_site.register(State, StateAdmin)
 class DepartmentAdmin(OrganizationScopedAdmin):
     list_display = ('department_name', 'state', 'is_active')
     list_editable = ('is_active',)
-    list_filter = ('state', 'is_active')
+    # list_filter = (OrganizationScopedRelatedFilter, 'state', 'is_active')
     search_fields = ('department_name',)
     actions = ['activate_departments', 'deactivate_departments']
 
