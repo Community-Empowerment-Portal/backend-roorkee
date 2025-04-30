@@ -13,7 +13,7 @@ from django.utils.timezone import localtime
 import pytz
 from .models import (
 
-    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta,
+    State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta, Organization,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
     SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement
 )
@@ -21,6 +21,56 @@ from django.db.models import Count
 from django.db.models import Min
 from orderable.admin import OrderableAdmin
 from django.utils.html import format_html
+
+from django.contrib.admin import SimpleListFilter
+
+
+
+class OrganizationScopedRelatedFilter(SimpleListFilter):
+    title = 'Department'
+    parameter_name = 'department'
+
+    def lookups(self, request, model_admin):
+        org = request.user.organization
+        return [(d.id, d.name) for d in Department.objects.filter(organization=org)]
+
+    def queryset(self, request, queryset):
+        if self.value():
+            return queryset.filter(department__id=self.value())
+        return queryset
+
+
+
+class OrganizationScopedAdmin(admin.ModelAdmin):
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(organization=request.user.organization)
+
+    def save_model(self, request, obj, form, change):
+        if not obj.organization_id:
+            obj.organization = request.user.organization
+        super().save_model(request, obj, form, change)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if not request.user.is_superuser:
+            if db_field.name == "department":
+                kwargs["queryset"] = Department.objects.filter(organization=request.user.organization)
+            elif db_field.name == "state":
+                kwargs["queryset"] = State.objects.filter(organization=request.user.organization)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if not request.user.is_superuser:
+            org = request.user.organization
+            if db_field.name == "tags":
+                kwargs["queryset"] = Tag.objects.filter(organization=org)
+            elif db_field.name == "benefits":
+                kwargs["queryset"] = Benefit.objects.filter(organization=org)
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
+
+        
 # Custom Admin Site
 class CustomAdminSite(admin.AdminSite):
     site_header = "Community Empowerment Portal Admin Panel"
@@ -36,6 +86,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Users', 'object_name': 'CustomUser', 'admin_url': '/admin/communityEmpowerment/customuser/'},
                     {'name': 'Groups', 'object_name': 'Group', 'admin_url': '/admin/auth/group/'},
                     {'name': 'Permissions', 'object_name': 'Permission', 'admin_url': '/admin/auth/permission/'},
+                    {'name': 'Tenants', 'object_name': 'Organization', 'admin_url': '/admin/communityEmpowerment/organization/'},
                 ]
             },
             {
@@ -155,12 +206,12 @@ class ProcedureInline(admin.TabularInline):
     extra = 1
 
 
-class SchemeAdmin(ImportExportModelAdmin):
+class SchemeAdmin(ImportExportModelAdmin, OrganizationScopedAdmin):
     resource_class = SchemeResource
     list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
     list_editable = ('is_active',) 
     search_fields = ('title', 'description','is_active')
-    list_filter = ('department', 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
+    list_filter = (OrganizationScopedRelatedFilter, 'introduced_on', 'valid_upto', 'funding_pattern','is_active')
     inlines = [ProcedureInline]
 
     def is_active_toggle(self, obj):
@@ -171,7 +222,7 @@ class SchemeAdmin(ImportExportModelAdmin):
     is_active_toggle.short_description = "Status"
 admin_site.register(Scheme, SchemeAdmin)
 
-class SchemeReportAdmin(admin.ModelAdmin):
+class SchemeReportAdmin(OrganizationScopedAdmin):
     list_display = ['id', 'linked_user', 'scheme_id', 'created_at'] 
     list_filter = ['created_at'] 
 
@@ -182,12 +233,12 @@ class SchemeReportAdmin(admin.ModelAdmin):
     linked_user.short_description = "User"
 admin_site.register(SchemeReport, SchemeReportAdmin)
 
-class WebsiteFeedbackAdmin(admin.ModelAdmin):
+class WebsiteFeedbackAdmin(OrganizationScopedAdmin):
     list_display = ['id', 'user', 'description', 'created_at'] 
     list_filter = ['created_at']
 admin_site.register(WebsiteFeedback)
 
-class SchemeFeedbackAdmin(admin.ModelAdmin):
+class SchemeFeedbackAdmin(OrganizationScopedAdmin):
     list_display = ('user', 'scheme', 'feedback', 'rating', 'created_at')
     search_fields = ('user__username', 'scheme__title', 'feedback')
     list_filter = ('created_at', 'rating')
@@ -246,7 +297,7 @@ class ProfileFieldInline(admin.TabularInline):
         return True
 
 
-class CustomUserAdmin(UserAdmin):
+class CustomUserAdmin(UserAdmin, OrganizationScopedAdmin):
     model = CustomUser
     list_display = ("username", "email", "is_active", "is_staff", "is_email_verified")
     list_filter = ("is_active", "is_staff", "is_email_verified", "groups")
@@ -255,7 +306,7 @@ class CustomUserAdmin(UserAdmin):
 
     fieldsets = (
         (None, {"fields": ("username", "email", "password")}),
-        ("Personal Info", {"fields": ["name"]}),
+        ("Personal Info", {"fields": ["name", "organization"]}),
         ("Important Dates", {"fields": ["last_login"]}),
     )
     add_fieldsets = (
@@ -270,6 +321,7 @@ class CustomUserAdmin(UserAdmin):
                     "password2",
                     "is_active",
                     "is_staff",
+                    "organization",
                 ),
             },
         ),
@@ -300,9 +352,9 @@ class CustomUserAdmin(UserAdmin):
 admin_site.register(CustomUser, CustomUserAdmin)
 
 
-class TagAdmin(admin.ModelAdmin):
+class TagAdmin(OrganizationScopedAdmin):
     list_display = ('category_display', 'tag_count', 'weight', 'tag_names_preview')
-    list_filter = ('category',)
+    # list_filter = ('category',)
     search_fields = ('category',)
     ordering = ["category"]
     readonly_fields = ("tag_names",)
@@ -356,7 +408,7 @@ class TagAdmin(admin.ModelAdmin):
 admin_site.register(Tag, TagAdmin)
 
 
-class StateAdmin(admin.ModelAdmin):
+class StateAdmin(OrganizationScopedAdmin):
     list_display = ('state_name', 'is_active')
     list_editable = ('is_active',)
     list_filter = ('is_active',)
@@ -389,10 +441,10 @@ class StateAdmin(admin.ModelAdmin):
 admin_site.register(State, StateAdmin)
 
 @admin.register(Department)
-class DepartmentAdmin(admin.ModelAdmin):
+class DepartmentAdmin(OrganizationScopedAdmin):
     list_display = ('department_name', 'state', 'is_active')
     list_editable = ('is_active',)
-    list_filter = ('state', 'is_active')
+    # list_filter = (OrganizationScopedRelatedFilter, 'state', 'is_active')
     search_fields = ('department_name',)
     actions = ['activate_departments', 'deactivate_departments']
 
@@ -405,26 +457,26 @@ class DepartmentAdmin(admin.ModelAdmin):
     deactivate_departments.short_description = "Deactivate selected departments"
 
 admin_site.register(Department, DepartmentAdmin)
-admin_site.register(Organisation)
-admin_site.register(SchemeBeneficiary)
-admin_site.register(Benefit)
-admin_site.register(Criteria)
-admin_site.register(Procedure)
-admin_site.register(Document)
-admin_site.register(SchemeSponsor)
+admin_site.register(Organisation, OrganizationScopedAdmin)
+admin_site.register(SchemeBeneficiary, OrganizationScopedAdmin)
+admin_site.register(Benefit, OrganizationScopedAdmin)
+admin_site.register(Criteria, OrganizationScopedAdmin)
+admin_site.register(Procedure, OrganizationScopedAdmin)
+admin_site.register(Document, OrganizationScopedAdmin)
+admin_site.register(SchemeSponsor, OrganizationScopedAdmin)
 
-admin_site.register(ClockedSchedule)
-admin_site.register(CrontabSchedule)
-admin_site.register(IntervalSchedule)
-admin_site.register(PeriodicTask)
-admin_site.register(SolarSchedule)
+admin_site.register(ClockedSchedule, OrganizationScopedAdmin)
+admin_site.register(CrontabSchedule, OrganizationScopedAdmin)
+admin_site.register(IntervalSchedule, OrganizationScopedAdmin)
+admin_site.register(PeriodicTask, OrganizationScopedAdmin)
+admin_site.register(SolarSchedule, OrganizationScopedAdmin)
 
-admin_site.register(BlacklistedToken)
-admin_site.register(OutstandingToken)
+admin_site.register(BlacklistedToken, OrganizationScopedAdmin)
+admin_site.register(OutstandingToken, OrganizationScopedAdmin)
 admin.site.register(CustomUser, CustomUserAdmin)
 
 
-class LayoutItemAdmin(admin.ModelAdmin):
+class LayoutItemAdmin(OrganizationScopedAdmin):
     list_display = ("column_name", "order", 'is_active')
     list_editable = ("order",'is_active')
     ordering = ("order",)
@@ -439,7 +491,7 @@ class LayoutItemAdmin(admin.ModelAdmin):
 
 admin_site.register(LayoutItem, LayoutItemAdmin)
 
-class FAQAdmin(admin.ModelAdmin):
+class FAQAdmin(OrganizationScopedAdmin):
     list_display = ('question', 'is_active', "order")
     list_filter = ('is_active',)
     ordering = ("order",)
@@ -447,10 +499,10 @@ class FAQAdmin(admin.ModelAdmin):
     list_editable = ('is_active', "order",)
 
 admin_site.register(FAQ, FAQAdmin)
-admin_site.register(Resource)
-admin_site.register(CompanyMeta)
+admin_site.register(Resource, OrganizationScopedAdmin)
+admin_site.register(CompanyMeta, OrganizationScopedAdmin)
 
-class UserEventsAdmin(admin.ModelAdmin):
+class UserEventsAdmin(OrganizationScopedAdmin):
     list_display = ('id', "get_scheme_title", 'user', 'event_type', 'get_watch_time', 'details', 'get_timestamp_ist')
     search_fields = ('user__username', 'event_type')
     list_filter = ('event_type', 'timestamp')
@@ -511,8 +563,9 @@ class UserEventsAdmin(admin.ModelAdmin):
 admin_site.register(UserEvents, UserEventsAdmin)
 
 
-class AnnouncementAdmin(admin.ModelAdmin):
+class AnnouncementAdmin(OrganizationScopedAdmin):
     list_display = ('title', 'created_at', 'is_active')
     search_fields = ('title',)
 
 admin_site.register(Announcement, AnnouncementAdmin)
+admin_site.register(Organization)
