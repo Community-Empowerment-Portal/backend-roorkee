@@ -32,7 +32,7 @@ class OrganizationScopedRelatedFilter(SimpleListFilter):
 
     def lookups(self, request, model_admin):
         org = request.user.organization
-        return [(d.id, d.name) for d in Department.objects.filter(organization=org)]
+        return [(d.id, d.department_name) for d in Department.objects.filter(organization=org)]
 
     def queryset(self, request, queryset):
         if self.value():
