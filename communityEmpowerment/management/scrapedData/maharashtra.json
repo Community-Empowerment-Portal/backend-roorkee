@@ -5136,5 +5136,3457 @@
         ],
         "documents": [],
         "id": "612464a8-5266-4390-9da2-f4ad66704ea6"
+    },
+    {
+        "description": "Providing financial assistance for education. To reduce the drop in education leakage. Creating a passion for higher education. Providing students the opportunity to go to the mainstream of education through education. Scholarship scheme to avoid transparency, co-ordination and delay. Benefits of Tuition Fees, Exam Fees and Maintenance Allowance are paid to only SC category students. Candidate family income should be less than or equal to 2,50,000/-",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC"
+            },
+            {
+                "beneficiary_type": "Neo-Buddhist"
+            }
+        ],
+        "tags": [
+            "Post Matric Scholarship",
+            "Financial Assistance",
+            "Education",
+            "SC",
+            "Neo-Buddhist"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AA07C7E01997E4885",
+        "funding_pattern": "Government of India",
+        "title": "Government of India Post-Matric Scholarship.",
+        "introduced_on": "Not available in the document",
+        "criteria": [
+            {
+                "description": "The parents/Guardian annual income shall be less than or equal to Rs. 2,50,000."
+            },
+            {
+                "description": "Student category shall belong to Scheduled caste or Navbouddha"
+            },
+            {
+                "description": "Student shall belong to resident of Maharashtra"
+            },
+            {
+                "description": "Student should be passes SSC/equivalent Matric."
+            }
+        ],
+        "documents": [
+            "Income Certificate(Provided by Tahesildar)",
+            "Cast Certificate.",
+            "Mark sheet for last appeared examination",
+            "Mark sheet for SSC or HSC",
+            "Father date Certificate(if required)",
+            "Gap & Self Declaration(if required)",
+            "Hostel Certificate (if required)",
+            "Husband Income Certificate(if girl is married)"
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "6ed3fa7b-00b3-4811-802d-7f8c6c8c56ac"
+    },
+    {
+        "description": "1) Create interest in education among students.\n2) Making financial assistance available for higher education.\n3) To reduce the drop in education leakage.\n4) Creating opportunities for financial growth through higher education.\n5) Scholarship scheme to avoid transparency, unity and delay.\n6) All types of compulsory fees such as Tuition fees, Exam Fees and other admissible fees are reimbursed to the concern SC category student.",
+        "tags": [
+            "Scholarship",
+            "Higher Education",
+            "SC Students",
+            "Tuition Fee",
+            "Examination Fee",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Scheduled Caste students"
+            },
+            {
+                "beneficiary_type": "Neo-Buddhist students"
+            }
+        ],
+        "procedures": [
+            {
+                "step_description": "Apply online through the MahaDBT portal."
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsor_type": "Government of Maharashtra"
+            }
+        ],
+        "valid_upto": "31st May 2025 for A.Y. 24-25. Re-apply extended till 31st May 2025 for A.Y. 23-24",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AE3B184954F87E9F7",
+        "funding_pattern": "Reimbursement of Tuition Fees, Exam Fees, and other mandatory fees",
+        "title": "Post-Matric Tuition Fee and Examination Fee (Freeship)",
+        "introduced_on": "Information not available in the text",
+        "documents": [
+            "Income Certificate (Provided by Tehsildar)",
+            "Caste Certificate",
+            "Caste Validity Certificate",
+            "Mark sheet for last appeared examination",
+            "Mark sheet for SSC or HSC",
+            "Father's Death Certificate (if required)",
+            "Hostel Certificate (if required)",
+            "CAP round allotment letter"
+        ],
+        "criteria": [
+            {
+                "description": "Parents'/Guardian's annual income above Rs. 250,000"
+            },
+            {
+                "description": "Resident of Maharashtra"
+            },
+            {
+                "description": "Passed SSC/equivalent Matric"
+            },
+            {
+                "description": "Institute located in Maharashtra and government recognized"
+            },
+            {
+                "description": "For Professional Courses, admission through CAP round only"
+            },
+            {
+                "description": "Only 1 failure allowed in the entire curriculum"
+            }
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "8e8588e4-d94e-41ed-8c47-aa87489049f7"
+    },
+    {
+        "description": "1) Benefits of maintenance allowance are paid to SC Students studying in professional courses and living in hostel attached to professional colleges.",
+        "tags": [
+            "Maintenance Allowance",
+            "Professional Courses",
+            "SC Students",
+            "Hostel",
+            "Government of India Scholarship"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC Students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "As bellow ( from hostel date of joining to date of Exam or Max 10 month)\n1) For students who are residing in Government Hostels.\ni) Course duration between 4 to 5 years: 700/- Rs per month (Rs 7000 PA.)\nii) Course duration between 2 to 3 years: 500/- Rs per month (Rs 5000 PA.)\niii) Course duration bellow 2 years : 500/- Rs per month (Rs 5000 PA.)\n2) For students who are eligible for Government hostels but not admitted in Government Hostels.\ni) Course duration between 4 to 5 years: 1000/- Rs per month (Rs 10000 PA.)\nii) Course duration between 2 to 3 years: 700/- Rs per month (Rs 7000 PA.)\niii) Course duration bellow 2 years: 500/- Rs per month (Rs 5000 PA.)",
+        "introduced_on": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced.",
+        "title": "Maintenance Allowance for student Studying in professional courses.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AB210B3E0B1AA642F",
+        "documents": [
+            "Cast Certificate",
+            "Parents Income Cert.",
+            "College Admission Receipt",
+            "Warden Letter(If student not getting admission in hostel)",
+            "His/hers Registration/Application ID with GOI post matric scholarship scheme"
+        ],
+        "criteria": [
+            {
+                "description": "Student should be admitted in professional Course."
+            },
+            {
+                "description": "Students should be the scholarship holder of Government of India"
+            },
+            {
+                "description": "The limit of income will be applicable as per the Government of India scholarship scheme i.e. annual income limit less than or equal to 2.5 lac"
+            },
+            {
+                "description": "Students who are studying in the professional curriculum and residing in Hostel (Government. or Institutes Hostel or outside)."
+            }
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "024eb164-12d9-4d0a-8371-b3e9c93cd5a0"
+    },
+    {
+        "description": "• Creating an interest in learning among SC students.\n• Making financial assistance available for education.\n• Increase the quality of SC category students.\n• Only SC category students can avail this merit wise scholarship.\n",
+        "tags": [
+            "scholarship",
+            "SC",
+            "education",
+            "11th",
+            "12th",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced.",
+        "funding_pattern": "Rs. 300 per month for 10 months for two years. I.e. in the 11th and 12th Std.",
+        "title": "Rajarshri Chhatrapati Shahu Maharaj Merit Scholarship.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A3160277BCF2AA7C6",
+        "criteria": [
+            {
+                "description": "Student should belong to SC."
+            },
+            {
+                "description": "There is no income limit for the Scholarship."
+            },
+            {
+                "description": "Students must be Studying in 11th or 12th."
+            },
+            {
+                "description": "Students should secure 75% and above in 10th."
+            },
+            {
+                "description": "Student should be resident of Maharashtra"
+            }
+        ],
+        "documents": [
+            "Cast Certificate",
+            "10th Mark sheet.",
+            "TC/LC",
+            "11th Admission Receipt."
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "8e389599-19c3-4047-b4ee-6ef64978f901"
+    },
+    {
+        "description": "1) Providing financial assistance for education.\n2) To reduce the drop in education leakage.\n3) Creating a passion for higher education.\n4) Providing students the opportunity to go to the mainstream of education through education.\n5) Scholarship scheme to avoid transparency, co-ordination and delay.\n6) Benefits of Tuition Fees, Exam Fees and Maintenance Allowance are paid to only Disable Persons.",
+        "tags": [
+            "Post-Matric",
+            "Scholarship",
+            "Disability",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Persons with Disability"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "Not available",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A054A8D0DAA702B64",
+        "title": "Post-Matric Scholarship for persons with disability.",
+        "funding_pattern": "scholarship",
+        "criteria": [
+            {
+                "description": "Student should be disable. (40% or above)"
+            },
+            {
+                "description": "Student should be residential of Maharashtra."
+            },
+            {
+                "description": "Student should be Studying in recognized University or Recognized institute."
+            },
+            {
+                "description": "The scholarship will not be applicable if the candidate fails or quit the same course in the applied course (incomplete course)."
+            },
+            {
+                "description": "The Scholarship will not be applicable twice or second time if the candidate applies on the criteria of HSC/SSC/Degree. (application should be in progressive format)(only once course is allowed)"
+            },
+            {
+                "description": "Student studying in recognized institute or college out of Maharashtra but he should be residential of MH."
+            },
+            {
+                "description": "If student is in Post-Graduation from medical education field and he is not allow to do practice out of institute then he is eligible. For ex: internship or houseman ship where stipend is getting."
+            },
+            {
+                "description": "if student arts, science & Commerce student discontinues his course & applies from professional course, technical education certificate/diploma/degree is applicable for the scholarship. But except group “A” the candidate fails the scholarship will not be applicable for the scholarship."
+            },
+            {
+                "description": "For Group B, C, D, and E: If the student fails then he will not be eligible for this scheme."
+            },
+            {
+                "description": "For Group A: If the student fails 1 time, he may be eligible for this scheme, but he will not be eligible if he fails Second time during the full time of education."
+            },
+            {
+                "description": "The candidate who taking distance education from recognized uni/Institution where non-refundable fees has to be paid by the student such students are getting annual Rs. 500/- for books and material purchase."
+            },
+            {
+                "description": "Candidate only can apply Shahu Maharaj Merit Schol with this Scheme. cant apply for another scheme."
+            },
+            {
+                "description": "If candidate is working full time employment then he/she is not eligible."
+            },
+            {
+                "description": "If candidate is from Gov hosteller & he is not getting books and stationery from hostel then he is eligible for additional 1/3 amount of maintenance allowance allowed for hosteller."
+            },
+            {
+                "description": "The candidate residing in college/institute or any other recognized hostel & if he/she pays hostel fees (application point no 11) then the candidates maintenance allowance will be given of hosteller rates."
+            }
+        ],
+        "documents": [
+            "Mark- Sheet for the last appeared examination",
+            "Domocile Certificate",
+            "Disability Certificate",
+            "Guardian Certificate",
+            "(Only for Group A) If Gap in Education then Gap Certificate is must"
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "a398a6e2-67f9-4d73-8808-56be84ea45ae"
+    },
+    {
+        "description": "Vocational Training Fee reimbursement for the students belonging to Scheduled Caste Category students and admitted to the seats under PPP scheme in Government ITIs and Private ITIs through Centralized Admission Process. They will avail Fee Reimbursement benefit only if they met the Scheme Criteria.",
+        "tags": [
+            "Vocational Training",
+            "Fee Reimbursement",
+            "Scheduled Caste",
+            "ITI",
+            "PPP Scheme"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students belonging to Scheduled Caste category"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "",
+        "funding_pattern": "As Per GOI scholarship for students with family income less than 2.5L, 100% fee reimbursement for students with family income between 2.5L-8L",
+        "title": "Vocational Training Fee reimbursement for the students belonging to Scheduled Caste category Students.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AD172C0AB7BCD9AB3",
+        "documents": [
+            "Aadhaar Card",
+            "Ration Card",
+            "Mark sheet SSC /HSC",
+            "Previous year mark sheet for renewal",
+            "Domicile certificate",
+            "Income certificate by competent authority",
+            "Caste certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Admission taken through PPP scheme in Government Skill Development Institute or Private Institute and admitted through central Online Admission Process."
+            },
+            {
+                "description": "No scholarship for Management Quota Admission"
+            },
+            {
+                "description": "Student should belong to Scheduled Caste Category (SC Category) and should provide caste certificate."
+            },
+            {
+                "description": "Overall Family Income Limit should be Rs.8.00 lacs"
+            },
+            {
+                "description": "Orphan candidate requires Recommendation Letter."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for course previously from Government or Private ITI."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for training program sponsored by State / Central Government / Department / Local Body / Company or Corporation."
+            },
+            {
+                "description": "Domicile of Maharashtra."
+            },
+            {
+                "description": "Admission taken for DGT, New Delhi or MSCVT approved courses."
+            },
+            {
+                "description": "Attendance criteria is mandatory."
+            },
+            {
+                "description": "Candidate need to attend each semester /annual exam. If any medical emergency then after recommendation by institute Regional Joint Director should certify or recommend."
+            },
+            {
+                "description": "Non Satisfactory educational progress due to misconduct- Failure in academic year, not fulfilling attendance criteria if found then candidate will not be eligible for scholarship."
+            }
+        ],
+        "department_name": "Social Justice and Special Assistance Department",
+        "id": "56cafdc7-3aa6-4d2c-b1f3-e6a2ea6350e6"
+    },
+    {
+        "description": "Scheme of Post Matric Scholarships to the students belonging to Scheduled Tribes for Studies in India",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "ST students"
+            }
+        ],
+        "tags": [
+            "Post Matric Scholarship",
+            "Scheduled Tribes",
+            "Education",
+            "Scholarship",
+            "Students"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Government Of India"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A739268F02CEC37EC",
+        "introduced_on": "Not available in the given text",
+        "title": "Post Matric Scholarship Scheme (Government Of India ).",
+        "funding_pattern": "scholarship",
+        "documents": [
+            "Caste Certificate",
+            "Income Certificate",
+            "Previous year's marksheet",
+            "Professional Course selected than caste validity certificate mandatory"
+        ],
+        "criteria": [
+            {
+                "description": "Student must belong to Scheduled Tribe."
+            },
+            {
+                "description": "Annual family income must be less than or equal to ₹2,50,000."
+            },
+            {
+                "description": "Minimum 10th pass."
+            },
+            {
+                "description": "No back-to-back drops for two consecutive years allowed."
+            }
+        ],
+        "department_name": "Tribal Development Department",
+        "id": "ae62b21d-adf6-47d9-b049-f146fd040228"
+    },
+    {
+        "description": "This is a state-sponsored scheme for ST students where tuition and examination fees are reimbursed as per the approved college fee structure. The applicant is eligible if the parent's income is over 2.5 lakhs annually. Renewal Policy: The student has to pass the previous year's examination to be eligible for subsequent years.",
+        "tags": [
+            "education",
+            "scholarship",
+            "tribal welfare",
+            "freeship"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "ST students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Tribal Development Department"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AFC085DBE43E82570",
+        "title": "Tuition Fee & Exam Fee for Tribal Students (Freeship)",
+        "funding_pattern": "reimbursement",
+        "criteria": [
+            {
+                "description": "The candidate should be of the ST caste."
+            },
+            {
+                "description": "Family annual income limit is RS > 2,50,000."
+            },
+            {
+                "description": "Student should have passed the previous year examination."
+            }
+        ],
+        "documents": [
+            "Caste Certificate",
+            "Previous year's marksheet",
+            "Caste Validity"
+        ],
+        "department_name": "Tribal Development Department",
+        "id": "0e80bc6c-9ba4-4fbb-9fd0-79f7436b6904"
+    },
+    {
+        "description": "Under this scheme students who are enrolled for vocational education courses like, Engineering, Pharmacy , Animal Husbandry, Dairy Development, Vaastu Shastra, MBA, MCA can take benefit.\nApplicant whose parent income limit is above 2.5 Lakhs can apply for the scheme.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "ST"
+            }
+        ],
+        "tags": [
+            "Vocational Education",
+            "Fee Reimbursement",
+            "ST",
+            "Students"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AC6B28ED14CE96709",
+        "funding_pattern": "Tuition Fee and Exam Fees As per approved college fee structure",
+        "title": "Vocational Education Fee Reimbursement.",
+        "introduced_on": "Not Available",
+        "documents": [
+            "Caste certificate issued by Competent authority.",
+            "Domicile certificate of Maharashtra",
+            "College admission receipt",
+            "Caste Validity Certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Applicable for ST only"
+            },
+            {
+                "description": "Family annual income limit is RS. > 2,50,000"
+            }
+        ],
+        "department_name": "Tribal Development Department",
+        "id": "27d131c5-fb86-4e8b-8855-d761228c7e5f"
+    },
+    {
+        "description": "Applicant who are enrolled for vocational education courses can apply for this scholarship. Parent income limit should be less than 2.5 lakhs.",
+        "tags": [
+            "Vocational Education",
+            "Maintenance Allowance",
+            "Scholarship",
+            "ST",
+            "Tribal Development"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "ST"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AADA109F73D48B5D5",
+        "title": "Vocational Education Maintenance Allowance.",
+        "funding_pattern": "Maintenance allowance is categorized by course duration[Hostellers/Day Scholors/Annum\n* 4-5 Year Courses Rs 7,000/10,000 / Annum.2-3 Year Course Rs 5000/7000 / Annum\n* 2 years or less Rs 5000/5000 / Annum",
+        "documents": [
+            "Caste Certificate",
+            "Income Certificate",
+            "Previous year's marksheet",
+            "Caste validity certificate",
+            "Declaration of Rector/Superintendent of the college"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant who are enrolled for vocational education courses can apply for this scholarship."
+            },
+            {
+                "description": "Parent income limit should be less than 2.5 lakhs."
+            },
+            {
+                "description": "Applicable for ST caste only."
+            },
+            {
+                "description": "If Family Income <= 2,50,000, he will get the scholarship. If income is >2,50,000 then he will get a freeship."
+            },
+            {
+                "description": "The student have to pass the previous year examination."
+            },
+            {
+                "description": "If student fails in any year then he is not paid the scholarship for that particular year."
+            }
+        ],
+        "department_name": "Tribal Development Department",
+        "id": "2a1847f3-545c-4a4d-b16d-3d98871a811b"
+    },
+    {
+        "description": "Vocational Training Fee reimbursement for the students belonging to Scheduled Tribe Category Students and admitted to the seats under PPP scheme in Government ITIs and Private ITIs through Centralized Admission Process. They will avail Fee Reimbursement benefit only if they met the Scheme Criteria.",
+        "tags": [
+            "Vocational Training",
+            "Fee Reimbursement",
+            "Scheduled Tribe",
+            "ITI",
+            "PPP Scheme",
+            "Centralized Admission Process",
+            "Skill Development",
+            "Education",
+            "Students"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students belonging to Scheduled Tribe Category"
+            }
+        ],
+        "procedures": [
+            {
+                "step_description": "New/Renewal applications will be available until May 31, 2025."
+            },
+            {
+                "step_description": "Re-apply applications for A.Y. 23-24 will be available until May 31, 2025"
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsor_type": "Tribal Development Department"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A649D149EAF5F4A10",
+        "funding_pattern": "As Per GOI scholarship for SSC Pass and Family income Less than or equal to 2,50,000. 100 % reimbursement of Course Fee for SSC Pass and Family income above 2,50,000 to Less than or up to 8,00,000 Lakh and for SSc Fail and Family income up to 8,00,000 Lakh.",
+        "title": "Vocational Training Fee reimbursement for the students belonging to Scheduled Tribe category",
+        "introduced_on": "Not available in the document",
+        "documents": [
+            "Aadhaar Card",
+            "Ration Card",
+            "Mark sheet SSC / HSC",
+            "Previous year mark sheet for renewal",
+            "Domicile certificate",
+            "Income certificate by competent authority",
+            "Caste certificate and Caste validity certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Student should belong to ST Category and also provide Caste Validity Certificate."
+            },
+            {
+                "description": "Original Leaving Certificate / Transfer Certificate is Mandatory."
+            },
+            {
+                "description": "Scheme applicable for SSC Pass and SSC Fail."
+            },
+            {
+                "description": "Admission taken through PPP scheme in Government Skill Development Institute or Private Institute and admitted through central Online Admission Process."
+            },
+            {
+                "description": "No Fee reimbursement for Management Quota Admission."
+            },
+            {
+                "description": "Overall Family Income will be considered (Father + Mother Income)"
+            },
+            {
+                "description": "Candidate should not have taken any benefit for course previously from Government or Private ITI."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for training program sponsored by State / Central Government / Department / Local Body / Company or Corporation."
+            },
+            {
+                "description": "Domicile of Maharashtra"
+            },
+            {
+                "description": "Admission taken for DGT, New Delhi or MSCVT approved courses"
+            },
+            {
+                "description": "Benefit applicable to only 2 children."
+            },
+            {
+                "description": "Attendance criteria is mandatory."
+            },
+            {
+                "description": "Candidate need to attend each semester /annual exam. If not after recommendation by Student and Institute, Project Officer integrated Tribal Development Project should certify or recommend."
+            },
+            {
+                "description": "Non Satisfactory educational progress due to misconduct- Failure in academic year, not fulfilling attendance criteria if found then candidate will not be eligible for reimbursement."
+            }
+        ],
+        "department_name": "Tribal Development Department",
+        "id": "245469d8-59a0-4a45-95fe-e9ed037ff646"
+    },
+    {
+        "description": "Under this scheme of Directorate of Higher Education, scholarship is applicable for the economically weaker sections. The students family annual income limit is up to Rs. 8.00 lakh, those who have taken an admission for Professional and non- professional courses which come Under Directorate of Higher Education Government / Non-government aided/ Partially Aided – Unaided/Permanent Unaided College and Non-Agricultural Universities and Sub-Centers (Excluding Private Universities / Self-financed Private Universities).",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Economically weaker sections"
+            },
+            {
+                "beneficiary_type": "Students whose family annual income is up to Rs. 8.00 lakh"
+            },
+            {
+                "beneficiary_type": "Students admitted to Professional and non-professional courses"
+            },
+            {
+                "beneficiary_type": "Students in Government / Non-government aided/ Partially Aided – Unaided/Permanent Unaided College and Non-Agricultural Universities and Sub-Centers (Excluding Private Universities / Self-financed Private Universities)"
+            },
+            {
+                "beneficiary_type": "Domicile of Maharashtra"
+            },
+            {
+                "beneficiary_type": "First two children in the family"
+            },
+            {
+                "beneficiary_type": "Students admitted under general category and SEBC Category"
+            }
+        ],
+        "tags": [
+            "Higher Education",
+            "Scholarship",
+            "Tuition Fee",
+            "Examination Fee",
+            "Professional Courses",
+            "Non-Professional Courses"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Directorate of Higher Education (DHE)"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A2D3C3A162F4DE21D",
+        "introduced_on": "7.10.2017",
+        "title": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Scheme",
+        "funding_pattern": "scholarship",
+        "criteria": [
+            {
+                "description": "Domicile of Maharashtra"
+            },
+            {
+                "description": "Family annual income up to Rs. 8.00 lakh"
+            },
+            {
+                "description": "Admitted under general category"
+            },
+            {
+                "description": "Courses from GR 07/10/17 (DHE courses)"
+            },
+            {
+                "description": "Not availing any other scholarship or stipend"
+            },
+            {
+                "description": "Not admitted in Distance Education, virtual learning and part time courses"
+            },
+            {
+                "description": "Course approved by (Government /University/AICTE,PCI/COA/MCI/NCTE/ etc )"
+            },
+            {
+                "description": "No gap of 2 years during the course"
+            },
+            {
+                "description": "Attempt every semester or annual exam."
+            }
+        ],
+        "documents": [
+            "Domicile certificate",
+            "Previous year Annual income certificate",
+            "CAP Related document.(only for B.ed,Law, BPed,MPed)",
+            "Gap Related Document(if Gap is there)",
+            "Family Declaration Certificate about two children’s",
+            "Attendance Certificate",
+            "Previous year Mark sheet"
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "c2419100-4faa-4199-986c-e2dcf08e557b"
+    },
+    {
+        "description": "Higher Secodnary Level (After 12 th):-\nFrom Each Divisional Board 15 Students. For Eight Divisional Board Total 120 Students.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Meritorious Students"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "students",
+            "education",
+            "higher education"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "Scholarship amount varies from course to course from Rs.2800 to 72000/- plus.",
+        "introduced_on": "17.05.1984",
+        "title": "Assistance to Meritorious Students scholarship",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A974A58E65FA75F28",
+        "documents": [
+            "Previous Year Mark sheet.",
+            "Fee receipt of current year.",
+            "Hostel Fee Receipt.",
+            "DHE Scholarship sanctioned letter."
+        ],
+        "criteria": [
+            {
+                "description": "The students from 11 & 12th class are eligible who gets top rank in secondary and higher secondary examinations."
+            },
+            {
+                "description": "For Renewal:- Junior level student must possess 55% marks should have admission to next class."
+            },
+            {
+                "description": "The students after 12th are eligible who gets top rank in secondary and higher secondary examinations."
+            },
+            {
+                "description": "For Renewal:- Senior level students must possess 65% marks and should have admission to next class."
+            }
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "c10a88c8-cdca-4255-beac-e3bd3adafe8d"
+    },
+    {
+        "description": "Educational concession to the children of Exservice’s man is given No. MIS1465/H,Date23/11/1965.",
+        "tags": [
+            "Education",
+            "Concession",
+            "Ex-Servicemen",
+            "Higher Education",
+            "Students"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Children of Ex-Servicemen"
+            },
+            {
+                "beneficiary_type": "Wife of Ex-Servicemen"
+            },
+            {
+                "beneficiary_type": "Widow of Ex-Servicemen"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "23/11/1965",
+        "funding_pattern": "Full Funding",
+        "title": "Education Concession to the Children of Ex-Servicemen.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ADB0E651ACBFBD0AB",
+        "criteria": [
+            {
+                "description": "Son/Daughter/Wife/Widow of an EX-SERVICEMAN"
+            },
+            {
+                "description": "Only government and aided college."
+            },
+            {
+                "description": "Maharashtrian Students studying Out of Maharashtra cannot apply for this scheme."
+            }
+        ],
+        "documents": [
+            "Eligiblity Certificate issued by collector and President of DSSA board.",
+            "Admission receipt",
+            "Domicile certificate"
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "ae59de30-7776-4c81-a94e-2e40732bb410"
+    },
+    {
+        "description": "Those students who admitted for Post Graduate and obtained 60 percent marks in arts commerce and law graduation and 70 % marks in Science graduation are eligible to apply for this scolarship.\n Parental annual income should not exceed 75.000 Rs/-\nStudent should resident of Maharashtra\n Students should not work full time or part time. Selection of Candidates Is on Merit basis",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Post Graduate students"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "postgraduate",
+            "higher education"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "scholarship",
+        "introduced_on": "As Per GR Dated 7.02.1996",
+        "title": "Eklavya Scholarship",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AB0BE07C3EC756406",
+        "documents": [
+            "Annual Income Certificate issued by Tahsildar",
+            "Previous Year Mark sheet",
+            "Domicile certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Obtained 60 percent marks in arts, commerce and law graduation"
+            },
+            {
+                "description": "Obtained 70% marks in Science graduation"
+            },
+            {
+                "description": "Parental annual income should not exceed 75,000 Rs/-"
+            },
+            {
+                "description": "Resident of Maharashtra"
+            },
+            {
+                "description": "Should not work full time or part time"
+            }
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "6e853aa5-27a7-4bd6-bb4f-d756359869b4"
+    },
+    {
+        "description": "Sanction Set - 1208 Students Admited in Arts Commerce Science Law Graduation are eligible for application. For Fresh - Candidate must secure 60 Percentage in 12th standard. New sanction process done through DHE office and Renewal sanction process done through joint director office of concern colleges. Selection of Candidates Is on Merit basis",
+        "tags": [
+            "Open Merit",
+            "Scholarship",
+            "Higher Education",
+            "Graduation",
+            "Merit Based",
+            "12th Standard"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students Admited in Arts Commerce Science Law Graduation"
+            }
+        ],
+        "procedures": [
+            {
+                "step_description": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced."
+            },
+            {
+                "step_description": "Last date for Application Acceptance (New/Renewal) for A.Y. 24-25 is 31'st May 2025."
+            },
+            {
+                "step_description": "Application Re-apply has been extended for A.Y. 23-24 till 31'st May 2025"
+            }
+        ],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "Rs. 100 per month to student bank account.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AC3C0DE50B5557546",
+        "title": "State Government Open Merit Scholarship",
+        "introduced_on": "16.11.1964",
+        "documents": [
+            "Previous Year Marksheet",
+            "Domicile Certificate",
+            "Bonafide Certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Candidate must secure 60 Percentage in 12th standard"
+            },
+            {
+                "description": "The applicant must be a resident of the Maharashtra State"
+            },
+            {
+                "description": "Only applicable for stream Arts, commerce, science and law."
+            },
+            {
+                "description": "Maharashtrian Students studying Out of Maharashtra cannot apply for this scheme."
+            }
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "6cfe35ec-f09a-4495-b32e-cdc63aa4acf1"
+    },
+    {
+        "description": "Sanction Set-100 (Maths 50 and Physics 50)\n Students admited for science graduation and having maths or physics as a main subject are eligible to apply this schoalrship.\n For Fresh - Candidate must secure 60 Percentage in 12th standard.\nHe is not awarded any other scholarshiop of State & Central Governement.\n candidate must be resident of Maharashtra State. 6. New sanction process done through DHE office and Renewal sanction process done through joint director office of concern colleges. Selection of Candidates Is on Merit basis",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students admited for science graduation and having maths or physics as a main subject"
+            }
+        ],
+        "tags": [
+            "Scholarship",
+            "Meritorious students",
+            "Mathematics",
+            "Physics",
+            "Higher Education"
+        ],
+        "procedures": [
+            {
+                "step_description": "New sanction process done through DHE office and Renewal sanction process done through joint director office of concern colleges."
+            },
+            {
+                "step_description": "Selection of Candidates Is on Merit basis"
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsor_type": "Directorate of Higher Education (DHE)"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "07.10.1985",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A4BBDC0D4DC8452FB",
+        "title": "Scholarship to Meritorious students possessing Mathematics /Physics.",
+        "funding_pattern": "Rs. 100 per month.",
+        "criteria": [
+            {
+                "description": "Candidate must secure 60 Percentage in 12th standard."
+            },
+            {
+                "description": "He is not awarded any other scholarshiop of State & Central Governement."
+            },
+            {
+                "description": "candidate must be resident of Maharashtra State."
+            }
+        ],
+        "documents": [
+            "Previous year Mark sheet.",
+            "Domicile Certificate",
+            "College Bonafide Certificate."
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "1cac0264-b803-42c7-9411-98203b7994d9"
+    },
+    {
+        "description": "Sanction Set 80 (For Government vidhyaniketan,Pusegaon Amravati Aurangabad Dhule 20 students from each)\n Students passed Xth Class from Govt Vidhyaniketan are eligible for this schoalrship.\n For new sanction students must have 60% marks in Xth Class.\n New sanction process done through DHE office and Renewal sanction process done through joint director office of concern colleges. Selection of Candidates Is on Merit basis",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "all category (only UG students)"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "education",
+            "students",
+            "higher education",
+            "vidyaniketan"
+        ],
+        "procedures": [
+            {
+                "step_description": "New sanction process done through DHE office and Renewal sanction process done through joint director office of concern colleges."
+            }
+        ],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AEC62CC61F6C26609",
+        "introduced_on": "02.09.1986",
+        "title": "Government Vidyaniketan Scholarship.",
+        "funding_pattern": "Rs. 100 per month.",
+        "documents": [
+            "Previous Year Marksheet.",
+            "Entitlement Card from Vidhyaniketan",
+            "Bonafied Certificate of admited College.",
+            "Domicile Certificate."
+        ],
+        "criteria": [
+            {
+                "description": "Need to get 60% marks in 10th standard."
+            },
+            {
+                "description": "Need to passed by 10th standard exam from The State Government Vidyanikethan only."
+            },
+            {
+                "description": "Maharashtrian Students studying Out of Maharashtra cannot apply for this scheme."
+            },
+            {
+                "description": "The applicant must be a resident of the Maharashtra State."
+            }
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "ca9226be-dddb-43de-ac49-9b99d39f201d"
+    },
+    {
+        "description": "Provides financial assistance to meritorious students pursuing postgraduate studies in government institutes, colleges, and non-agricultural universities in Maharashtra.",
+        "tags": [
+            "Scholarship",
+            "Postgraduate Studies",
+            "Meritorious Students",
+            "Higher Education",
+            "Government of Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Meritorious PG Students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Applications accepted until 31st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A0D2D93F9CF99BD37",
+        "funding_pattern": "Rs 250/- per month",
+        "title": "State Government Daxshina Adhichatra Scholarship",
+        "introduced_on": "Not available in the provided text",
+        "documents": [
+            "Previous year Mark Sheet",
+            "Bonafide Certificate For PG Admission",
+            "Domicile certificate",
+            "Progress report of PG 1st year (for renewal)"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant Must be a Graduate."
+            },
+            {
+                "description": "Applicant must be studying in a Government Institute/College or Non-Agricultural University."
+            },
+            {
+                "description": "Applicant must be a resident of Maharashtra State."
+            }
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "ee794404-50c3-4a5c-bd54-ad42414e0273"
+    },
+    {
+        "description": "Government Research Adhichtra GR. SCH-1082/4199/VISHI-3, DATED 13/8/1985 has started scholarship for the student wanted to do Ph.D in their subject in Government Colleges and Universities.\nNo of Seats - 14 Government Colleges(05) - 11 Seats Non Agricultural University - 03 Seats University leavel seats are selected by commity under Director from received applications.\nCollege leveal seats are selected by commity under Principal.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "all categories (After PG)"
+            }
+        ],
+        "tags": [
+            "Scholarship",
+            "PhD",
+            "Research",
+            "Higher Education"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "funding_pattern": "Rs. 750/- per month and Rs.1000/- per year other expenses.",
+        "introduced_on": "1985-08-13",
+        "title": "Government Research Adhichatra",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AA7F7B18C7EA3C817",
+        "documents": [
+            "Name of the Guide of the Students.",
+            "Sanction letter of university for the Guide.",
+            "Graduation and PG marklist.",
+            "For renewal student should submit annual progresive report of his Guide.",
+            "Applicant must be domicile of Maharashtra.",
+            "For renewal:-Progress report of Last year."
+        ],
+        "criteria": [
+            {
+                "description": "Applicant must be post graduate"
+            },
+            {
+                "description": "The applicant must be a resident of the Maharashtra State"
+            },
+            {
+                "description": "Applicant should have 60% marks in post graduation. B.A/BSC/B.ED AND M.A/MSC/M.ED AND for any other degree below 60% marks is applicable"
+            },
+            {
+                "description": "Only govt science institute(Mumbai-3,Nagpur-3,Aurangabad-3),and govt vidarbh gyan vidnyan science institute(Amravati-1), vasantrao naik mahavidyalay college(Nagpur-1),universities and affilated colleges.(3) ---Brackets indicates quota"
+            },
+            {
+                "description": "Maharashtrian Students studying Out of Maharashtra cannot apply for this scheme"
+            }
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "26311706-d43a-4791-b94c-3b7bbc3b9a12"
+    },
+    {
+        "description": "Educational concession to the children of Ex-service’s man is given No. MIS-1465/H,Date-23/11/1965.",
+        "tags": [
+            "Education",
+            "Concession",
+            "Children",
+            "Freedom Fighter"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Son"
+            },
+            {
+                "beneficiary_type": "Daughter"
+            },
+            {
+                "beneficiary_type": "Wife"
+            },
+            {
+                "beneficiary_type": "Widow"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A9A3C313414F8286F",
+        "introduced_on": "23/11/1965",
+        "title": "Education Concession to the Children Freedom Fighter.",
+        "funding_pattern": "Scholarship:- for degree/Pg- Rs 50 per month and for Engineering students, rs 60 per month\nBooks allowance: for degree/Pg- Rs 200 per annum and for Engineering students, rs 400 per annum",
+        "criteria": [
+            {
+                "description": "Students should be Son/Daughter/Wife/Widow of freedom fighter"
+            },
+            {
+                "description": "Maharashtrian Students studying Out of Maharashtra cannot apply for this scheme"
+            },
+            {
+                "description": "Domicile of Maharashtra."
+            }
+        ],
+        "documents": [
+            "Freedom fighter Certificate.",
+            "Current year fee receipt",
+            "Domicile certificate.",
+            "Bonafide certificate."
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "7fd038e0-794d-4945-b2b9-2ab4ad3a1597"
+    },
+    {
+        "description": "Jawaharlal Nehru University scheme is started by Jawaharlal University for Maharashtra .\nAmong the students from maharastra studying in that University One Student is selected by University according to GR.SCH1082/151160/(2173)/GEN5,DATED 7/5/1983.",
+        "tags": [
+            "Higher Education",
+            "Scholarship",
+            "Fellowship"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "All Category"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "Rs. 8000/- per month plus Rs.10,000/-extra for yearly.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ABF4E10E281A07733",
+        "title": "Jawaharlal Nehru University.",
+        "introduced_on": "07.05.1983",
+        "criteria": [
+            {
+                "description": "Maharashtrian students who studied in JNU."
+            },
+            {
+                "description": "Quota is only for 1 decided by JNU"
+            },
+            {
+                "description": "Only students pursuing Junior Research Fellowship are eligible for the scheme"
+            },
+            {
+                "description": "Domicile of Maharashtra."
+            }
+        ],
+        "documents": [
+            "Fee receipt.",
+            "Domicile certificate",
+            "Previous Year Mark Sheet."
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "df5b7816-7bb3-434d-b2bd-9488dc3f52fc"
+    },
+    {
+        "description": "Higher Secodnary Level (After 12 th):-\nFrom Each Divisional Board 15 Students. For Eight Divisional Board Total 120 Students.\n(As Per GR Dated 1.3.2011 Medical education Dept. & 11.09.2003)\nAMS Junior level:-Scholarship amount sanction as per Government Rule varies from course to course 11th - 12th - Rs.1600/- to Rs. 2300/-\nAMS Senior level:- Scholarship amount sanction as per Government Rule varies from course to course from Rs.2800 to 72000/- plus.",
+        "tags": [
+            "scholarship",
+            "merit-based",
+            "higher education"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Meritorious Students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Directorate of Higher Education (DHE)"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "17.05.1984",
+        "funding_pattern": "scholarship",
+        "title": "Assistance to Meritorious Students scholarship - Senior Level",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A581B0F1DB8A46333",
+        "criteria": [
+            {
+                "description": "The students from 11 & 12th class are eligible who gets top rank in secondary and higher secondary examinations."
+            },
+            {
+                "description": "For Renewal:- Junior level student must possess 55% marks should have admission to next class."
+            },
+            {
+                "description": "The students after 12th are eligible who gets top rank in secondary and higher secondary examinations."
+            },
+            {
+                "description": "For Renewal:- Senior level students must possess 65% marks and should have admission to next class."
+            }
+        ],
+        "documents": [
+            "Previous Year Mark sheet.",
+            "Fee receipt of current year.",
+            "Hostel Fee Receipt.",
+            "DHE Scholarship sanctioned letter."
+        ],
+        "department_name": "Directorate of Higher Education (DHE)",
+        "id": "634f9c25-1767-4a1d-93ff-c5e13870dcc9"
+    },
+    {
+        "description": "Under this scheme, Directorate of Higher Education, scholarship is applicable for the economically weaker sections. The student’s those who have taken an admission for Professional and Non-Professional courses which come Under Directorate of Higher Education Government /Non-government aided/Partially Aided -Unaided/Permanent Unaided College and Non-Agricultural Universities and Sub-Centers (Excluding Private Universities / Self-financed Private Universities).",
+        "tags": [
+            "Higher Education",
+            "Scholarship",
+            "Economically Weaker Sections",
+            "Professional Courses",
+            "Non-Professional Courses",
+            "Hostel Allowance"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students whose Parents are Small Land Holder Farmer / Registered Labour"
+            },
+            {
+                "beneficiary_type": "Economically Backward Class Student (Annual Family Income - upto 1 Lakh)"
+            },
+            {
+                "beneficiary_type": "Economically Backward Class Student (Annual Family Income - More than 1 Lakh to 8 Lakhs)"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "introduced_on": "2017-10-07",
+        "funding_pattern": "scholarship",
+        "title": "Dr. Panjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojna.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AD7C4C238FF7FAB33",
+        "documents": [
+            "Domicile certificate issued by Authorized official",
+            "Registered labor certificate / Alpabudharak Certificate/ Family Annual Income Certificate",
+            "Hosteller Document",
+            "Previous year Annual income certificate issued by Authorized official",
+            "CAP Related document.(only for B.ed, Law, BPed, MPed)",
+            "Gap Related Document(if Gap is there)",
+            "Family Declaration Certificate about two children’s",
+            "Attendance Certificate",
+            "Previous year Mark sheet"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant should be Domicile of Maharashtra."
+            },
+            {
+                "description": "For professional courses, Applicant should be a child of registered labor , child of Alpabhudarak or both as total annual income of family/ Guardian should not be more than 8.lakh."
+            },
+            {
+                "description": "For Non Professional Courses, applicant should have upto 1 lakh family Annual Income."
+            },
+            {
+                "description": "Applicant should submit Family Annual Income Certificate."
+            },
+            {
+                "description": "As per Government Resolution first two children eligible for scheme."
+            },
+            {
+                "description": "Candidates are eligible those who have taken an admission under general category and SEBC Category."
+            },
+            {
+                "description": "Courses by GR 07/10/17 (DHE courses) can apply."
+            },
+            {
+                "description": "Applicant should be hosteller.(Govt/Private hostel/ Paying Guest/ Tenant.)"
+            },
+            {
+                "description": "Applicant should not avail any other Nirvah Bhatta benefit."
+            },
+            {
+                "description": "Courses approved by (Govt/AICTE,PCI/COA/MCI/NCTE/University etc ) are eligible."
+            },
+            {
+                "description": "During course, candidate should not have a gap of 2 years."
+            },
+            {
+                "description": "Applicant should attempt every semester or annual exam."
+            }
+        ],
+        "department_name": "Higher and Technical Education ,Maharashtra State",
+        "id": "e3062d4a-fe6a-4ab7-bb44-6841b366fdd8"
+    },
+    {
+        "description": "The objective of the Scheme is to provide financial assistance to the Economic Backward Class (EBC) , Economically Weaker Section (EWS) who are admitted in Diploma / Degree / Postgraduate Technical and Professional courses through Centralized Admission Process (CAP).",
+        "tags": [
+            "Higher Education",
+            "Technical Education",
+            "Financial Assistance",
+            "Scholarship",
+            "EBC",
+            "EWS",
+            "Diploma",
+            "Degree",
+            "Postgraduate",
+            "CAP"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Economic Backward Class (EBC)"
+            },
+            {
+                "beneficiary_type": "Economically Weaker Section (EWS)"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AA54D7A32E4C3B30A",
+        "introduced_on": "Not available",
+        "title": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna.",
+        "funding_pattern": "Through MahaDBT Portal, The Benefit of Scheme will be disbursed in two Installment in Aadhar Seeded Bank Account.",
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Applicant should be admitted for Professional and Technical course (Diploma / Graduation / Post Graduation Degree)."
+            },
+            {
+                "description": "Candidate should be admitted through Centralized Admission Process (CAP)."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship/stipend."
+            },
+            {
+                "description": "For current Academic Year, Only 2 child from family are allowed for benefit of scheme."
+            },
+            {
+                "description": "The Total Annual Income of Family / Guardian should not be more than 8 Lakhs."
+            },
+            {
+                "description": "Minimum 50 % attendance in previous semester (Exception for first semester fresh admitted Student )."
+            },
+            {
+                "description": "During course duration, candidate should not have a gap of 2 or more than 2 years."
+            }
+        ],
+        "documents": [
+            "Mark sheet of 10th (S.S.C) & Onwards.",
+            "Domicile Certificate of Maharashtra State.",
+            "Previous Year Family Annual Income certificate.",
+            "Undertaking “In current year, not more than 2 beneficiary from family”.",
+            "CAP Related document."
+        ],
+        "department_name": "Higher and Technical Education ,Maharashtra State",
+        "id": "9d97031e-5b39-48ee-97a2-c7981cd15e0c"
+    },
+    {
+        "description": "This is a plan for students of government, government funded and non-affiliated colleges / polytechnics entering the vocational courses set by the government, whose students are certified by the competent authority, as a marginal farmers or whose parents are registered laborers.",
+        "tags": [
+            "higher education",
+            "vocational courses",
+            "marginal farmers",
+            "registered laborers",
+            "scholarship",
+            "financial aid",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students of government, government funded and non-affiliated colleges / polytechnics entering the vocational courses set by the government, whose students are certified by the competent authority, as a marginal farmers or whose parents are registered laborers"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "funding_pattern": "The scheme offers the following allowances:\n1. Food Allowance\n2. Residence Allowance\n3. Subsistence Allowance\nThe amount varies depending on the location of the educational institution.",
+        "introduced_on": "2017-10-07",
+        "title": "Dr. Panjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojna.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A1DB822FC15D61FEA",
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Applicant should be \"Bonafide Student of Institute\" and admitted for Professional and Technical courses (Diploma / Graduation / Post Graduation Degree) as mentioned in GR."
+            },
+            {
+                "description": "Deemed University and Private university are not applicable."
+            },
+            {
+                "description": "Candidate should be admitted through Centralized Admission Process (CAP)."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship/stipend."
+            },
+            {
+                "description": "For current Academic Year, only 2 children from the family are allowed for the benefit of the scheme."
+            },
+            {
+                "description": "The Total Annual Income of Family / Guardian should not be more than 8 Lakhs."
+            },
+            {
+                "description": "Minimum 50% attendance in the previous semester (Exception for freshly admitted students in College)."
+            },
+            {
+                "description": "During the course duration, the candidate should not have a gap of 2 or more years."
+            },
+            {
+                "description": "Candidates are eligible if they have taken admission under the General category and SEBC Category."
+            }
+        ],
+        "documents": [
+            "Mark sheet of 10th (S.S.C) & onwards.",
+            "Domicile Certificate of Maharashtra State.",
+            "Register Labor Certificate / Alpabhudharak (Marginal Land Holder) Certificate. (In case of not a child of Alpabhudharak or Registered Labour, then a Family Annual Income Certificate is required).",
+            "Undertaking stating \"In current year, not more than 2 beneficiaries from the family\".",
+            "CAP-related document.",
+            "Hosteller documents (In case of private hostel or Paying Guest, an agreement with the owner will be required)."
+        ],
+        "department_name": "Higher and Technical Education ,Maharashtra State",
+        "id": "c4c95d2d-f623-46bd-b173-9adfe1d14e3d"
+    },
+    {
+        "description": "School Education Department, Government of Maharashtra invites applications for the Open Merit Scholarships in Junior College, Maharashtra from the students who have secured 60 percent marks in the SSC examination.\nThe objective of this scholarship is to motivate those students for further higher education. The scheme provides scholarship for students studying in 11th and 12th standard.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students studying in Class 11 or 12"
+            }
+        ],
+        "tags": [
+            "School Education",
+            "Scholarship",
+            "Junior College",
+            "Merit-based",
+            "Maharashtra"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "INR 50 per month for ten months (Rs. 500 per Year)",
+        "introduced_on": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced",
+        "title": "Open Merit Scholarships in Junior College",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AAC90D4A992C45BAB",
+        "criteria": [
+            {
+                "description": "Applicant must be studying in Class 11 or 12"
+            },
+            {
+                "description": "Applicant must have secured a minimum of 60 percent marks in the SSC examination in First Attempt"
+            },
+            {
+                "description": "The continuance of scholarships is subject to satisfactory progress and securing at least 50 % marks at the end of the first year of Junior College"
+            }
+        ],
+        "documents": [
+            "SSC Mark sheet",
+            "For Renewal Standard 11th mark sheet"
+        ],
+        "department_name": "School Education and Sports Department",
+        "id": "59c64a44-724f-48e9-b169-a9ae5cd7679f"
+    },
+    {
+        "description": "The School Education Department, Government of Maharashtra invites applications from students for boys - only students of Class 11 and 12 for Open Merit Scholarships for EBC students. The key objective of the scholarship is to enable students of economically backward classes to continue further education.",
+        "tags": [
+            "Merit Scholarship",
+            "School Education",
+            "Economically Backward Class",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Economically Backward Class Students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "Not specified",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AB6EDCD4985FE7C3A",
+        "title": "Merit Scholarships for Economically Backward Class Students",
+        "funding_pattern": "INR 140 per month for 10 months for hosteler boys (INR 1400 total).\nINR 80 per month for 10 months for non-hosteler boys (INR 800 total).\nINR 160 per month for 10 months for hosteler girls (INR 1600 total).\nINR 100 per month for 10 months for non-hosteler girls (INR 1000 total).",
+        "criteria": [
+            {
+                "description": "Applicant must secure a minimum of 50 % marks in SSC examination."
+            },
+            {
+                "description": "Students who cleared examination in first attempt."
+            }
+        ],
+        "documents": [
+            "Income certificate (Approved by Tahasildar)*",
+            "SSC marksheeet.",
+            "Previous Year Mark sheet. (For Renewal)"
+        ],
+        "department_name": "School Education and Sports Department",
+        "id": "30972bf5-cab1-4281-865f-f4d13dcc23ed"
+    },
+    {
+        "description": "• Providing financial assistance for education.\n• Creating a passion for higher education.\n• Providing students the opportunity to go to the mainstream of education through education.\n• Scholarship scheme to avoid transparency, co-ordination and delay.\n• Benefits of Tuition Fees, Exam Fees and Maintenance Allowance are paid to only VJNT category students.",
+        "tags": [
+            "Scholarship",
+            "Post-Matric",
+            "VJNT",
+            "Education",
+            "Financial Assistance",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "VJNT Students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AD0CCA04E9F6D7EE4",
+        "funding_pattern": "100% for those studying in government/aided/non aided institutions in professional and non-professional courses.",
+        "title": "Post Matric Scholarship to VJNT Students.",
+        "introduced_on": "Not available in the document.",
+        "documents": [
+            "Caste certificate - should be issued by competent authority(Issued by Govt. of Maharashtra) This certificate considered as Proof of Resident.",
+            "Income certificate / Income Declaration - should be issued by competent authority",
+            "Caste Validity Certificate – (Mandatory for Professional Degree courses, Professional Post Graduate. For Non Professional courses caste validity is not mandatory)",
+            "HSC or SSC marksheet or last examination marksheet.",
+            "Gap certificate - Not mandatory but in case of gap it is mandatory.",
+            "If applicable father/Guardians death certificate.",
+            "Ration Card for identify number of children in family.",
+            "Leaving Certificate",
+            "Declaration certificate of parents/guardians about number of children beneficiaries."
+        ],
+        "criteria": [
+            {
+                "description": "The parents/Guardians annual Income should be less than or equal to Rs.1.50 Lac."
+            },
+            {
+                "description": "Applicant should be belongs to VJNT category."
+            },
+            {
+                "description": "Applicants must be residents of Maharashtra."
+            },
+            {
+                "description": "Applicants must be pursuing the education course approved by the government from class Post-Matric."
+            },
+            {
+                "description": "Maintenance allowance & Exam Fees are paid to Applicant if Applicant get promoted to next higher class."
+            },
+            {
+                "description": "If Applicant fails in particular year then he will get the Tuition Fees, Exam Fees and Maintenance allowance of that particular academic year but he/she will not get the benefit until he/she gets promoted to next higher class."
+            },
+            {
+                "description": "Applicant should be come through CAP round for only professional courses."
+            },
+            {
+                "description": "Only two children of the same parents will be eligible for the Scholarship."
+            },
+            {
+                "description": "No scholarship will be paid to the Applicants under this scheme from the date he /she accepts another Scholarship / stipend."
+            },
+            {
+                "description": "75 % attendance is mandatory for current year."
+            },
+            {
+                "description": "Applicant will be eligible for scholarship if he / she changes the course Non – Professional to Professional but he will not be eligible if he / she changes the course from Professional to Non – Professional."
+            },
+            {
+                "description": "Scholarships/freeship will continue until Applicant completes one course."
+            }
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "88ab3d7f-7979-4d29-bfbc-86d33233b2b5"
+    },
+    {
+        "description": "1) Create interest in education among students. 2) Making financial assistance available for higher education. 3) Creating opportunities for financial growth through higher education. 4) Scholarship scheme to avoid transparency, unity and delay. 5) All types of compulsory fees such as Tuition fees, Exam Fees and other admissible fees are reimbursed to the concern VJNT category studen.",
+        "tags": [
+            "education",
+            "higher education",
+            "scholarship",
+            "freeship",
+            "post-matric",
+            "vjnt",
+            "obc",
+            "sbc",
+            "tuition fees",
+            "exam fees"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "VJNT students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "100% of Tuition and exam fees",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AF84D5DECD4CA9AB5",
+        "title": "Tuition Fees and Examination Fees to VJNT Students",
+        "introduced_on": "2006-07",
+        "criteria": [
+            {
+                "description": "Applicant must be taking post matric education."
+            },
+            {
+                "description": "Applicant should be belongs to VJNT category."
+            },
+            {
+                "description": "Applicants must be residents of Maharashtra."
+            },
+            {
+                "description": "Applicants should be pursuing the education course approved by the government for Post Matric courses."
+            },
+            {
+                "description": "Applicant must be taken admission in government government aided / Private Non-Aided / private permanently non aided for professional courses"
+            },
+            {
+                "description": "Degree Courses in Health Science(Medical, Dental, Homeopathy, Unani, Ayurveda, Physiotherapy, Business Aid, Nursing) : If Applicant is admitted through Association of Managements of Unaided Private Medical and Dental Colleges entrance examination or admitted through government common entrance examination then he/she will be eligible the for the freeship."
+            },
+            {
+                "description": "Higher and Technical Education Department : Freeship will be applicable to unaided colleges / government and aided colleges with technical education / Polytechnic and government unaided professional courses. Following are the applicable courses for this scheme : a) Diploma – Engineering, Pharmacology, HMCT b) Degree – Engineering, Pharmacology, HMCT c) Post Graduate –MBA/MMS, MCA"
+            },
+            {
+                "description": "Agriculture, Animal Husbandry and Dairy Development and Fisheries Department : The scholarship fees will be applicable to the Applicants who have been admitted through government quota in private un aided/permanently un aided institute. a) Agricultural colleges (diploma) b) Dairy Business Department (Diploma) c) Colleges for Agricultural and Allied subjects (Degree and Post Graduate) d) Agriculture and Bio-Technology Colleges (Degree and Post Graduate) e) Agriculture and Food Technology Colleges (Graduate and Post Graduate)"
+            },
+            {
+                "description": "For B.Ed and D.Ed courses : 100 % benefit (Tuition Fees, Exam Fees) is applicable for D.Ed, B.Ed courses. For students studying in Aided, UnAided for D.Ed, B.Ed courses then Fee structure is applicable as per Government rates for same course."
+            },
+            {
+                "description": "For professional courses Applicant should admitted through CAP round is must."
+            }
+        ],
+        "documents": [
+            "Caste certificate - should be issued by competent authority",
+            "Income certificate / Non Creamy layer Certificate",
+            "HSC or SSC marksheet or last examination marksheet.",
+            "Gap certificate - Not mandatory but in case of gap it is mandatory.",
+            "Declaration certificate of parents/guardians about number of children beneficiaries.",
+            "If applicable father death certificate.",
+            "CAP Allotment Letter (For Professional Courses)",
+            "Caste Validity Certificate (For Professional Courses As Per GR Dated 31st July 2008) Exempted Professional courses to be identified",
+            "Leaving Certificate",
+            "Ration card for identify number of children’s in family"
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "21663d1e-fc69-48d2-bdf5-0aa95cbb3396"
+    },
+    {
+        "description": "Benefits of maintenance allowance are paid to VJNT and SBC Students studying in professional courses and living in hostel attached to professional colleges.",
+        "tags": [
+            "Maintenance Allowance",
+            "VJNT",
+            "SBC",
+            "Hostel",
+            "Professional Courses",
+            "Students"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "VJNT Students"
+            },
+            {
+                "beneficiary_type": "SBC Students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A66AC4BAB6E4DB665",
+        "introduced_on": "Not available in the document.",
+        "title": "Payment of Maintenance Allowance to VJNT and SBC Students Studying in Professional Courses and Living in Hostel Attached to Professional Colleges.",
+        "funding_pattern": "Maintenance allowance paid monthly.",
+        "criteria": [
+            {
+                "description": "Applicant should be studying in professional course Engineering, Medical, Veterinary, Architecture, and Agriculture."
+            },
+            {
+                "description": "Applicant must be belongs to VJNT and SBC category."
+            },
+            {
+                "description": "Applicant should be eligible for Post Matric Scholarship."
+            },
+            {
+                "description": "Applicants parents annual income should be less than or equal to Rs. 1 Lac."
+            },
+            {
+                "description": "Applicant should submit Application form for admission in Govt. Hostel."
+            },
+            {
+                "description": "Applicant is not eligible for maintenance allowance if Applicant takes admission in government hostel."
+            },
+            {
+                "description": "Applicant should have admitted in the hostels attached to Professional Colleges or should produce the certificate of non-availability of the rooms."
+            },
+            {
+                "description": "Applicant who is residing outside the hostel, should submit Certificate that he had applied for Govt. hostel and College hostel but he could not get admission even though he is eligible for admission."
+            },
+            {
+                "description": "If Applicant fails in particular year then he will get the maintenance allowance of that particular academic year but he/she will not get the benefit until he/she gets promoted to next higher class."
+            },
+            {
+                "description": "Applicant will be eligible for scholarship if he / she changes the course Non – Professional to Professional but he will not be eligible if he / she changes the course from Professional to Non – Professional."
+            },
+            {
+                "description": "Scholarships/freeship will continue until Applicant completes one course. Ex. - 11th, 12th Arts - B.A., M.A. , M.Phil., P.H.D. If, Applicant completed B.A and B.Ed. course and later after taking admission for M.A., for M.A. course He/she will not be allowed for scholarship/freeship. But after admission to M.B.A. after B.Ed, it can be eligible for scholarship/freeship as it is a professional postgraduate course."
+            }
+        ],
+        "documents": [
+            "Caste certificate- should be issued by competent authority",
+            "Income certificate- should be issued by competent authority",
+            "College Admission Receipt",
+            "Wadern Letter (If applicable candidate is not getting admission in Government hostel, attached hostel to college)",
+            "Rent Agreement of private hostel/ place (If student staying outside of hostel)",
+            "Student Affidavit (If student is staying in outside of hostel)",
+            "Principal letter (If student getting admission in attached hostel)",
+            "His/Her Registration / Application ID with Post Matric scholarship Scheme.",
+            "Caste Validity Certificate (for professional courses)",
+            "Leaving certificate"
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "f463e1a4-52af-458a-bbdb-e3ae33ca53be"
+    },
+    {
+        "description": "Creating an interest in learning among VJNT / SBC students. Making financial assistance available for education. Increase the quality of VJNT / SBC category students. Only VJNT and SBC category students can avail this merit-wise scholarship.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "VJNT"
+            },
+            {
+                "beneficiary_type": "SBC"
+            },
+            {
+                "beneficiary_type": "OBC"
+            }
+        ],
+        "tags": [
+            "Education",
+            "Scholarship",
+            "VJNT",
+            "SBC",
+            "OBC",
+            "Merit-based",
+            "11th standard",
+            "12th standard",
+            "Maharashtra"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced. Last date for Application Acceptance (New/Renewal) for A.Y. 24-25 is 31st May 2025. Application Re-apply has been extended for A.Y. 23-24 till 31st May 2025.",
+        "introduced_on": "Not available in the document",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AAB0ACBF92AD2F649",
+        "title": "Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship for students studying in 11th & 12th standard of VJNT & SBC category.",
+        "funding_pattern": "Rs. 300/- per month for 10 months, totaling Rs. 3000.",
+        "criteria": [
+            {
+                "description": "Applicants should belong to Vimukta Jatis, Nomadic Tribes, or Special Backward Class."
+            },
+            {
+                "description": "Applicant must be studying in 11th and 12th standard in Jr. College."
+            },
+            {
+                "description": "Applicant should have to secure 75% and above marks in 10th standard Examination."
+            },
+            {
+                "description": "Applicant must be residents of Maharashtra."
+            },
+            {
+                "description": "There will be no income limit for this Scholarship."
+            },
+            {
+                "description": "Education gap is not allowed for this scholarship."
+            },
+            {
+                "description": "Scholarship benefit can be taken in addition to Post Matric Scholarship."
+            }
+        ],
+        "documents": [
+            "Caste certificate- should be issued by competent authority(certified by only Govt. of Maharashtra)",
+            "SSC marksheet or last examination marksheet.",
+            "Leaving certificate"
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "5c4a205c-f8be-44a6-818f-b2f750ac1917"
+    },
+    {
+        "description": "1) Providing financial assistance for education.\n2) Creating a passion for higher education.\n3) Providing students the opportunity to go to the mainstream of education through education.\n4) Scholarship scheme to avoid transparency, co-ordination and delay.\n5) Benefits of Tuition Fees, Exam Fees and Maintenance Allowance are paid to only OBC categorystudents\nEligible O.B.C Applicants are paid maintenance allowance:\n\n\n1)\nIf Applicant select Course Group A - for hostlers Rs.425/p.m. & Day Scholars(Non Hostlers) Rs.190/p.m. (Duration - Admission date to till exam completion date)\n2)\nIf Applicant select Course Group B - for hostlers Rs.290/p.m. & Day Scholars(Non Hostlers) Rs.190/p.m.(Duration - Admission date to till exam completion date)\n3)\nIf Applicant select Course Group C - for hostlers Rs.290/p.m. & Day Scholars(Non Hostlers) Rs.190/p.m.(Duration - Admission date to till exam completion date)\n4)\nIf Applicant select Course Group D - for hostlers Rs.230/p.m. & Day Scholars(Non Hostlers) Rs.120/p.m. (Duration - Admission date to till exam completion date)\n5)\nIf Applicant select Course Group E - for hostlers Rs.150/p.m. & Day Scholars(Non Hostlers) Rs.90/p.m.(Duration - Admission date to till exam completion date)\n6) As per the GR dt.8 ’th July 2024, 100 % benefit will be applicable for girl Applicant.\n7) Also the OBC Applicants admitted in Govt. Approved non granted colleges in professional courses are paid 50% Tuition fees and Exam fees.\n8) Tuition Fee, Exam Fee and Maintenance allowance are paid 100% to applicants who’s studying in government/aided institutions in professional courses and non-professional courses.\n9) Tuition Fee and Exam Fee are paid 50% and Maintenance allowance are paid 100% to applicants who’s studying in non-government/unaided institutions in professional courses and non-professional courses.\n10) If Applicant get admission in government hostel then he will eligible only 1/3rd amount of hostlers.\n11) For OBC Applicants studying in private un-aided institutions, fees structure of government aided institutions will be applicable only for Non – Professional courses (Tuition Fees, Exam Fees and other Fees)\n12) Applicant studying in particular professional/Non-Professional course, and availing benefits of scholarship/freeship for that academic course and if he/she wants to change his existing Professional/Non-Professional course in between academic years he/she will not be eligible for freeship/scholarship for further course.\n13) For B.Ed and D.Ed courses : 100 % benefit (Tuition Fees, Exam Fees and Maintenance Allowance) is applicable for D.Ed, B.Ed courses. For students studying in Aided, UnAided for D.Ed, B.Ed courses then Fee structure is applicable as per Government rates for same course.\n\nNote: If applicant takes an admission on or before 20th of any month should entitle date maintenance allowance will be issued for that current month. Otherwise maintenance allowance will be entitled from next month.",
+        "tags": [
+            "Scholarship",
+            "OBC",
+            "Post-Matric",
+            "Education",
+            "Financial Assistance",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "OBC"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "null",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AC54E5F6E794BD5C1",
+        "title": "Post Matric Scholarship to OBC Students.",
+        "funding_pattern": "100% for students in government/aided institutions, 50% for students in private institutions for tuition fees, 100% maintenance allowance for professional and non-professional courses",
+        "documents": [
+            "Caste certificate - should be issued by competent authority(Issued by Govt. of Maharashtra) This certificate considered as Proof of Resident.",
+            "Income certificate / Income Declaration - should be issued by competent authority",
+            "Caste Validity Certificate – (Mandatory for Professional Degree courses, Professional Post Graduate. For Non Professional courses caste validity is not mandatory)",
+            "HSC or SSC marksheet or last examination marksheet.",
+            "Gap certificate - Not mandatory but in case of gap it is mandatory.",
+            "If applicable father/Guardians death certificate.",
+            "Ration Card for identify number of children in family.",
+            "Leaving Certificate",
+            "Declaration certificate of parents/guardians about number of children beneficiaries."
+        ],
+        "criteria": [
+            {
+                "description": "The parents/Guardians annual Income should be less than or equal to Rs.1.50 Lac."
+            },
+            {
+                "description": "Applicant should be belongs to OBC category."
+            },
+            {
+                "description": "Applicants must be residents of Maharashtra."
+            },
+            {
+                "description": "Applicants must be pursuing the education course approved by the government from class Post-Matric."
+            },
+            {
+                "description": "75 % attendance is mandatory for current year."
+            }
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "3fe9846b-131e-41ee-a8f8-0950c931b42e"
+    },
+    {
+        "description": "• Providing financial assistance for education.\n• Creating a passion for higher education.\n• Providing students the opportunity to go to the mainstream of education through education.\n• Scholarship scheme to avoid transparency, co-ordination and delay.\n• Benefits of Tuition Fees, Exam Fees and Maintenance Allowance are paid to only SBC category students.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SBC Students"
+            }
+        ],
+        "tags": [
+            "Post Matric",
+            "Scholarship",
+            "Education",
+            "Financial Assistance",
+            "SBC Students",
+            "VJNT",
+            "OBC",
+            "Maharashtra"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "VJNT,OBC and SBC Welfare Department"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AACF2205FD2FB060A",
+        "funding_pattern": "100% for those studying in government/aided/unaided institutions in professional courses and non-professional courses. For B.Ed and D.Ed courses : 100 % benefit (Tuition Fees, Exam Fees and Maintenance Allowance) is applicable for D.Ed, B.Ed courses.",
+        "title": "Post Matric Scholarship to SBC Students.",
+        "introduced_on": "N/A",
+        "documents": [
+            "Caste certificate - should be issued by competent authority(Issued by Govt. of Maharashtra) This certificate considered as Proof of Resident.",
+            "Income certificate / Income Declaration - should be issued by competent authority",
+            "Caste Validity Certificate – (Mandatory for Professional Degree courses, Professional Post Graduate. For Non Professional courses caste validity is not mandatory)",
+            "HSC or SSC marksheet or last examination marksheet.",
+            "Gap certificate - Not mandatory but in case of gap it is mandatory.",
+            "If applicable father/Guardians death certificate.",
+            "Ration Card for identify number of children in family.",
+            "Leaving Certificate",
+            "Declaration certificate of parents/guardians about number of children beneficiaries."
+        ],
+        "criteria": [
+            {
+                "description": "The parents/Guardians annual Income should be less than or equal to Rs.1.50 Lac."
+            },
+            {
+                "description": "Applicants must be belongs to SBC category."
+            },
+            {
+                "description": "Applicants should be residents of Maharashtra."
+            },
+            {
+                "description": "Applicants must be pursuing the education course approved by the government from class Post-Matric."
+            },
+            {
+                "description": "75 % attendance is mandatory for current year."
+            }
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "4d22936d-f23c-4f72-b967-65ae4bfed8eb"
+    },
+    {
+        "description": "1)Create interest in education among students.\n2) Making financial assistance available for higher education.\n3) Creating opportunities for financial growth through higher education.\n4) Scholarship scheme to avoid transparency, unity and delay.\n5) All types of compulsory fees such as Tuition fees, Exam Fees and other admissible fees are reimbursed to the concern OBC category student.",
+        "tags": [
+            "Education",
+            "Scholarship",
+            "OBC",
+            "Tuition Fees",
+            "Examination Fees",
+            "Post-Matric",
+            "Maharashtra"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "OBC"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "VJNT,OBC and SBC Welfare Department"
+            }
+        ],
+        "valid_upto": "2025-05-31",
+        "introduced_on": "2006-07",
+        "funding_pattern": "Depending upon the applicant's institution and course (50% or 100%).",
+        "title": "Tuition Fees and Examination Fees to OBC Students",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A8311355D6F13BE56",
+        "documents": [
+            "Caste certificate- should be issued by competent authority",
+            "Income certificate / Non creamy layer certificate",
+            "HSC or SSC marksheet or last examination marksheet.",
+            "Gap certificate - Not mandatory but in case of gap it is mandatory.",
+            "Declaration certificate of parents/guardians about number of children beneficiaries.",
+            "If applicable father death certificate.",
+            "CAP Allotment Letter (For Professional Courses)",
+            "Caste Validity Certificate (For Professional Courses As Per GR Dated 31st July 2008) Exempted Professional courses to be identified",
+            "Leaving Certificate",
+            "Ration card for identify number of children’s in family"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant must be taking post matric education."
+            },
+            {
+                "description": "Applicant should be belongs to OBC category."
+            },
+            {
+                "description": "Applicants must be pursuing the education course approved by the government from Post - Matriccourse"
+            },
+            {
+                "description": "Applicants must be residents of Maharashtra."
+            },
+            {
+                "description": "Applicant must be taken admission in government government aided / Private Non-Aided / Privatepermanently non aided courses."
+            }
+        ],
+        "department_name": "VJNT,OBC and SBC Welfare Department",
+        "id": "2094f963-84f8-4a8a-96ef-39eb5b9e532c"
+    },
+    {
+        "description": "1) Create interest in education among students.\n2) Making financial assistance available for higher education.\n3) Creating opportunities for financial growth through higher education.\n4) Scholarship scheme to avoid transparency, unity and delay.\n5) All types of compulsory fees such as Tuition fees, Exam Fees and other admissible fees are reimbursed to the concern SBC category student.",
+        "tags": [
+            "Higher Education",
+            "Scholarship",
+            "Fee Reimbursement",
+            "SBC Students"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SBC Category"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "VJNT,OBC and SBC Welfare Department"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "2006-07",
+        "funding_pattern": "100% Tuition fees and Exam fees reimbursed to the concern Applicant",
+        "title": "Tuition Fees and Examination Fees to SBC Students",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A2406A5294F822FAC",
+        "documents": [
+            "Caste certificate",
+            "Income certificate / Non Creamy layer Certificate",
+            "HSC or SSC marksheet or last examination marksheet.",
+            "Gap certificate",
+            "Declaration certificate of parents/guardians about number of children beneficiaries.",
+            "If applicable father death certificate.",
+            "CAP Allotment Letter (For Professional Courses)",
+            "Caste Validity Certificate (For Professional Courses As Per GR Dated 31st July 2008) Exempted Professional courses to be identified",
+            "Leaving Certificate",
+            "Ration card for identify number of children’s in family"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant must be taking post matric education."
+            },
+            {
+                "description": "Applicant should be belongs to SBC Category."
+            },
+            {
+                "description": "Applicants must be residents of Maharashtra."
+            },
+            {
+                "description": "Applicants must be pursuing the education course approved by the government for Post Matric courses."
+            },
+            {
+                "description": "Applicant should be taken admission in government government aided / Private Non-Aided / private permanently non aided courses."
+            },
+            {
+                "description": "For professional courses Applicant should admitted through CAP round is must."
+            }
+        ],
+        "id": "47698e2d-af89-4835-9877-999aee93e082"
+    },
+    {
+        "description": "Vocational Training Fee reimbursement for the students belonging to OBC, SEBC, VJNT & SBC Category students and admitted to the seats under PPP scheme in Government ITIs and Private ITIs through Centralized Admission Process. They will avail Fee Reimbursement benefit only if they met the Scheme Criteria.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "OBC"
+            },
+            {
+                "beneficiary_type": "SEBC"
+            },
+            {
+                "beneficiary_type": "VJNT"
+            },
+            {
+                "beneficiary_type": "SBC"
+            }
+        ],
+        "tags": [
+            "Vocational Training",
+            "Fee Reimbursement",
+            "OBC",
+            "SEBC",
+            "VJNT",
+            "SBC",
+            "ITI",
+            "PPP Scheme"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "introduced_on": "Not Available",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AFFD85CFC9534EEE5",
+        "title": "Vocational Training Fee reimbursement for the OBC, SEBC, VJNT & SBC Welfare Department students",
+        "funding_pattern": "Fee Reimbursement",
+        "criteria": [
+            {
+                "description": "Admission taken through PPP scheme in Government Skill Development Institute or Private Institute and admitted through central Online Admission Process."
+            },
+            {
+                "description": "No Fee reimbursement for Management Quota Admission"
+            },
+            {
+                "description": "Student should belong to OBC, SEBC, VJNT & SBC Category and should provide caste certificate."
+            },
+            {
+                "description": "Overall Family Income should be Rs.8.00 lacs. Non Cremy layer certificate is required."
+            },
+            {
+                "description": "Orphan candidate requires Recommendation Letter."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for course previously from Government or Private ITI."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for training program sponsored by State / Central Government / Department / Local Body / Company or Corporation."
+            },
+            {
+                "description": "Domicile of Maharashtra."
+            },
+            {
+                "description": "Admission taken for DGT, New Delhi or MSCVT approved courses."
+            },
+            {
+                "description": "Benefit applicable to only 2 children"
+            },
+            {
+                "description": "Attendance criteria is mandatory."
+            },
+            {
+                "description": "Candidate need to attend each semester /annual exam. If any medical emergency then after recommendation by institute Regional Joint Director should certify or recommend."
+            },
+            {
+                "description": "Non Satisfactory educational progress due to misconduct- Failure in academic year, not fulfilling attendance criteria if found then candidate will not be eligible for reimbursement."
+            }
+        ],
+        "documents": [
+            "Aadhaar Card",
+            "Ration Card",
+            "Mark sheet SSC /HSC",
+            "Previous year mark sheet for renewal",
+            "Domicile certificate",
+            "Income certificate / declaration for business person",
+            "Non creamy layer certificate"
+        ],
+        "department_name": "OBC, SEBC, VJNT & SBC Welfare Department",
+        "id": "c1267c8a-d84a-4f5e-a48b-450be755ab73"
+    },
+    {
+        "description": "The scheme provides course fee reimbursement for students applying for MBBS,BDS,BAMS,BHMS,BPTH,BOTH,B.SC Nursing, BUMS, BP & O, BASLP in government aided/Corporation/Private un-aided colleges.\nBeneficiary Category: EBC\nEligible Courses: MBBS, BDS, BAMS, BHMS, BPTH ,BOTH,B.SC Nursing, BUMS, BP & O, BASLP in government aided/Corporation/Private un-aided colleges.",
+        "tags": [
+            "Medical Education",
+            "Fee Reimbursement",
+            "EBC",
+            "MBBS",
+            "BDS",
+            "BAMS",
+            "BHMS",
+            "BPTH",
+            "BOTH",
+            "B.SC Nursing",
+            "BUMS",
+            "BP & O",
+            "BASLP"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "EBC"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "Not specified In document",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ADB3BC6C89611BF9A",
+        "title": "Rajarshri Chhatrapati Shahu Maharaj Fee Reimbursement Scheme.",
+        "funding_pattern": "50% fee reimbursement (tuition fee + development fee)",
+        "criteria": [
+            {
+                "description": "Family's annual income < Rs.8,00,000."
+            },
+            {
+                "description": "Candidates are eligible those who have taken an admission under General category and SEBC Category."
+            }
+        ],
+        "documents": [
+            "Domicile Certificate",
+            "New applicants need to submit HSC and SSC marksheet",
+            "Income certificate of Parents.",
+            "Previous year's marksheet.",
+            "Affidavit",
+            "Aadhar card",
+            "Student's PAN card (optional)",
+            "Father's PAN card",
+            "Mother's PAN card (optional)"
+        ],
+        "department_name": "Directorate of Medical Education Research",
+        "id": "47353abd-8b7a-439c-8ca2-204c39e90370"
+    },
+    {
+        "description": "Students whose parent's annual Income is below 800000 and Student whose parent's are Marginal Land Holder and registered labour.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students whose parent's annual Income is below 800000"
+            },
+            {
+                "beneficiary_type": "Students whose parent's are Marginal Land Holder and registered labour"
+            }
+        ],
+        "tags": [
+            "hostel maintenance allowance",
+            "medical education",
+            "students",
+            "scholarship"
+        ],
+        "procedures": [
+            {
+                "step_description": "Visit the Mahadbt website"
+            },
+            {
+                "step_description": "Create an account"
+            },
+            {
+                "step_description": "Apply online"
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsor_type": "Directorate of Medical Education Research"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AA5337B52CE309785",
+        "introduced_on": "",
+        "title": "Dr. Panjabrao Deshmukh Hostel Maintenance Allowance",
+        "funding_pattern": "Rs.3000 per year for Mumbai ,Pune ,Nagpur ,Aurangabad and Rs.2000 per year for other locations.(for 10 months in an academic year) for student’s with annual income less than 8,00,000.\nRs.30,000 per year for Mumbai ,Pune ,Nagpur ,Aurangabad and Rs.20,000 per year for other locations(for 10 months in an academic year) for student’s whose parents are Marginal Land Holder or Registered Labourers",
+        "documents": [
+            "Domicile Certificate",
+            "New applicants need to submit HSC and SSC marksheet",
+            "Income certificate of Parents.",
+            "Previous year's marksheet.",
+            "Affidavit",
+            "Registered Labourers or Marginal Land Holder need to submit a proof letter approved from tahsildar or Income certificate of Parents.",
+            "Aadhar card",
+            "Student's PAN card (optional)",
+            "Father's PAN card",
+            "Mother's PAN card (optional)"
+        ],
+        "criteria": [
+            {
+                "description": "Students who have taken admission for MBBS, BDS, BAMS, BHMS, BPTH, BOTH, B.SC Nursing ,BUMS, BP & O, BASLP in government aided or corporation or private un-aided colleges."
+            },
+            {
+                "description": "Family's annual income is less than or equal to Rs.8,00,000."
+            },
+            {
+                "description": "Students whose parents are Marginal Land Holder or registered labourers."
+            },
+            {
+                "description": "Not applicable for students pursuing admission through management quota or institute level."
+            },
+            {
+                "description": "Students who have taken hostel admission in Mumbai ,Pune ,Aurangabad ,Nagpur or other locations in Maharashtra."
+            },
+            {
+                "description": "Candidates eligible are those who have taken an admission under General category and SEBC Category"
+            }
+        ],
+        "department_name": "Directorate of Medical Education Research",
+        "id": "f1e39d2e-3820-4f9a-953a-5e9e79b8619d"
+    },
+    {
+        "description": "The scheme provides course fee reimbursement for students applying for MBBS,BDS, Post Graduate Medical (MD/MS) in Private un-aided colleges.\nBeneficiary Category: OPEN\nEligible Courses: Eligible Courses: MBBS, BDS, Post Graduate Medical (MD/MS) in Private un-aided colleges.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "OPEN"
+            }
+        ],
+        "tags": [
+            "Education",
+            "Fee Reimbursement",
+            "Medical",
+            "Dental",
+            "Open Category",
+            "SEBC",
+            "EWS Reservation"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A0789217992448C2E",
+        "introduced_on": "",
+        "title": "Education Fee reimbursement for open category students affected due to SEBC and EWS reservation in medical and Dental colleges",
+        "funding_pattern": "Benefit Amount = Institute FRA approved fee (Private) – Government Institute approved fee will be provided.",
+        "documents": [
+            "Domicile Certificate",
+            "New applicants need to submit HSC and SSC marksheet",
+            "Previous year's marksheet.",
+            "Aadhar card.",
+            "Student's PAN card (optional)",
+            "Father's PAN card",
+            "Mother's PAN card (optional)"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant should belong to Open category."
+            },
+            {
+                "description": "Applicant should have taken admission through CAP."
+            },
+            {
+                "description": "No scholarship for Management Quota Admission."
+            },
+            {
+                "description": "No Income criteria check for this scheme."
+            },
+            {
+                "description": "Applicant should be domicile of Maharashtra."
+            },
+            {
+                "description": "Deemed university students are not applicable for this scheme."
+            },
+            {
+                "description": "Applicant should not have gap of 2 or more than 2 year in course duration."
+            },
+            {
+                "description": "Failure in academic year, misconduct, not fulfilling attendance criteria if found then candidate will not be eligible."
+            }
+        ],
+        "department_name": "Directorate of Medical Education Research",
+        "id": "9a0a138e-9f76-4be9-b5c0-ab68405e49e0"
+    },
+    {
+        "description": "The scheme provides course fee reimbursement for students applying for MBBS,BDS,BAMS,BHMS,BPTH,BOTH,B.SC Nursing, BUMS, BP & O, BASLP in government aided/Corporation/Private un-aided colleges.\nBeneficiary Category: EBC/OPEN\nEligible Courses: MBBS, BDS, BAMS, BHMS, BPTH ,BOTH,B.SC Nursing, BUMS, BP & O, BASLP in government aided/Corporation/Private un-aided colleges.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "EBC"
+            },
+            {
+                "beneficiary_type": "OPEN"
+            }
+        ],
+        "tags": [
+            "Medical",
+            "Scholarship",
+            "Tuition Fee",
+            "Examination Fee",
+            "Girls"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "introduced_on": "31'st May 2025",
+        "funding_pattern": "100% fee reimbursement (Tuition fee + Exam fee)",
+        "title": "Reimbursement of tuition fee and examination fee for girls under Rajarshri Chhatrapati Shahu Maharaj Tuition Fee Scholarship Scheme (100% Tuition Fee + Exam Fee).",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AAA146D4164D4C5C5",
+        "documents": [
+            "Domicile Certificate",
+            "HSC and SSC marksheet",
+            "Income certificate of Parents",
+            "Previous year's marksheet",
+            "Affidavit",
+            "Aadhar card",
+            "Student's PAN card (optional)",
+            "Father's PAN card",
+            "Mother's PAN card (optional)"
+        ],
+        "criteria": [
+            {
+                "description": "Family's annual income < Rs.8,00,000"
+            },
+            {
+                "description": "Candidates who have taken an admission under General category and SEBC Category"
+            }
+        ],
+        "department_name": "Directorate of Medical Education Research",
+        "id": "ec7cf3fe-fae1-4ecc-af7c-860e4a70818f"
+    },
+    {
+        "description": "Post Matric- State Government scholarship for minority students studying in Arts, Commerce, Science, Law, Education Courses (part-2)",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Minority students"
+            }
+        ],
+        "tags": [
+            "Scholarship",
+            "Minority",
+            "Post Matric",
+            "Higher Education"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "State Government"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "Total annual course fee or 5000 whichever amount is less will be scholarship amount.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A78F1DC35C6E48797",
+        "title": "State Minority Scholarship Part II (DHE)",
+        "introduced_on": "null",
+        "criteria": [
+            {
+                "description": "Graduation and post-graduation can apply (arts/commerce/science/Law/Education)"
+            },
+            {
+                "description": "Domicile of Maharashtra."
+            },
+            {
+                "description": "Income should be upto Rs.8 lakhs"
+            },
+            {
+                "description": "Only 2000 applicants will be provided quota (freshers)"
+            },
+            {
+                "description": "Maharashtrian Students studying Out of Maharashtra cannot apply for this scheme."
+            }
+        ],
+        "documents": [
+            "previous year Marksheet",
+            "Domicile Certificate",
+            "Income certificate",
+            "12th year marksheet",
+            "current year fee receipt",
+            "minority certificate self-declared",
+            "College bonafide certificate"
+        ],
+        "department_name": "Minority Development Department",
+        "id": "a1ad5da1-7ccb-415f-89f1-bfec9fea6b3a"
+    },
+    {
+        "description": "The objective of the Scheme is to provide financial assistance to the meritorious students belonging to Minority Communities ( Muslim , Buddhist, Christian , Sikh , Parsi , Jain & Jews Community ) to enable them to pursue Professional and Technical Courses.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Minority Communities (Muslim, Buddhist, Christian, Sikh, Parsi, Jain & Jews Community)"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "minority",
+            "higher education",
+            "professional courses",
+            "technical courses",
+            "post HSC",
+            "Maharashtra"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31st May 2025",
+        "introduced_on": "Not available in the extracted text",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A10CD9E828AFD9209",
+        "title": "Scholarship Scheme for State Minority Communities Pursuing Higher Professional Education/All Post H.S.C Courses.(Part-I{(Technical Course(DTE)}",
+        "funding_pattern": "Scholarship Amount Maximum Rs.25,000/- Per Annum or Actual Tuition Fees whichever is less for Technical Courses (Part-I of GR).  Scholarship Amount Maximum Rs.50,000/- Per Annum or Actual Tuition Fees and Exam Fee whichever is less effective from AY 2022-23 for Technical Courses (Part-I of GR).",
+        "documents": [
+            "Educational Certificate – S.S.C.(10th) & onwards.",
+            "Income and Minority declaration – Affidavit on Non-Judicial Stamp Paper or Income certificate from the employer, if any. School leaving certificate can also be considered as Proof of Minority ) or Self Declaration.",
+            "Proof of permanent residence: - Copy of Domicile Certificate/Election Card etc.",
+            "For Renewal of Scholarship: - Income declaration and Mark Sheet of previous examination."
+        ],
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Candidates should have passed SSC from Maharashtra State."
+            },
+            {
+                "description": "Applicant should be \"Bonafide Student of Institute\" and admitted for Professional and Technical course (Diploma / Graduation / Post Graduation Degree)."
+            },
+            {
+                "description": "Candidate should be admitted through Centralized Admission Process (CAP) / Institute Level."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship/stipend."
+            },
+            {
+                "description": "The Total Annual Income of Family / Guardian should not be more than 8 Lakhs."
+            }
+        ],
+        "department_name": "Minority Development Department",
+        "id": "f4c9e3ea-29df-4831-bf26-739746c301e5"
+    },
+    {
+        "description": "This scheme is belongs to Muslim, Buddha, Christian, Jain ,Sikh , Parsi , Jews religion. Total annual course fee or Rs.50,000 whichever amount is less will be scholarship amount.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Muslim"
+            },
+            {
+                "beneficiary_type": "Buddha"
+            },
+            {
+                "beneficiary_type": "Christian"
+            },
+            {
+                "beneficiary_type": "Jain"
+            },
+            {
+                "beneficiary_type": "Sikh"
+            },
+            {
+                "beneficiary_type": "Parsi"
+            },
+            {
+                "beneficiary_type": "Jews"
+            }
+        ],
+        "tags": [
+            "Minority Scholarship",
+            "Scholarship",
+            "Education",
+            "Minority Development"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "Total annual course fee or Rs.50,000 whichever amount is less will be scholarship amount.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A61FF7871E24FE19D",
+        "title": "Minority Scholarship",
+        "introduced_on": "not specified",
+        "documents": [
+            "School leaving Certificate",
+            "New applicants need to submit HSC and SSC marksheet(Not applicable for renewal)",
+            "Income certificate of Parents/Form no 16.",
+            "In income certificate/Affidavit it should be clear cut mentioned that candidate belongs to minority community.",
+            "Domicile Certificate",
+            "Student’s PAN card (optional)",
+            "Father’s PAN card",
+            "Mother’s PAN card (optional)",
+            "Aadhar card",
+            "Previous year's marksheet.",
+            "If candidate is studying outside Maharashtra the following documents need to be submitted :",
+            "Letter from concerned council/Authority stating the institute is recognized.",
+            "Copy of FRA",
+            "Bonafide for current academic year"
+        ],
+        "criteria": [
+            {
+                "description": "Family’s Annual Income less than equal to 8,00,000."
+            },
+            {
+                "description": "Admission to the course should be through CET/competitive exam/HSC marks obtained."
+            },
+            {
+                "description": "The person should be Domicile of Maharashtra."
+            }
+        ],
+        "department_name": "Minority Development Department",
+        "id": "1cb1dc05-acdd-434d-8910-a8c7cc2c0a54"
+    },
+    {
+        "description": "This scheme belongs to Muslim, Buddha, Christian, Jain, Sikh, Parsi, Jews religions.",
+        "tags": [
+            "scholarship",
+            "minority",
+            "students",
+            "higher education",
+            "professional courses"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Muslim"
+            },
+            {
+                "beneficiary_type": "Buddha"
+            },
+            {
+                "beneficiary_type": "Christian"
+            },
+            {
+                "beneficiary_type": "Jain"
+            },
+            {
+                "beneficiary_type": "Sikh"
+            },
+            {
+                "beneficiary_type": "Parsi"
+            },
+            {
+                "beneficiary_type": "Jews"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "Total annual course fee is Rs. 50,000, whichever amount is less will be the scholarship amount.",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A20148FA060AA7BC5",
+        "title": "Scholarship for student communities pursuing higher and Professional Courses (MCAER)",
+        "introduced_on": "24-25",
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Candidates should have pass SSC from Maharashtra State."
+            },
+            {
+                "description": "Applicant should be ”Bonafide Student of Institute” and admitted for Professional and Technical course (Graduation / Post Graduation Degree) as mentioned in GR."
+            },
+            {
+                "description": "Candidate should be admitted through Centralized Admission Process (CAP) / Institute Level."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship/stipend."
+            },
+            {
+                "description": "The Total Annual Income of Family / Guardian should not be more than 8 Lakhs."
+            },
+            {
+                "description": "Any two chilldrens from family will be alotted for a scheme."
+            }
+        ],
+        "documents": [
+            "Educational Certificate – S.S.C.(10th)/ H.S.C(12th).& onwards.",
+            "Income certificate of Parents/Form no.16",
+            "In income certificate/Affidavit it should be clear cut mentioned that candidate belongs to minority community.",
+            "Proof of permanent residence: - Copy of Domicile Certificate/Election Card etc.",
+            "For Renewal of Scholarship: - Income declaration and Mark Sheet of previous examination.",
+            "Student Adhar card.",
+            "Previous year’s marksheet.",
+            "Copy of FRA"
+        ],
+        "department_name": "Minority Development Department",
+        "id": "df482545-4734-4e82-a742-b450efd98933"
+    },
+    {
+        "description": "Vocational Training Fee reimbursement for the students belonging to Socially and Educationally backward class and Open Category (Economically Weaker Section) students and admitted to the seats under PPP scheme in Government ITIs and Private ITIs through Centralized Admission Process. They will avail Fee Reimbursement benefit only if they met the Scheme Criteria.",
+        "tags": [
+            "Vocational Training",
+            "Fee Reimbursement",
+            "EWS",
+            "Skill Development",
+            "Education",
+            "Students"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students belonging to socially and educationally backward class"
+            },
+            {
+                "beneficiary_type": "Open Category (Economically weaker section) students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A6B32D7E54C4EFF76",
+        "funding_pattern": "As Per GR Dated 29.05.2019, Family income above 2,50,000 to Less than or up to 8,00,000 Lakh then 80 % of (Private Institute Course Fee - Government Institute Course fee), Family income Less than or equal to 2,50,000 then 100 % of (Private Institute Course Fee - Government Institute Course fee)",
+        "title": "Vocational Training Fee reimbursement for the students belonging to socially and educationally backward class and Open Category (Economically weaker section) students",
+        "introduced_on": "null",
+        "criteria": [
+            {
+                "description": "Admission taken through PPP scheme in Government Industrial Training Institute or Private Industrial Training Institute and admitted through central Online Admission Process."
+            },
+            {
+                "description": "No scholarship for Management Quota Admission."
+            },
+            {
+                "description": "Student should belong to OPEN Category and Economical Weaker Section (EWS)."
+            },
+            {
+                "description": "Overall Family Income will be considered (Father + Mother Income)"
+            },
+            {
+                "description": "Orphan candidate requires Recommendation Letter."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for course previously from Government or Private ITI."
+            },
+            {
+                "description": "Candidate should not have taken any benefit for training program sponsored by State / Central Government / Department / Local Body / Company or Corporation."
+            },
+            {
+                "description": "Domicile of Maharashtra."
+            },
+            {
+                "description": "Admission taken for DGT, New Delhi or MSCVT approved courses."
+            },
+            {
+                "description": "Benefit applicable to only 2 children."
+            },
+            {
+                "description": "Attendance criteria is mandatory."
+            },
+            {
+                "description": "Candidate need to attend each semester /annual exam. If any medical emergency then after recommendation by institute Regional Joint Director should certify or recommend."
+            },
+            {
+                "description": "Non Satisfactory educational progress due to misconduct- Failure in academic year, not fulfilling attendance criteria if found then candidate will not be eligible for scholarship."
+            }
+        ],
+        "documents": [
+            "Aadhaar Card",
+            "Ration Card",
+            "Mark sheet SSC /HSC",
+            "Previous year mark sheet for renewal",
+            "Domicile certificate",
+            "Income certificate competent authority"
+        ],
+        "department_name": "Skill Development, Employement And Entrepreneurship Department",
+        "id": "f68d63cd-ebbd-4e23-8011-455dfc9fee47"
+    },
+    {
+        "description": "Training under the Craftsmen Training Scheme is provided in 419 GITI and 575 PITI in Maharashtra. As of the Government Resolution (GR) dated 07/05/1983, 50% of trainees in GITI were granted a stipend of either Rs. 40 or Rs. 60 per month. Despite the increasing inflation rate, there has been no adjustment in the stipend over the past 40 years. According to the State Employment and Entrepreneurship Exchange and Self Employment Institute Development (SEEID) GR dated 13/09/2023, a decision has been made to provide a stipend of Rs. 500/- per month to all trainees (including Open, OBC, SBC, EWS, VJ-A/DT, NT-B, NT- C, NT-D, SC, ST) at GITI starting from the 2023-2024 session.",
+        "tags": [
+            "Stipend",
+            "Craftsman Training",
+            "ITI",
+            "Skill Development",
+            "Vocational Training"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Trainees in Craftsman Training Scheme in Govt ITI"
+            }
+        ],
+        "procedures": [
+            {
+                "step_description": "Apply through MAHA-DBT portal"
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsor_type": "Skill Development, Employement And Entrepreneurship Department"
+            }
+        ],
+        "valid_upto": "2025-05-31",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A475C1F6D3C39E3F8",
+        "introduced_on": "2023-09-13",
+        "title": "Stipend of Rs. 500 per month for trainees in Craftsman Training Scheme in Govt ITI",
+        "funding_pattern": "Stipend of Rs. 500 per month",
+        "documents": [
+            "Income Certificate",
+            "Mark sheet",
+            "Aadhaar Card",
+            "Domicile Certificate",
+            "Non Creamy Certificate",
+            "Caste certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Domicile in Maharashtra"
+            },
+            {
+                "description": "Annual income less than Rs. 8 lac"
+            },
+            {
+                "description": "Only two siblings within a family are eligible"
+            },
+            {
+                "description": "80% attendance"
+            },
+            {
+                "description": "For 2-year trades, passing the first year is necessary"
+            },
+            {
+                "description": "Not suspended or found non-eligible for the All India Trade Test (AITT)"
+            },
+            {
+                "description": "Have not left the GITI"
+            },
+            {
+                "description": "Aadhar-seeded savings bank account in a nationalized bank"
+            },
+            {
+                "description": "Trainee registration on the MAHA-DBT portal"
+            }
+        ],
+        "department_name": "Skill Development, Employement And Entrepreneurship Department",
+        "id": "3a5250af-efaf-45e4-88f8-ff1475bf6008"
+    },
+    {
+        "description": "The objective of the Scheme is to provide financial assistance to the Economic Backward Class who are admitted to Diploma / Degree / Postgraduate Professional & Non Professional courses through Centralized Admission Process (CAP).",
+        "tags": [
+            "Education",
+            "Scholarship",
+            "EBC",
+            "Higher Education"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Economic Backward Class"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A50495B1E79CEAF71",
+        "funding_pattern": "100 % of Tuition Fees and 100 % of Exam Fee.",
+        "title": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna(EBC)",
+        "introduced_on": "2017-10-07",
+        "documents": [
+            "Mark sheet of 10th (S.S.C) & Onwards.",
+            "Domicile Certificate of Maharashtra State.",
+            "Family Annual Income certificate",
+            "Undertaking “In current year, not more than 2 beneficiary from family”.",
+            "CAP Related document.",
+            "Proof of Biometric attendance (Interface UIDAI)."
+        ],
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Applicant should be admitted for Professional & Non Professional and Technical course (Diploma / Graduation / Post Graduation Degree)."
+            },
+            {
+                "description": "Candidate should be admitted through Centralized Admission Process (CAP)."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship/stipend."
+            },
+            {
+                "description": "For current Academic Year, Only 2 child from family are allowed for benefit of scheme."
+            },
+            {
+                "description": "The Total Annual Income of Family / Guardian should not be more than 8 Lakhs."
+            },
+            {
+                "description": "Minimum 50 % attendance in previous semester (Exception for fresh admitted in College)."
+            },
+            {
+                "description": "During course duration, candidate should not have a gap of 2 or more than 2 years."
+            },
+            {
+                "description": "Candidates are eligible those who have taken an admission under General category and SEBC Category"
+            }
+        ],
+        "department_name": "Maharashtra Council of Agriculture Education and Research (MCAER)",
+        "id": "8b555318-bf30-4e86-be99-9d641fc7aa63"
+    },
+    {
+        "description": "This is a plan for students of government, government funded and non-affiliated colleges / polytechnics entering the vocational courses set by the government, whose students are certified by the competent authority, as a marginal farmers or whose parents are registered laborers.",
+        "tags": [
+            "Higher Education",
+            "Scholarship",
+            "Vocational Courses",
+            "Students",
+            "Maharashtra",
+            "Financial Assistance",
+            "Residence Allowance",
+            "Food Allowance",
+            "Subsistence Allowance"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students from Economically Backward Classes"
+            },
+            {
+                "beneficiary_type": "Registered Labourers"
+            },
+            {
+                "beneficiary_type": "Small Land Holder Farmers"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "introduced_on": "",
+        "funding_pattern": "Scholarship",
+        "title": "Dr. Panjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojna",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AD36E29BD04FB95F2",
+        "criteria": [
+            {
+                "description": "Applicant should have Indian Nationality."
+            },
+            {
+                "description": "Candidate should be a resident of Maharashtra State."
+            },
+            {
+                "description": "Applicant should be a bonafide student admitted for Professional and Technical course (Diploma / Graduation / Post Graduation Degree)."
+            },
+            {
+                "description": "Admission should be through Centralized Admission Process (CAP)."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship/stipend."
+            },
+            {
+                "description": "Only 2 children from a family are allowed for the benefit of the scheme."
+            },
+            {
+                "description": "The total annual income of family / guardian should not be more than 8 Lakhs."
+            },
+            {
+                "description": "Minimum 50% attendance in previous semester (Exception for fresh admissions)."
+            },
+            {
+                "description": "No gap of 2 or more years during the course duration."
+            },
+            {
+                "description": "Candidates admitted under General and SEBC categories are eligible."
+            }
+        ],
+        "documents": [
+            "Mark sheet of 10th (S.S.C) & Onwards.",
+            "Domicile Certificate of Maharashtra State.",
+            "Register Labor Certificate / Alpabhudharak (Marginal Land Holder) Certificate ( In case of not a child of Alpabudharak or Registered Labour then family Annual Income Certificate ).",
+            "Undertaking “In current year, not more than 2 beneficiary from family”.",
+            "CAP Related document.",
+            "Hosteller documents ( In case of private hostel or Paying Guest, Agreement with owner will be required."
+        ],
+        "department_name": "Maharashtra Council Of Agriculture Education And Research (MCAER)",
+        "id": "8a2b6893-84c4-4d40-b594-c43530908007"
+    },
+    {
+        "description": "Under this scheme of Directorate of Art , scholarship is applicable for the economically weaker sections. The students family annual income limit is up to Rs. 8.00 lakh, those who have taken an admission for Professional courses which come Under Directorate of Art Government / Non- government aided/ Partially Aided – Unaided/Permanent Unaided College and Non-Agricultural Universities and Sub-Centers (Excluding Private Universities / Self-financed Private Universities).",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Economically weaker sections"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "education",
+            "arts",
+            "professional courses",
+            "non-professional courses"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A4CECAB91C2B36920",
+        "funding_pattern": "scholarship is applicable for the economically weaker sections",
+        "title": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Scheme",
+        "introduced_on": "2017-10-07",
+        "criteria": [
+            {
+                "description": "Applicant should be Domicile of Maharashtra and applicant belongs to Maharashtra State and Karnataka state border can apply for scheme."
+            },
+            {
+                "description": "Family annual income limit is upto Rs. 8.00 lakh."
+            },
+            {
+                "description": "As per Government Resolution first two children are eligible for scheme."
+            },
+            {
+                "description": "Candidate those who take admission under general category is eligible."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship or stipend."
+            },
+            {
+                "description": "Students are not eligible who has taken an admission in Distance Education, virtual learning and part time courses."
+            },
+            {
+                "description": "During course, candidate should not have a gap of 2 years."
+            },
+            {
+                "description": "Applicant should attempt every semester or annual exam."
+            }
+        ],
+        "documents": [
+            "Domicile certificate issued by Authorized official",
+            "Previous year Annual income certificate issued by Authorized official",
+            "CAP Related document",
+            "Gap Related Document(if Gap is there)",
+            "Family Declaration Certificate about two children’s",
+            "Attendance Certificate",
+            "Previous year Mark sheet"
+        ],
+        "department_name": "Directorate of Art",
+        "id": "512e75db-fd49-42de-ba7a-ede8f2990f40"
+    },
+    {
+        "description": "Under this scheme, scholarship is applicable for the economically weaker sections. The student’s those who have taken an admission for Professional courses which come Under Directorate of Art Government /Non-government aided/Partially Aided -Unaided/Permanent Unaided College and Non-Agricultural Universities and Sub-Centers (Excluding Private Universities / Self-financed Private Universities).",
+        "tags": [
+            "scholarship",
+            "professional courses",
+            "economically weaker sections",
+            "higher education"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students whose parents are Registered Labor/Alpabhudharak (Marginal Land Holder)"
+            },
+            {
+                "beneficiary_type": "Student whose parent's Annual Family income up to 1 Lakhs"
+            },
+            {
+                "beneficiary_type": "Student whose parent's Annual Family income in between 1 Lakh to 8 Lakhs"
+            }
+        ],
+        "procedures": [
+            {
+                "step_description": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced. Last date for Application Acceptance (New/Renewal) for A.Y. 24-25 is 31'st May 2025. Application Re-apply has been extended for A.Y. 23-24 till 31'st May 2025"
+            }
+        ],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AFF59C835471DFEAE",
+        "introduced_on": "null",
+        "title": "Dr. Punjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojna",
+        "funding_pattern": "scholarship",
+        "criteria": [
+            {
+                "description": "Applicant should be Domicile of Maharashtra."
+            },
+            {
+                "description": "For professional courses, Applicant should be a child of registered labor , child of Alpabhudarak or both as total annual income of family/ Guardian should not be more than 8 lakh."
+            },
+            {
+                "description": "Applicant should submit Family Annual Income Certificate."
+            },
+            {
+                "description": "As per Government Resolution first two children eligible for scheme."
+            },
+            {
+                "description": "Candidates are eligible those who have taken an admission under general category."
+            },
+            {
+                "description": "Applicant should be hosteller.(Govt/Private hostel/ Paying Guest/ Tenant.)"
+            },
+            {
+                "description": "Applicant should not avail any other Nirvah Bhatta benefit."
+            },
+            {
+                "description": "During course, candidate should not have a gap of 2 years."
+            },
+            {
+                "description": "Applicant should attempt every semester or annual exam."
+            }
+        ],
+        "documents": [
+            "Domicile certificate issued by Authorized official",
+            "Registered labor certificate / Alpabudharak Certificate/ Family Annual Income Certificate",
+            "Hosteller Document",
+            "Previous year Annual income certificate issued by Authorized official",
+            "CAP Related document",
+            "Gap Related Document(if Gap is there)",
+            "Family Declaration Certificate about two children’s",
+            "Attendance Certificate",
+            "Previous year Mark sheet"
+        ],
+        "department_name": "Directorate of Art",
+        "id": "5a8c9175-b25b-4d1b-ae8c-64a52020b86e"
+    },
+    {
+        "description": "The objective of the Scheme is to provide financial assistance to the Economic Backward Class who are admitted to Diploma / Degree / Postgraduate Professional courses through Centralized Admission Process (CAP).",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Economic Backward Class"
+            }
+        ],
+        "tags": [
+            "scholarship",
+            "financial assistance",
+            "professional courses",
+            "higher education",
+            "postgraduate",
+            "maharashtra"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31st May 2025",
+        "introduced_on": "not specified",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AA804BF8946610BEA",
+        "title": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna",
+        "funding_pattern": "Tuition Fees: Up to 100% based on income and course\nExam Fees: Up to 100% based on income and course",
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Applicant should be admitted through Centralized Admission Process (CAP)."
+            },
+            {
+                "description": "Applicant should not avail any other scholarship or stipend."
+            },
+            {
+                "description": "For current Academic Year, Only 2 child from family are allowed for benefit of scheme."
+            },
+            {
+                "description": "The Total Annual Income of Family or Guardian should not be more than 8 Lakhs."
+            },
+            {
+                "description": "Minimum 50 % attendance in previous semester (Exception for fresh admitted in College)."
+            },
+            {
+                "description": "During course duration, candidate should not have a gap of 2 years."
+            },
+            {
+                "description": "Candidates are eligible those who have taken an admission under general category."
+            },
+            {
+                "description": "Applicant should attempt every semester or annual exam."
+            }
+        ],
+        "documents": [
+            "Mark sheet of 12th(H.S.C) & Onwards.",
+            "Domicile Certificate of Maharashtra State.",
+            "Family Annual Income certificate issued by authorized official.",
+            "Undertaking “In current year, not more than 2 beneficiary from family”.",
+            "CAP Related document.",
+            "Attendance Certificate.",
+            "Previous year Mark sheet.",
+            "Gap Related Documents (if Gap is there)"
+        ],
+        "department_name": "Maharashtra Animal and Fishery Sciences University(MAFSU)",
+        "id": "c282ea85-d2ee-48a6-8ca6-b47db1b1e432"
+    },
+    {
+        "description": "This is a plan for students of government, government funded and non-affiliated colleges / polytechnics entering the vocational courses set by the government, whose students are certified by the competent authority, as a marginal farmers or whose parents are registered laborers.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Student whose Parents are Small Land Holder Farmer / Registered Labour"
+            },
+            {
+                "beneficiary_type": "Economically Backward Class Student (Annual Family Income - upto 1 Lakh)"
+            },
+            {
+                "beneficiary_type": "Economically Backward Class Student (Annual Family Income - More than 1 Lakh to 8 Lakhs)"
+            }
+        ],
+        "tags": [
+            "hostel",
+            "scholarship",
+            "higher education",
+            "maharashtra",
+            "students",
+            "vocational courses"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "funding_pattern": "scholarship",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AE5A44C72C454E753",
+        "title": "Dr. Panjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojna.",
+        "introduced_on": "not specified",
+        "documents": [
+            "Mark sheet of 10th(S.S.C) & Onwards.",
+            "Domicile Certificate of Maharashtra State.",
+            "Register Labor Certificate / Alpabhudharak (Marginal Land Holder) Certificate ( In case of not a child of Alpabudharak or Registered Labour then family Annual Income Certificate ).",
+            "Undertaking “In current year, not more than 2 beneficiaries from family”.",
+            "CAP Related document.",
+            "Hosteller documents (In case of private hostel or Paying Guest, Agreement with owner will be required.",
+            "Attendance Certificate.",
+            "Previous year Mark sheet.",
+            "Gap Related Documents (if Gap is there)"
+        ],
+        "criteria": [
+            {
+                "description": "Applicant should have Nationality of India."
+            },
+            {
+                "description": "Candidate should be Domicile of Maharashtra State."
+            },
+            {
+                "description": "Applicant should be ”Bonafide Student of Institute” and admitted for Professional and Technical course (Graduation / Post Graduation Degree) as mentioned in GR."
+            },
+            {
+                "description": "Deemed University and Private university is not applicable."
+            },
+            {
+                "description": "Candidate should be admitted through Centralized Admission Process (CAP)."
+            },
+            {
+                "description": "Applicant should not avail any other Maintenance Allowance Scheme."
+            },
+            {
+                "description": "For current Academic Year, Only 2 child from family are allowed for benefit of scheme."
+            },
+            {
+                "description": "Applicant should be child of Registered Labour or Child of Alpabhudharak or Both / Total Annual Income of Family / Guardian should not be more than 6 Lakhs."
+            },
+            {
+                "description": "Minimum 50 % attendance in previous semester (Exception for fresh admitted in College)."
+            },
+            {
+                "description": "During course duration, candidate should not have a gap of 2 years."
+            },
+            {
+                "description": "Applicant should be Hosteller."
+            },
+            {
+                "description": "Should not avail maintenance allowance of any other scheme."
+            },
+            {
+                "description": "Candidates are eligible those who have taken an admission under general category."
+            },
+            {
+                "description": "Applicant should attempt every semester or annual exam."
+            }
+        ],
+        "department_name": "Maharashtra Animal and Fishery Sciences University(MAFSU)",
+        "id": "77c6f3a5-954e-44bf-95b6-ff3d314686b1"
+    },
+    {
+        "description": "SC students studying in government or private Sainik school",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC students"
+            }
+        ],
+        "tags": [
+            "Education",
+            "SC Students",
+            "Financial Assistance",
+            "School Education"
+        ],
+        "procedures": [],
+        "sponsors": [
+            {
+                "sponsor_type": "Social Justice and Special Assisstance"
+            }
+        ],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51ABF885E4275F10C92",
+        "funding_pattern": "1) For Satara, Nashik, and Pune government Sainik schools, the fee structure is shared by the school education department.\n2) For private Sainik schools, Rs.15000.00 will be disbursed per annum.\n3) Disbursement will happen in two installments.\n4) Note: No extra benefit for more than 10 months. For less than 10 months, the beneficiary will be paid only for the number of months they attended school from the date of admission.",
+        "title": "Maintenance allowance for students studying in Sainiki School",
+        "introduced_on": "",
+        "criteria": [
+            {
+                "description": "Students must belong to the SC caste."
+            },
+            {
+                "description": "Students must be studying in a government or private Sainik School."
+            },
+            {
+                "description": "Parents/Guardian Income should be less than or equal to 2,50,000"
+            },
+            {
+                "description": "Student must be a resident of Maharashtra."
+            },
+            {
+                "description": "For the second installment, 60% attendance is mandatory for the current academic year."
+            },
+            {
+                "description": "All board students except Self Finance school students are eligible for the scheme."
+            },
+            {
+                "description": "If a student fails for the year, they are not eligible until they pass the class."
+            }
+        ],
+        "documents": [
+            "Domicile Certificate",
+            "Income Certificate",
+            "Caste Certificate"
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "0044aee9-5593-409e-9585-78b9b897217b"
+    },
+    {
+        "description": "1) This Scheme is for SC girl students studying in class from 5th to 10th in govt. schools or govt. aided schools.\n",
+        "tags": [
+            "Education",
+            "Girl Child",
+            "Scheduled Caste",
+            "School Education",
+            "Scholarship"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC girl students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A8FE969DA87030502",
+        "funding_pattern": "Rs.60 per month for up to 10 months for students studying in class 5-7 std.\nRs.100 per month for up to 10 months for students studying in class 8-10th std\nDisbursement will happen in two instalments.",
+        "title": "Savitribai Phule Scholarship for Scheduled Caste girl’s students studying in 5th to 7th STD",
+        "introduced_on": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced.",
+        "documents": [
+            "Domicile Certificate.",
+            "Caste Certificate"
+        ],
+        "criteria": [
+            {
+                "description": "The student should be a girl child and should belong to the Schedule Caste category"
+            },
+            {
+                "description": "No Income Limit"
+            },
+            {
+                "description": "Student must be a resident of Maharashtra"
+            },
+            {
+                "description": "All board student except Self-Financed student school are eligible for the scheme"
+            },
+            {
+                "description": "The student should be studying in Government schools or Government aided schools."
+            },
+            {
+                "description": "If student gets fail for the year he is not eligible till she pass the class"
+            },
+            {
+                "description": "For the second installment, attendance is 60% mandatory for the current academic year."
+            }
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "0b39952b-4f16-4835-b3bd-e44c25d1e51e"
+    },
+    {
+        "description": "This Scheme is for students who are studying in 9th and 10th in the govt. schools or govt. aided schools.",
+        "tags": [
+            "scholarship",
+            "education",
+            "students",
+            "9th grade",
+            "10th grade",
+            "government schools"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "Students studying in 9th and 10th in government or government-aided schools"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31st May 2025",
+        "introduced_on": "Not specified",
+        "funding_pattern": "60% Central govt., 40% State govt.",
+        "title": "Government of India Scholarship for 9th and 10th",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A1DD7FE9893041576",
+        "criteria": [
+            {
+                "description": "Rs 150 p.m. for 10 months and Rs 750 Adhoc Grant for books and study material"
+            }
+        ],
+        "documents": [
+            "Domicile Certificate",
+            "Income Certificate",
+            "Caste Certificate"
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "b89cae8d-2f3f-4a4b-923f-41a964ff0c34"
+    },
+    {
+        "description": "SC students studying in govt, govt aided or govt non-aided Private schools.",
+        "tags": [
+            "Education",
+            "SC Students",
+            "Tuition Fees",
+            "Examination Fees",
+            "Backward Classes",
+            "High School"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31st May 2025",
+        "funding_pattern": "1) 1st to 4th 100/PM for 10 months.\n2) 5th to 7th 150/PM for 10 months\n3) 8th to 10th Rs. 200/PM for 10 months\n4) Disbursement in two installments.\n5) Note: No extra benefit for more than 10 months. For less than 10 months, the beneficiary will be paid for only the number of months they attended school from the date of admission.",
+        "introduced_on": "Application Acceptance (New/Renewal) for A.Y. 24-25 has been commenced",
+        "title": "Maharshi Vithhal Ramaji Shinde Tuition fees and Examination fees to Backward Class students studying in High Schools",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A921670DC48756720",
+        "criteria": [
+            {
+                "description": "Students must belong to the SC caste."
+            },
+            {
+                "description": "Students must be studying in government, government-aided, or private non-aided schools."
+            },
+            {
+                "description": "No income limit."
+            },
+            {
+                "description": "Students must be residents of Maharashtra."
+            },
+            {
+                "description": "For the second installment, 60% attendance is mandatory for the current academic year."
+            },
+            {
+                "description": "Student must be of BPL category."
+            },
+            {
+                "description": "All board students except Self Finance students are eligible for the scheme."
+            },
+            {
+                "description": "If a student fails for the year, they are not eligible until they pass the class."
+            }
+        ],
+        "documents": [
+            "Domicile Certificate",
+            "Income Certificate",
+            "Caste Certificate"
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "754fa629-e677-4ad6-92ca-59af0de5028c"
+    },
+    {
+        "description": "SC students studying in govt,govt aided or govt non-aided Private schools.",
+        "tags": [
+            "Prematric",
+            "Merit",
+            "Scholarship",
+            "Secondary Class",
+            "SC"
+        ],
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC students"
+            }
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "2025-05-31",
+        "introduced_on": "",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A1A036BC29D2FDCCA",
+        "title": "Prematric Merit Scholarship for Students studying in Secondary Class (Std. Vth to Xth)",
+        "funding_pattern": "5th to 7th 50/PM for 10 months. 8th to 10th Rs. 100/PM for 10 months. Disbursement will happen in two instalments.",
+        "documents": [
+            "Domicile Certificate",
+            "Caste Certificate"
+        ],
+        "criteria": [
+            {
+                "description": "Students must belong to the SC caste"
+            },
+            {
+                "description": "Students must be studying govt, govt aided or private non aided schools"
+            },
+            {
+                "description": "No Income limit"
+            },
+            {
+                "description": "Students must be a resident of Maharashtra"
+            },
+            {
+                "description": "For second instalment 60% attendance is mandatory of current academic year"
+            },
+            {
+                "description": "Student must be of BPL category"
+            },
+            {
+                "description": "All board student except Self Finance student school are eligible for the scheme"
+            },
+            {
+                "description": "If student gets fail for the year he/she is not eligible till he/she pass the class"
+            }
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "fd63b5e5-ffa8-48ff-8714-df67a8d87cc5"
+    },
+    {
+        "description": "SC students studying in govt,govt aided or govt non-aided Private schools.",
+        "beneficiaries": [
+            {
+                "beneficiary_type": "SC students"
+            }
+        ],
+        "tags": [
+            "Pre-matric",
+            "Scholarships",
+            "Unclean occupation",
+            "SC students"
+        ],
+        "procedures": [],
+        "sponsors": [],
+        "valid_upto": "31'st May 2025",
+        "scheme_link": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51AA75E16D346B2E6DA",
+        "funding_pattern": "60% Central, 40% State",
+        "title": "Pre-matric Scholarships to Children of those who are engaged in unclean occupation",
+        "introduced_on": "Not specified",
+        "documents": [
+            "Domicile Ceriticate",
+            "Engaged in unclean occupation require certificate of Competant Authority such as Gram sevak and sarpanch, Head of Municipal Corporation, Commissioner of Corporation/ Dy. Commissioner / ward Officer.",
+            "Self-declaration about engaged in unclean occupation on Rs. 20 stamp paper."
+        ],
+        "criteria": [
+            {
+                "description": "Studying in govt, govt aided or govt non-aided Private schools."
+            }
+        ],
+        "department_name": "Social Justice and Special Assisstance",
+        "id": "7a8b1def-b6d7-490a-a7ef-6675211717b9"
     }
 ]
