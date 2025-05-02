@@ -98,7 +98,8 @@ from .views import (
     UserProfileFieldValuesView,
     AllUserProfilesView,
     signup_analytics,
-    login_analytics
+    login_analytics,
+    TagStatsView
 )
 
 
@@ -197,6 +198,7 @@ urlpatterns = [
     path("events/user-click-history/", get_user_click_history, name="user-click-history"),
     path("events/user-filter-usage/", get_user_filter_usage, name="user-filter-usage"),
     path("events/user-download-history/", get_user_download_history, name="user-download-history"),
+    path('events/tag-stats/', TagStatsView.as_view(), name='tag-stats'),
     # path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
     path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
@@ -209,5 +211,5 @@ urlpatterns = [
     path('announcements/', AnnouncementListView.as_view(), name='announcements-list'),
     path('send-email/', send_manual_email, name='send-email'),
     path('users/list/', UserListView.as_view(), name='user-list'),
-    path('proxy/', proxy_view, name='proxy-view')
+    path('proxy/', proxy_view, name='proxy-view'),
 ]

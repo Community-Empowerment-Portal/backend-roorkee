@@ -642,3 +642,11 @@ class AnnouncementSerializer(serializers.ModelSerializer):
             cleaned_description = cleaned_description.replace("", "").strip()  # Remove unwanted Unicode chars
             data["description"] = cleaned_description
             return data
+    
+class TagStatsSerializer(serializers.ModelSerializer):
+    view_count = serializers.IntegerField()
+    apply_count = serializers.IntegerField()
+
+    class Meta:
+        model = Tag
+        fields = ['id', 'name', 'view_count', 'apply_count']
