@@ -2295,3 +2295,8 @@ class Announcement(models.Model):
 
     def __str__(self):
         return self.title
+    
+class UserPrivacySettings(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    allow_information_usage = models.BooleanField(default=False)
+    allow_information_sharing = models.BooleanField(default=False)

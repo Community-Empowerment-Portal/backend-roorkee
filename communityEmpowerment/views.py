@@ -59,7 +59,7 @@ logger = logging.getLogger(__name__)
 
 from .models import (
     State, Resource, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
-    Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField, Tag, 
+    Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField, Tag, UserPrivacySettings,
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue, Announcement
     
 )
@@ -68,7 +68,7 @@ from .serializers import (
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer, TagStatsSerializer,
-    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer,
+    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer, UserPrivacySettingsSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
     UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
 )
@@ -2200,3 +2200,19 @@ class TagStatsView(ListAPIView):
                 ), 0
             )
         )
+    
+class PrivacySettingsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        settings, created = UserPrivacySettings.objects.get_or_create(user=request.user)
+        serializer = UserPrivacySettingsSerializer(settings)
+        return Response(serializer.data)
+
+    def post(self, request):
+        settings, created = UserPrivacySettings.objects.get_or_create(user=request.user)
+        serializer = UserPrivacySettingsSerializer(instance=settings, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Privacy settings updated successfully", "data": serializer.data})
+        return Response(serializer.errors, status=400)
