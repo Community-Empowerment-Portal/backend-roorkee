@@ -2198,5 +2198,13 @@ class TagStatsView(ListAPIView):
                         output_field=IntegerField()
                     )
                 ), 0
+            ),
+            save_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='save', then=1),
+                        output_field=IntegerField()
+                    )
+                ), 0
             )
         )

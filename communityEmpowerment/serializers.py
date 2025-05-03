@@ -649,4 +649,4 @@ class TagStatsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'view_count', 'apply_count']
+        fields = ['id', 'name', 'view_count', 'apply_count', 'save_count']
