@@ -213,12 +213,14 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             settings = obj.userprivacysettings
             return {
                 "allow_information_usage": settings.allow_information_usage,
-                "allow_information_sharing": settings.allow_information_sharing
+                "allow_information_sharing": settings.allow_information_sharing,
+                "allow_cookies_tracking": settings.allow_cookies_tracking,
             }
         except UserPrivacySettings.DoesNotExist:
             return {
                 "allow_information_usage": False,
-                "allow_information_sharing": False
+                "allow_information_sharing": False,
+                "allow_cookies_tracking": False 
             }
 
     def validate_email(self, value):
@@ -668,5 +670,5 @@ class TagStatsSerializer(serializers.ModelSerializer):
 class UserPrivacySettingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPrivacySettings
-        fields = ['allow_information_usage', 'allow_information_sharing']
+        fields = ['allow_information_usage', 'allow_information_sharing', 'allow_cookies_tracking',]
 
