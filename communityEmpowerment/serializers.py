@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria, FAQ, CompanyMeta
-                     , Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser,Banner, SavedFilter, LayoutItem,
+                     , Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser,Banner, SavedFilter, LayoutItem, UserPrivacySettings,
                       SchemeReport, WebsiteFeedback, Tag, Resource, UserInteraction, SchemeFeedback, UserEvent, UserEvents, ProfileField, ProfileFieldChoice, ProfileFieldValue, Announcement )
 from django.utils import timezone
 from django.core.mail import EmailMessage
@@ -198,14 +198,30 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     email = serializers.EmailField(required=True)
     is_email_verified = serializers.BooleanField(read_only=True)
+    privacy_settings = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
-        fields = ['email', 'password', 'is_email_verified']
+        fields = ['email', 'password', 'is_email_verified', 'privacy_settings']
         extra_kwargs = {
             
             'password': {'write_only': True},
         }
+
+    def get_privacy_settings(self, obj):
+        try:
+            settings = obj.userprivacysettings
+            return {
+                "allow_information_usage": settings.allow_information_usage,
+                "allow_information_sharing": settings.allow_information_sharing,
+                "allow_cookies_tracking": settings.allow_cookies_tracking,
+            }
+        except UserPrivacySettings.DoesNotExist:
+            return {
+                "allow_information_usage": False,
+                "allow_information_sharing": False,
+                "allow_cookies_tracking": False 
+            }
 
     def validate_email(self, value):
         if CustomUser.objects.filter(email=value).exists():
@@ -649,4 +665,11 @@ class TagStatsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'view_count', 'apply_count', 'save_count']
+
+        fields = ['id', 'name', 'view_count', 'apply_count']
+
+class UserPrivacySettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPrivacySettings
+        fields = ['allow_information_usage', 'allow_information_sharing', 'allow_cookies_tracking',]
+

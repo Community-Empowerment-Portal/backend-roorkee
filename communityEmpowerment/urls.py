@@ -99,7 +99,8 @@ from .views import (
     AllUserProfilesView,
     signup_analytics,
     login_analytics,
-    TagStatsView
+    TagStatsView,
+    PrivacySettingsView
 )
 
 
@@ -212,4 +213,5 @@ urlpatterns = [
     path('send-email/', send_manual_email, name='send-email'),
     path('users/list/', UserListView.as_view(), name='user-list'),
     path('proxy/', proxy_view, name='proxy-view'),
+    path('privacy-settings/', PrivacySettingsView.as_view(), name='privacy-settings'),
 ]
