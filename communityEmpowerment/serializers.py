@@ -665,6 +665,7 @@ class TagStatsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
+
         fields = ['id', 'name', 'view_count', 'apply_count']
 
 class UserPrivacySettingsSerializer(serializers.ModelSerializer):
