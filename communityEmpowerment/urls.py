@@ -99,7 +99,8 @@ from .views import (
     AllUserProfilesView,
     signup_analytics,
     login_analytics,
-    TagStatsView
+    TagStatsView,
+    get_popular_schemes_by_category
 )
 
 
@@ -186,7 +187,7 @@ urlpatterns = [
     path("events/stats/", get_event_stats, name="event-stats"),
     path("events/timeline/", get_event_timeline, name="event-timeline"),
     path("events/range-timeline/", get_event_by_range, name="event-timeline"),
-
+    path('events/popular-schemes-by-category/', get_popular_schemes_by_category, name='popular-schemes-by-category'),
     path("events/popular-schemes/", get_popular_schemes, name="popular-schemes"),
     path("events/filter-usage/", get_filter_usage, name="filter-usage"),
     path("events/popular-searches/", get_popular_searches, name="popular-searches"),

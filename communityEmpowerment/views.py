@@ -1667,6 +1667,54 @@ def get_popular_schemes(request):
     return Response(scheme_details)
 
 
+@api_view(["GET"])
+def get_popular_schemes_by_category(request):
+    limit = int(request.GET.get("limit", 5))
+    event_type = request.GET.get("event_type", "view")
+    state = request.GET.get("state")
+
+    categories = ["sc", "st", "obc", "students"]
+    response_data = {}
+
+    schemes_query = UserEvents.objects.filter(event_type=event_type)
+    if state:
+        schemes_query = schemes_query.filter(details__state=state)
+
+    popular_scheme_counts = (
+        schemes_query.values("scheme_id")
+        .annotate(count=Count("id"))
+        .order_by("-count")
+    )
+
+    scheme_ids = [entry["scheme_id"] for entry in popular_scheme_counts]
+    schemes = Scheme.objects.filter(id__in=scheme_ids)
+
+    scheme_map = {scheme.id: scheme for scheme in schemes}
+
+    for category in categories:
+        category_schemes = []
+
+        for entry in popular_scheme_counts:
+            scheme = scheme_map.get(entry["scheme_id"])
+            if not scheme:
+                continue
+            
+            if category in [tag.name.lower() for tag in scheme.tags.all()]:
+                category_schemes.append({
+                    "scheme_id": scheme.id,
+                    "title": scheme.title,
+                    "count": entry["count"],
+                })
+
+            if len(category_schemes) >= limit:
+                break
+
+        response_data[category] = category_schemes
+
+    return Response(response_data)
+
+
+
 
 @api_view(["GET"])
 def get_filter_usage(request):
