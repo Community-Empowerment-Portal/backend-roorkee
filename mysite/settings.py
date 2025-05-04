@@ -165,9 +165,6 @@ DATABASES = {
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': os.getenv('DATABASE_HOST'),
         'PORT': os.getenv('DATABASE_PORT'),
-        # 'OPTIONS': {
-        #     'sslmode': 'require',  # Use 'require' or 'prefer'
-        # },
     }
 }
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -238,6 +235,47 @@ MEDIA_URL = f"https://{AWS_S3_MEDIA_CUSTOM_DOMAIN}/media/"
 
 
 REDIS_HOST = os.getenv('REDIS_HOST')
+
+# Celery Configuration
+CELERY_BROKER_URL = f'rediss://{REDIS_HOST}/0?ssl_cert_reqs=CERT_NONE'
+CELERY_RESULT_BACKEND = f'rediss://{REDIS_HOST}/0?ssl_cert_reqs=CERT_NONE'
+CELERY_TASK_RESULT_EXPIRES = 259200  # 3 days = 3 * 24 * 60 * 60
+
+# Configure Celery for Redis cluster mode
+CELERY_BROKER_TRANSPORT_OPTIONS = {
+    'visibility_timeout': 43200,
+    'redis_max_connections': 100,
+    'cluster_mode': True,
+    'global_keyprefix': '{mysite}:broker', 
+    'result_backend_transport_options': {
+        'retry_policy': {
+            'timeout': 5.0
+        }
+    },
+    'retry_policy': {
+        'timeout': 5.0
+    },
+    'retry_on_timeout': True,
+    'socket_keepalive': True,
+    'socket_connect_timeout': 30,
+    'socket_timeout': 30,
+    'queue_pattern_prefix': '{mysite}:queue:',
+}
+
+CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS = CELERY_BROKER_TRANSPORT_OPTIONS.copy()
+
+# Define default routing
+CELERY_TASK_DEFAULT_QUEUE = '{mysite}:default'
+CELERY_TASK_DEFAULT_EXCHANGE = '{mysite}:default'
+CELERY_TASK_DEFAULT_ROUTING_KEY = '{mysite}:default'
+
+# Add specific Celery Beat settings for cluster mode
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_MAX_LOOP_INTERVAL = 5  # Check for new/deleted periodic tasks more frequently
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -251,18 +289,6 @@ CACHES = {
         }
     }
 }
-
-
-# Celery configuration
-REDIS_HOST = os.getenv('REDIS_HOST', 'localhost:6379/0')  # Default to local Redis if not set
-
-# Ensure correct Redis URL format
-if not REDIS_HOST.startswith("redis://"):
-    REDIS_HOST = f"redis://{REDIS_HOST}"
-
-CELERY_BROKER_URL = REDIS_HOST
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

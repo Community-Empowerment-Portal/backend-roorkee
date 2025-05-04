@@ -1,72 +1,43 @@
-# # beat_schedule.py
-
-# from celery.schedules import crontab
-# from celery_app import app
-# from celery import Celery
-
-# app = Celery('tasks')
-
-# app.conf.beat_schedule = {
-#     'run-processing-task-every-night': {
-#         'task': 'tasks.run_processing_task',
-#         'schedule': crontab(minute=0, hour=0),  # Run at midnight
-#     },
-# }
-
-# app.conf.timezone = 'UTC'
-
-# mysite/celery.py
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 from celery.schedules import crontab
+from django.conf import settings
 
-# Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 
 app = Celery('mysite')
 
-# Using a string here means the worker doesn't have to serialize
-# the configuration object to child processes.
-# - namespace='CELERY' means all celery-related configuration keys
-#   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
-app.conf.beat_scheduler = 'django_celery_beat.schedulers:DatabaseScheduler'
 
-
-# Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
 
-# Define the task schedule
-# app.conf.beat_schedule = {
-#     'scrape-and-process-schemes-every-5-minutes': {
-#         'task': 'myapp.tasks.scrape_and_process_schemes',
-#         'schedule': crontab(minute='*/5'),  # Run every 5 minutes
-#     },
-# }
-
-# @app.task(bind=True)
-# def debug_task(self):
-#     print(f'Request: {self.request!r}')
+app.conf.update(
+    broker_transport_options=settings.CELERY_BROKER_TRANSPORT_OPTIONS,
+    result_backend_transport_options=settings.CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS,
+    broker_connection_retry_on_startup=True,
+    task_default_queue=settings.CELERY_TASK_DEFAULT_QUEUE,
+    task_default_exchange=settings.CELERY_TASK_DEFAULT_EXCHANGE,
+    task_default_routing_key=settings.CELERY_TASK_DEFAULT_ROUTING_KEY,
+)
 
 app.conf.beat_schedule = {
-    'check-urls-every-24-hours': {
+    '{mysite}check-urls': {
         'task': 'communityEmpowerment.tasks.check_urls_task',
-        'schedule': crontab(minute=0, hour='0'),  #Runs every midnight
+        'schedule': crontab(minute=0, hour='0'),  # Runs every midnight
     },
-}
-
-
-app.conf.beat_schedule = {
-    "send-weekly-email": {
+    "{mysite}send-weekly-email": {
         "task": "communityEmpowerment.tasks.send_weekly_email",
         "schedule": crontab(day_of_week=0, hour=9, minute=0),  # Every Monday at 9 AM
     },
-}
-
-app.conf.beat_schedule = {
-    "send_saved_scheme_expiry_reminders": {
+    "{mysite}send-expiry-reminders": {
         "task": "communityEmpowerment.tasks.send_expiry_email_task",
         "schedule": crontab(hour=0, minute=0),  # every day at 12:00 AM
-    },
+    }
 }
+
+app.conf.timezone = 'Asia/Kolkata' 
+
+@app.task(bind=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')

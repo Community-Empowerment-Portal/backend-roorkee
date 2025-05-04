@@ -330,3 +330,185 @@ export {
   deleteTestRecord
 };
 
+/**
+ * Generates a random string of specified length
+ * @param {Number} length - The length of the random string
+ * @returns {String} - Random string
+ */
+export const generateRandomString = (length = 8) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
+
+/**
+ * Gets current date in YYYY-MM-DD format
+ * @returns {String} - Current date
+ */
+export const getCurrentDate = () => {
+  const date = new Date();
+  return date.toISOString().split('T')[0];
+};
+
+/**
+ * Creates test data for Scheme Feedback
+ * @returns {Object} - Test data for scheme feedback
+ */
+export const createSchemeFeedbackTestData = () => {
+  return {
+    feedback: `Test feedback ${generateRandomString(5)}`,
+    rating: Math.floor(Math.random() * 5) + 1, // Random rating 1-5
+  };
+};
+
+/**
+ * Creates test data for Website Feedback
+ * @returns {Object} - Test data for website feedback
+ */
+export const createWebsiteFeedbackTestData = () => {
+  return {
+    description: `Website feedback description ${generateRandomString(8)}`,
+  };
+};
+
+/**
+ * Navigates to specific sections in the admin portal
+ * @param {String} section - The section to navigate to
+ */
+export const navigateToAdminSection = (section) => {
+  cy.contains('Feedback & Reports').click();
+  cy.contains(section).click();
+};
+
+/**
+ * Selects a user from dropdown in admin form
+ * @param {String} username - Username to select
+ */
+export const selectUser = (username = 'admin') => {
+  cy.get('#id_user').select(username);
+};
+
+/**
+ * Selects a scheme from dropdown in admin form
+ * @param {String} schemeTitle - Scheme title to select or index
+ */
+export const selectScheme = (schemeTitle = 0) => {
+  if (typeof schemeTitle === 'number') {
+    cy.get('#id_scheme').find('option').then($options => {
+      // Skip the first option which is usually blank
+      const optionIndex = schemeTitle + 1;
+      if ($options.length > optionIndex) {
+        cy.get('#id_scheme').select($options[optionIndex].value);
+      } else {
+        cy.log('Not enough scheme options');
+      }
+    });
+  } else {
+    cy.get('#id_scheme').select(schemeTitle);
+  }
+};
+
+/**
+ * Opens the add new form in admin
+ */
+export const openAddNewForm = () => {
+  cy.get('.addlink').click();
+};
+
+/**
+ * Opens the edit form for a specific item in admin list
+ * @param {Number} index - Index of the item to edit (0-based)
+ */
+export const openEditForm = (index = 0) => {
+  cy.get('#result_list tbody tr').eq(index).find('a').first().click();
+};
+
+/**
+ * Fills out the scheme feedback form
+ * @param {Object} data - The data to fill in the form
+ */
+export const fillSchemeFeedbackForm = (data) => {
+  if (data.user) {
+    selectUser(data.user);
+  }
+  if (data.scheme !== undefined) {
+    selectScheme(data.scheme);
+  }
+  if (data.feedback) {
+    cy.get('#id_feedback').clear().type(data.feedback);
+  }
+  if (data.rating) {
+    cy.get('#id_rating').clear().type(data.rating);
+  }
+};
+
+/**
+ * Fills out the website feedback form
+ * @param {Object} data - The data to fill in the form
+ */
+export const fillWebsiteFeedbackForm = (data) => {
+  if (data.user) {
+    selectUser(data.user);
+  }
+  if (data.description) {
+    cy.get('#id_description').clear().type(data.description);
+  }
+};
+
+/**
+ * Applies a date filter in the admin list view
+ * @param {String} dateString - Date string in YYYY-MM-DD format
+ */
+export const filterByDate = (dateString = getCurrentDate()) => {
+  cy.get('#changelist-filter')
+  .should('exist')
+  .contains('Today') 
+  .click();
+};
+
+
+
+/**
+ * Verifies that list view contains specific records and elements
+ * @param {String} model - The model being tested
+ * @param {String} fieldValue - Value to check for in the list
+ * @param {Boolean} shouldExist - Whether the value should exist in the list
+ */
+export const verifyListViewContains = (model, fieldValue, shouldExist = true) => {
+  if (shouldExist) {
+    cy.get('#result_list').should('contain', fieldValue);
+  } else {
+    cy.get('#result_list').should('not.contain', fieldValue);
+  }
+};
+/**
+ * Verifies pagination exists and functions properly
+ */
+export const verifyPagination = () => {
+  cy.get('body').then($body => {
+    if ($body.find('.paginator').length > 0) {
+      cy.get('.paginator').should('be.visible');
+      
+      // Check if there's a next page button and it's clickable
+      if ($body.find('.paginator a.next').length > 0) {
+        cy.get('.paginator a.next').click();
+        cy.get('#result_list').should('be.visible');
+      }
+    } else {
+      cy.log('No pagination required - single page of results');
+    }
+  });
+};
+
+/**
+ * Verifies that a link points to another admin page
+ * @param {String} linkText - Text or selector to find the link
+ * @param {String} expectedUrl - Part of the URL the link should point to
+ */
+export const verifyAdminLink = (linkText, expectedUrl) => {
+  cy.contains(linkText).should('have.attr', 'href').and('include', expectedUrl);
+};
+

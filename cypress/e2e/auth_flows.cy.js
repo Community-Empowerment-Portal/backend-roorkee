@@ -1,6 +1,3 @@
-// Authentication Flows Tests
-// Tests user registration, email verification, password reset, and login processes
-
 describe('Authentication Flows', () => {
   const timestamp = Date.now();
   

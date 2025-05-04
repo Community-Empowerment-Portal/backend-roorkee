@@ -1,5 +1,3 @@
-// Admin Dashboard Tests
-// Tests admin navigation, search, quick actions, and UI elements
 
 describe('Admin Dashboard Functionality', () => {
   const admin = {
@@ -80,7 +78,7 @@ describe('Admin Dashboard Functionality', () => {
         .click();
       
       // Verify we're on the users page
-      cy.url().should('include', '/admin/communityEmpowerment/customuser/');
+      cy.url().should('include', '/communityEmpowerment/customuser/');
       cy.get('h1').should('contain', 'Select user to change');
       
       // Go back to home
@@ -93,7 +91,7 @@ describe('Admin Dashboard Functionality', () => {
         .click();
       
       // Verify we're on the groups page
-      cy.url().should('include', '/admin/auth/group/');
+      cy.url().should('include', '/auth/group/');
       cy.get('h1').should('contain', 'Select group to change');
     });
 
@@ -107,7 +105,7 @@ describe('Admin Dashboard Functionality', () => {
         .click();
       
       // Verify we're on the profile fields page
-      cy.url().should('include', '/admin/communityEmpowerment/profilefield/');
+      cy.url().should('include', '/communityEmpowerment/profilefield/');
       cy.get('h1').should('contain', 'Select profile field to change');
       
       // Go back to home
@@ -120,7 +118,7 @@ describe('Admin Dashboard Functionality', () => {
         .click();
       
       // Verify we're on the FAQs page
-      cy.url().should('include', '/admin/communityEmpowerment/faq/');
+      cy.url().should('include', '/communityEmpowerment/faq/');
       cy.get('h1').should('contain', 'Select faq to change');
     });
 
@@ -134,7 +132,7 @@ describe('Admin Dashboard Functionality', () => {
         .click();
       
       // Verify we're on the schemes page
-      cy.url().should('include', '/admin/communityEmpowerment/scheme/');
+      cy.url().should('include', '/communityEmpowerment/scheme/');
       cy.get('h1').should('contain', 'Select scheme to change');
       
       // Go back to home
@@ -147,7 +145,7 @@ describe('Admin Dashboard Functionality', () => {
         .click();
       
       // Verify we're on the states page
-      cy.url().should('include', '/admin/communityEmpowerment/state/');
+      cy.url().should('include', '/communityEmpowerment/state/');
       cy.get('h1').should('contain', 'Select state to change');
     });
   });
@@ -155,7 +153,7 @@ describe('Admin Dashboard Functionality', () => {
   context('Model Search Functionality', () => {
     it('should search for users', () => {
       // Go to users page
-      cy.visit('/admin/communityEmpowerment/customuser/');
+      cy.visit('/communityEmpowerment/customuser/');
       
       // Search for admin user
       cy.get('#searchbar').type(admin.username);
@@ -171,7 +169,7 @@ describe('Admin Dashboard Functionality', () => {
     it('should search for schemes', () => {
       // Create a test scheme with a unique name if not exists
       const testSchemeName = 'Test Scheme ' + Date.now();
-      cy.visit('/admin/communityEmpowerment/scheme/add/');
+      cy.visit('/communityEmpowerment/scheme/add/');
       
       // Check if we can create a scheme (might need a department first)
       cy.get('body').then($body => {
@@ -183,7 +181,7 @@ describe('Admin Dashboard Functionality', () => {
           cy.save();
           
           // Go to schemes list
-          cy.visit('/admin/communityEmpowerment/scheme/');
+          cy.visit('/communityEmpowerment/scheme/');
           
           // Search for the test scheme
           cy.get('#searchbar').type(testSchemeName);
@@ -210,7 +208,7 @@ describe('Admin Dashboard Functionality', () => {
 
     it('should use breadcrumbs for navigation', () => {
       // Go to a detail page (e.g., states)
-      cy.visit('/admin/communityEmpowerment/state/');
+      cy.visit('/communityEmpowerment/state/');
       
       // Verify breadcrumbs
       cy.get('.breadcrumbs').should('contain', 'Home');
@@ -230,7 +228,7 @@ describe('Admin Dashboard Functionality', () => {
           
           // Navigate back using breadcrumb
           cy.get('.breadcrumbs a').contains('States').click();
-          cy.url().should('include', '/admin/communityEmpowerment/state/');
+          cy.url().should('include', '/communityEmpowerment/state/');
         }
       });
     });
@@ -262,7 +260,7 @@ describe('Admin Dashboard Functionality', () => {
 
   context('Admin View Customizations', () => {
     it('should have custom list display for schemes', () => {
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Verify custom columns in scheme list view
       const expectedColumns = ['Title', 'Department', 'Is active', 'Introduced on', 'Valid upto', 'Funding pattern'];
@@ -276,7 +274,7 @@ describe('Admin Dashboard Functionality', () => {
     });
 
     it('should have custom list filters for schemes', () => {
-      cy.visit('/admin/communityEmpowerment/scheme/');
+      cy.visit('/communityEmpowerment/scheme/');
       
       // Verify filter options are present
       cy.get('#changelist-filter').should('exist');
