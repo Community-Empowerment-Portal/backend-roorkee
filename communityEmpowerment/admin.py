@@ -15,7 +15,7 @@ from .models import (
 
     State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta, Organization,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
-    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement
+    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement, UserPrivacySettings
 )
 from django.db.models import Count
 from django.db.models import Min
@@ -87,6 +87,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Groups', 'object_name': 'Group', 'admin_url': '/admin/auth/group/'},
                     {'name': 'Permissions', 'object_name': 'Permission', 'admin_url': '/admin/auth/permission/'},
                     {'name': 'Tenants', 'object_name': 'Organization', 'admin_url': '/admin/communityEmpowerment/organization/'},
+                    {'name': 'User Privacy Setting', 'object_name': 'UserPrivacySettings', 'admin_url': '/admin/communityEmpowerment/userprivacysettings/'},
                 ]
             },
             {
@@ -569,3 +570,11 @@ class AnnouncementAdmin(OrganizationScopedAdmin):
 
 admin_site.register(Announcement, AnnouncementAdmin)
 admin_site.register(Organization)
+
+
+class UserPrivacySettingsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'allow_information_usage', 'allow_information_sharing')
+    list_filter = ('allow_information_usage', 'allow_information_sharing')
+    search_fields = ('user__username', 'user__email')
+
+admin_site.register(UserPrivacySettings, UserPrivacySettingsAdmin)

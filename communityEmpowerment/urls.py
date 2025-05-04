@@ -100,7 +100,8 @@ from .views import (
     signup_analytics,
     login_analytics,
     TagStatsView,
-    get_popular_schemes_by_category
+    get_popular_schemes_by_category,
+    PrivacySettingsView
 )
 
 
@@ -213,4 +214,5 @@ urlpatterns = [
     path('send-email/', send_manual_email, name='send-email'),
     path('users/list/', UserListView.as_view(), name='user-list'),
     path('proxy/', proxy_view, name='proxy-view'),
+    path('privacy-settings/', PrivacySettingsView.as_view(), name='privacy-settings'),
 ]
