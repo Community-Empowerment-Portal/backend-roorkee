@@ -1642,7 +1642,7 @@ def get_popular_schemes(request):
     event_type = request.GET.get("event_type", "view")
     state = request.GET.get("state")
 
-    schemes_query = UserEvents.objects.filter(event_type=event_type)
+    schemes_query = UserEvents.objects.filter(event_type=event_type, scheme_id__isnull=False)
     if state:
         schemes_query = schemes_query.filter(details__state=state)
 
