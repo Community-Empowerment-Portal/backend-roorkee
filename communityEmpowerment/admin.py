@@ -298,7 +298,7 @@ class ProfileFieldInline(admin.TabularInline):
         return True
 
 
-class CustomUserAdmin(UserAdmin, OrganizationScopedAdmin):
+class CustomUserAdmin(UserAdmin, OrganizationScopedAdmin, ImportExportModelAdmin):
     model = CustomUser
     list_display = ("username", "email", "is_active", "is_staff", "is_email_verified")
     list_filter = ("is_active", "is_staff", "is_email_verified", "groups")
@@ -503,7 +503,7 @@ admin_site.register(FAQ, FAQAdmin)
 admin_site.register(Resource, OrganizationScopedAdmin)
 admin_site.register(CompanyMeta, OrganizationScopedAdmin)
 
-class UserEventsAdmin(OrganizationScopedAdmin):
+class UserEventsAdmin(OrganizationScopedAdmin, ImportExportModelAdmin):
     list_display = ('id', "get_scheme_title", 'user', 'event_type', 'get_watch_time', 'details', 'get_timestamp_ist')
     search_fields = ('user__username', 'event_type')
     list_filter = ('event_type', 'timestamp')
