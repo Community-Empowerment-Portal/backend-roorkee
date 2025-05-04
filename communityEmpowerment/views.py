@@ -49,14 +49,17 @@ from django.core.mail import EmailMessage
 import requests
 from calendar import monthrange
 from datetime import date
-
+import calendar
+from django.db.models.functions import Coalesce
+from django.db.models import Count, Q, Sum, F
+from django.db.models import Case, When
 
 
 logger = logging.getLogger(__name__)
 
 from .models import (
     State, Resource, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
-    Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField,
+    Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField, Tag, 
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue, Announcement
     
 )
@@ -64,7 +67,7 @@ from .serializers import (
     StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer,ResourceSerializer ,
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
-    SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer,
+    SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer, TagStatsSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
     UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
@@ -1938,6 +1941,94 @@ def get_user_download_history(request):
 
 
 
+@api_view(['GET'])
+def signup_analytics(request):
+    month = request.query_params.get('month')
+    year = request.query_params.get('year')
+
+    now = timezone.now()
+    
+    if not month:
+        month = now.month
+    else:
+        try:
+            month = int(month)
+            if month < 1 or month > 12:
+                raise ValueError("Month must be between 1 and 12.")
+        except ValueError:
+            return Response({"error": "Invalid month parameter. Pass a number between 1 and 12."}, status=400)
+
+    if not year:
+        year = now.year
+    else:
+        try:
+            year = int(year)
+            if year < 1900 or year > 2100:
+                raise ValueError("Year must be between 1900 and 2100.")
+        except ValueError:
+            return Response({"error": "Invalid year parameter. Pass a valid year like 2023."}, status=400)
+
+    first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+    last_day_number = calendar.monthrange(year, month)[1]
+    last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+    users = CustomUser.objects.filter(
+        date_joined__range=(first_day, last_day)
+    )
+
+    count = users.count()
+
+    return Response({
+        "year": year,
+        "month": month,
+        "signups_count": count,
+    })
+
+
+@api_view(['GET'])
+def login_analytics(request):
+    month = request.query_params.get('month')
+    year = request.query_params.get('year')
+
+    now = timezone.now()
+    
+    if not month:
+        month = now.month
+    else:
+        try:
+            month = int(month)
+            if month < 1 or month > 12:
+                raise ValueError("Month must be between 1 and 12.")
+        except ValueError:
+            return Response({"error": "Invalid month parameter. Pass a number between 1 and 12."}, status=400)
+
+    if not year:
+        year = now.year
+    else:
+        try:
+            year = int(year)
+            if year < 1900 or year > 2100:
+                raise ValueError("Year must be between 1900 and 2100.")
+        except ValueError:
+            return Response({"error": "Invalid year parameter. Pass a valid year like 2023."}, status=400)
+
+    first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+    last_day_number = calendar.monthrange(year, month)[1]
+    last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+    users = CustomUser.objects.filter(
+        last_login__range=(first_day, last_day)
+    )
+
+    count = users.count()
+
+    return Response({
+        "year": year,
+        "month": month,
+        "logins_count": count,
+    })
+
+
 
 
 class SchemeLinkListView(ListAPIView):
@@ -2070,7 +2161,7 @@ def send_manual_email(request):
 class UserListView(APIView):
 
     def get(self, request, format=None):
-        users = CustomUser.objects.all().values('id', 'username', 'name', 'email')
+        users = CustomUser.objects.all().values('id', 'username', 'name', 'email', 'is_staff', 'is_active', 'is_superuser')
 
         return Response(users, status=status.HTTP_200_OK)
 
@@ -2085,3 +2176,27 @@ def proxy_view(request):
         return HttpResponse(response.content, status=response.status_code, content_type=response.headers.get('Content-Type', 'text/html'))
     except requests.exceptions.RequestException as e:
         return JsonResponse({'error': str(e)}, status=500)
+    
+
+class TagStatsView(ListAPIView):
+    serializer_class = TagStatsSerializer
+
+    def get_queryset(self):
+        return Tag.objects.annotate(
+            view_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='view', then=1),
+                        output_field=IntegerField()
+                    )
+                ), 0
+            ),
+            apply_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='apply', then=1),
+                        output_field=IntegerField()
+                    )
+                ), 0
+            )
+        )

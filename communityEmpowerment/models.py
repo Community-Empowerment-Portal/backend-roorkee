@@ -32,10 +32,23 @@ class TimeStampedModel(models.Model):
             now = timezone.localtime(now, tz)
             self.created_at = now
         super().save(*args, **kwargs)
+
+class Organization(models.Model):
+    name = models.CharField(max_length=255)
+    domain = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Tenant" 
+        verbose_name_plural = "Tenants"
+
+    def __str__(self):
+        return self.name
     
 # Existing models
 class State(TimeStampedModel):
     state_name = models.CharField(max_length=255, null=False, blank=False, unique = True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     is_active = models.BooleanField(default=True)
     def clean(self):
         if not self.state_name.strip():  # Disallow empty or whitespace-only names
@@ -68,7 +81,9 @@ class State(TimeStampedModel):
 
 class Department(TimeStampedModel):
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name='departments', null=False, blank=False)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     department_name = models.CharField(max_length=255, null=True, blank=True)
+    
     is_active = models.BooleanField(default=True)
     # def clean(self):
     #     if re.search(r'\d', self.department_name):
@@ -161,6 +176,7 @@ class Department(TimeStampedModel):
 
 class Organisation(TimeStampedModel):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='organisations', null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     organisation_name = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
@@ -328,6 +344,7 @@ class Tag(DirtyFieldsMixin, TimeStampedModel):
     name = models.CharField(max_length=255, unique=True)
     weight = models.FloatField(default=1.0)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default="general")
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Tag"
@@ -1538,11 +1555,10 @@ class Tag(DirtyFieldsMixin, TimeStampedModel):
     def __str__(self):
         return self.name or "N/A"
 
-
-
      
 
 class Scheme(TimeStampedModel):
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.TextField(null = True, blank = True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='schemes', null=True, blank=True)
     introduced_on = models.TextField(null = True, blank = True)
@@ -1573,6 +1589,7 @@ class Scheme(TimeStampedModel):
 class Benefit(TimeStampedModel):
     benefit_type = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Benefit"
@@ -1584,6 +1601,8 @@ class Benefit(TimeStampedModel):
 
 class Beneficiary(TimeStampedModel):
     beneficiary_type = models.CharField(max_length=255, null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     def clean(self):
         if re.search(r'\d', self.beneficiary_type):
@@ -1599,6 +1618,7 @@ class Beneficiary(TimeStampedModel):
 class SchemeBeneficiary(TimeStampedModel):
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, related_name='scheme_beneficiaries')
     beneficiary = models.ForeignKey(Beneficiary, on_delete=models.CASCADE, related_name='beneficiary_schemes')
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Scheme Beneficiary"
@@ -1610,6 +1630,7 @@ class SchemeBeneficiary(TimeStampedModel):
 # DOUBT BELOW
 class Criteria(TimeStampedModel):
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, related_name='criteria', null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     description = models.TextField(null = True, blank = True)
     value = models.TextField(null = True, blank = True)
     criteria_data = models.JSONField(null=True, blank=True)
@@ -1624,6 +1645,7 @@ class Criteria(TimeStampedModel):
 
 class Procedure(TimeStampedModel):
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, related_name='procedures', null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     step_description = models.TextField(null = True, blank = True)
 
     class Meta:
@@ -1637,6 +1659,7 @@ class Procedure(TimeStampedModel):
 class Document(TimeStampedModel):
     document_name = models.CharField(max_length=255, null=True, blank=True)
     requirements = models.TextField(null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Document"
@@ -1657,6 +1680,7 @@ class SchemeDocument(TimeStampedModel):
 
 class Sponsor(TimeStampedModel):
     sponsor_type = models.CharField(max_length=255, null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Sponsor"
@@ -1669,6 +1693,7 @@ class Sponsor(TimeStampedModel):
 class SchemeSponsor(TimeStampedModel):
     scheme = models.ForeignKey(Scheme, on_delete=models.CASCADE, related_name='scheme_sponsors')
     sponsor = models.ForeignKey(Sponsor, on_delete=models.CASCADE, related_name='sponsor_schemes')
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "Scheme Sponsor"
@@ -1954,6 +1979,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('West Bengal', 'West Bengal'),
         
     ]
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -2044,6 +2070,7 @@ class SchemeReport(models.Model):
     report_category = models.CharField(max_length=50, choices=REPORT_CATEGORIES)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"Report for Scheme {self.scheme_id} - {self.report_category}"
@@ -2059,6 +2086,7 @@ class WebsiteFeedback(models.Model):
     category = models.CharField(max_length=50, choices=FEEDBACK_CATEGORIES)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"Feedback - {self.category}"
@@ -2075,6 +2103,7 @@ class SchemeFeedback(models.Model):
     feedback = models.TextField()
     rating = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"Feedback by {self.user.username} on {self.scheme.title}"
@@ -2156,6 +2185,7 @@ class FAQ(models.Model):
     answer = models.TextField()
     is_active = models.BooleanField(default=True)
     order = models.IntegerField(default=0)  
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     def save(self, *args, **kwargs):
         if self.pk:
@@ -2186,6 +2216,7 @@ class FAQ(models.Model):
 from django.db import models
 
 class CompanyMeta(models.Model):
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=255)
     tagline = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
@@ -2223,6 +2254,7 @@ class CompanyMeta(models.Model):
 
 class Resource(models.Model):
     state_name = models.ForeignKey(State, on_delete=models.CASCADE, related_name="resources", null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     resource_link = models.URLField()
 
     def get_queryset(self):
@@ -2248,6 +2280,7 @@ class Announcement(models.Model):
     apply_link = models.URLField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
 
     def clean(self):
         # Validate max 4 active announcements

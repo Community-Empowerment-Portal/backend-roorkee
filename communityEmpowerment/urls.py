@@ -96,7 +96,10 @@ from .views import (
     proxy_view,
     UnifiedSchemesAPIView,
     UserProfileFieldValuesView,
-    AllUserProfilesView
+    AllUserProfilesView,
+    signup_analytics,
+    login_analytics,
+    TagStatsView
 )
 
 
@@ -166,6 +169,8 @@ urlpatterns = [
     path('feedback/scheme-reports/<int:pk>/', SchemeReportViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='scheme-report-detail'),
     path('feedback/website-feedback/', WebsiteFeedbackViewSet.as_view({'post': 'create', 'get': 'list'}), name='website-feedback'),
     path('website-feedback/all/', AllWebsiteFeedbackView.as_view(), name='all-website-feedback'),
+    path('analytics/registrations/', signup_analytics, name='registration-analytics'),
+    path('analytics/logins/', login_analytics, name='login-analytics'),
     path('feedback/website-feedback/<int:pk>/', WebsiteFeedbackViewSet.as_view({'get': 'retrieve', 'delete': 'destroy'}), name='website-feedback-detail'),
     path('scheme/<int:scheme_id>/recommendations/', RecommendSchemesAPIView.as_view(), name='scheme_recommendations'),
     path('recommendations/', HybridRecommendationView.as_view(), name='hybrid-recommendations'),
@@ -193,6 +198,7 @@ urlpatterns = [
     path("events/user-click-history/", get_user_click_history, name="user-click-history"),
     path("events/user-filter-usage/", get_user_filter_usage, name="user-filter-usage"),
     path("events/user-download-history/", get_user_download_history, name="user-download-history"),
+    path('events/tag-stats/', TagStatsView.as_view(), name='tag-stats'),
     # path('schemes/resources/', SchemeLinkListView.as_view(), name='scheme-links'),
     path('schemes/resources/<int:state_id>/', SchemeLinkByStateView.as_view(), name='scheme-links-by-state'),
     path("auth/superuser-login/", SuperuserLoginView.as_view(), name="superuser-login"),
@@ -205,5 +211,5 @@ urlpatterns = [
     path('announcements/', AnnouncementListView.as_view(), name='announcements-list'),
     path('send-email/', send_manual_email, name='send-email'),
     path('users/list/', UserListView.as_view(), name='user-list'),
-    path('proxy/', proxy_view, name='proxy-view')
+    path('proxy/', proxy_view, name='proxy-view'),
 ]
