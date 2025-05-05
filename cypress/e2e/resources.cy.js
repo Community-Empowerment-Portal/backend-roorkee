@@ -1,11 +1,10 @@
-// Cypress test file for Resources CRUD operations
 import {
   generateRandomString,
   openAddNewForm,
   openEditForm,
   verifyListViewContains,
   verifyPagination
-} from '../support-test-helpers';
+} from '../support/admin-test-helpers';
 
 describe('Resources Tests', () => {
   const users = {

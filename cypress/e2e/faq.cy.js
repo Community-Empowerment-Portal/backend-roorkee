@@ -1,9 +1,6 @@
-// Cypress test file for FAQ CRUD operations
 import {
   generateRandomString,
-  navigateToAdminSection,
   openAddNewForm,
-  openEditForm,
   verifyListViewContains,
   verifyPagination
 } from '../support/admin-test-helpers';
@@ -48,7 +45,7 @@ describe('FAQ Tests', () => {
       cy.visit('/communityEmpowerment/faq/');
       
       // Check if the page loaded correctly
-      cy.get('h1').should('contain', 'FAQs');
+      cy.get('h1').should('contain', 'faq');
       cy.get('#content-main').should('be.visible');
       
       // Check table headers
@@ -92,7 +89,7 @@ describe('FAQ Tests', () => {
     let initialFaqCount = 0;
     
     it('should create a new FAQ', () => {
-      cy.visit('/communityEmpowerment/faq/');
+      cy.visit('/communityEmpowerment/faq');
       
       // Store initial count of FAQs
       cy.get('body').then($body => {
@@ -106,10 +103,9 @@ describe('FAQ Tests', () => {
       openAddNewForm();
       
       // Fill in FAQ form fields
-      cy.get('input[name="question"]').type(faqQuestion);
+      cy.get('textarea[name="question"]').type(faqQuestion);
       cy.get('textarea[name="answer"]').type(faqAnswer);
-      cy.get('input[name="order"]').clear().type('999'); // Put at end of the list
-      cy.get('input[name="is_active"]').check();
+      cy.get('input[name="order"]').clear().type('99'); // Put at end of the list
       
       // Save the form
       cy.save();
@@ -136,7 +132,7 @@ describe('FAQ Tests', () => {
       cy.contains('tr', faqQuestion).find('th a').click();
       
       // Update fields
-      cy.get('input[name="question"]').clear().type(faqUpdatedQuestion);
+      cy.get('textarea[name="question"]').clear().type(faqUpdatedQuestion);
       cy.get('textarea[name="answer"]').clear().type('This is an updated FAQ answer.');
       cy.get('input[name="order"]').clear().type('1'); // Move to top of the list
       
@@ -158,7 +154,7 @@ describe('FAQ Tests', () => {
       cy.contains('tr', faqUpdatedQuestion).find('input[name*="is_active"]').uncheck();
       
       // Save changes
-      cy.contains('button', 'Save').click();
+      cy.get('input[name="_save"]').click();
       
       // Verify the is_active state is saved
       cy.visit('/communityEmpowerment/faq/');
@@ -166,7 +162,7 @@ describe('FAQ Tests', () => {
       
       // Reactivate FAQ
       cy.contains('tr', faqUpdatedQuestion).find('input[name*="is_active"]').check();
-      cy.contains('button', 'Save').click();
+      cy.get('input[name="_save"]').click();
       
       // Verify it's active again
 cy.visit('/communityEmpowerment/faq/');
@@ -181,7 +177,7 @@ cy.visit('/communityEmpowerment/faq/');
       
       // Delete the FAQ
       cy.contains('a', 'Delete').click();
-      cy.contains('button', "Yes, I'm sure").click();
+      cy.get('input[value="Yes, I’m sure"]').click();
       
       // Verify success message
       cy.verifyMessage('success', 'deleted successfully');
@@ -212,7 +208,7 @@ cy.visit('/communityEmpowerment/faq/');
                 .type('999');
               
               // Save changes
-              cy.contains('button', 'Save').click();
+              cy.get('input[name="_save"]').click();
               
               // Verify the FAQ has moved down in the list
               cy.visit('/communityEmpowerment/faq/');
@@ -226,15 +222,6 @@ cy.visit('/communityEmpowerment/faq/');
           cy.log('Not enough FAQs to test ordering');
         }
       });
-    });
-  });
-
-  describe('FAQ Front-end Display', () => {
-    it('should verify FAQs are correctly displayed on the front-end', () => {
-      // This would normally navigate to the front-end FAQ page
-      // For now, we'll just verify we can access the admin page
-      cy.visit('/communityEmpowerment/faq/');
-      cy.get('h1').should('contain', 'FAQs');
     });
   });
 });

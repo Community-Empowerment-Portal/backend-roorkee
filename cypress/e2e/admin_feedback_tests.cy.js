@@ -1,4 +1,3 @@
-// Cypress test file for admin portal feedback and reports CRUD operations
 import {
   generateRandomString,
   createSchemeFeedbackTestData,
@@ -10,7 +9,6 @@ import {
 } from '../support/admin-test-helpers';
 
 describe('Admin Portal - Feedback and Reports CRUD Tests', () => {
-  // Define our user roles for testing
   const users = {
     admin: {
       username: 'admin',
@@ -29,7 +27,6 @@ describe('Admin Portal - Feedback and Reports CRUD Tests', () => {
     }
   };
   
-  // Use admin for our main CRUD tests
   const testData = users.admin;
   
   beforeEach(() => {
@@ -77,8 +74,8 @@ describe('Admin Portal - Feedback and Reports CRUD Tests', () => {
       
       // Fill form with test data
       fillSchemeFeedbackForm({
-        user: 'admin', // Assuming this user exists
-        scheme: 0, // Select first available scheme
+        user: 'admin', 
+        scheme: 0,
         feedback: feedbackData.feedback,
         rating: feedbackData.rating
       });

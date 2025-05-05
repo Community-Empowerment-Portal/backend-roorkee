@@ -90,7 +90,6 @@ describe('Django Admin RBAC with Groups', () => {
   it('Viewer user can view but not add schemes', () => {
     // Log in as the Viewer user
     cy.admin_logout()
-    cy.wait(1000)
     cy.admin_login(users.viewer.username, users.viewer.password);
     cy.visit('/communityEmpowerment/scheme/');
     cy.get('.results').should('be.visible');
@@ -104,7 +103,6 @@ describe('Django Admin RBAC with Groups', () => {
   it('Editor user can change but not add or delete schemes', () => {
     // Log in as the Editor user
     cy.admin_logout()
-    cy.wait(1000)
     cy.admin_login(users.editor.username, users.editor.password);
     cy.visit('/communityEmpowerment/scheme/');
     cy.get('.results').should('be.visible');

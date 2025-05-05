@@ -1,27 +1,14 @@
-// Admin Test Helpers
-// Utility functions for managing test users and permissions in admin tests
-
-/**
- * Load the admin test users configuration
- * @returns {Object} The test users configuration
- */
 function loadTestUsersConfig() {
   return cy.fixture('admin-test-users.json').then(config => {
     return config;
   });
 }
 
-/**
- * Setup a test user with the specified role
- * @param {String} role - The role of the user (admin, editor, viewer)
- * @returns {Object} The user configuration for the specified role
- */
-function setupTestUser(role) {
+function setupTestUser (role) {
   return loadTestUsersConfig().then(config => {
     const userConfig = config.users[role];
     const permissionsConfig = config.permissions[role];
-    
-    // Check if the user exists, if not create it
+
     cy.request({
       method: 'POST',
       url: '/api/auth/check-user-exists/',
@@ -30,11 +17,8 @@ function setupTestUser(role) {
     }).then(response => {
       if (response.status === 404 || response.body.exists === false) {
         cy.log(`Test user ${userConfig.username} does not exist, creating...`);
-        
-        // Admin logs in to create the user
+
         cy.admin_login(config.users.admin.username, config.users.admin.password);
-        
-        // Create the user
         cy.visit('/admin/communityEmpowerment/customuser/add/');
         cy.fillAdminForm({ 'username': userConfig.username }, 'input');
         cy.fillAdminForm({ 'email': userConfig.email }, 'input');
@@ -42,24 +26,14 @@ function setupTestUser(role) {
         cy.fillAdminForm({ 'last_name': userConfig.lastName }, 'input');
         cy.fillAdminForm({ 'password1': userConfig.password }, 'input');
         cy.fillAdminForm({ 'password2': userConfig.password }, 'input');
-        
-        // Set staff status
         cy.fillAdminForm({ 'is_staff': permissionsConfig.isStaff }, 'checkbox');
-        
-        // Set superuser status
         cy.fillAdminForm({ 'is_superuser': permissionsConfig.isSuperuser }, 'checkbox');
-        
-        // Set active status
         cy.fillAdminForm({ 'is_active': permissionsConfig.isActive }, 'checkbox');
-        
-        // Save the user
         cy.save();
-        
-        // If the user needs specific permissions or groups, assign them
+
         if (permissionsConfig.groups.length > 0 || permissionsConfig.userPermissions.length > 0) {
           cy.contains('tr', userConfig.username).find('th a').click();
-          
-          // Assign groups if specified
+
           if (permissionsConfig.groups.length > 0) {
             permissionsConfig.groups.forEach(group => {
               cy.get('#id_groups_from option').contains(group).then($option => {
@@ -70,8 +44,7 @@ function setupTestUser(role) {
               });
             });
           }
-          
-          // Assign individual permissions if specified
+
           if (permissionsConfig.userPermissions.length > 0) {
             permissionsConfig.userPermissions.forEach(permission => {
               cy.get('#id_user_permissions_from option').contains(permission).then($option => {
@@ -82,74 +55,57 @@ function setupTestUser(role) {
               });
             });
           }
-          
-          // Save changes
+
           cy.save();
         }
-        
-        // Logout admin
+
         cy.admin_logout();
       } else {
         cy.log(`Test user ${userConfig.username} already exists`);
       }
     });
-    
+
     return { userConfig, permissionsConfig };
   });
 }
 
-/**
- * Verify user permissions against expected UI elements
- * @param {String} role - The role of the user (admin, editor, viewer)
- * @param {String} modelName - The name of the model being checked
- */
 function verifyUserPermissions(role, modelName) {
   return loadTestUsersConfig().then(config => {
     const expectedUi = config.expectedUi[role];
-    
-    // Check if the user has access to add new items
+
     if (typeof expectedUi.hasAddButtons === 'object') {
-      // Role has specific permissions per model
       const shouldHaveAddButton = expectedUi.hasAddButtons[modelName] || false;
-      cy.checkPermission('a.addlink', shouldHaveAddButton, 
+      cy.checkPermission('a.addlink', shouldHaveAddButton,
         `${role} ${shouldHaveAddButton ? 'should' : 'should not'} have "Add" button for ${modelName}`);
     } else {
-      // Role has the same permission for all models
-      cy.checkPermission('a.addlink', expectedUi.hasAddButtons, 
+      cy.checkPermission('a.addlink', expectedUi.hasAddButtons,
         `${role} ${expectedUi.hasAddButtons ? 'should' : 'should not'} have "Add" button for ${modelName}`);
     }
-    
-    // Check for any records to test edit/delete permissions
+
     cy.get('#result_list tbody tr:first-child th a').then($link => {
       if ($link.length) {
         cy.wrap($link).click();
-        
-        // Check if the user can save changes
+
         cy.checkPermission('input[name="_save"]', expectedUi.hasSaveButtons, 
           `${role} ${expectedUi.hasSaveButtons ? 'should' : 'should not'} be able to save ${modelName}`);
         
-        // Check if the user can delete items
         cy.checkPermission('a:contains("Delete")', expectedUi.hasDeleteButtons, 
           `${role} ${expectedUi.hasDeleteButtons ? 'should' : 'should not'} be able to delete ${modelName}`);
         
-        // Go back to list
         cy.visit(`/admin/communityEmpowerment/${modelName}/`);
       }
     });
-    
-    // Check if the user can use bulk actions
-    cy.checkPermission('select[name="action"]', expectedUi.hasBulkActions, 
+
+    cy.checkPermission('select[name="action"]', expectedUi.hasBulkActions,
       `${role} ${expectedUi.hasBulkActions ? 'should' : 'should not'} have bulk actions for ${modelName}`);
-    
-    // Check inline editing if applicable
+
     if (expectedUi.canEditInlineFields) {
       cy.get('#result_list tbody tr:first-child').then($row => {
         if ($row.length) {
           if (typeof expectedUi.canEditInlineFields === 'object') {
-            // Check specific field editability
             const fieldKey = `${modelName}.is_active`;
             const shouldBeEditable = expectedUi.canEditInlineFields[fieldKey] || false;
-            
+
             cy.get('input[name*="is_active"]').then($input => {
               if ($input.length) {
                 const isDisabled = $input.prop('disabled');
@@ -157,7 +113,6 @@ function verifyUserPermissions(role, modelName) {
               }
             });
           } else {
-            // All fields should be editable or non-editable
             cy.get('input[name*="is_active"], input[name*="order"]').then($inputs => {
               if ($inputs.length) {
                 $inputs.each((i, el) => {
@@ -173,80 +128,52 @@ function verifyUserPermissions(role, modelName) {
   });
 }
 
-/**
- * Perform a comprehensive permission check for a given model
- * @param {String} modelName - The name of the model to check
- * @param {Array} roles - The roles to check (defaults to ['admin', 'editor', 'viewer'])
- */
 function checkModelPermissions(modelName, roles = ['admin', 'editor', 'viewer']) {
   roles.forEach(role => {
-    // Set up user and log in
-    setupTestUser(role).then(({userConfig}) => {
+    setupTestUser (role).then(({ userConfig }) => {
       cy.admin_login(userConfig.username, userConfig.password);
-      
-      // Visit the model list page
       cy.visit(`/admin/communityEmpowerment/${modelName}/`);
-      
-      // Verify permissions for this role and model
       verifyUserPermissions(role, modelName);
-      
-      // Logout
       cy.admin_logout();
     });
   });
 }
 
-/**
- * Create a test record for a given model
- * @param {String} modelName - The model name
- * @param {Object} data - The data for the new record
- * @returns {String} The identifier of the created record
- */
 function createTestRecord(modelName, data = {}) {
   return loadTestUsersConfig().then(config => {
-    // Login as admin
     cy.admin_login(config.users.admin.username, config.users.admin.password);
-    
-    // Get default test data for this model if available
     const defaultKey = Object.keys(config.testDefaults).find(key => key.toLowerCase().includes(modelName.toLowerCase()));
     const defaultTitle = defaultKey ? config.testDefaults[defaultKey] : `Test ${modelName}`;
-    
-    // Generate a unique identifier
     const timestamp = Date.now();
     const title = data.title || `${defaultTitle} ${timestamp}`;
-    
-    // Visit the add page
+
     cy.visit(`/admin/communityEmpowerment/${modelName}/add/`);
-    
-    // Fill form based on model type
-    switch(modelName) {
+
+    switch (modelName) {
       case 'faq':
         cy.fillAdminForm({ 'question': title }, 'input');
         cy.fillAdminForm({ 'answer': data.answer || 'Test answer' }, 'textarea');
         cy.fillAdminForm({ 'order': data.order || '10' }, 'input');
         cy.fillAdminForm({ 'is_active': 'is_active' in data ? data.is_active : true }, 'checkbox');
         break;
-        
+
       case 'banner':
       case 'announcement':
         cy.fillAdminForm({ 'title': title }, 'input');
         cy.fillAdminForm({ 'description': data.description || 'Test description' }, 'textarea');
         cy.fillAdminForm({ 'is_active': 'is_active' in data ? data.is_active : true }, 'checkbox');
         break;
-        
+
       case 'layoutitem':
         cy.fillAdminForm({ 'title': title }, 'input');
         cy.fillAdminForm({ 'content': data.content || 'Test content' }, 'textarea');
         cy.fillAdminForm({ 'order': data.order || '10' }, 'input');
         cy.fillAdminForm({ 'is_active': 'is_active' in data ? data.is_active : true }, 'checkbox');
-        
-        // Check if there's a layout_type field and fill it if present
+
         cy.get('body').then($body => {
           if ($body.find('select[name="layout_type"]').length) {
             cy.fillAdminForm({ 'layout_type': data.layout_type || 'text' }, 'select');
           }
-          
-          // Check if there's a section field and fill it if present
           if ($body.find('select[name="section"]').length) {
             cy.get('select[name="section"] option').then($options => {
               if ($options.length > 1) {
@@ -256,14 +183,13 @@ function createTestRecord(modelName, data = {}) {
           }
         });
         break;
-        
+
       case 'state':
         cy.fillAdminForm({ 'name': title }, 'input');
         break;
-        
+
       case 'department':
         cy.fillAdminForm({ 'name': title }, 'input');
-        // Select a state if required
         cy.get('select[name="state"]').then($select => {
           if ($select.length) {
             cy.get('select[name="state"] option').then($options => {
@@ -274,39 +200,26 @@ function createTestRecord(modelName, data = {}) {
           }
         });
         break;
-        
+
       default:
-        // For other models, try to fill in common fields
         if (data.title) cy.fillAdminForm({ 'title': title }, 'input');
         if (data.name) cy.fillAdminForm({ 'name': title }, 'input');
         if (data.description) cy.fillAdminForm({ 'description': data.description }, 'textarea');
         if ('is_active' in data) cy.fillAdminForm({ 'is_active': data.is_active }, 'checkbox');
     }
-    
-    // Save the record
+
     cy.save();
-    
-    // Logout admin
     cy.admin_logout();
-    
+
     return title;
   });
 }
 
-/**
- * Delete a test record
- * @param {String} modelName - The model name
- * @param {String} identifier - The identifier of the record to delete
- */
 function deleteTestRecord(modelName, identifier) {
   return loadTestUsersConfig().then(config => {
-    // Login as admin
     cy.admin_login(config.users.admin.username, config.users.admin.password);
-    
-    // Go to the model list
     cy.visit(`/admin/communityEmpowerment/${modelName}/`);
-    
-    // Find and delete the record
+
     cy.get('body').then($body => {
       if ($body.text().includes(identifier)) {
         cy.contains('tr', identifier).find('th a').click();
@@ -314,27 +227,20 @@ function deleteTestRecord(modelName, identifier) {
         cy.contains("Yes, I'm sure").click();
       }
     });
-    
-    // Logout admin
+
     cy.admin_logout();
   });
 }
 
-// Export helper functions
 export {
   loadTestUsersConfig,
-  setupTestUser,
+  setupTestUser ,
   verifyUserPermissions,
   checkModelPermissions,
   createTestRecord,
   deleteTestRecord
 };
 
-/**
- * Generates a random string of specified length
- * @param {Number} length - The length of the random string
- * @returns {String} - Random string
- */
 export const generateRandomString = (length = 8) => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let result = '';
@@ -344,61 +250,36 @@ export const generateRandomString = (length = 8) => {
   return result;
 };
 
-/**
- * Gets current date in YYYY-MM-DD format
- * @returns {String} - Current date
- */
 export const getCurrentDate = () => {
   const date = new Date();
   return date.toISOString().split('T')[0];
 };
 
-/**
- * Creates test data for Scheme Feedback
- * @returns {Object} - Test data for scheme feedback
- */
 export const createSchemeFeedbackTestData = () => {
   return {
     feedback: `Test feedback ${generateRandomString(5)}`,
-    rating: Math.floor(Math.random() * 5) + 1, // Random rating 1-5
+    rating: Math.floor(Math.random() * 5) + 1,
   };
 };
 
-/**
- * Creates test data for Website Feedback
- * @returns {Object} - Test data for website feedback
- */
 export const createWebsiteFeedbackTestData = () => {
   return {
     description: `Website feedback description ${generateRandomString(8)}`,
   };
 };
 
-/**
- * Navigates to specific sections in the admin portal
- * @param {String} section - The section to navigate to
- */
 export const navigateToAdminSection = (section) => {
   cy.contains('Feedback & Reports').click();
   cy.contains(section).click();
 };
 
-/**
- * Selects a user from dropdown in admin form
- * @param {String} username - Username to select
- */
-export const selectUser = (username = 'admin') => {
+export const selectUser  = (username = 'admin') => {
   cy.get('#id_user').select(username);
 };
 
-/**
- * Selects a scheme from dropdown in admin form
- * @param {String} schemeTitle - Scheme title to select or index
- */
 export const selectScheme = (schemeTitle = 0) => {
   if (typeof schemeTitle === 'number') {
     cy.get('#id_scheme').find('option').then($options => {
-      // Skip the first option which is usually blank
       const optionIndex = schemeTitle + 1;
       if ($options.length > optionIndex) {
         cy.get('#id_scheme').select($options[optionIndex].value);
@@ -411,28 +292,17 @@ export const selectScheme = (schemeTitle = 0) => {
   }
 };
 
-/**
- * Opens the add new form in admin
- */
 export const openAddNewForm = () => {
   cy.get('.addlink').click();
 };
 
-/**
- * Opens the edit form for a specific item in admin list
- * @param {Number} index - Index of the item to edit (0-based)
- */
 export const openEditForm = (index = 0) => {
   cy.get('#result_list tbody tr').eq(index).find('a').first().click();
 };
 
-/**
- * Fills out the scheme feedback form
- * @param {Object} data - The data to fill in the form
- */
 export const fillSchemeFeedbackForm = (data) => {
   if (data.user) {
-    selectUser(data.user);
+    selectUser (data.user);
   }
   if (data.scheme !== undefined) {
     selectScheme(data.scheme);
@@ -445,38 +315,22 @@ export const fillSchemeFeedbackForm = (data) => {
   }
 };
 
-/**
- * Fills out the website feedback form
- * @param {Object} data - The data to fill in the form
- */
 export const fillWebsiteFeedbackForm = (data) => {
   if (data.user) {
-    selectUser(data.user);
+    selectUser (data.user);
   }
   if (data.description) {
     cy.get('#id_description').clear().type(data.description);
   }
 };
 
-/**
- * Applies a date filter in the admin list view
- * @param {String} dateString - Date string in YYYY-MM-DD format
- */
 export const filterByDate = (dateString = getCurrentDate()) => {
   cy.get('#changelist-filter')
-  .should('exist')
-  .contains('Today') 
-  .click();
+    .should('exist')
+    .contains('Today')
+    .click();
 };
 
-
-
-/**
- * Verifies that list view contains specific records and elements
- * @param {String} model - The model being tested
- * @param {String} fieldValue - Value to check for in the list
- * @param {Boolean} shouldExist - Whether the value should exist in the list
- */
 export const verifyListViewContains = (model, fieldValue, shouldExist = true) => {
   if (shouldExist) {
     cy.get('#result_list').should('contain', fieldValue);
@@ -484,15 +338,12 @@ export const verifyListViewContains = (model, fieldValue, shouldExist = true) =>
     cy.get('#result_list').should('not.contain', fieldValue);
   }
 };
-/**
- * Verifies pagination exists and functions properly
- */
+
 export const verifyPagination = () => {
   cy.get('body').then($body => {
     if ($body.find('.paginator').length > 0) {
       cy.get('.paginator').should('be.visible');
-      
-      // Check if there's a next page button and it's clickable
+
       if ($body.find('.paginator a.next').length > 0) {
         cy.get('.paginator a.next').click();
         cy.get('#result_list').should('be.visible');
@@ -503,12 +354,6 @@ export const verifyPagination = () => {
   });
 };
 
-/**
- * Verifies that a link points to another admin page
- * @param {String} linkText - Text or selector to find the link
- * @param {String} expectedUrl - Part of the URL the link should point to
- */
 export const verifyAdminLink = (linkText, expectedUrl) => {
   cy.contains(linkText).should('have.attr', 'href').and('include', expectedUrl);
 };
-

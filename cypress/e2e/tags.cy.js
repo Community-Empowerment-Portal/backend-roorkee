@@ -1,7 +1,6 @@
 // Cypress test file for Tags CRUD operations
 import {
   generateRandomString,
-  navigateToAdminSection,
   openAddNewForm,
   openEditForm,
   verifyListViewContains,

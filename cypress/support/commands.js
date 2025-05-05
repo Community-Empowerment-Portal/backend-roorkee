@@ -1,4 +1,4 @@
-const DEFAULT_TIMEOUT = 10000;
+const DEFAULT_TIMEOUT = 1000;
 
 const getUserConfig = (userType) => {
   return cy.fixture('admin-test-users.json').then(data => data.users[userType]);
