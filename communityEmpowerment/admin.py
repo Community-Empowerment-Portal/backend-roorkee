@@ -116,7 +116,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'States', 'object_name': 'State', 'admin_url': '/admin/communityEmpowerment/state/'},
                     {'name': 'Tags', 'object_name': 'Tag', 'admin_url': '/admin/communityEmpowerment/tag/'},
                     {'name': 'Resources', 'object_name': 'Resource', 'admin_url': '/admin/communityEmpowerment/resource/'},
-                    {'name': 'Company Meta', 'object_name': 'CompanyMeta', 'admin_url': '/admin/communityEmpowerment/companymeta/'},
+                
 
                 ]
             },
@@ -141,7 +141,8 @@ class CustomAdminSite(admin.AdminSite):
                 'app_label': 'assets',
                 'models': [
                     {'name': 'Banners', 'object_name': 'Banner', 'admin_url': '/admin/communityEmpowerment/banner/'},
-                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcement/'}
+                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcement/'},
+                    {'name': 'Company Meta', 'object_name': 'CompanyMeta', 'admin_url': '/admin/communityEmpowerment/companymeta/'},
                 ]
             },
             {
