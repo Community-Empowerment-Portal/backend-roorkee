@@ -2272,3 +2272,47 @@ class PrivacySettingsView(APIView):
             serializer.save()
             return Response({"message": "Privacy settings updated successfully", "data": serializer.data})
         return Response(serializer.errors, status=400)
+
+
+class UserSchemeInteractionView(APIView):
+    def get(self, request, user_id):
+        event_types = ['view', 'apply', 'save']
+        events = UserEvents.objects.filter(user_id=user_id, event_type__in=event_types).select_related('scheme')
+        
+        scheme_ids = events.values_list('scheme_id', flat=True).distinct()
+        schemes = Scheme.objects.filter(id__in=scheme_ids)
+        
+        serializer = SchemeSerializer(schemes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+class AllSchemesInteractionSummaryView(APIView):
+    def get(self, request):
+        schemes = Scheme.objects.all()
+        response_data = []
+
+        for scheme in schemes:
+            events = UserEvents.objects.filter(scheme=scheme)
+
+            interaction_list = [
+                {
+                    'user_id': event.user_id,
+                    'event_type': event.event_type
+                } for event in events if event.user_id is not None
+            ]
+
+            counts = {
+                'view': events.filter(event_type='view').count(),
+                'apply': events.filter(event_type='apply').count(),
+                'save': events.filter(event_type='save').count(),
+            }
+
+            scheme_data = SchemeSerializer(scheme).data
+            scheme_data.update({
+                'interactions': interaction_list,
+                'counts': counts
+            })
+
+            response_data.append(scheme_data)
+
+        return Response(response_data, status=status.HTTP_200_OK)

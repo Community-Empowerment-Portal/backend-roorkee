@@ -101,7 +101,9 @@ from .views import (
     login_analytics,
     TagStatsView,
     get_popular_schemes_by_category,
-    PrivacySettingsView
+    PrivacySettingsView,
+    UserSchemeInteractionView,
+    AllSchemesInteractionSummaryView
 )
 
 
@@ -215,4 +217,6 @@ urlpatterns = [
     path('users/list/', UserListView.as_view(), name='user-list'),
     path('proxy/', proxy_view, name='proxy-view'),
     path('privacy-settings/', PrivacySettingsView.as_view(), name='privacy-settings'),
+    path('user/<int:user_id>/interacted-schemes/', UserSchemeInteractionView.as_view(), name='user-interacted-schemes'),
+    path('schemes/interactions/', AllSchemesInteractionSummaryView.as_view(), name='all-schemes-interaction-summary'),
 ]
