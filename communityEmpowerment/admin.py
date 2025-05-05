@@ -15,7 +15,7 @@ from .models import (
 
     State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, FAQ, Resource, CompanyMeta, Organization,
     Benefit, Criteria, Procedure, Document, SchemeDocument, Sponsor, ProfileField, ProfileFieldChoice, ProfileFieldValue, CustomUser,
-    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement
+    SchemeSponsor, CustomUser, Banner, Tag, SchemeReport, WebsiteFeedback, SchemeFeedback, LayoutItem, UserEvents, Announcement, UserPrivacySettings
 )
 from django.db.models import Count
 from django.db.models import Min
@@ -87,6 +87,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'Groups', 'object_name': 'Group', 'admin_url': '/admin/auth/group/'},
                     {'name': 'Permissions', 'object_name': 'Permission', 'admin_url': '/admin/auth/permission/'},
                     {'name': 'Tenants', 'object_name': 'Organization', 'admin_url': '/admin/communityEmpowerment/organization/'},
+                    {'name': 'User Privacy Setting', 'object_name': 'UserPrivacySettings', 'admin_url': '/admin/communityEmpowerment/userprivacysettings/'},
                 ]
             },
             {
@@ -115,7 +116,7 @@ class CustomAdminSite(admin.AdminSite):
                     {'name': 'States', 'object_name': 'State', 'admin_url': '/admin/communityEmpowerment/state/'},
                     {'name': 'Tags', 'object_name': 'Tag', 'admin_url': '/admin/communityEmpowerment/tag/'},
                     {'name': 'Resources', 'object_name': 'Resource', 'admin_url': '/admin/communityEmpowerment/resource/'},
-                    {'name': 'Company Meta', 'object_name': 'CompanyMeta', 'admin_url': '/admin/communityEmpowerment/companymeta/'},
+                
 
                 ]
             },
@@ -140,7 +141,8 @@ class CustomAdminSite(admin.AdminSite):
                 'app_label': 'assets',
                 'models': [
                     {'name': 'Banners', 'object_name': 'Banner', 'admin_url': '/admin/communityEmpowerment/banner/'},
-                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcement/'}
+                    {'name': 'Announcements', 'object_name': 'Announcement', 'admin_url': '/admin/communityEmpowerment/announcement/'},
+                    {'name': 'Company Meta', 'object_name': 'CompanyMeta', 'admin_url': '/admin/communityEmpowerment/companymeta/'},
                 ]
             },
             {
@@ -297,7 +299,7 @@ class ProfileFieldInline(admin.TabularInline):
         return True
 
 
-class CustomUserAdmin(UserAdmin, OrganizationScopedAdmin):
+class CustomUserAdmin(UserAdmin, OrganizationScopedAdmin, ImportExportModelAdmin):
     model = CustomUser
     list_display = ("username", "email", "is_active", "is_staff", "is_email_verified")
     list_filter = ("is_active", "is_staff", "is_email_verified", "groups")
@@ -502,7 +504,7 @@ admin_site.register(FAQ, FAQAdmin)
 admin_site.register(Resource, OrganizationScopedAdmin)
 admin_site.register(CompanyMeta, OrganizationScopedAdmin)
 
-class UserEventsAdmin(OrganizationScopedAdmin):
+class UserEventsAdmin(OrganizationScopedAdmin, ImportExportModelAdmin):
     list_display = ('id', "get_scheme_title", 'user', 'event_type', 'get_watch_time', 'details', 'get_timestamp_ist')
     search_fields = ('user__username', 'event_type')
     list_filter = ('event_type', 'timestamp')
@@ -569,3 +571,11 @@ class AnnouncementAdmin(OrganizationScopedAdmin):
 
 admin_site.register(Announcement, AnnouncementAdmin)
 admin_site.register(Organization)
+
+
+class UserPrivacySettingsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'allow_information_usage', 'allow_information_sharing')
+    list_filter = ('allow_information_usage', 'allow_information_sharing')
+    search_fields = ('user__username', 'user__email')
+
+admin_site.register(UserPrivacySettings, UserPrivacySettingsAdmin)

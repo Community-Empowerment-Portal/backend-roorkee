@@ -59,7 +59,7 @@ logger = logging.getLogger(__name__)
 
 from .models import (
     State, Resource, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, LayoutItem, FAQ, CompanyMeta,
-    Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField, Tag, 
+    Criteria, Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser, ProfileField, Tag, UserPrivacySettings,
     Banner, SavedFilter, SchemeReport, WebsiteFeedback, UserInteraction, SchemeFeedback, UserEvent,UserEvents, ProfileFieldValue, Announcement
     
 )
@@ -68,7 +68,7 @@ from .serializers import (
     BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer, TagStatsSerializer,
-    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer,
+    SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer, UserPrivacySettingsSerializer,
     PasswordResetConfirmSerializer, PasswordResetRequestSerializer, SchemeReportSerializer, WebsiteFeedbackSerializer,
     UserInteractionSerializer, SchemeFeedbackSerializer, UserEventSerializer, UserProfileSerializer, UserEventsSerializer, AnnouncementSerializer
 )
@@ -1642,7 +1642,7 @@ def get_popular_schemes(request):
     event_type = request.GET.get("event_type", "view")
     state = request.GET.get("state")
 
-    schemes_query = UserEvents.objects.filter(event_type=event_type)
+    schemes_query = UserEvents.objects.filter(event_type=event_type, scheme_id__isnull=False)
     if state:
         schemes_query = schemes_query.filter(details__state=state)
 
@@ -1665,6 +1665,54 @@ def get_popular_schemes(request):
     ]
 
     return Response(scheme_details)
+
+
+@api_view(["GET"])
+def get_popular_schemes_by_category(request):
+    limit = int(request.GET.get("limit", 5))
+    event_type = request.GET.get("event_type", "view")
+    state = request.GET.get("state")
+
+    categories = ["sc", "st", "obc", "students"]
+    response_data = {}
+
+    schemes_query = UserEvents.objects.filter(event_type=event_type)
+    if state:
+        schemes_query = schemes_query.filter(details__state=state)
+
+    popular_scheme_counts = (
+        schemes_query.values("scheme_id")
+        .annotate(count=Count("id"))
+        .order_by("-count")
+    )
+
+    scheme_ids = [entry["scheme_id"] for entry in popular_scheme_counts]
+    schemes = Scheme.objects.filter(id__in=scheme_ids)
+
+    scheme_map = {scheme.id: scheme for scheme in schemes}
+
+    for category in categories:
+        category_schemes = []
+
+        for entry in popular_scheme_counts:
+            scheme = scheme_map.get(entry["scheme_id"])
+            if not scheme:
+                continue
+            
+            if category in [tag.name.lower() for tag in scheme.tags.all()]:
+                category_schemes.append({
+                    "scheme_id": scheme.id,
+                    "title": scheme.title,
+                    "count": entry["count"],
+                })
+
+            if len(category_schemes) >= limit:
+                break
+
+        response_data[category] = category_schemes
+
+    return Response(response_data)
+
 
 
 
@@ -2198,5 +2246,29 @@ class TagStatsView(ListAPIView):
                         output_field=IntegerField()
                     )
                 ), 0
+            ),
+            save_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='save', then=1),
+                        output_field=IntegerField()
+                    )
+                ), 0
             )
         )
+    
+class PrivacySettingsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        settings, created = UserPrivacySettings.objects.get_or_create(user=request.user)
+        serializer = UserPrivacySettingsSerializer(settings)
+        return Response(serializer.data)
+
+    def post(self, request):
+        settings, created = UserPrivacySettings.objects.get_or_create(user=request.user)
+        serializer = UserPrivacySettingsSerializer(instance=settings, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Privacy settings updated successfully", "data": serializer.data})
+        return Response(serializer.errors, status=400)
