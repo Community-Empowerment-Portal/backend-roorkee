@@ -103,7 +103,7 @@ from .views import (
     get_popular_schemes_by_category,
     PrivacySettingsView,
     UserSchemeInteractionView,
-    AllSchemesInteractionSummaryView
+    AllSchemesInteractionSummaryView,
     monthly_login_analytics,
     monthly_signup_analytics
 )
