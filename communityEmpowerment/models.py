@@ -2062,6 +2062,9 @@ class SchemeReport(models.Model):
     REPORT_CATEGORIES = [
         ('incorrect_info', 'Incorrect Information'),
         ('outdated_info', 'Outdated Information'),
+        ('broken_link', 'Broken Link'),
+        ('language_issue', 'Language Issue'),
+        ('irrelevant', 'Irrelevant'),
         ('other', 'Other'),
     ]
 
@@ -2079,6 +2082,10 @@ class WebsiteFeedback(models.Model):
     FEEDBACK_CATEGORIES = [
         ('bug', 'Bug Report'),
         ('improvement', 'Improvement Suggestion'),
+        ('ui', 'User Interface'),
+        ('performance', 'Performance'),
+        ('content', 'Content'),
+        ('other', 'Other'),
         ('general', 'General Feedback'),
     ]
 
