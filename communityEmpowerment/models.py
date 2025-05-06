@@ -2170,6 +2170,7 @@ class UserEvents(models.Model):
     ]
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     event_type = models.CharField(max_length=20, choices=EVENT_TYPES)
     scheme = models.ForeignKey(Scheme, on_delete=models.SET_NULL, null=True, blank=True)
     details = models.JSONField(blank=True, null=True) 

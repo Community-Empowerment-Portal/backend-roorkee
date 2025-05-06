@@ -102,6 +102,8 @@ from .views import (
     TagStatsView,
     get_popular_schemes_by_category,
     PrivacySettingsView,
+    UserSchemeInteractionView,
+    AllSchemesInteractionSummaryView
     monthly_login_analytics,
     monthly_signup_analytics
 )
@@ -217,6 +219,8 @@ urlpatterns = [
     path('users/list/', UserListView.as_view(), name='user-list'),
     path('proxy/', proxy_view, name='proxy-view'),
     path('privacy-settings/', PrivacySettingsView.as_view(), name='privacy-settings'),
+    path('user/<int:user_id>/interacted-schemes/', UserSchemeInteractionView.as_view(), name='user-interacted-schemes'),
+    path('schemes/interactions/', AllSchemesInteractionSummaryView.as_view(), name='all-schemes-interaction-summary'),
     path('analytics/logins-per-month/', monthly_login_analytics, name='monthly_login_analytics'),
     path('analytics/signups-per-month/', monthly_signup_analytics, name='monthly_signup_analytics'),
 ]
