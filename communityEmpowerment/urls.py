@@ -103,9 +103,10 @@ from .views import (
     get_popular_schemes_by_category,
     PrivacySettingsView,
     UserSchemeInteractionView,
-    AllSchemesInteractionSummaryView
+    AllSchemesInteractionSummaryView,
     monthly_login_analytics,
-    monthly_signup_analytics
+    monthly_signup_analytics,
+    MissingSchemeReportView
 )
 
 
@@ -223,4 +224,5 @@ urlpatterns = [
     path('schemes/interactions/', AllSchemesInteractionSummaryView.as_view(), name='all-schemes-interaction-summary'),
     path('analytics/logins-per-month/', monthly_login_analytics, name='monthly_login_analytics'),
     path('analytics/signups-per-month/', monthly_signup_analytics, name='monthly_signup_analytics'),
+    path('feedback/missing-scheme/', MissingSchemeReportView.as_view(), name='report-missing-scheme'),
 ]

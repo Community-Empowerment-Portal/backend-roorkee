@@ -2302,3 +2302,14 @@ class UserPrivacySettings(models.Model):
     allow_information_usage = models.BooleanField(default=False)
     allow_information_sharing = models.BooleanField(default=False)
     allow_cookies_tracking = models.BooleanField(default=False)
+
+
+class MissingSchemeReport(models.Model):
+    scheme_name = models.CharField(max_length=255)
+    scheme_link = models.URLField(blank=True, null=True)
+    description = models.TextField()
+    supporting_document = models.FileField(upload_to='missing_scheme_docs/', blank=True, null=True)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.scheme_name
