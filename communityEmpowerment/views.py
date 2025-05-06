@@ -53,6 +53,7 @@ import calendar
 from django.db.models.functions import Coalesce
 from django.db.models import Count, Q, Sum, F
 from django.db.models import Case, When
+from collections import OrderedDict
 
 
 logger = logging.getLogger(__name__)
@@ -2274,6 +2275,7 @@ class PrivacySettingsView(APIView):
         return Response(serializer.errors, status=400)
 
 
+
 class UserSchemeInteractionView(APIView):
     def get(self, request, user_id):
         event_types = ['view', 'apply', 'save']
@@ -2316,3 +2318,68 @@ class AllSchemesInteractionSummaryView(APIView):
             response_data.append(scheme_data)
 
         return Response(response_data, status=status.HTTP_200_OK)
+      
+@api_view(['GET'])
+def monthly_login_analytics(request):
+    now = timezone.now()
+    current_year = now.year
+    current_month = now.month
+
+    year = request.query_params.get('year')
+    try:
+        year = int(year) if year else current_year
+        if year < 1900 or year > 2100:
+            raise ValueError("Invalid year")
+    except ValueError:
+        return Response({"error": "Invalid year. Pass a valid year like 2023."}, status=400)
+
+    login_counts = OrderedDict()
+
+    for month in range(1, 13):
+        if year == current_year and month > current_month:
+            break 
+
+        first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+        last_day_number = monthrange(year, month)[1]
+        last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+        count = CustomUser.objects.filter(last_login__range=(first_day, last_day)).count()
+        login_counts[f"{year}-{month:02d}"] = count
+
+    return Response({
+        "year": year,
+        "monthly_logins": login_counts
+    })
+
+
+@api_view(['GET'])
+def monthly_signup_analytics(request):
+    now = timezone.now()
+    current_year = now.year
+    current_month = now.month
+
+    year = request.query_params.get('year')
+    try:
+        year = int(year) if year else current_year
+        if year < 1900 or year > 2100:
+            raise ValueError("Invalid year")
+    except ValueError:
+        return Response({"error": "Invalid year. Pass a valid year like 2023."}, status=400)
+
+    signup_counts = OrderedDict()
+
+    for month in range(1, 13):
+        if year == current_year and month > current_month:
+            break  
+
+        first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+        last_day_number = monthrange(year, month)[1]
+        last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+        count = CustomUser.objects.filter(date_joined__range=(first_day, last_day)).count()
+        signup_counts[f"{year}-{month:02d}"] = count
+
+    return Response({
+        "year": year,
+        "monthly_signups": signup_counts
+    })
