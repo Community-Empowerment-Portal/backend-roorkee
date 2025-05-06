@@ -130,10 +130,10 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-# @shared_task
-# def scrape_and_process_schemes():
-#     call_command('run_all_scripts_proxy')  
-    # print("Data loaded successfully.")
+@shared_task
+def scrape_and_process_schemes():
+    call_command('run_all_scripts_proxy')  
+    print("Data loaded successfully.")
 
 @shared_task
 def check_urls_task():

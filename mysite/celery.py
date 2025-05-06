@@ -22,6 +22,10 @@ app.conf.update(
 )
 
 app.conf.beat_schedule = {
+    '{mysite}scrape-and-process-schemes-every-5-minutes': {
+        'task': 'communityEmpowerment.tasks.scrape_and_process_schemes',
+        'schedule': crontab(minute='*/5'),  # Run every 5 minutes
+    },
     '{mysite}check-urls': {
         'task': 'communityEmpowerment.tasks.check_urls_task',
         'schedule': crontab(minute=0, hour='0'),  # Runs every midnight

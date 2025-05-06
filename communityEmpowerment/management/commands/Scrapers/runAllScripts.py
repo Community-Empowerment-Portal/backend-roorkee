@@ -15,7 +15,8 @@ class Command(BaseCommand):
                 self.stderr.write(f"Error running {script_command}:\n{e.stderr}")
                 raise
 
-        base_dir = os.path.abspath(os.path.dirname(__file__))
+        base = os.path.abspath(os.path.dirname(__file__))
+        base_dir = os.path.join(base, '../communityEmpowerment/management/commands/')
         scripts = [
             "node maharastra_scraper.js",
             "node gujarat_scraper.js",
