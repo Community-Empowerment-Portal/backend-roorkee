@@ -53,6 +53,7 @@ import calendar
 from django.db.models.functions import Coalesce
 from django.db.models import Count, Q, Sum, F
 from django.db.models import Case, When
+from collections import OrderedDict
 
 
 logger = logging.getLogger(__name__)
@@ -65,7 +66,7 @@ from .models import (
 )
 from .serializers import (
     StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer,ResourceSerializer ,
-    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
+    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer, MissingSchemeReportSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer, TagStatsSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer, UserPrivacySettingsSerializer,
@@ -2272,3 +2273,122 @@ class PrivacySettingsView(APIView):
             serializer.save()
             return Response({"message": "Privacy settings updated successfully", "data": serializer.data})
         return Response(serializer.errors, status=400)
+
+
+
+class UserSchemeInteractionView(APIView):
+    def get(self, request, user_id):
+        event_types = ['view', 'apply', 'save']
+        events = UserEvents.objects.filter(user_id=user_id, event_type__in=event_types).select_related('scheme')
+        
+        scheme_ids = events.values_list('scheme_id', flat=True).distinct()
+        schemes = Scheme.objects.filter(id__in=scheme_ids)
+        
+        serializer = SchemeSerializer(schemes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
+class AllSchemesInteractionSummaryView(APIView):
+    def get(self, request):
+        schemes = Scheme.objects.all()
+        response_data = []
+
+        for scheme in schemes:
+            events = UserEvents.objects.filter(scheme=scheme)
+
+            interaction_list = [
+                {
+                    'user_id': event.user_id,
+                    'event_type': event.event_type
+                } for event in events if event.user_id is not None
+            ]
+
+            counts = {
+                'view': events.filter(event_type='view').count(),
+                'apply': events.filter(event_type='apply').count(),
+                'save': events.filter(event_type='save').count(),
+            }
+
+            scheme_data = SchemeSerializer(scheme).data
+            scheme_data.update({
+                'interactions': interaction_list,
+                'counts': counts
+            })
+
+            response_data.append(scheme_data)
+
+        return Response(response_data, status=status.HTTP_200_OK)
+      
+@api_view(['GET'])
+def monthly_login_analytics(request):
+    now = timezone.now()
+    current_year = now.year
+    current_month = now.month
+
+    year = request.query_params.get('year')
+    try:
+        year = int(year) if year else current_year
+        if year < 1900 or year > 2100:
+            raise ValueError("Invalid year")
+    except ValueError:
+        return Response({"error": "Invalid year. Pass a valid year like 2023."}, status=400)
+
+    login_counts = OrderedDict()
+
+    for month in range(1, 13):
+        if year == current_year and month > current_month:
+            break 
+
+        first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+        last_day_number = monthrange(year, month)[1]
+        last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+        count = CustomUser.objects.filter(last_login__range=(first_day, last_day)).count()
+        login_counts[f"{year}-{month:02d}"] = count
+
+    return Response({
+        "year": year,
+        "monthly_logins": login_counts
+    })
+
+
+@api_view(['GET'])
+def monthly_signup_analytics(request):
+    now = timezone.now()
+    current_year = now.year
+    current_month = now.month
+
+    year = request.query_params.get('year')
+    try:
+        year = int(year) if year else current_year
+        if year < 1900 or year > 2100:
+            raise ValueError("Invalid year")
+    except ValueError:
+        return Response({"error": "Invalid year. Pass a valid year like 2023."}, status=400)
+
+    signup_counts = OrderedDict()
+
+    for month in range(1, 13):
+        if year == current_year and month > current_month:
+            break  
+
+        first_day = timezone.datetime(year, month, 1, tzinfo=timezone.get_current_timezone())
+        last_day_number = monthrange(year, month)[1]
+        last_day = timezone.datetime(year, month, last_day_number, 23, 59, 59, tzinfo=timezone.get_current_timezone())
+
+        count = CustomUser.objects.filter(date_joined__range=(first_day, last_day)).count()
+        signup_counts[f"{year}-{month:02d}"] = count
+
+    return Response({
+        "year": year,
+        "monthly_signups": signup_counts
+    })
+
+
+class MissingSchemeReportView(APIView):
+    def post(self, request, format=None):
+        serializer = MissingSchemeReportSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Missing scheme reported successfully."}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

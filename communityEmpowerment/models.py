@@ -2062,6 +2062,9 @@ class SchemeReport(models.Model):
     REPORT_CATEGORIES = [
         ('incorrect_info', 'Incorrect Information'),
         ('outdated_info', 'Outdated Information'),
+        ('broken_link', 'Broken Link'),
+        ('language_issue', 'Language Issue'),
+        ('irrelevant', 'Irrelevant'),
         ('other', 'Other'),
     ]
 
@@ -2079,6 +2082,10 @@ class WebsiteFeedback(models.Model):
     FEEDBACK_CATEGORIES = [
         ('bug', 'Bug Report'),
         ('improvement', 'Improvement Suggestion'),
+        ('ui', 'User Interface'),
+        ('performance', 'Performance'),
+        ('content', 'Content'),
+        ('other', 'Other'),
         ('general', 'General Feedback'),
     ]
 
@@ -2170,6 +2177,7 @@ class UserEvents(models.Model):
     ]
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    organization = models.ForeignKey(Organization, null=True, blank=True, on_delete=models.SET_NULL)
     event_type = models.CharField(max_length=20, choices=EVENT_TYPES)
     scheme = models.ForeignKey(Scheme, on_delete=models.SET_NULL, null=True, blank=True)
     details = models.JSONField(blank=True, null=True) 
@@ -2301,3 +2309,14 @@ class UserPrivacySettings(models.Model):
     allow_information_usage = models.BooleanField(default=False)
     allow_information_sharing = models.BooleanField(default=False)
     allow_cookies_tracking = models.BooleanField(default=False)
+
+
+class MissingSchemeReport(models.Model):
+    scheme_name = models.CharField(max_length=255)
+    scheme_link = models.URLField(blank=True, null=True)
+    description = models.TextField()
+    supporting_document = models.FileField(upload_to='missing_scheme_docs/', blank=True, null=True)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.scheme_name
