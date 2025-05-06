@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import (State, Department, Organisation, Scheme, Beneficiary, SchemeBeneficiary, Benefit, Criteria, FAQ, CompanyMeta
+from .models import (State, Department, Organisation, Scheme, Beneficiary,MissingSchemeReport , SchemeBeneficiary, Benefit, Criteria, FAQ, CompanyMeta
                      , Procedure, Document, SchemeDocument, Sponsor, SchemeSponsor, CustomUser,Banner, SavedFilter, LayoutItem, UserPrivacySettings,
                       SchemeReport, WebsiteFeedback, Tag, Resource, UserInteraction, SchemeFeedback, UserEvent, UserEvents, ProfileField, ProfileFieldChoice, ProfileFieldValue, Announcement )
 from django.utils import timezone
@@ -672,4 +672,10 @@ class UserPrivacySettingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPrivacySettings
         fields = ['allow_information_usage', 'allow_information_sharing', 'allow_cookies_tracking',]
+
+class MissingSchemeReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MissingSchemeReport
+        fields = ['id', 'scheme_name', 'scheme_link', 'description', 'supporting_document', 'submitted_at']
+        read_only_fields = ['submitted_at']
 

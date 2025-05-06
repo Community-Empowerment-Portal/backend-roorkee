@@ -66,7 +66,7 @@ from .models import (
 )
 from .serializers import (
     StateSerializer, DepartmentSerializer, OrganisationSerializer, SchemeSerializer,ResourceSerializer ,
-    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer,
+    BeneficiarySerializer, SchemeBeneficiarySerializer, BenefitSerializer, FAQSerializer, MissingSchemeReportSerializer,
     CriteriaSerializer, ProcedureSerializer, DocumentSerializer, LayoutItemSerializer, CompanyMetaSerializer,
     SchemeDocumentSerializer, SponsorSerializer, SchemeSponsorSerializer, UserRegistrationSerializer, TagStatsSerializer,
     SaveSchemeSerializer,  LoginSerializer, BannerSerializer, SavedFilterSerializer, SchemeLinkSerializer, ProfileFieldValueSerializer, UserPrivacySettingsSerializer,
@@ -2383,3 +2383,12 @@ def monthly_signup_analytics(request):
         "year": year,
         "monthly_signups": signup_counts
     })
+
+
+class MissingSchemeReportView(APIView):
+    def post(self, request, format=None):
+        serializer = MissingSchemeReportSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Missing scheme reported successfully."}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
