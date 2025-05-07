@@ -32,7 +32,7 @@ app.conf.beat_schedule = {
         "schedule": crontab(hour=0, minute=0),  # every day at 12:00 AM
     },
     "{mysite}monthly-analytics-report": {
-        "task": "communityEmpowerment.tasks.send_monthly_analytics_report",
+        "task": "communityEmpowerment.tasks.send_monthly_analytics_report_task",
         "schedule": crontab(day_of_month=1, hour=9, minute=0),  # First day of each month at 9 AM
     }
 }
