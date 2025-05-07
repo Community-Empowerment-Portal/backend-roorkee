@@ -130,28 +130,19 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-# @shared_task
-# def scrape_and_process_schemes():
-#     call_command('run_all_scripts_proxy')  
-    # print("Data loaded successfully.")
+@shared_task
+def scrape_and_process_schemes():
+    call_command('run_all_scripts_proxy')  
+    print("Data loaded successfully.")
 
 @shared_task
 def check_urls_task():
     call_command('check_urls')  # Calls the check_urls.py command
 
-
-
-@shared_task
-def send_weekly_email():
-    recipients = ["karthikreddy0165@gmail.com", "karthik.r23csai@nst.rishihood.edu.in"]  
-    subject = "Weekly Update"
-    message = "Analytics report"
-
-    for recipient in recipients:
-        send_mail(subject, message, settings.EMAIL_FROM, [recipient], fail_silently=False)
-
-    return f"Weekly emails sent to {len(recipients)} users"
-
 @shared_task
 def send_expiry_email_task():
     call_command("send_expiry_mails")
+
+@shared_task
+def send_monthly_analytics_report_task():
+    call_command('send_monthly_analytics_report')

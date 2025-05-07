@@ -4,7 +4,7 @@ const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const { fileURLToPath } = require('url');
 const { dirname } = require('path');
-const path = require('path');
+
 
 
 const config = {
@@ -22,7 +22,7 @@ const config = {
 };
 
 async function extractUrls() {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(config.baseUrl, { waitUntil: "networkidle2" });
   const urls = await page.evaluate((selectors) => {
@@ -41,7 +41,7 @@ async function extractUrls() {
 } //extracting the scheme page url
 
 async function scrapeData(url, selectors, allSchemes) {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080 });
   const schemes = [];
@@ -130,8 +130,7 @@ async function scrapeData(url, selectors, allSchemes) {
   }
   return schemes;
 }
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
 
 async function main() {
   try {

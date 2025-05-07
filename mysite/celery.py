@@ -26,13 +26,14 @@ app.conf.beat_schedule = {
         'task': 'communityEmpowerment.tasks.check_urls_task',
         'schedule': crontab(minute=0, hour='0'),  # Runs every midnight
     },
-    "{mysite}send-weekly-email": {
-        "task": "communityEmpowerment.tasks.send_weekly_email",
-        "schedule": crontab(day_of_week=0, hour=9, minute=0),  # Every Monday at 9 AM
-    },
+
     "{mysite}send-expiry-reminders": {
         "task": "communityEmpowerment.tasks.send_expiry_email_task",
         "schedule": crontab(hour=0, minute=0),  # every day at 12:00 AM
+    },
+    "{mysite}monthly-analytics-report": {
+        "task": "communityEmpowerment.tasks.send_monthly_analytics_report_task",
+        "schedule": crontab(day_of_month=1, hour=9, minute=0),  # First day of each month at 9 AM
     }
 }
 

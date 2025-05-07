@@ -18,7 +18,7 @@ const config = {
 };
 
 async function extractUrls(thisPage) {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(thisPage, { waitUntil: "networkidle2" });
   const urls = await page.evaluate((selectors) => {
@@ -39,7 +39,7 @@ async function extractUrls(thisPage) {
 }
 
 async function scrapeData(thisUrl, parentTitle) {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(thisUrl, { waitUntil: "networkidle2" });
 

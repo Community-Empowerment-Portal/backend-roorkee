@@ -41,7 +41,7 @@ async function selectOptionAndExtractData(page, optionText) {
 }
 
 async function main() {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   // Navigate to the main page

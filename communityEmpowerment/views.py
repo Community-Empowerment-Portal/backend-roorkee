@@ -2392,3 +2392,5 @@ class MissingSchemeReportView(APIView):
             serializer.save()
             return Response({"message": "Missing scheme reported successfully."}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
