@@ -2392,3 +2392,135 @@ class MissingSchemeReportView(APIView):
             serializer.save()
             return Response({"message": "Missing scheme reported successfully."}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AnalyticsViewSet(viewsets.ViewSet):
+    """
+    API endpoint that provides analytics data in various formats.
+    """
+    permission_classes = [IsAdminUser]
+
+    @action(detail=False, methods=['get'])
+    def csv_export(self, request):
+        """
+        Export analytics data as a CSV file.
+        """
+        end_date = timezone.now()
+        start_date = end_date - timedelta(days=30)  # Default to last 30 days
+        
+        if 'start_date' in request.query_params:
+            try:
+                start_date = parse_date(request.query_params.get('start_date'))
+            except:
+                pass
+                
+        if 'end_date' in request.query_params:
+            try:
+                end_date = parse_date(request.query_params.get('end_date'))
+            except:
+                pass
+        
+        # Create a file-like buffer for the CSV data
+        buffer = io.StringIO()
+        writer = csv.writer(buffer)
+        
+        # Write header row
+        writer.writerow([
+            'Report Period',
+            f'From {start_date.strftime("%Y-%m-%d")} to {end_date.strftime("%Y-%m-%d")}'
+        ])
+        writer.writerow([])  # Empty row for spacing
+        
+        # Write user statistics
+        user_count = CustomUser.objects.filter(date_joined__range=[start_date, end_date]).count()
+        active_users = CustomUser.objects.filter(last_login__range=[start_date, end_date]).count()
+        writer.writerow(['USER STATISTICS'])
+        writer.writerow(['New Users', user_count])
+        writer.writerow(['Active Users', active_users])
+        writer.writerow([])  # Empty row for spacing
+        
+        # Write event statistics
+        writer.writerow(['EVENT STATISTICS'])
+        writer.writerow(['Event Type', 'Count'])
+        event_counts = UserEvents.objects.filter(
+            timestamp__range=[start_date, end_date]
+        ).values('event_type').annotate(
+            count=Count('id')
+        ).order_by('-count')
+        
+        for event in event_counts:
+            writer.writerow([event['event_type'], event['count']])
+        writer.writerow([])  # Empty row for spacing
+        
+        # Write popular schemes
+        writer.writerow(['POPULAR SCHEMES'])
+        writer.writerow(['Scheme ID', 'Title', 'Views'])
+        popular_schemes = UserEvents.objects.filter(
+            event_type='view',
+            timestamp__range=[start_date, end_date],
+            scheme__isnull=False
+        ).values('scheme').annotate(
+            view_count=Count('id')
+        ).order_by('-view_count')[:10]
+        
+        scheme_ids = [item['scheme'] for item in popular_schemes]
+        schemes = Scheme.objects.filter(id__in=scheme_ids)
+        
+        for item in popular_schemes:
+            scheme = schemes.filter(id=item['scheme']).first()
+            if scheme:
+                writer.writerow([scheme.id, scheme.title, item['view_count']])
+        writer.writerow([])  # Empty row for spacing
+        
+        # Write popular tags
+        writer.writerow(['POPULAR TAGS'])
+        writer.writerow(['Tag Name', 'Category', 'Views', 'Applies', 'Saves'])
+        
+        tag_stats = Tag.objects.annotate(
+            view_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='view', 
+                             schemes__userevents__timestamp__range=[start_date, end_date], 
+                             then=1),
+                        output_field=models.IntegerField()
+                    )
+                ), 0
+            ),
+            apply_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='apply', 
+                             schemes__userevents__timestamp__range=[start_date, end_date], 
+                             then=1),
+                        output_field=models.IntegerField()
+                    )
+                ), 0
+            ),
+            save_count=Coalesce(
+                Sum(
+                    Case(
+                        When(schemes__userevents__event_type='save', 
+                             schemes__userevents__timestamp__range=[start_date, end_date], 
+                             then=1),
+                        output_field=models.IntegerField()
+                    )
+                ), 0
+            )
+        ).order_by('-view_count')[:20]
+        
+        for tag in tag_stats:
+            writer.writerow([
+                tag.name, 
+                tag.category, 
+                tag.view_count, 
+                tag.apply_count, 
+                tag.save_count
+            ])
+        
+        # Get the CSV data and create response
+        buffer.seek(0)
+        response = HttpResponse(buffer.getvalue(), content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="analytics_report_{timezone.now().strftime("%Y-%m-%d")}.csv"'
+        
+        return response

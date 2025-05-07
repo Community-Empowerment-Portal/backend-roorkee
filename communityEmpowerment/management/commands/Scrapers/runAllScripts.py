@@ -15,46 +15,46 @@ class Command(BaseCommand):
                 self.stderr.write(f"Error running {script_command}:\n{e.stderr}")
                 raise
 
-        base = os.path.abspath(os.path.dirname(__file__))
-        base_dir = os.path.join(base, '../communityEmpowerment/management/commands/')
+        base_dir = os.path.abspath(os.path.dirname(__file__))
         scripts = [
-            "node maharastra_scraper.js",
-            "node gujarat_scraper.js",
-            "node jammu_kashmir_scraper.js",
-            "node meghalaya_scraper.js",
-            "node puducherry_scraper.js",
-            "node tamilNadu_scraper.js",
-            "node up_youthWelfare.js",
-            "node madhyaPradesh_scraper.js",
-            "node kerela_scraper.js",
-            "node manipur_scraper.js",
-            "node punjab_scraper.js",
-            "node andhraPradesh_scraper.js",
-            "node haryana_scraper.js",
-            "node assam_scraper.js",
-            "node odisha_scraper.js",
-            "node rajasthan_scraper.js", #PDF
-            "node goa_scraper.js", #PDF,
-            "node tripura_scraper.js", #PDF
-            "node jharkhand_scraper.js", #PDF
-            "node uttarakhand_scraper.js",
-            "node sikkim_scraper.js",
-            "node telangana_scraper.js",
-            "node chhattisgarh_scraper.js",
-            "node arunachalPradesh_scraper.js",
-            "node delhi_scraper.js",
-            "node ladakh_scraper.js",
-            "node himachalPradesh_scraper.js"
-            "node dadraAndNagarHaveli_scraper.js",
-            "node nagaland_scraper.js",
-            "node chandigarh_scraper.js",
-            "node andamanAndNicobar_scraper.js",
+            f"node {os.path.join(base_dir, '../Scrapers/maharastra_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/gujarat_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/jammu_kashmir_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/meghalaya_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/puducherry_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/tamilNadu_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/up_youthWelfare.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/madhyaPradesh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/kerala_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/manipur_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/punjab_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/andhraPradesh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/haryana_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/assam_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/odisha_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/rajasthan_scraper.js')}",  # PDF
+            f"node {os.path.join(base_dir, '../Scrapers/goa_scraper.js')}",  # PDF
+            f"node {os.path.join(base_dir, '../Scrapers/tripura_scraper.js')}",  # PDF
+            f"node {os.path.join(base_dir, '../Scrapers/jharkhand_scraper.js')}",  # PDF
+            f"node {os.path.join(base_dir, '../Scrapers/uttarakhand_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/sikkim_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/telangana_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/chhattisgarh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/arunachalPradesh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/delhi_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/ladakh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/himachalPradesh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/dadraAndNagarHaveli_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/nagaland_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/chandigarh_scraper.js')}",
+            f"node {os.path.join(base_dir, '../Scrapers/andamanAndNicobar_scraper.js')}",
             f"python {os.path.join(base_dir, '../downloadAndUploadPdfs.py')}",
             f"python {os.path.join(base_dir, '../geminiAndParsingScripts/pdfParser.py')}",
             f"python {os.path.join(base_dir, '../geminiAndParsingScripts/structureScrapedSchemes.py')}",
             f"python {os.path.join(base_dir, '../converted_combined.py')}",
             f"python {os.path.join(base_dir, '../../../../manage.py load_data')}"
         ]
+
 
         for script in scripts:
             self.stdout.write(f"Running script: {script}")
