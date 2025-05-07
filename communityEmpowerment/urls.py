@@ -111,9 +111,6 @@ from .views import (
 
 
 urlpatterns = [
-    # Analytics endpoint
-    path('analytics/csv-export/', AnalyticsViewSet.as_view({'get': 'csv_export'}), name='analytics-csv-export'),
-    
     path('states/', StateListAPIView.as_view(), name='state-list'),
     path('states/<int:pk>/', StateDetailAPIView.as_view(), name='state-detail'),
     path('departments/', DepartmentListAPIView.as_view(), name='department-list'),
