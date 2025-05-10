@@ -210,7 +210,8 @@ class ProcedureInline(admin.TabularInline):
 
 class SchemeAdmin(ImportExportModelAdmin, OrganizationScopedAdmin):
     resource_class = SchemeResource
-    list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern')
+    list_display = ('title', 'department','is_active', 'introduced_on', 'valid_upto', 'funding_pattern', 'view_count', 'apply_count')
+    readonly_fields = ('view_count', 'apply_count') 
     list_editable = ('is_active',) 
     search_fields = ('title', 'description','is_active')
     list_filter = (OrganizationScopedRelatedFilter, 'introduced_on', 'valid_upto', 'funding_pattern','is_active')

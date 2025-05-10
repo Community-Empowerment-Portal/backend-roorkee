@@ -1578,6 +1578,15 @@ class Scheme(TimeStampedModel):
         if not self.title.strip():  # Disallow empty or whitespace-only names
             raise ValidationError("Title name cannot be empty or whitespace.")
         
+    def view_count(self):
+        return self.userevents_set.filter(event_type='view').count()
+
+    def apply_count(self):
+        return self.userevents_set.filter(event_type='apply').count()
+    
+    view_count.short_description = "View Count"
+    apply_count.short_description = "Apply Count"
+        
     class Meta:
         verbose_name = "Scheme"
         verbose_name_plural = "Schemes"
